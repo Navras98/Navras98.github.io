@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Anteprima social — sorgente</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400&display=swap">
+<style>
+  * { box-sizing: border-box; margin: 0; }
+  body { width: 1200px; height: 630px; overflow: hidden; background: #fbfbf9; font-family: Inter, sans-serif; color: #16181c; }
+  .card { width: 1200px; height: 630px; padding: 74px 80px; display: flex; flex-direction: column; justify-content: space-between; border-top: 6px solid #1f45a8; }
+  .top { display: flex; align-items: center; gap: 14px; }
+  .mark { width: 40px; height: 40px; border: 2px solid #d3d0c8; border-radius: 6px; display: grid; place-items: center; font-size: 14px; font-weight: 600; color: #1f45a8; }
+  .name { font-size: 22px; font-weight: 600; letter-spacing: -0.01em; }
+  h1 { font-size: 62px; line-height: 1.1; letter-spacing: -0.03em; font-weight: 600; max-width: 940px; }
+  h1 em { font-style: normal; color: #1f45a8; }
+  .lede { margin-top: 26px; font-family: 'Source Serif 4', Georgia, serif; font-size: 25px; line-height: 1.5; color: #3b4048; max-width: 830px; }
+  .foot { display: flex; gap: 40px; border-top: 1px solid #e2e0da; padding-top: 22px; font-size: 17px; color: #6b7178; }
+  .foot span { display: flex; gap: 10px; align-items: baseline; }
+  .foot b { color: #16181c; font-weight: 500; }
+  .n { font-size: 12px; letter-spacing: 0.14em; color: #1f45a8; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="top">
+      <div class="mark">AS</div>
+      <div class="name">Andrea Sforna</div>
+    </div>
+    <div>
+      <h1>Sistemi di agenti AI che <em>reggono</em> anche il terzo mese</h1>
+      <p class="lede">Più agenti coordinati invece di un assistente solo. Confini imposti dal sistema, non raccomandati a parole. Risposte sui dati che si possono verificare una per una.</p>
+    </div>
+    <div class="foot">
+      <span><i class="n">01</i><b>Sicurezza degli agenti</b></span>
+      <span><i class="n">02</i><b>Dati deterministici</b></span>
+      <span><i class="n">03</i><b>Modelli, anche in locale</b></span>
+    </div>
+  </div>
+</body>
+</html>

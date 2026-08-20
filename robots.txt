@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
+
 Sitemap: https://navras98.github.io/sitemap.xml

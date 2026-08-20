@@ -1,125 +1,250 @@
-/* Andrea Sforna — motion & rail
-   lenis (scroll) → gsap + ScrollTrigger (reveal, registro di lettura) */
+/* Andrea Sforna — comportamenti condivisi.
+   Nessuna libreria: menu, comparse allo scroll, avanzamento di lettura,
+   copia dell'indirizzo, transizione fra pagine. Tutto degrada senza JS. */
+
 (function () {
   'use strict';
 
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var hasGSAP = typeof window.gsap !== 'undefined' && typeof window.ScrollTrigger !== 'undefined';
+  var root = document.documentElement;
+  var motion = root.classList.contains('motion');
 
-  /* ---------- rail: registro di lettura (sempre attivo, anche senza gsap) ---------- */
-  var items = Array.prototype.slice.call(document.querySelectorAll('.rail__item'));
-  var sections = items
-    .map(function (li) { return document.getElementById(li.dataset.rail); })
-    .filter(Boolean);
-  var bar = document.querySelector('.railbar__fill');
-  var dark = document.getElementById('metodo');
+  /* ---------------------------------------------------------- menu mobile */
 
-  function updateRail() {
-    var mid = window.scrollY + window.innerHeight * 0.42;
-    var active = 0;
-    sections.forEach(function (sec, i) {
-      if (sec.offsetTop <= mid) active = i;
+  var burger = document.querySelector('[data-burger]');
+  var menu = document.querySelector('[data-menu]');
+  var lastFocus = null;
+
+  function openMenu() {
+    if (!menu || !burger) return;
+    lastFocus = document.activeElement;
+    menu.hidden = false;
+    document.body.classList.add('is-locked');
+    burger.setAttribute('aria-expanded', 'true');
+    menu.classList.add('is-open');
+    var first = menu.querySelector('a');
+    if (first) first.focus({ preventScroll: true });
+  }
+
+  function closeMenu(restore) {
+    if (!menu || !burger) return;
+    menu.classList.remove('is-open');
+    burger.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('is-locked');
+    var done = function () {
+      menu.hidden = true;
+    };
+    if (motion) window.setTimeout(done, 300);
+    else done();
+    if (restore && lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
+  }
+
+  if (burger && menu) {
+    burger.addEventListener('click', function () {
+      if (burger.getAttribute('aria-expanded') === 'true') closeMenu(true);
+      else openMenu();
     });
-    items.forEach(function (li, i) {
-      li.classList.toggle('is-here', i === active);
-      li.classList.toggle('is-seen', i < active);
+
+    menu.addEventListener('click', function (e) {
+      if (e.target.closest('a')) closeMenu(false);
     });
 
-    if (bar) {
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape') return;
+      if (burger.getAttribute('aria-expanded') === 'true') closeMenu(true);
+    });
+
+    var mq = window.matchMedia('(min-width: 61.3125rem)');
+    var onChange = function (e) {
+      if (e.matches && burger.getAttribute('aria-expanded') === 'true') closeMenu(false);
+    };
+    if (mq.addEventListener) mq.addEventListener('change', onChange);
+    else if (mq.addListener) mq.addListener(onChange);
+
+    /* il fuoco resta dentro il pannello aperto */
+    menu.addEventListener('keydown', function (e) {
+      if (e.key !== 'Tab') return;
+      var focusables = menu.querySelectorAll('a[href], button:not([disabled])');
+      if (!focusables.length) return;
+      var first = focusables[0];
+      var last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        burger.focus();
+      }
+    });
+  }
+
+  /* ------------------------------------------------ comparse allo scroll */
+
+  var revealables = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
+
+  if (!motion) {
+    revealables.forEach(function (el) {
+      el.classList.add('is-in');
+    });
+  } else {
+    /* Setaccio a ogni scroll invece di un osservatore: un salto istantaneo in fondo
+       alla pagina non fa mai intersecare i blocchi di mezzo, che resterebbero
+       invisibili per sempre. Qui conta se il blocco è entrato o già passato. */
+    var pending = revealables.slice();
+
+    revealables.forEach(function (el, i) {
+      if (el.getAttribute('data-reveal') === 'stagger') {
+        el.style.setProperty('--d', (i % 4) * 90 + 'ms');
+      }
+    });
+
+    var sweep = function () {
+      var soglia = window.innerHeight * 0.92;
+      var restano = [];
+      for (var i = 0; i < pending.length; i++) {
+        var r = pending[i].getBoundingClientRect();
+        if (r.top < soglia) pending[i].classList.add('is-in');
+        else restano.push(pending[i]);
+      }
+      pending = restano;
+      if (!pending.length) {
+        window.removeEventListener('scroll', askSweep);
+        window.removeEventListener('resize', askSweep);
+      }
+    };
+    /* la strozzatura è a tempo, non su requestAnimationFrame: in una scheda che
+       non disegna, rAF non viene mai chiamato e i blocchi resterebbero invisibili */
+    var ultimo = 0;
+    var attesa = null;
+    var askSweep = function () {
+      var ora = new Date().getTime();
+      if (ora - ultimo > 70) {
+        ultimo = ora;
+        sweep();
+      } else if (!attesa) {
+        attesa = window.setTimeout(function () {
+          attesa = null;
+          ultimo = new Date().getTime();
+          sweep();
+        }, 70);
+      }
+    };
+
+    window.addEventListener('scroll', askSweep, { passive: true });
+    window.addEventListener('resize', askSweep);
+    sweep();
+    /* i caratteri che arrivano dopo spostano il testo: si ripassa qualche volta */
+    [200, 700, 1600].forEach(function (ms) {
+      window.setTimeout(sweep, ms);
+    });
+  }
+
+  /* --------------------------------------------- avanzamento di lettura */
+
+  var fill = document.querySelector('[data-progress]');
+
+  if (fill) {
+    var update = function () {
       var max = document.documentElement.scrollHeight - window.innerHeight;
-      bar.style.width = (max > 0 ? Math.min(1, window.scrollY / max) * 100 : 0) + '%';
-    }
-
-    if (dark) {
-      var r = dark.getBoundingClientRect();
-      var probe = window.innerHeight / 2;
-      document.body.classList.toggle('rail-invert', r.top < probe && r.bottom > probe);
-    }
+      var ratio = max > 240 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+      fill.style.transform = 'scaleX(' + ratio.toFixed(4) + ')';
+    };
+    var ultimoP = 0;
+    var attesaP = null;
+    var request = function () {
+      var ora = new Date().getTime();
+      if (ora - ultimoP > 40) {
+        ultimoP = ora;
+        update();
+      } else if (!attesaP) {
+        attesaP = window.setTimeout(function () {
+          attesaP = null;
+          ultimoP = new Date().getTime();
+          update();
+        }, 40);
+      }
+    };
+    window.addEventListener('scroll', request, { passive: true });
+    window.addEventListener('resize', request);
+    update();
   }
 
-  /* ---------- lenis ---------- */
-  var lenis = null;
-  if (!reduce && typeof window.Lenis === 'function') {
-    lenis = new window.Lenis({ duration: 1.05, smoothWheel: true, wheelMultiplier: 0.95 });
-    lenis.on('scroll', function () {
-      if (hasGSAP) window.ScrollTrigger.update();
-      updateRail();
+  /* --------------------------------------------------- copia indirizzo */
+
+  var copyBtn = document.querySelector('[data-copy]');
+
+  if (copyBtn) {
+    var etichetta = copyBtn.textContent;
+    copyBtn.addEventListener('click', function () {
+      var value = copyBtn.getAttribute('data-copy') || '';
+      var say = function (ok) {
+        copyBtn.textContent = ok ? 'Copiato' : 'Copia non riuscita';
+        copyBtn.classList.toggle('is-done', ok);
+        window.setTimeout(function () {
+          copyBtn.textContent = etichetta;
+          copyBtn.classList.remove('is-done');
+        }, 2200);
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(value).then(
+          function () {
+            say(true);
+          },
+          function () {
+            say(false);
+          }
+        );
+        return;
+      }
+
+      try {
+        var tmp = document.createElement('textarea');
+        tmp.value = value;
+        tmp.setAttribute('readonly', '');
+        tmp.style.position = 'fixed';
+        tmp.style.opacity = '0';
+        document.body.appendChild(tmp);
+        tmp.select();
+        var ok = document.execCommand('copy');
+        document.body.removeChild(tmp);
+        say(ok);
+      } catch (err) {
+        say(false);
+      }
     });
-    var raf = function (t) { lenis.raf(t); requestAnimationFrame(raf); };
-    requestAnimationFrame(raf);
   }
 
-  /* ancore: passa da lenis quando c'è, altrimenti scroll nativo */
-  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
-    a.addEventListener('click', function (e) {
-      var id = a.getAttribute('href');
-      if (!id || id === '#') return;
-      var target = document.querySelector(id);
-      if (!target) return;
+  /* ------------------------------------------------ transizione di pagina */
+
+  if (motion) {
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a');
+      if (!a) return;
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey)
+        return;
+      if (a.target && a.target !== '_self') return;
+      if (a.hasAttribute('download')) return;
+
+      var href = a.getAttribute('href') || '';
+      if (!href || href.charAt(0) === '#' || href.indexOf(':') > -1) return;
+
+      var url = new URL(a.href, window.location.href);
+      if (url.origin !== window.location.origin) return;
+      if (url.pathname === window.location.pathname) return;
+
       e.preventDefault();
-      if (lenis) lenis.scrollTo(target, { offset: 0 });
-      else target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
-      history.replaceState(null, '', id);
+      root.classList.add('is-leaving');
+      window.setTimeout(function () {
+        window.location.href = a.href;
+      }, 190);
+      /* se la navigazione non parte, la pagina torna visibile */
+      window.setTimeout(function () {
+        root.classList.remove('is-leaving');
+      }, 2500);
     });
-  });
 
-  window.addEventListener('scroll', updateRail, { passive: true });
-  window.addEventListener('resize', updateRail);
-  updateRail();
-
-  /* ---------- reveal ---------- */
-  if (!hasGSAP || reduce) {
-    document.querySelectorAll('.js-rise,.js-word,.js-rule,.js-area').forEach(function (el) {
-      el.style.opacity = 1;
-      el.style.transform = 'none';
+    window.addEventListener('pageshow', function () {
+      root.classList.remove('is-leaving');
     });
-    document.querySelectorAll('.rule__mark').forEach(function (el) {
-      el.style.opacity = 1;
-      el.style.transform = 'none';
-    });
-    return;
   }
-
-  var gsap = window.gsap;
-  gsap.registerPlugin(window.ScrollTrigger);
-
-  /* apertura: sequenza orchestrata al caricamento */
-  var intro = gsap.timeline({ defaults: { ease: 'power3.out' }, delay: 0.15 });
-  intro
-    .to('.hero__eyebrow', { opacity: 1, y: 0, duration: 0.7 })
-    .to('.hero__name .js-word', { y: '0%', duration: 1.05, stagger: 0.09, ease: 'expo.out' }, '-=0.35')
-    .to('.hero__rule', { scaleX: 1, duration: 1.1, ease: 'power4.inOut' }, '-=0.75')
-    .to('.hero__thesis, .hero__sub, .hero__cta', { opacity: 1, y: 0, duration: 0.8, stagger: 0.11 }, '-=0.8');
-
-  /* sezioni: risalita alla comparsa */
-  gsap.utils.toArray('.band .js-rise').forEach(function (el) {
-    gsap.to(el, {
-      opacity: 1, y: 0, duration: 0.85, ease: 'power3.out',
-      scrollTrigger: { trigger: el, start: 'top 88%' }
-    });
-  });
-
-  /* competenze: le nove aree entrano in fila */
-  gsap.utils.toArray('.areas').forEach(function (list) {
-    gsap.to(list.querySelectorAll('.js-area'), {
-      opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', stagger: 0.07,
-      scrollTrigger: { trigger: list, start: 'top 78%' }
-    });
-  });
-
-  /* metodo: ogni regola si segna quando è stata letta */
-  gsap.utils.toArray('.rule').forEach(function (rule) {
-    var mark = rule.querySelector('.rule__mark');
-    gsap.timeline({ scrollTrigger: { trigger: rule, start: 'top 72%' } })
-      .from(rule.querySelectorAll('.rule__claim, .rule__gloss'), {
-        opacity: 0, y: 14, duration: 0.7, ease: 'power3.out', stagger: 0.08
-      })
-      .to(mark, {
-        opacity: 1, scale: 1, rotate: 45, backgroundColor: '#3E7A65',
-        duration: 0.5, ease: 'back.out(2)'
-      }, '-=0.45');
-  });
-
-  window.ScrollTrigger.addEventListener('refresh', updateRail);
-  window.addEventListener('load', function () { window.ScrollTrigger.refresh(); });
 })();
