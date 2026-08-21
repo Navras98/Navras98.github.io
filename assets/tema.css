@@ -11,6 +11,16 @@
   --t3:#83878F;   /* 5,46:1 sul fondo, 4,52:1 sulla superficie piu'alta */
   --acc:#FF3B2F;
   --acc-tenue:rgba(255,59,47,.14);
+  /* Le bolle delle chat dimostrative. Chi parla si riconosce dal colore: la
+     persona in tinta d'accento, l'agente su una superficie piu' chiara del
+     riquadro che lo contiene. Prima la risposta dell'agente era testo nudo e
+     la conversazione sembrava un paragrafo unico. I ruoli li mette
+     patch-03-bolle.py, i colori stanno qui perche' cambiano col tema. */
+  --bolla-agente:#232830;
+  --bolla-agente-filo:rgba(255,255,255,.14);
+  --bolla-utente:rgba(255,59,47,.17);
+  --bolla-utente-filo:rgba(255,59,47,.46);
+  --bolla-ombra:0 12px 26px -20px rgba(0,0,0,.95);
   --grana:repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 1px,transparent 1px 3px);
   --luce:radial-gradient(70% 55% at 50% -8%,rgba(255,255,255,.11),transparent 68%);
   --velo:rgba(10,11,13,.78);
@@ -34,6 +44,11 @@
   --t3:#5A6069;   /* 5,53:1 sul fondo, 4,56:1 sulla superficie piu'alta */
   --acc:#C7301C;
   --acc-tenue:rgba(199,48,28,.1);
+  --bolla-agente:#FFFDF8;
+  --bolla-agente-filo:rgba(26,26,26,.16);
+  --bolla-utente:rgba(199,48,28,.13);
+  --bolla-utente-filo:rgba(199,48,28,.42);
+  --bolla-ombra:0 12px 26px -20px rgba(26,26,26,.5);
   --grana:repeating-linear-gradient(0deg,rgba(26,26,26,.028) 0 1px,transparent 1px 3px);
   --luce:radial-gradient(70% 55% at 50% -8%,rgba(255,255,255,.9),transparent 68%);
   --velo:rgba(242,239,233,.82);
