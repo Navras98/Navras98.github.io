@@ -32,10 +32,18 @@ RADICE = Path(__file__).resolve().parent.parent
 BASE = (sys.argv[1] if len(sys.argv) > 1 else "http://127.0.0.1:8899").rstrip("/")
 CDP = "http://127.0.0.1:9333"
 
-PAGINE = ["index.html", "Agenti.dc.html", "Casi.dc.html", "Modelli.dc.html",
-          "Sicurezza.dc.html", "Dati.dc.html", "Privacy.dc.html", "Formazione.dc.html",
-          "Contatti.dc.html", "Locali.dc.html", "Architettura.dc.html",
-          "Automazione.dc.html", "Strumenti.dc.html", "Metodo.dc.html", "404.html"]
+PAGINE = ["", "agenti/", "casi/", "modelli/", "sicurezza/", "dati/", "privacy-bridge/",
+          "formazione/", "contatti/", "modelli-in-locale/", "architettura/",
+          "automazione/", "strumenti/", "metodo/", "404.html"]
+
+# i vecchi indirizzi devono continuare a rispondere e a rimandare ai nuovi
+RIMANDI = {"Agenti.dc.html": "/agenti/", "Casi.dc.html": "/casi/", "Modelli.dc.html": "/modelli/",
+           "Sicurezza.dc.html": "/sicurezza/", "Dati.dc.html": "/dati/",
+           "Privacy.dc.html": "/privacy-bridge/", "Formazione.dc.html": "/formazione/",
+           "Contatti.dc.html": "/contatti/", "Locali.dc.html": "/modelli-in-locale/",
+           "Architettura.dc.html": "/architettura/", "Automazione.dc.html": "/automazione/",
+           "Strumenti.dc.html": "/strumenti/", "Metodo.dc.html": "/metodo/",
+           "Home.dc.html": "/"}
 
 esiti = []
 
@@ -156,10 +164,11 @@ async def main():
     print("\n— testa delle pagine, struttura e larghezze —\n")
     for p in PAGINE:
         url = f"{BASE}/{p}"
+        etichetta = p or "/ (home)"
         try:
             d = await misura(ws, invia, url, 390)
         except Exception as e:
-            segna(f"{p}", "ROTTO", f"non si apre: {e}")
+            segna(f"{etichetta}", "ROTTO", f"non si apre: {e}")
             continue
 
         mancanti = [k for k in ("lang", "titolo", "descrizione", "anteprima", "viewport")
@@ -167,63 +176,62 @@ async def main():
         if p != "404.html" and not d.get("canonico"):
             mancanti.append("canonico")
         if mancanti:
-            segna(f"{p} · testa", "ROSSO", "manca " + ", ".join(mancanti))
+            segna(f"{etichetta} · testa", "ROSSO", "manca " + ", ".join(mancanti))
         elif d["lang"] != "it":
-            segna(f"{p} · testa", "ROSSO", f"lingua dichiarata «{d['lang']}»")
+            segna(f"{etichetta} · testa", "ROSSO", f"lingua dichiarata «{d['lang']}»")
         else:
-            segna(f"{p} · testa", "ATTESO")
+            segna(f"{etichetta} · testa", "ATTESO")
 
         if d["h1"] != 1:
-            segna(f"{p} · un solo h1", "ROSSO", f"ne ho contati {d['h1']}")
+            segna(f"{etichetta} · un solo h1", "ROSSO", f"ne ho contati {d['h1']}")
         elif len(d["h1nome"].strip()) < 4:
-            segna(f"{p} · nome del titolo", "ROSSO", f"«{d['h1nome']}»")
+            segna(f"{etichetta} · nome del titolo", "ROSSO", f"«{d['h1nome']}»")
         else:
-            segna(f"{p} · un solo h1", "ATTESO")
+            segna(f"{etichetta} · un solo h1", "ATTESO")
 
         if not d["salta"]:
-            segna(f"{p} · salta al contenuto", "ROSSO", "collegamento assente")
+            segna(f"{etichetta} · salta al contenuto", "ROSSO", "collegamento assente")
 
         if d["tagliati"]:
             peggio = max(d["tagliati"], key=lambda x: x["px"])
-            segna(f"{p} · niente tagli a 390px", "ROSSO",
+            segna(f"{etichetta} · niente tagli a 390px", "ROSSO",
                   f"{len(d['tagliati'])} blocchi, il peggiore +{peggio['px']}px « {peggio['txt']} »")
         else:
-            segna(f"{p} · niente tagli a 390px", "ATTESO")
+            segna(f"{etichetta} · niente tagli a 390px", "ATTESO")
 
         fuori = [x for x in d["dimostrazioni"] if not x["titoloPrima"]]
         if fuori:
-            segna(f"{p} · titolo prima della demo", "ROSSO", f"{len(fuori)} sezioni al contrario")
+            segna(f"{etichetta} · titolo prima della demo", "ROSSO", f"{len(fuori)} sezioni al contrario")
         elif d["dimostrazioni"]:
-            segna(f"{p} · titolo prima della demo", "ATTESO",
+            segna(f"{etichetta} · titolo prima della demo", "ATTESO",
                   f"{len(d['dimostrazioni'])} sezioni")
 
         num = d["numeri"]
         atteso = [f"{i:02d}" for i in range(1, len(num) + 1)]
         if num and num != atteso:
-            segna(f"{p} · numeri in fila", "ROSSO", f"{' '.join(num)}")
+            segna(f"{etichetta} · numeri in fila", "ROSSO", f"{' '.join(num)}")
         elif num:
-            segna(f"{p} · numeri in fila", "ATTESO", " ".join(num))
+            segna(f"{etichetta} · numeri in fila", "ATTESO", " ".join(num))
 
         collegamenti.update(d["interni"])
 
     print("\n— schermo stretto (320px) —\n")
-    for p in ("index.html", "Casi.dc.html", "Automazione.dc.html", "Modelli.dc.html"):
+    for p in ("", "casi/", "automazione/", "modelli/"):
         d = await misura(ws, invia, f"{BASE}/{p}", 320)
         if d["tagliati"]:
             peggio = max(d["tagliati"], key=lambda x: x["px"])
-            segna(f"{p} · niente tagli a 320px", "ROSSO", f"il peggiore +{peggio['px']}px")
+            segna(f"{etichetta} · niente tagli a 320px", "ROSSO", f"il peggiore +{peggio['px']}px")
         else:
-            segna(f"{p} · niente tagli a 320px", "ATTESO")
+            segna(f"{etichetta} · niente tagli a 320px", "ATTESO")
 
     print("\n— con «riduci movimento» attivo —\n")
-    for p in ("index.html", "Agenti.dc.html", "Casi.dc.html", "Automazione.dc.html",
-              "Privacy.dc.html", "Sicurezza.dc.html"):
+    for p in ("", "agenti/", "casi/", "automazione/", "privacy-bridge/", "sicurezza/"):
         d = await misura(ws, invia, f"{BASE}/{p}", 1280, ridotto=True)
         if d["bolle"] and d["bolleInvisibili"]:
-            segna(f"{p} · chat visibili", "ROSSO",
+            segna(f"{etichetta} · chat visibili", "ROSSO",
                   f"{d['bolleInvisibili']} bolle su {d['bolle']} restano invisibili")
         elif d["bolle"]:
-            segna(f"{p} · chat visibili", "ATTESO", f"{d['bolle']} bolle")
+            segna(f"{etichetta} · chat visibili", "ATTESO", f"{d['bolle']} bolle")
 
     print("\n— collegamenti interni —\n")
     rotti = []
@@ -263,6 +271,18 @@ async def main():
                 segna(f"{f} non raggiungibile", "ATTESO", "404")
             else:
                 segna(f"{f} non raggiungibile", "ROTTO", str(e))
+
+    print("\n— vecchi indirizzi che devono rimandare ai nuovi —\n")
+    for vecchio, dove in RIMANDI.items():
+        try:
+            with urllib.request.urlopen(f"{BASE}/{vecchio}", timeout=6) as r:
+                testo = r.read().decode("utf-8", "replace")
+            if f"url=/{dove.strip('/')}/" in testo.replace("url=//", "url=/") or f"'{dove}'" in testo:
+                segna(f"{vecchio} rimanda a {dove}", "ATTESO")
+            else:
+                segna(f"{vecchio} rimanda a {dove}", "ROSSO", "non trovo il rimando")
+        except Exception as e:
+            segna(f"{vecchio} rimanda a {dove}", "ROSSO", str(getattr(e, "code", e)))
 
     await ws.close()
 

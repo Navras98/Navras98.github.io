@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/support.js"></script>
+<title>Agenti — Andrea Sforna AI</title>
+<meta name="description" content="Che cos'è un agente AI, come è fatto dentro, a cosa serve e perché viene chiesto adesso.">
+<link rel="canonical" href="https://navras98.github.io/agenti/">
+<meta name="author" content="Andrea Sforna">
+<meta name="theme-color" content="#0a0a0b" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f7f6f3" media="(prefers-color-scheme: light)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Andrea Sforna AI">
+<meta property="og:locale" content="it_IT">
+<meta property="og:title" content="Agenti — Andrea Sforna AI">
+<meta property="og:description" content="Che cos'è un agente AI, come è fatto dentro, a cosa serve e perché viene chiesto adesso.">
+<meta property="og:url" content="https://navras98.github.io/agenti/">
+<meta property="og:image" content="https://navras98.github.io/assets/anteprima.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Andrea Sforna AI — progettazione, sicurezza e manutenzione di sistemi di agenti AI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Agenti — Andrea Sforna AI">
+<meta name="twitter:description" content="Che cos'è un agente AI, come è fatto dentro, a cosa serve e perché viene chiesto adesso.">
+<meta name="twitter:image" content="https://navras98.github.io/assets/anteprima.png">
+<link rel="icon" href="/assets/icona.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/icona-180.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/tema.css">
+</head>
+<body>
+<a href="#contenuto" style="position:absolute;left:-9999px;top:0;z-index:100;padding:12px 18px;background:var(--acc);color:#fff;font:500 12px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase" onfocus="this.style.left='12px';this.style.top='12px'" onblur="this.style.left='-9999px'">Salta al contenuto</a>
+<x-dc>
+<helmet data-dc-atomics><script type="module" src="/assets/sito.js"></script></helmet>
+
+<div data-avanzamento style="position:fixed;top:0;left:0;height:2px;width:0;background:var(--acc);z-index:60"></div>
+<div data-cursore style="position:fixed;inset:0;pointer-events:none;z-index:1"></div>
+<div style="position:fixed;inset:0;background:var(--grana);pointer-events:none;z-index:55"></div>
+
+<header style="position:sticky;top:0;z-index:50;background:var(--velo);backdrop-filter:blur(16px);border-bottom:1px solid var(--filo1)">
+  <div style="max-width:1360px;margin:0 auto;padding:14px clamp(20px,4vw,48px);display:flex;align-items:center;justify-content:space-between;gap:20px">
+    <a href="./" style="display:flex;align-items:center;gap:12px;flex:none;font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t1);white-space:nowrap"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;position:relative;width:30px;height:30px;border:1px solid var(--filo2);flex:none"><span style="font:600 12px Geist,'Instrument Sans',Helvetica,sans-serif;letter-spacing:-.06em;color:var(--t1)">AS</span><span style="position:absolute;right:-1px;top:-1px;width:3px;height:3px;background:var(--acc)"></span></span>Andrea Sforna AI</a>
+    <nav data-nav style="display:flex;align-items:center;gap:20px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase">
+      <a href="/agenti/" aria-current="page" style="color:var(--t1);border-bottom:1px solid var(--acc);padding-bottom:3px">Agenti</a>
+      <a href="/casi/" style="color:var(--t2)">Casi</a>
+      <a href="/modelli/" style="color:var(--t2)">Modelli</a>
+      <a href="/sicurezza/" style="color:var(--t2)">Sicurezza</a>
+      <a href="/dati/" style="color:var(--t2)">Dati</a>
+      <a href="/privacy-bridge/" style="color:var(--t2)">Privacy Bridge</a>
+      <a href="/formazione/" style="color:var(--t2)">Formazione</a>
+      <a href="/contatti/" style="color:var(--t2)">Contatti</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:10px">
+      <button type="button" data-tema-btn style="padding:7px 12px;background:transparent;border:1px solid var(--filo1);color:var(--t2);font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.09em;text-transform:uppercase;cursor:pointer" style-hover="border-color:var(--filo2);color:var(--t1)">Chiaro</button>
+      <button type="button" data-burger aria-expanded="false" aria-label="Apri il menu" style="display:none;align-items:center;padding:7px 12px;background:transparent;border:1px solid var(--filo1);color:var(--t1);font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.09em;text-transform:uppercase;cursor:pointer">Menu</button>
+    </div>
+  </div>
+  <div data-pannello style="display:none;border-top:1px solid var(--filo1);background:var(--sup1)">
+    <div style="max-width:1360px;margin:0 auto;padding:16px clamp(20px,4vw,48px);display:grid;gap:13px;font:500 12px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase">
+      <a href="/agenti/" aria-current="page" style="color:var(--t1);border-bottom:1px solid var(--acc);padding-bottom:3px">Agenti</a>
+      <a href="/casi/" style="color:var(--t2)">Casi</a>
+      <a href="/modelli/" style="color:var(--t2)">Modelli</a>
+      <a href="/sicurezza/" style="color:var(--t2)">Sicurezza</a>
+      <a href="/dati/" style="color:var(--t2)">Dati</a>
+      <a href="/privacy-bridge/" style="color:var(--t2)">Privacy Bridge</a>
+      <a href="/formazione/" style="color:var(--t2)">Formazione</a>
+      <a href="/contatti/" style="color:var(--t2)">Contatti</a>
+      <a href="/modelli-in-locale/" style="color:var(--t2)">Modelli in locale</a>
+      <a href="/architettura/" style="color:var(--t2)">Architettura</a>
+      <a href="/automazione/" style="color:var(--t2)">Automazione</a>
+      <a href="/strumenti/" style="color:var(--t2)">Strumenti</a>
+      <a href="/metodo/" style="color:var(--t2)">Metodo</a>
+    </div>
+  </div>
+</header>
+
+<main id="contenuto" tabindex="-1">
+<section data-screen-label="Apertura" style="position:relative;padding:clamp(72px,10vw,150px) 0 clamp(48px,6vw,88px);overflow:hidden">
+  <div style="position:absolute;inset:0;background:var(--luce);pointer-events:none"></div>
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px);position:relative">
+    <p style="margin:0;font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t2);margin-bottom:clamp(24px,3vw,40px);animation:appari .9s ease .1s both">Agenti</p>
+    <h1 style="margin:0 0 clamp(24px,3vw,36px);font-weight:500;font-size:clamp(34px,6.4vw,92px);line-height:.98;letter-spacing:-.045em;color:var(--t1);max-width:20ch;text-wrap:pretty;animation:sali 1s cubic-bezier(.16,1,.3,1) .18s both">Che cos'è un agente AI</h1>
+    <div style="height:1px;background:var(--acc);max-width:560px;transform-origin:left;animation:filo 1.3s cubic-bezier(.16,1,.3,1) .3s both"></div>
+    <p style="margin:clamp(24px,3vw,36px) 0 0;max-width:60ch;font-weight:400;font-size:clamp(16px,1.5vw,22px);line-height:1.55;color:var(--t2);text-wrap:pretty;animation:sali 1s cubic-bezier(.16,1,.3,1) .38s both">Un modello risponde. Un agente riceve un obiettivo, sceglie quali operazioni chiamare, controlla il risultato e si ferma quando ha finito o quando non può proseguire.</p>
+  </div>
+</section>
+
+<section data-screen-label="Modello, assistente, agente" style="background:var(--sup1);border-top:1px solid var(--filo1);border-bottom:1px solid var(--filo1);padding:clamp(56px,8vw,120px) 0">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <article data-lift data-reveal style="border:1px solid var(--filo1);background:linear-gradient(180deg,var(--sup2),var(--sup1));display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:clamp(24px,4vw,72px);padding:clamp(28px,3.6vw,56px)">
+      <div>
+        <p style="margin:0 0 clamp(20px,2.4vw,32px);font-weight:500;font-size:clamp(40px,5vw,72px);line-height:1;letter-spacing:-.05em;color:var(--acc);font-variant-numeric:tabular-nums">01</p>
+        <h2 style="margin:0 0 20px;font-weight:500;font-size:clamp(26px,3.2vw,42px);line-height:1.05;letter-spacing:-.035em;color:var(--t1);text-wrap:pretty">Modello, assistente, agente</h2>
+        <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty">Sono tre cose diverse e vengono confuse continuamente. La differenza non è quanto è intelligente il modello: è quanta autonomia ha, e chi gli ha messo i confini.</p>
+      </div>
+      <div style="align-self:center">
+          <div data-riga style="display:grid;grid-template-columns:minmax(90px,140px) 1fr;gap:clamp(16px,2vw,32px);padding:16px 12px;border-top:1px solid var(--filo1)"><span data-num style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">Modello</span><span style="font-size:15.5px;line-height:1.5;color:var(--t1)">Genera una risposta e si ferma</span></div>
+          <div data-riga style="display:grid;grid-template-columns:minmax(90px,140px) 1fr;gap:clamp(16px,2vw,32px);padding:16px 12px;border-top:1px solid var(--filo1)"><span data-num style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">Assistente</span><span style="font-size:15.5px;line-height:1.5;color:var(--t1)">Risponde, una domanda per volta</span></div>
+          <div data-riga style="display:grid;grid-template-columns:minmax(90px,140px) 1fr;gap:clamp(16px,2vw,32px);padding:16px 12px;border-top:1px solid var(--filo1);border-bottom:1px solid var(--filo1)"><span data-num style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">Agente</span><span style="font-size:15.5px;line-height:1.5;color:var(--t1)">Riceve un obiettivo, agisce, verifica</span></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section data-screen-label="Una domanda, una scheda" style="padding:clamp(56px,8vw,120px) 0;background:var(--sup1);border-top:1px solid var(--filo1);border-bottom:1px solid var(--filo1)">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(480px,100%),1fr));gap:clamp(32px,5vw,72px);align-items:center" data-reveal data-demo>
+    
+    <div>
+      <p style="margin:0 0 22px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);font-variant-numeric:tabular-nums">02</p>
+      <h2 style="margin:0 0 20px;font-weight:500;font-size:clamp(26px,3.2vw,42px);line-height:1.05;letter-spacing:-.035em;color:var(--t1);text-wrap:pretty">Una domanda, una scheda</h2>
+      <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty">Sembra una conversazione normale. Sotto, ogni campo è il risultato di un'operazione dichiarata sul database aziendale: nessuna ricerca libera, nessun dato ricordato a memoria.</p>
+    </div>
+    <div>
+      <div data-lift style="display:flex;flex-direction:column;gap:16px;padding:clamp(22px,2.8vw,34px);border:1px solid var(--filo2);border-radius:26px;background:linear-gradient(180deg,var(--sup2),var(--sup1));box-shadow:var(--ombra-alta)">
+        <div style="display:flex;justify-content:flex-end"><div data-bolla style="max-width:52ch;padding:13px 18px;border-radius:20px 20px 6px 20px;border:1px solid var(--filo2);background:var(--sup2);font-size:15.5px;line-height:1.55;color:var(--t1);animation-delay:0.30s">Cercami scheda cliente Rossi</div></div>
+        <div data-bolla style="display:flex;align-items:center;gap:12px;padding:2px 0;animation-delay:1.05s">
+          <span style="width:5px;height:5px;border-radius:50%;background:var(--acc);flex:none"></span>
+          <span style="font:400 11.5px 'JetBrains Mono',monospace;letter-spacing:.06em;color:var(--t3)">1 chiamata strumento</span>
+          <span style="flex:1;height:1px;background:var(--filo1)"></span>
+          <span style="font:400 11.5px 'JetBrains Mono',monospace;letter-spacing:.06em;color:var(--t3)">4 s</span>
+        </div>
+        <div data-bolla style="max-width:66ch;font-size:15.5px;line-height:1.7;color:var(--t1);animation-delay:1.55s">Ecco la scheda del cliente trovato con &#8220;Rossi&#8221; (<span style="font-family:'JetBrains Mono',monospace;font-size:.92em;color:var(--t2)">cerca_clienti</span>, id 1):</div>
+        <div data-bolla style="border:1px solid var(--filo2);border-radius:16px;background:var(--sup2);padding:18px 20px;display:grid;gap:10px;max-width:44ch;animation-delay:2.30s">
+          <p style="margin:0 0 4px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--acc)">Cliente</p>
+          <div style="display:grid;grid-template-columns:minmax(84px,120px) 1fr;gap:14px;font-size:14px"><span style="font:400 12px 'JetBrains Mono',monospace;color:var(--t3)">Ragione sociale</span><span style="color:var(--t1)">Rossi &amp; C. S.r.l.</span></div><div style="display:grid;grid-template-columns:minmax(84px,120px) 1fr;gap:14px;font-size:14px"><span style="font:400 12px 'JetBrains Mono',monospace;color:var(--t3)">Partita IVA</span><span style="color:var(--t1)">01234567890</span></div><div style="display:grid;grid-template-columns:minmax(84px,120px) 1fr;gap:14px;font-size:14px"><span style="font:400 12px 'JetBrains Mono',monospace;color:var(--t3)">Email</span><span style="color:var(--t1)">info@rossiec.it</span></div><div style="display:grid;grid-template-columns:minmax(84px,120px) 1fr;gap:14px;font-size:14px"><span style="font:400 12px 'JetBrains Mono',monospace;color:var(--t3)">Telefono</span><span style="color:var(--t1)">075785869</span></div><div style="display:grid;grid-template-columns:minmax(84px,120px) 1fr;gap:14px;font-size:14px"><span style="font:400 12px 'JetBrains Mono',monospace;color:var(--t3)">Referente</span><span style="color:var(--t1)">Mario Rossi</span></div><div style="display:grid;grid-template-columns:minmax(84px,120px) 1fr;gap:14px;font-size:14px"><span style="font:400 12px 'JetBrains Mono',monospace;color:var(--t3)">Saldo dovuto</span><span style="color:var(--t1)">1.240 &#8364;</span></div>
+        </div>
+        <div data-bolla style="max-width:64ch;font-size:14px;line-height:1.62;color:var(--t2);animation-delay:3.05s">Un solo risultato. Se vuoi i dettagli completi (fatture scadute, ordini) dimmelo.</div>
+      </div>
+      <p style="margin:14px 2px 0;font:400 11.5px 'JetBrains Mono',monospace;letter-spacing:.05em;color:var(--t3)">Nessuna ricerca libera: l&#8217;agente chiama l&#8217;operazione che gli è stata data, con i permessi di chi la chiede.</p>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Quando il dato non c&#8217;è" style="padding:clamp(56px,8vw,120px) 0;background:var(--sup1);border-top:1px solid var(--filo1);border-bottom:1px solid var(--filo1)">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(480px,100%),1fr));gap:clamp(32px,5vw,72px);align-items:center" data-reveal data-demo>
+    <div>
+      <div data-lift style="display:flex;flex-direction:column;gap:16px;padding:clamp(22px,2.8vw,34px);border:1px solid var(--filo2);border-radius:26px;background:linear-gradient(180deg,var(--sup2),var(--sup1));box-shadow:var(--ombra-alta)">
+        <div style="display:flex;justify-content:flex-end"><div data-bolla style="max-width:52ch;padding:13px 18px;border-radius:20px 20px 6px 20px;border:1px solid var(--filo2);background:var(--sup2);font-size:15.5px;line-height:1.55;color:var(--t1);animation-delay:0.30s">Quanto abbiamo speso in trasporti nel primo semestre?</div></div>
+        <div data-bolla style="display:flex;align-items:center;gap:12px;padding:2px 0;animation-delay:1.05s">
+          <span style="width:5px;height:5px;border-radius:50%;background:var(--acc);flex:none"></span>
+          <span style="font:400 11.5px 'JetBrains Mono',monospace;letter-spacing:.06em;color:var(--t3)">2 chiamate strumento</span>
+          <span style="flex:1;height:1px;background:var(--filo1)"></span>
+          <span style="font:400 11.5px 'JetBrains Mono',monospace;letter-spacing:.06em;color:var(--t3)">7 s</span>
+        </div>
+        <div data-bolla style="display:inline-flex;align-self:flex-start;align-items:center;gap:10px;padding:8px 14px;border:1px dashed var(--acc);border-radius:999px;background:var(--acc-tenue);font:400 11.5px 'JetBrains Mono',monospace;letter-spacing:.06em;color:var(--acc);animation-delay:1.55s">DATO ASSENTE &#183; nessuna voce &#8220;trasporti&#8221; nel piano dei conti</div>
+        <div data-bolla style="max-width:66ch;font-size:15.5px;line-height:1.7;color:var(--t1);animation-delay:2.30s">Non lo stimo. <span style="font-family:'JetBrains Mono',monospace;font-size:.92em;color:var(--t2)">spese_per_categoria</span> restituisce sette categorie e nessuna è trasporti: le spese potrebbero essere dentro &#8220;logistica&#8221; o registrate come costi generali.</div>
+        <div style="display:flex;justify-content:flex-end"><div data-bolla style="max-width:52ch;padding:13px 18px;border-radius:20px 20px 6px 20px;border:1px solid var(--filo2);background:var(--sup2);font-size:15.5px;line-height:1.55;color:var(--t1);animation-delay:3.05s">Guarda in logistica</div></div>
+        <div data-bolla style="display:flex;align-items:center;gap:12px;padding:2px 0;animation-delay:3.80s">
+          <span style="width:5px;height:5px;border-radius:50%;background:var(--acc);flex:none"></span>
+          <span style="font:400 11.5px 'JetBrains Mono',monospace;letter-spacing:.06em;color:var(--t3)">1 chiamata strumento</span>
+          <span style="flex:1;height:1px;background:var(--filo1)"></span>
+          <span style="font:400 11.5px 'JetBrains Mono',monospace;letter-spacing:.06em;color:var(--t3)">3 s</span>
+        </div>
+        <div data-bolla style="max-width:66ch;font-size:15.5px;line-height:1.7;color:var(--t1);animation-delay:4.30s">Logistica, gennaio&#8211;giugno 2026: 18.940 &#8364; su 62 documenti. Se vuoi verifico quali sono trasporti veri e quali magazzino, ma serve leggere le singole voci.</div>
+      </div>
+      <p style="margin:14px 2px 0;font:400 11.5px 'JetBrains Mono',monospace;letter-spacing:.05em;color:var(--t3)">Il momento che distingue un sistema serio: dichiarare l&#8217;assenza invece di produrre un numero plausibile.</p>
+    </div>
+    <div>
+      <p style="margin:0 0 22px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);font-variant-numeric:tabular-nums">03</p>
+      <h2 style="margin:0 0 20px;font-weight:500;font-size:clamp(26px,3.2vw,42px);line-height:1.05;letter-spacing:-.035em;color:var(--t1);text-wrap:pretty">Quando il dato non c&#8217;è</h2>
+      <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty">La domanda è legittima, la risposta non è nei dati. L'agente lo dice, spiega dove potrebbe essere, e aspetta un'istruzione invece di riempire il buco.</p>
+    </div>
+    
+  </div>
+</section>
+
+<section data-screen-label="A cosa serve, e a cosa no" style="padding:clamp(56px,8vw,120px) 0">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div style="margin-bottom:clamp(32px,4vw,56px)" data-reveal>
+      <p style="margin:0 0 22px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);font-variant-numeric:tabular-nums">04</p>
+      <h2 style="margin:0 0 20px;font-weight:500;font-size:clamp(26px,3.2vw,42px);line-height:1.05;letter-spacing:-.035em;color:var(--t1);text-wrap:pretty">A cosa serve, e a cosa no</h2>
+      <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty;max-width:56ch">La domanda utile non è se un agente può fare una cosa, ma se quella cosa è ripetitiva, verificabile e delimitata.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:clamp(16px,2.4vw,32px)" data-reveal>
+      <div>
+        <p style="margin:0 0 4px;padding:14px 12px;border-bottom:1px solid var(--filo2);font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t1)">Serve quando</p>
+        <div data-riga style="padding:18px 12px;border-bottom:1px solid var(--filo1);font-size:16px;line-height:1.5;color:var(--t2)">Il lavoro si ripete e ha una regola riconoscibile</div>
+        <div data-riga style="padding:18px 12px;border-bottom:1px solid var(--filo1);font-size:16px;line-height:1.5;color:var(--t2)">Le informazioni stanno in archivi a cui si può accedere</div>
+        <div data-riga style="padding:18px 12px;border-bottom:1px solid var(--filo1);font-size:16px;line-height:1.5;color:var(--t2)">Esiste un modo per controllare che il risultato sia giusto</div>
+        <div data-riga style="padding:18px 12px;border-bottom:1px solid var(--filo1);font-size:16px;line-height:1.5;color:var(--t2)">Il compito attraversa più passaggi e più strumenti</div>
+      </div>
+      <div>
+        <p style="margin:0 0 4px;padding:14px 12px;border-bottom:1px solid var(--acc);font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--acc)">Non serve quando</p>
+        <div data-riga style="padding:18px 12px;border-bottom:1px solid var(--filo1);font-size:16px;line-height:1.5;color:var(--t2)">La decisione richiede la responsabilità di una persona</div>
+        <div data-riga style="padding:18px 12px;border-bottom:1px solid var(--filo1);font-size:16px;line-height:1.5;color:var(--t2)">Il processo non esiste ancora, o cambia ogni volta</div>
+        <div data-riga style="padding:18px 12px;border-bottom:1px solid var(--filo1);font-size:16px;line-height:1.5;color:var(--t2)">Non c'è nessun modo di verificare l'esito</div>
+        <div data-riga style="padding:18px 12px;border-bottom:1px solid var(--filo1);font-size:16px;line-height:1.5;color:var(--t2)">Il problema si risolve con una regola scritta bene</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Come è fatto dentro" style="padding:clamp(56px,8vw,120px) 0">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <article data-lift data-reveal style="border:1px solid var(--filo1);background:linear-gradient(180deg,var(--sup2),var(--sup1));display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:clamp(24px,4vw,72px);padding:clamp(28px,3.6vw,56px)">
+      <div>
+        <p style="margin:0 0 clamp(20px,2.4vw,32px);font-weight:500;font-size:clamp(40px,5vw,72px);line-height:1;letter-spacing:-.05em;color:var(--acc);font-variant-numeric:tabular-nums">05</p>
+        <h2 style="margin:0 0 20px;font-weight:500;font-size:clamp(26px,3.2vw,42px);line-height:1.05;letter-spacing:-.035em;color:var(--t1);text-wrap:pretty">Come è fatto dentro</h2>
+        <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty">Un agente serio è quattro cose messe insieme, e nessuna delle quattro è il modello. Il modello è il pezzo sostituibile.</p>
+      </div>
+      <div style="align-self:center">
+          <div data-riga style="display:grid;grid-template-columns:minmax(90px,140px) 1fr;gap:clamp(16px,2vw,32px);padding:16px 12px;border-top:1px solid var(--filo1)"><span data-num style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">Strumenti</span><span style="font-size:15.5px;line-height:1.5;color:var(--t1)">Operazioni dichiarate, con un server MCP davanti</span></div>
+          <div data-riga style="display:grid;grid-template-columns:minmax(90px,140px) 1fr;gap:clamp(16px,2vw,32px);padding:16px 12px;border-top:1px solid var(--filo1)"><span data-num style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">Confini</span><span style="font-size:15.5px;line-height:1.5;color:var(--t1)">Permessi nel database e nel sistema operativo</span></div>
+          <div data-riga style="display:grid;grid-template-columns:minmax(90px,140px) 1fr;gap:clamp(16px,2vw,32px);padding:16px 12px;border-top:1px solid var(--filo1)"><span data-num style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">Prova</span><span style="font-size:15.5px;line-height:1.5;color:var(--t1)">Ogni affermazione risale a una lettura</span></div>
+          <div data-riga style="display:grid;grid-template-columns:minmax(90px,140px) 1fr;gap:clamp(16px,2vw,32px);padding:16px 12px;border-top:1px solid var(--filo1);border-bottom:1px solid var(--filo1)"><span data-num style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">Esercizio</span><span style="font-size:15.5px;line-height:1.5;color:var(--t1)">Registro, ripartenze, sorveglianza</span></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section data-screen-label="Perché viene chiesto adesso" style="background:var(--sup1);border-top:1px solid var(--filo1);border-bottom:1px solid var(--filo1);padding:clamp(56px,8vw,120px) 0">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <article data-lift data-reveal style="border:1px solid var(--filo1);background:linear-gradient(180deg,var(--sup2),var(--sup1));display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:clamp(24px,4vw,72px);padding:clamp(28px,3.6vw,56px)">
+      <div>
+        <p style="margin:0 0 clamp(20px,2.4vw,32px);font-weight:500;font-size:clamp(40px,5vw,72px);line-height:1;letter-spacing:-.05em;color:var(--acc);font-variant-numeric:tabular-nums">06</p>
+        <h2 style="margin:0 0 20px;font-weight:500;font-size:clamp(26px,3.2vw,42px);line-height:1.05;letter-spacing:-.035em;color:var(--t1);text-wrap:pretty">Perché viene chiesto adesso</h2>
+        <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty">Tre cose sono cambiate nello stesso periodo, e insieme rendono possibile quello che due anni prima non stava in piedi. Nessuna delle tre riguarda l'intelligenza del modello in sé.</p>
+      </div>
+      <div style="align-self:center">
+          <div data-riga style="display:grid;grid-template-columns:minmax(90px,140px) 1fr;gap:clamp(16px,2vw,32px);padding:16px 12px;border-top:1px solid var(--filo1)"><span data-num style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">Modelli</span><span style="font-size:15.5px;line-height:1.5;color:var(--t1)">Reggono compiti a più passaggi</span></div>
+          <div data-riga style="display:grid;grid-template-columns:minmax(90px,140px) 1fr;gap:clamp(16px,2vw,32px);padding:16px 12px;border-top:1px solid var(--filo1)"><span data-num style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">Strumenti</span><span style="font-size:15.5px;line-height:1.5;color:var(--t1)">Le operazioni si dichiarano invece di improvvisarle</span></div>
+          <div data-riga style="display:grid;grid-template-columns:minmax(90px,140px) 1fr;gap:clamp(16px,2vw,32px);padding:16px 12px;border-top:1px solid var(--filo1);border-bottom:1px solid var(--filo1)"><span data-num style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">Costo</span><span style="font-size:15.5px;line-height:1.5;color:var(--t1)">Il lavoro continuo è diventato economico</span></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section data-screen-label="Affermazione" style="background:var(--sup1);border-top:1px solid var(--acc);border-bottom:1px solid var(--filo1);padding:clamp(56px,8vw,120px) 0">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <p style="margin:0 0 clamp(20px,2.6vw,34px);font:500 11px 'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--acc)" data-reveal>La definizione che uso</p>
+    <p style="margin:0;max-width:26ch;font-weight:500;font-size:clamp(28px,4.8vw,74px);line-height:1.02;letter-spacing:-.045em;text-wrap:pretty;color:var(--t1)" data-reveal>Un agente non è un modello più intelligente. È un modello con confini.</p>
+  </div>
+</section>
+
+<section data-screen-label="Limite dichiarato" style="padding:clamp(48px,6vw,88px) 0">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div style="border-left:3px solid var(--acc);padding:clamp(22px,2.8vw,36px) clamp(22px,2.8vw,40px);background:linear-gradient(90deg,var(--acc-tenue),transparent 60%)" data-reveal>
+      <p style="margin:0 0 14px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--acc)">Limite dichiarato</p>
+      <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty;max-width:64ch;color:var(--t1)">Un agente non elimina il lavoro di chi decide. Lo sposta: da eseguire a definire obiettivi, perimetri e criteri di verifica. Se quella parte non la fa nessuno, il sistema non regge.</p>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Pagina successiva" style="padding:0 0 clamp(72px,9vw,140px)">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <a href="/casi/" data-lift style="display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:end;padding:clamp(28px,3.4vw,48px);border:1px solid var(--filo1);background:linear-gradient(180deg,var(--sup2),var(--sup1));color:var(--t1)" data-reveal>
+      <span style="display:block;max-width:56ch">
+        <span style="display:block;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3);margin-bottom:16px">Pagina successiva</span>
+        <span style="display:block;font-weight:500;font-size:clamp(22px,2.6vw,34px);line-height:1.1;letter-spacing:-.03em;margin-bottom:12px">Casi</span>
+        <span style="display:block;font-weight:400;font-size:15px;line-height:1.6;color:var(--t2)">Un agente che pubblica, un agente dentro un'applicazione, un gruppo di agenti che si controllano.</span>
+      </span>
+      <span style="font:500 12px 'JetBrains Mono',monospace;letter-spacing:.09em;text-transform:uppercase;color:var(--acc)">Apri &#8594;</span>
+    </a>
+  </div>
+</section>
+</main>
+
+<footer style="border-top:1px solid var(--filo1);background:var(--sup1)">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px);padding-top:clamp(40px,5vw,72px);padding-bottom:clamp(28px,3.4vw,44px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));gap:clamp(28px,4vw,56px)">
+    <div>
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;position:relative;width:44px;height:44px;border:1px solid var(--filo2);flex:none"><span style="font:600 18px Geist,'Instrument Sans',Helvetica,sans-serif;letter-spacing:-.06em;color:var(--t1)">AS</span><span style="position:absolute;right:-1px;top:-1px;width:3px;height:3px;background:var(--acc)"></span></span><span style="font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t1)">Andrea Sforna AI</span></div>
+      <p style="margin:0;max-width:34ch;font-size:15px;line-height:1.6;color:var(--t2)">Progettazione, sicurezza e manutenzione di sistemi di agenti AI.</p>
+    </div>
+    <div>
+      <p style="margin:0 0 16px;font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">Pagine</p>
+      <div style="display:grid;gap:10px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><a href="/agenti/" style="color:var(--t2)">Agenti</a><a href="/casi/" style="color:var(--t2)">Casi</a><a href="/modelli/" style="color:var(--t2)">Modelli</a><a href="/sicurezza/" style="color:var(--t2)">Sicurezza</a><a href="/dati/" style="color:var(--t2)">Dati</a><a href="/privacy-bridge/" style="color:var(--t2)">Privacy Bridge</a><a href="/formazione/" style="color:var(--t2)">Formazione</a><a href="/contatti/" style="color:var(--t2)">Contatti</a></div>
+    </div>
+    <div>
+      <p style="margin:0 0 16px;font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">Approfondimenti</p>
+      <div style="display:grid;gap:10px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><a href="/modelli-in-locale/" style="color:var(--t2)">Modelli in locale</a><a href="/architettura/" style="color:var(--t2)">Architettura</a><a href="/automazione/" style="color:var(--t2)">Automazione</a><a href="/strumenti/" style="color:var(--t2)">Strumenti</a><a href="/metodo/" style="color:var(--t2)">Metodo</a></div>
+    </div>
+    <div>
+      <p style="margin:0 0 16px;font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">Contatti</p>
+      <div style="display:grid;gap:10px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.06em">
+        <a href="mailto:andrea.sforna@gmail.com" style="color:var(--t2)">andrea.sforna@gmail.com</a>
+        <a href="https://www.instagram.com/andreasfornaai/" rel="me noopener" target="_blank" style="color:var(--t2)">Instagram @andreasfornaai</a>
+      </div>
+    </div>
+  </div>
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px);padding-top:20px;padding-bottom:clamp(28px,3.4vw,44px);border-top:1px solid var(--filo1);display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t3)">
+    <span>&#169; 2026 Andrea Sforna</span>
+    <span>Progettato e scritto da Andrea Sforna</span>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    import('./assets/sito.js').then((m) => m.avvia()).catch((e) => console.error(e));
+  }
+}
+</script>
+</body>
+</html>
