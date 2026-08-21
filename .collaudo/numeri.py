@@ -129,6 +129,19 @@ def main():
         if nome not in {x[0] for x in letti}:
             guasti.append(f"agenti di codice: «{nome}» sta nel file ma non nella pagina")
 
+    # ------------------------------------------------- l'ordine di una classifica
+    # Il file e la pagina possono coincidere ed essere sbagliati tutti e due: una
+    # riga da 49,8 finita sotto una da 38,3 e' un difetto che nessun confronto
+    # fra i due riesce a vedere. Qui si controlla che ogni classifica scenda.
+    for etichetta, valori in [("intelligenza", ii["valori"]),
+                              ("agenti di codice", ac["valori"])]:
+        n += 1
+        indici = [v["indice"] for v in valori]
+        if indici != sorted(indici, reverse=True):
+            fuori = [f'{valori[i]["nome"]} ({indici[i]})'
+                     for i in range(1, len(indici)) if indici[i] > indici[i - 1]]
+            guasti.append(f"{etichetta}: la classifica non scende — fuori posto: {', '.join(fuori)}")
+
     # -------------------------------------------- prezzi per milione di token
     blocco = sezione(html, "Prezzo per milione di token", "La cache non è un dettaglio")
     letti = [(pulisci(x["modello"]), pulisci(x["ing"]), pulisci(x["usc"]))

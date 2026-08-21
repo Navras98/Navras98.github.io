@@ -5,8 +5,8 @@
   "indice_intelligenza": {
     "versione": "v4.1.1",
     "valutazioni": 9,
-    "modelli_in_classifica": 163,
-    "modelli_censiti": 610,
+    "modelli_in_classifica": 164,
+    "modelli_censiti": 611,
     "valori": [
       {
         "nome": "Claude Opus 5 (max)",
@@ -115,18 +115,93 @@
     ],
     "valori": [
       {
+        "nome": "Claude Code · Opus 5 (xhigh)",
+        "indice": 68.1,
+        "costo_per_compito": "$8,17",
+        "uso": true
+      },
+      {
+        "nome": "Claude Code · Fable 5 (con riserva)",
+        "indice": 67.2,
+        "costo_per_compito": "$11,69",
+        "uso": false
+      },
+      {
         "nome": "Claude Code · Opus 5 (max)",
-        "indice": 67
+        "indice": 67.0,
+        "costo_per_compito": "$8,94",
+        "uso": true
       },
       {
         "nome": "Claude Code · Opus 5 (high)",
-        "indice": 65.6
+        "indice": 65.6,
+        "costo_per_compito": "$3,92",
+        "uso": true
+      },
+      {
+        "nome": "Codex · GPT-5.6 Sol (max)",
+        "indice": 65.1,
+        "costo_per_compito": "$6,42",
+        "uso": true
       },
       {
         "nome": "Codex · GPT-5.6 Sol (high)",
-        "indice": 64.1
+        "indice": 64.1,
+        "costo_per_compito": "$3,85",
+        "uso": true
+      },
+      {
+        "nome": "Grok Build · Grok 4.5 (high)",
+        "indice": 64.1,
+        "costo_per_compito": "$2,44",
+        "uso": false
+      },
+      {
+        "nome": "Claude Code · Opus 5 (medium)",
+        "indice": 64.1,
+        "costo_per_compito": "$3,17",
+        "uso": true
+      },
+      {
+        "nome": "Kimi Code CLI · Kimi K3",
+        "indice": 62.6,
+        "costo_per_compito": "$3,08",
+        "uso": true
+      },
+      {
+        "nome": "Muse Code · Muse Spark 1.2 (xhigh)",
+        "indice": 61.6,
+        "costo_per_compito": "$2,07",
+        "uso": false
+      },
+      {
+        "nome": "Opencode · Gemini 3.7 Flash (high)",
+        "indice": 59.6,
+        "costo_per_compito": "$1,27",
+        "uso": true
+      },
+      {
+        "nome": "Antigravity SDK · Gemini 3.7 Flash (high)",
+        "indice": 56.6,
+        "costo_per_compito": "$1,40",
+        "uso": false
+      },
+      {
+        "nome": "Codex · DeepSeek V4 Flash 0731 (max)",
+        "indice": 49.8,
+        "costo_per_compito": "$0,06",
+        "uso": true
+      },
+      {
+        "nome": "Cursor CLI · Composer 2.5",
+        "indice": 38.3,
+        "costo_per_compito": "$0,09",
+        "uso": false
       }
-    ]
+    ],
+    "agenti_in_classifica": 55,
+    "mostrati": 14,
+    "nota_prove": "punteggi in percentuale di compiti risolti al primo colpo, media su tre tentativi; costo per compito = media a consumo sui 326 compiti delle tre prove"
   },
   "prezzi_per_milione_token": [
     {
@@ -140,7 +215,7 @@
       "ingresso": 2,
       "uscita": 10,
       "cache_letta": 0.2,
-      "nota": "3/15 dal 1 settembre 2026"
+      "nota": "l’aumento a 3/15 annunciato per settembre 2026 è stato annullato"
     },
     {
       "modello": "Claude Haiku 4.5",
@@ -156,20 +231,22 @@
     },
     {
       "modello": "GPT-5.6 Luna",
-      "ingresso": 1,
-      "uscita": 6
+      "ingresso": 0.2,
+      "uscita": 1.2
     },
     {
       "modello": "Gemini 3.1 Pro",
       "ingresso": 2,
       "uscita": 12,
-      "nota": "raddoppia oltre 200K token"
+      "nota": "oltre 200K token l’ingresso raddoppia, l’uscita fa 12 → 18"
     },
     {
       "modello": "DeepSeek V4 Flash",
-      "ingresso": 0.14,
-      "uscita": 0.28,
-      "cache_letta": 0.0028
+      "ingresso": 0.44,
+      "uscita": 1.32,
+      "cache_letta": 0.014,
+      "nota": "fuori dalle ore di punta 0,22 / 0,66"
     }
-  ]
+  ],
+  "licenza": "dati di Artificial Analysis, citati con attribuzione. Fonte e metodo su https://artificialanalysis.ai"
 }

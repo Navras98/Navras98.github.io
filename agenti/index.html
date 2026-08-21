@@ -11,7 +11,7 @@
 window.__resources={"https://unpkg.com/react@18.3.1/umd/react.production.min.js":"/assets/vendor/react-18.3.1.min.js","https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js":"/assets/vendor/react-dom-18.3.1.min.js"};</script>
 <script src="/support.js"></script>
 <title>Agenti — Andrea Sforna AI</title>
-<meta name="description" content="Che cos'è un agente AI, come è fatto dentro, a cosa serve e perché viene chiesto adesso.">
+<meta name="description" content="Che cos'è davvero un agente AI: com'è fatto dentro, di quali quattro parti ha bisogno per reggere in esercizio e perché le aziende lo chiedono adesso.">
 <link rel="canonical" href="https://navras98.github.io/agenti/">
 <meta name="author" content="Andrea Sforna">
 <meta name="theme-color" content="#0a0a0b" media="(prefers-color-scheme: dark)">
@@ -20,7 +20,7 @@ window.__resources={"https://unpkg.com/react@18.3.1/umd/react.production.min.js"
 <meta property="og:site_name" content="Andrea Sforna AI">
 <meta property="og:locale" content="it_IT">
 <meta property="og:title" content="Agenti — Andrea Sforna AI">
-<meta property="og:description" content="Che cos'è un agente AI, come è fatto dentro, a cosa serve e perché viene chiesto adesso.">
+<meta property="og:description" content="Che cos'è davvero un agente AI: com'è fatto dentro, di quali quattro parti ha bisogno per reggere in esercizio e perché le aziende lo chiedono adesso.">
 <meta property="og:url" content="https://navras98.github.io/agenti/">
 <meta property="og:image" content="https://navras98.github.io/assets/anteprima.png">
 <meta property="og:image:width" content="1200">
@@ -28,12 +28,13 @@ window.__resources={"https://unpkg.com/react@18.3.1/umd/react.production.min.js"
 <meta property="og:image:alt" content="Andrea Sforna AI — progettazione, sicurezza e manutenzione di sistemi di agenti AI">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Agenti — Andrea Sforna AI">
-<meta name="twitter:description" content="Che cos'è un agente AI, come è fatto dentro, a cosa serve e perché viene chiesto adesso.">
+<meta name="twitter:description" content="Che cos'è davvero un agente AI: com'è fatto dentro, di quali quattro parti ha bisogno per reggere in esercizio e perché le aziende lo chiedono adesso.">
 <meta name="twitter:image" content="https://navras98.github.io/assets/anteprima.png">
 <link rel="icon" href="/assets/icona.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/icona-180.png">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="stylesheet" href="/assets/caratteri.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://navras98.github.io/#andrea","name":"Andrea Sforna","jobTitle":"Progettista di sistemi di agenti AI","description":"Progetta, costruisce e mette in sicurezza sistemi di agenti AI che lavorano su processi aziendali reali.","url":"https://navras98.github.io/","image":"https://navras98.github.io/assets/img/andrea.webp","email":"mailto:andrea.sforna@gmail.com","sameAs":["https://www.instagram.com/andreasforna.ai/"],"knowsAbout":["Agenti AI","Model Context Protocol","Automazione dei processi","Sicurezza dei sistemi AI","Modelli linguistici in locale","Orchestrazione multi-agente","n8n","Recupero di dati deterministico"],"knowsLanguage":["it","en"]},{"@type":"ProfessionalService","@id":"https://navras98.github.io/#servizio","name":"Andrea Sforna AI","description":"Progettazione, messa in sicurezza e manutenzione di sistemi di agenti AI per aziende e professionisti.","url":"https://navras98.github.io/","provider":{"@id":"https://navras98.github.io/#andrea"},"areaServed":{"@type":"Country","name":"Italia"},"availableLanguage":["it","en"],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Modi di lavorare insieme","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Consulenza","description":"Analisi di un processo esistente e perimetro scritto di cosa conviene affidare a un agente."}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Formazione","description":"Percorso sul caso reale dell'azienda, per costruire e mantenere agenti in autonomia."}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Messa in sicurezza","description":"Revisione dei permessi di un sistema di agenti gia' in funzione."}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Sistemi su misura","description":"Progetto e costruzione di un sistema di agenti sul processo del cliente."}}]}},{"@type":"WebPage","@id":"https://navras98.github.io/agenti/#pagina","url":"https://navras98.github.io/agenti/","name":"Agenti","description":"Che cos'è davvero un agente AI: com'è fatto dentro, di quali quattro parti ha bisogno per reggere in esercizio e perché le aziende lo chiedono adesso.","inLanguage":"it-IT","isPartOf":{"@type":"WebSite","@id":"https://navras98.github.io/#sito","name":"Andrea Sforna AI","url":"https://navras98.github.io/","inLanguage":"it-IT","publisher":{"@id":"https://navras98.github.io/#andrea"}},"about":{"@id":"https://navras98.github.io/#servizio"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://navras98.github.io/"},{"@type":"ListItem","position":2,"name":"Agenti","item":"https://navras98.github.io/agenti/"}]}}]}</script>
 <link rel="stylesheet" href="/assets/tema.css">
 </head>
 <body>
@@ -60,10 +61,10 @@ window.__resources={"https://unpkg.com/react@18.3.1/umd/react.production.min.js"
     </nav>
     <div style="display:flex;align-items:center;gap:10px">
       <button type="button" data-tema-btn style="padding:7px 12px;background:transparent;border:1px solid var(--filo1);color:var(--t2);font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.09em;text-transform:uppercase;cursor:pointer" style-hover="border-color:var(--filo2);color:var(--t1)">Chiaro</button>
-      <button type="button" data-burger aria-expanded="false" aria-label="Apri il menu" style="display:none;align-items:center;padding:7px 12px;background:transparent;border:1px solid var(--filo1);color:var(--t1);font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.09em;text-transform:uppercase;cursor:pointer">Menu</button>
+      <button type="button" data-burger aria-controls="menu-pagine" aria-expanded="false" aria-label="Apri il menu" style="display:none;align-items:center;padding:7px 12px;background:transparent;border:1px solid var(--filo1);color:var(--t1);font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.09em;text-transform:uppercase;cursor:pointer">Menu</button>
     </div>
   </div>
-  <div data-pannello style="display:none;border-top:1px solid var(--filo1);background:var(--sup1)">
+  <div data-pannello id="menu-pagine" style="display:none;border-top:1px solid var(--filo1);background:var(--sup1)">
     <div style="max-width:1360px;margin:0 auto;padding:16px clamp(20px,4vw,48px);display:grid;gap:13px;font:500 12px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase">
       <a href="/agenti/" aria-current="page" style="color:var(--t1);border-bottom:1px solid var(--acc);padding-bottom:3px">Agenti</a>
       <a href="/casi/" style="color:var(--t2)">Casi</a>

@@ -168,8 +168,20 @@ img{display:block;max-width:100%}
 /* Nessuna cella di tabella deve troncare il testo con i puntini: a schermo
    stretto un modello si chiamerebbe «Claude Fable 5 (fall...». Meglio due righe
    di un nome monco. */
+/* Nessuna etichetta tronca il nome di un modello con i puntini, a nessuna
+   larghezza: «Claude Fable 5 (fallback)» diventava «Claude Fable 5 (fall...» su
+   telefono, e «Antigravity SDK · Gemini 3.7 Flash (high)» usciva dalla colonna
+   anche su schermo grande. Va a capo: due righe di un nome monco. La regola non
+   dipende da quanto sono lunghi i nomi di oggi. */
+[data-etichetta]{
+  text-overflow:clip!important;
+  white-space:normal!important;
+  overflow:visible!important;
+  overflow-wrap:anywhere;
+  line-height:1.3;
+}
 @media (max-width:720px){
-  [data-tabella] *,[data-etichetta]{
+  [data-tabella] *{
     text-overflow:clip!important;
     white-space:normal!important;
     overflow:visible!important;
