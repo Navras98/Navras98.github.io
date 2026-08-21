@@ -1,163 +1,313 @@
 <!doctype html>
-<html lang="it" id="top">
+<html lang="it" id="top" data-tema="scuro">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dati e risposte deterministiche — Andrea Sforna</title>
-  <meta name="description" content="Un dato che non esiste non deve diventare un dato plausibile: operazioni definite in anticipo, tre esiti dichiarati, controllo dei valori in uscita.">
-  <link rel="canonical" href="https://navras98.github.io/dati.html">
-  <meta name="author" content="Andrea Sforna">
-  <meta name="theme-color" content="#fbfbf9">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dati e risposte deterministiche · Andrea Sforna</title>
+<meta name="description" content="Un dato che non esiste non deve diventare un dato plausibile: operazioni dichiarate in anticipo, tre esiti mai confusi, provenienza riga per riga, cancello sui valori in uscita, scritture in due tempi.">
+<link rel="canonical" href="https://navras98.github.io/dati.html">
+<meta name="author" content="Andrea Sforna">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#0b0e12" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f2efe9" media="(prefers-color-scheme: light)">
 
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Andrea Sforna">
-  <meta property="og:locale" content="it_IT">
-  <meta property="og:title" content="Dati e risposte deterministiche — Andrea Sforna">
-  <meta property="og:description" content="Un dato che non esiste non deve diventare un dato plausibile: operazioni definite in anticipo, tre esiti dichiarati, controllo dei valori in uscita.">
-  <meta property="og:url" content="https://navras98.github.io/dati.html">
-  <meta property="og:image" content="https://navras98.github.io/assets/img/anteprima.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Dati e risposte deterministiche — Andrea Sforna">
-  <meta name="twitter:description" content="Un dato che non esiste non deve diventare un dato plausibile: operazioni definite in anticipo, tre esiti dichiarati, controllo dei valori in uscita.">
-  <meta name="twitter:image" content="https://navras98.github.io/assets/img/anteprima.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Andrea Sforna">
+<meta property="og:locale" content="it_IT">
+<meta property="og:title" content="Dati e risposte deterministiche · Andrea Sforna">
+<meta property="og:description" content="Un dato che non esiste non deve diventare un dato plausibile: operazioni dichiarate in anticipo, tre esiti mai confusi, provenienza riga per riga, cancello sui valori in uscita, scritture in due tempi.">
+<meta property="og:url" content="https://navras98.github.io/dati.html">
+<meta property="og:image" content="https://navras98.github.io/assets/img/anteprima.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Dati e risposte deterministiche · Andrea Sforna">
+<meta name="twitter:description" content="Un dato che non esiste non deve diventare un dato plausibile: operazioni dichiarate in anticipo, tre esiti mai confusi, provenienza riga per riga, cancello sui valori in uscita, scritture in due tempi.">
+<meta name="twitter:image" content="https://navras98.github.io/assets/img/anteprima.png">
 
-  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="assets/img/icona-180.png">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="assets/img/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/icona-180.png">
+<link rel="manifest" href="site.webmanifest">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
-  <link rel="stylesheet" href="assets/css/site.css">
-  <script>
-    (function () {
-      var d = document.documentElement;
-      d.classList.add('js');
-      try {
-        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('motion');
-      } catch (e) {}
-    })();
-  </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- i caratteri non bloccano la prima pittura: il testo compare subito con i
+     ripieghi dichiarati nel foglio, e cambia carattere quando arrivano -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Literata:opsz,wght@7..72,300..600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Literata:opsz,wght@7..72,300..600&display=swap"></noscript>
+<link rel="stylesheet" href="assets/css/site.css">
+<script>
+/* Prima della prima pittura: tema salvato o preferenza di sistema, e la classe
+   che abilita il movimento. Senza questo blocco il tema chiaro lampeggerebbe scuro. */
+(function () {
+  var d = document.documentElement;
+  d.classList.add('js');
+  try {
+    var s = localStorage.getItem('tema');
+    var scuro = s ? s === 'scuro' : !window.matchMedia('(prefers-color-scheme: light)').matches;
+    d.setAttribute('data-tema', scuro ? 'scuro' : 'chiaro');
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('moto');
+  } catch (e) {}
+})();
+</script>
 </head>
-<body class="page-dati">
+<body class="p-dati">
   <a class="skip" href="#main">Vai al contenuto</a>
 
-  <div class="progress" aria-hidden="true"><span class="progress__fill" data-progress></span></div>
+  <div class="progress" aria-hidden="true"><i class="progress__fill" data-progress></i></div>
 
-  <header class="site-head">
-    <div class="shell site-head__inner">
-      <a class="brand" href="index.html">
-        <span class="brand__mark" aria-hidden="true">AS</span>
-        <span class="brand__name">Andrea Sforna</span>
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a class="mark" href="index.html">
+        <span class="mark__glyph" aria-hidden="true">AS</span>
+        <span class="mark__name">Andrea Sforna</span>
       </a>
 
       <nav class="nav" aria-label="Navigazione principale">
         <ul class="nav__list">
-          <li><a class="nav__link" href="index.html">Home</a></li>
-          <li><a class="nav__link" href="competenze.html">Competenze</a></li>
-          <li><a class="nav__link" href="sicurezza.html">Sicurezza</a></li>
-          <li><a class="nav__link is-current" href="dati.html" aria-current="page">Dati</a></li>
-          <li><a class="nav__link" href="modelli.html">Modelli</a></li>
-          <li><a class="nav__link" href="metodo.html">Metodo</a></li>
-          <li><a class="nav__link" href="contatti.html">Contatti</a></li>
+            <li><a class="nav__link" href="index.html">Home</a></li>
+            <li><a class="nav__link" href="architettura.html">Architettura</a></li>
+            <li><a class="nav__link" href="sicurezza.html">Sicurezza</a></li>
+            <li><a class="nav__link is-current" href="dati.html" aria-current="page">Dati</a></li>
+            <li><a class="nav__link" href="privacy.html">Privacy</a></li>
+            <li><a class="nav__link" href="automazione.html">Automazione</a></li>
+            <li><a class="nav__link" href="stack.html">Stack</a></li>
+            <li><a class="nav__link" href="metodo.html">Metodo</a></li>
+            <li><a class="nav__link" href="contatti.html">Contatti</a></li>
         </ul>
       </nav>
 
-      <button class="burger" type="button" aria-expanded="false" aria-controls="menu-mobile" data-burger>
-        <span class="burger__lines" aria-hidden="true"><i></i><i></i></span>
-        <span class="burger__label">Menu</span>
-      </button>
+      <div class="topbar__end">
+        <button class="theme" type="button" data-theme-toggle aria-live="polite">
+          <span class="theme__dot" aria-hidden="true"></span>
+          <span class="theme__label" data-theme-label>Tema</span>
+        </button>
+        <button class="burger" type="button" aria-expanded="false" aria-controls="menu-mobile" data-burger>
+          <span class="burger__bars" aria-hidden="true"><i></i><i></i></span>
+          <span class="burger__label">Menu</span>
+        </button>
+      </div>
     </div>
   </header>
 
-  <!-- fuori da .site-head di proposito: il backdrop-filter dell'intestazione
-       farebbe da blocco contenitore e schiaccerebbe il pannello a altezza zero -->
-  <div class="menu" id="menu-mobile" data-menu hidden>
-      <nav class="menu__inner shell" aria-label="Navigazione mobile">
-        <ul class="menu__list">
-          <li style="--i:0"><a class="menu__link" href="index.html">Home</a></li>
-          <li style="--i:1"><a class="menu__link" href="competenze.html">Competenze</a></li>
-          <li style="--i:2"><a class="menu__link" href="sicurezza.html">Sicurezza</a></li>
-          <li style="--i:3"><a class="menu__link is-current" href="dati.html" aria-current="page">Dati</a></li>
-          <li style="--i:4"><a class="menu__link" href="modelli.html">Modelli</a></li>
-          <li style="--i:5"><a class="menu__link" href="metodo.html">Metodo</a></li>
-          <li style="--i:6"><a class="menu__link" href="contatti.html">Contatti</a></li>
-        </ul>
-        <p class="menu__foot"><a href="mailto:andrea.sforna@gmail.com">andrea.sforna@gmail.com</a></p>
-      </nav>
-    </div>
+  <!-- fuori dalla barra di proposito: il filtro sullo sfondo dell'intestazione
+       farebbe da blocco contenitore e schiaccerebbe il pannello ad altezza zero -->
+  <div class="drawer" id="menu-mobile" data-menu hidden>
+    <nav class="drawer__inner" aria-label="Navigazione mobile">
+      <ul class="drawer__list">
+            <li><a class="drawer__link" href="index.html">Home</a></li>
+            <li><a class="drawer__link" href="architettura.html">Architettura</a></li>
+            <li><a class="drawer__link" href="sicurezza.html">Sicurezza</a></li>
+            <li><a class="drawer__link is-current" href="dati.html" aria-current="page">Dati</a></li>
+            <li><a class="drawer__link" href="privacy.html">Privacy</a></li>
+            <li><a class="drawer__link" href="automazione.html">Automazione</a></li>
+            <li><a class="drawer__link" href="stack.html">Stack</a></li>
+            <li><a class="drawer__link" href="metodo.html">Metodo</a></li>
+            <li><a class="drawer__link" href="contatti.html">Contatti</a></li>
+      </ul>
+      <p class="drawer__foot"><a href="mailto:andrea.sforna@gmail.com">andrea.sforna@gmail.com</a></p>
+    </nav>
+  </div>
 
   <main id="main">
-  <section class="head">
-    <div class="shell head__inner">
-      <p class="eyebrow">Dati</p>
-      <h1>Risposte deterministiche</h1>
-      <p class="head__lede">Il problema in una frase: se chiedi a un agente il numero di telefono di un cliente e quel numero nel database non c'è, il rischio non è che sbagli. È che te ne dia uno plausibile.</p>
+  <section class="sez">
+    <div class="guscio">
+      <div class="blk" data-reveal>
+        <p class="blk__ann ann">Dati</p>
+        <div class="blk__body">
+          <h1>Un dato che non c'è non deve diventare un dato plausibile</h1>
+          <p class="apertura__riga" style="margin-top:var(--s6)">Se chiedi a un agente il numero di telefono di un cliente e quel numero nel database non c'è, il rischio non è che sbagli. È che te ne dia uno plausibile.</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="shell">
-      <div class="blocks">
+  <section class="sez">
+    <div class="guscio">
+      <div class="blocchi">
 
-        <article class="block" data-reveal>
-          <p class="block__num"></p>
-          <div class="block__body">
+        <article class="blk" data-reveal>
+          <p class="blk__ann ann">Il problema</p>
+          <div class="blk__body">
             <h2>L'errore che non ha una firma</h2>
-            <p>Un numero inventato da un modello ha il prefisso giusto, la lunghezza giusta e la forma di un numero vero. Nessuno lo guarda due volte, perché non ha niente di strano. È il tipo di errore peggiore da gestire proprio perché non lascia traccia di sé: non c'è un messaggio, non c'è un rosso da nessuna parte, non c'è un momento in cui il sistema ammette di non sapere.</p>
-            <p>Un sistema che va in errore lo dichiara e qualcuno interviene. Un sistema che inventa produce un dato che entra nel lavoro di qualcun altro: viene copiato in un'offerta, chiamato, scritto in un contratto, riportato a un cliente. Viene scoperto quando fa danno, non quando nasce, e la distanza tra i due momenti è il vero costo.</p>
-            <p>E succede per come funziona un modello, non per un difetto riparabile: produce la continuazione più probabile di un testo. Alla domanda «qual è il numero» la continuazione più probabile è un numero. L'assenza non è una continuazione probabile di niente: va imposta da fuori, da qualcosa che non sta scrivendo testo.</p>
+            <p>Un numero inventato da un modello ha il prefisso giusto, la lunghezza giusta e la forma di un numero vero. Nessuno lo guarda due volte. È l'errore peggiore da gestire proprio perché non lascia traccia di sé: nessun messaggio, nessun rosso, nessun momento in cui il sistema ammette di non sapere.</p>
+            <p>Un sistema che va in errore lo dichiara e qualcuno interviene. Un sistema che inventa produce un dato che entra nel lavoro di qualcun altro: viene copiato in un'offerta, chiamato, scritto in un contratto, riportato a un cliente. Viene scoperto quando fa danno, non quando nasce, e la distanza fra i due momenti è il vero costo.</p>
+            <p>E succede per come funziona un modello, non per un difetto riparabile: produce la continuazione più probabile di un testo, e alla domanda "qual è il numero" la continuazione più probabile è un numero. L'assenza non è una continuazione probabile di niente. Va imposta da fuori, da qualcosa che non sta scrivendo testo.</p>
           </div>
         </article>
 
-        <article class="block" data-reveal>
-          <p class="block__num"></p>
-          <div class="block__body">
+        <article class="blk" data-reveal>
+          <p class="blk__ann ann">La strada sbagliata</p>
+          <div class="blk__body">
             <h2>Perché non si risolve chiedendo di non inventare</h2>
-            <p>Aggiungere «non inventare, se non lo sai dillo» riduce la frequenza. Non elimina il caso. Vale come tutte le istruzioni: sposta il comportamento medio. Ma quando un dato deve essere corretto tutte le volte, il comportamento medio non è il criterio con cui si giudica, e la differenza tra «quasi sempre» e «sempre» è precisamente il punto in cui l'azienda decide se può fidarsi di quel sistema.</p>
-            <p>C'è anche un effetto meno ovvio: più si insiste su quel divieto, più il modello diventa prudente anche quando il dato c'è, e comincia a rispondere «non risulta» su informazioni che sono lì. Si scambia un errore con un altro. Il secondo è più facile da notare, ma non è meno costoso: un sistema che nega informazioni presenti viene abbandonato in fretta, e viene abbandonato senza che nessuno ne discuta.</p>
-            <p>La domanda giusta, quindi, non è come convincere il modello. È come fare in modo che il modello non sia il posto in cui il dato viene deciso.</p>
+            <p>Aggiungere "non inventare, se non lo sai dillo" riduce la frequenza. Non elimina il caso. Vale come tutte le istruzioni: sposta il comportamento medio. Ma quando un dato deve essere corretto tutte le volte, il comportamento medio non è il criterio con cui si giudica, e la differenza fra quasi sempre e sempre è il punto in cui l'azienda decide se può fidarsi.</p>
+            <p>C'è poi un problema di fondo, più semplice di quanto sembri: chi non deve inventare è lo stesso che dovrebbe accorgersene. Si chiede a un componente di sorvegliare sé stesso usando lo stesso meccanismo che ha prodotto il problema. Non è una questione di quanto è bravo il modello.</p>
+            <p>E più si insiste su quel divieto, più il modello diventa prudente anche quando il dato c'è, e comincia a rispondere "non risulta" su informazioni che sono lì. Si scambia un errore con un altro: il secondo è più facile da notare e non è meno costoso, perché un sistema che nega informazioni presenti viene abbandonato in fretta.</p>
           </div>
         </article>
 
-        <article class="block" data-reveal>
-          <p class="block__num"></p>
-          <div class="block__body">
-            <h2>Come si risolve davvero</h2>
-            <p>Il modello non tocca i dati. Li chiede, attraverso un elenco chiuso di operazioni definite in anticipo: ognuna con un nome, i parametri che accetta, il tipo di ogni parametro e la forma di quello che restituisce. Il modello sceglie l'operazione e compila i parametri; l'esecuzione la fa il sistema, che controlla i parametri prima di eseguire e rifiuta tutto quello che non rientra nel contratto. Il modello, in questa architettura, non ha accesso ai dati: ha accesso a un citofono.</p>
-            <p>Gli esiti sono tre, distinti e dichiarati: c'è questo, non c'è niente, si è rotto qualcosa. Sono tre stati diversi che non vanno mai confusi, e il secondo è quello che quasi sempre manca. «Non c'è» è una risposta corretta: significa che la domanda è stata capita, che la ricerca è stata fatta e che il risultato è vuoto. Va restituita così dal sistema e va detta così alla persona, senza giri di parole che la facciano somigliare a un dubbio.</p>
-            <p>La distanza tra il secondo e il terzo esito è tutta la partita. Se il servizio che tiene i dati non risponde e il sistema restituisce un elenco vuoto, chi legge conclude che quel cliente non esiste. Un guasto travestito da assenza è la stessa bugia di prima, arrivata da un'altra strada: per questo un risultato vuoto e un errore devono avere forme diverse fin dall'origine, e nessun passaggio intermedio ha il permesso di trasformare il secondo nel primo.</p>
+      </div>
+
+      <figure class="dia" data-reveal tabindex="0" role="group" aria-label="Il percorso di una richiesta: domanda, scelta di un’operazione dichiarata, esecuzione fatta dal sistema, cancello che confronta i valori, risposta. Il modello interviene solo al primo, al secondo e all’ultimo passaggio.">
+  <svg viewBox="0 0 940 260" role="img" aria-label="Il percorso di una richiesta: domanda, scelta di un’operazione dichiarata, esecuzione fatta dal sistema, cancello che confronta i valori, risposta. Il modello interviene solo al primo, al secondo e all’ultimo passaggio." preserveAspectRatio="xMidYMid meet" focusable="false">
+    <defs>
+      <marker id="punta" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0 0 L8 4 L0 8 z" class="dia__punta"/>
+      </marker>
+    </defs>
+      <path d="M180 132 H198" class="dia__filo" marker-end="url(#punta)"/>
+      <path d="M366 132 H384" class="dia__filo" marker-end="url(#punta)"/>
+      <path d="M552 132 H570" class="dia__filo" marker-end="url(#punta)"/>
+      <path d="M738 132 H756" class="dia__filo" marker-end="url(#punta)"/>
+      
+    <g class="dia__nodo">
+      <rect x="20" y="96" width="156" height="72" class="dia__scatola"/>
+      <text x="34" y="125" class="dia__eti">01</text>
+      <text x="34" y="144" class="dia__forte">Domanda</text>
+      <text x="34" y="160" class="dia__min">in lingua umana</text>
+      <rect x="20" y="70" width="156" height="16" class="dia__fascia"/>
+      <text x="26" y="82" class="dia__tag">modello</text>
+    </g>
+    <g class="dia__nodo">
+      <rect x="206" y="96" width="156" height="72" class="dia__scatola"/>
+      <text x="220" y="125" class="dia__eti">02</text>
+      <text x="220" y="144" class="dia__forte">Scelta</text>
+      <text x="220" y="160" class="dia__min">fra operazioni note</text>
+      <rect x="206" y="70" width="156" height="16" class="dia__fascia"/>
+      <text x="212" y="82" class="dia__tag">modello</text>
+    </g>
+    <g class="dia__nodo">
+      <rect x="392" y="96" width="156" height="72" class="dia__scatola"/>
+      <text x="406" y="125" class="dia__eti">03</text>
+      <text x="406" y="144" class="dia__forte">Esecuzione</text>
+      <text x="406" y="160" class="dia__min">la fa il sistema</text>
+      <rect x="392" y="70" width="156" height="16" class="dia__fascia dia__fascia--det"/>
+      <text x="398" y="82" class="dia__tag dia__tag--det">deterministico</text>
+    </g>
+    <g class="dia__nodo dia__nodo--cancello">
+      <rect x="578" y="96" width="156" height="72" class="dia__scatola"/>
+      <text x="592" y="125" class="dia__eti">04</text>
+      <text x="592" y="144" class="dia__forte">Cancello</text>
+      <text x="592" y="160" class="dia__min">confronto dei valori</text>
+      <rect x="578" y="70" width="156" height="16" class="dia__fascia dia__fascia--det"/>
+      <text x="584" y="82" class="dia__tag dia__tag--det">deterministico</text>
+    </g>
+    <g class="dia__nodo">
+      <rect x="764" y="96" width="156" height="72" class="dia__scatola"/>
+      <text x="778" y="125" class="dia__eti">05</text>
+      <text x="778" y="144" class="dia__forte">Risposta</text>
+      <text x="778" y="160" class="dia__min">oppure non parte</text>
+      <rect x="764" y="70" width="156" height="16" class="dia__fascia"/>
+      <text x="770" y="82" class="dia__tag">modello</text>
+    </g>
+      <path d="M20 214 H920" class="dia__base"/>
+      <text x="20" y="236" class="dia__min">Il modello capisce la domanda e scrive la risposta. In mezzo non tocca i dati.</text>
+  </svg>
+</figure>
+
+      <div class="blocchi" style="margin-top:var(--s16)">
+
+        <article class="blk" data-reveal>
+          <p class="blk__ann ann">La soluzione</p>
+          <div class="blk__body">
+            <h2>Il modello non tocca i dati</h2>
+            <p>Il modello non compone interrogazioni. Sceglie da un insieme chiuso di operazioni dichiarate in anticipo, ognuna con un nome, i parametri che accetta e la forma di quello che restituisce. Il modello sceglie e compila i parametri; l'esecuzione la fa il sistema, che li controlla prima e rifiuta tutto quello che non rientra nel contratto. In questa architettura il modello non ha accesso ai dati: ha accesso a un citofono.</p>
+            <p>Il componente che parla con i dati è un processo separato, non un pezzo che gira dentro il motore di conversazione: tutto il valore dell'impianto sta nell'essere isolato. Chi legge non scrive, con credenziali distinte, e la sola lettura va provata con una scrittura vera che il motore deve respingere: una sonda che si limita a chiedere se può scrivere può ottenere un sì innocuo, e a quel punto la verifica dice il falso.</p>
+            <p>Ogni risposta porta con sé da dove viene: fonte, tabella, chiave e valore della chiave riga per riga, momento della lettura. La portano anche le risposte vuote e quelle in errore, che sono i due casi in cui serve di più. Questa provenienza si deriva dall'istruzione e dallo schema invece di essere scritta a mano nel contratto, dove invecchierebbe in silenzio alla prima modifica.</p>
           </div>
         </article>
 
-        <article class="block" data-reveal>
-          <p class="block__num"></p>
-          <div class="block__body">
-            <h2>Il controllo sull'uscita</h2>
-            <p>Prima che una risposta arrivi alla persona, quello che contiene si confronta con quello che è stato davvero letto. Ogni numero, data, codice, importo, indirizzo che compare nel testo deve corrispondere a un valore restituito da un'operazione. Se compare qualcosa che nessuno ha letto, la risposta non parte.</p>
-            <p>Non è un controllo di stile, ed è il punto in cui il sistema smette di fidarsi del modello anche dopo avergli messo davanti i dati giusti. Perché avere il dato corretto sotto gli occhi non garantisce che venga riportato: una cifra si trasforma, due righe si fondono in una, un totale viene ricalcolato a mente invece che copiato. Sono errori piccoli e sono esattamente quelli che nessuno rilegge.</p>
-            <p>Cosa fare quando il controllo scatta è una decisione di progetto, e va presa insieme al cliente: rifare la risposta con un vincolo più stretto, restituire i dati grezzi senza prosa, oppure dichiarare che non è stato possibile rispondere. Tutte e tre sono scelte accettabili, perché tutte e tre sono visibili. L'unica che non lo è è lasciar passare la risposta con un avviso in fondo che nessuno legge.</p>
+        <article class="blk" data-reveal>
+          <p class="blk__ann ann">Gli esiti</p>
+          <div class="blk__body">
+            <h2>Tre, mai due</h2>
+            <p>Ho guardato ed ecco i dati. Ho guardato e non c'è niente. Non ho potuto guardare. Sono tre stati diversi e non vanno confusi in nessun punto della catena; il secondo è quello che quasi sempre manca. "Non c'è" è una risposta corretta: la domanda è stata capita, la ricerca è stata fatta, il risultato è vuoto. Va detta così alla persona, senza giri di parole che la facciano somigliare a un dubbio.</p>
+            <p>La distanza fra il secondo e il terzo esito è tutta la partita. Se il servizio che tiene i dati non risponde e il sistema restituisce un elenco vuoto, chi legge conclude che quel cliente non esiste. Un guasto travestito da assenza è la stessa bugia di prima, arrivata da un'altra strada. È anche la ragione per cui diffido dei rami che catturano un errore e restituiscono un valore neutro: sembra robustezza, ed è il modo più comune in cui un guasto entra nel sistema travestito da dato.</p>
           </div>
         </article>
 
-        <article class="block" data-reveal>
-          <p class="block__num"></p>
-          <div class="block__body">
+      </div>
+
+      <figure class="dia" data-reveal tabindex="0" role="group" aria-label="I tre esiti di una lettura sui dati: ho guardato ed ecco i dati; ho guardato e non c’è niente; non ho potuto guardare. Il secondo e il terzo non devono somigliarsi in nessun punto della catena.">
+  <svg viewBox="0 0 940 268" role="img" aria-label="I tre esiti di una lettura sui dati: ho guardato ed ecco i dati; ho guardato e non c’è niente; non ho potuto guardare. Il secondo e il terzo non devono somigliarsi in nessun punto della catena." preserveAspectRatio="xMidYMid meet" focusable="false">
+    <defs>
+      <marker id="punta" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0 0 L8 4 L0 8 z" class="dia__punta"/>
+      </marker>
+    </defs>
+      <text x="20" y="30" class="dia__eti">tre esiti, mai due</text>
+      
+    <g class="dia__esito dia__esito--ok">
+      <rect x="20" y="56" width="288" height="150" class="dia__scatola"/>
+      <rect x="20" y="56" width="288" height="4" class="dia__cima"/>
+      <text x="38" y="88" class="dia__eti">01</text>
+      <text x="38" y="122" class="dia__grande">Ho guardato,</text>
+      <text x="38" y="148" class="dia__grande">ecco i dati</text>
+      <text x="38" y="182" class="dia__min">la risposta porta con sé da dove viene</text>
+    </g>
+    <g class="dia__esito dia__esito--vuoto">
+      <rect x="326" y="56" width="288" height="150" class="dia__scatola"/>
+      <rect x="326" y="56" width="288" height="4" class="dia__cima"/>
+      <text x="344" y="88" class="dia__eti">02</text>
+      <text x="344" y="122" class="dia__grande">Ho guardato,</text>
+      <text x="344" y="148" class="dia__grande">non c’è niente</text>
+      <text x="344" y="182" class="dia__min">l’assenza è una risposta corretta</text>
+    </g>
+    <g class="dia__esito dia__esito--rotto">
+      <rect x="632" y="56" width="288" height="150" class="dia__scatola"/>
+      <rect x="632" y="56" width="288" height="4" class="dia__cima"/>
+      <text x="650" y="88" class="dia__eti">03</text>
+      <text x="650" y="122" class="dia__grande">Non ho</text>
+      <text x="650" y="148" class="dia__grande">potuto guardare</text>
+      <text x="650" y="182" class="dia__min">un guasto non è un’assenza</text>
+    </g>
+      <path d="M20 236 H920" class="dia__base"/>
+      <text x="20" y="258" class="dia__min">Confondere il secondo con il terzo è il difetto che genera le invenzioni.</text>
+  </svg>
+</figure>
+
+      <div class="blocchi" style="margin-top:var(--s16)">
+
+        <article class="blk" data-reveal>
+          <p class="blk__ann ann">Il cancello</p>
+          <div class="blk__body">
+            <h2>Il controllo sui valori in uscita</h2>
+            <p>Prima che una risposta arrivi alla persona, quello che contiene si confronta con quello che è stato davvero letto in quel turno. Ogni numero, data, codice, importo, indirizzo che compare nel testo deve corrispondere a un valore restituito da un'operazione. Se compare qualcosa che nessuno ha letto, la risposta non parte.</p>
+            <p>È confronto fra stringhe, non giudizio di un altro modello, e questa è la parte che conta: un giudice che valuta se la risposta sembra corretta ha lo stesso difetto di quello che l'ha scritta. Le famiglie di valori non si mescolano, perché un codice e una quantità possono avere le stesse cifre e significati opposti, e lo zero iniziale distingue un identificativo da un numero.</p>
+            <p>Dove si mette il cancello ha conseguenze grosse: va sull'ultimo passaggio prima dell'uscita. Gli agganci intermedi di revisione cedono in molti modi che nessuno prevede, un'eccezione, un limite di tempo, un tetto di tentativi raggiunto, e un cancello che cede è un cancello aperto che non lo dice a nessuno.</p>
+            <p>Cosa fare quando scatta si decide insieme al cliente: rifare la risposta con un vincolo più stretto, restituire i dati grezzi senza prosa, oppure dichiarare che non è stato possibile rispondere. Tutte e tre sono accettabili perché tutte e tre sono visibili. L'unica che non lo è è lasciar passare la risposta con un avviso in fondo che nessuno legge.</p>
+          </div>
+        </article>
+
+        <article class="blk" data-reveal>
+          <p class="blk__ann ann">Le scritture</p>
+          <div class="blk__body">
+            <h2>Si preparano, non si applicano</h2>
+            <p>Un'operazione che modifica un dato viene preparata e mostrata in chiaro a chi decide, non eseguita. Il modello può proporre; la conferma e l'applicazione stanno fuori da lui, e restano fuori anche quando il sistema è in funzione da un anno e sembra affidabile.</p>
+            <p>L'approvazione arriva da un canale che l'agente non può raggiungere, e il processo che la raccoglie non è a sua volta un agente: non ha nessun modello dentro e non interpreta niente, perché un componente che interpreta si può convincere. La decisione si esegue con i parametri della richiesta originale, mai con quelli del messaggio di risposta. Chi può approvare sta in un elenco chiuso, la scadenza è reale, un secondo tocco non approva due volte. E se il canale è spento la richiesta scade e nega, invece di restare appesa: un'attesa infinita è il modo in cui un'operazione irreversibile finisce approvata da chi ha fretta.</p>
+          </div>
+        </article>
+
+        <article class="blk" data-reveal>
+          <p class="blk__ann ann">Costo</p>
+          <div class="blk__body">
             <h2>Il vantaggio economico che nessuno racconta</h2>
-            <p>La parte deterministica non consuma il modello. Un'interrogazione che restituisce le fatture aperte di un cliente è codice: costa una frazione, risponde in un tempo che non dipende dal carico di un fornitore, e domani dà lo stesso risultato di oggi. Ogni pezzo di lavoro che si sposta dal modello a un'operazione definita è un pezzo che diventa più economico, più veloce e più prevedibile nello stesso momento.</p>
-            <p>La quota di lavoro che si può trattare così, nei sistemi aziendali, è più grande di quanto si immagini. Il modello serve per capire cosa è stato chiesto e per scrivere la risposta in una lingua umana; in mezzo, la parte che tocca i dati non ha bisogno di lui. Restringerlo ai due estremi è raro come miglioramento, perché tre grandezze migliorano nella stessa direzione — e succede solo perché si sta togliendo un lavoro a chi non doveva farlo.</p>
-            <p>C'è poi un effetto sulla ripetibilità che conta più del risparmio: la stessa domanda posta due volte restituisce lo stesso dato. Un sistema su cui qualcuno deve poter contare non può cambiare risposta perché è cambiata la versione di un modello o perché quel giorno era più creativo del solito.</p>
+            <p>La parte deterministica non consuma il modello. Un'interrogazione che restituisce le fatture aperte di un cliente è codice: costa una frazione, risponde in un tempo che non dipende dal carico di un fornitore, e domani dà lo stesso risultato di oggi. È raro che tre grandezze migliorino nella stessa direzione, e qui succede solo perché si sta togliendo un lavoro a chi non doveva farlo.</p>
+            <p>La quota di lavoro che si può trattare così, nei sistemi aziendali, è più grande di quanto si immagini: il modello serve per capire cosa è stato chiesto e per scrivere la risposta in una lingua umana, e in mezzo la parte che tocca i dati non ha bisogno di lui. Conta anche più del risparmio l'effetto sulla ripetibilità: la stessa domanda posta due volte restituisce lo stesso dato, e un sistema su cui qualcuno deve poter contare non può cambiare risposta perché è cambiata la versione di un modello.</p>
           </div>
         </article>
 
-        <article class="block" data-reveal>
-          <p class="block__num"></p>
-          <div class="block__body">
+        <article class="blk" data-reveal>
+          <p class="blk__ann ann">Portata</p>
+          <div class="blk__body">
             <h2>Vale per qualsiasi fonte</h2>
-            <p>Il principio non cambia con la fonte: un database, il gestionale, il CRM, un servizio esterno, un archivio di documenti. Cambia chi esegue l'operazione e come viene dichiarata; restano fissi i tre pilastri — l'accesso passa da un elenco chiuso di operazioni con parametri controllati, l'assenza è un esito e non un silenzio, l'uscita si confronta con quello che è stato letto.</p>
-            <p>Anche le scritture seguono la stessa forma, con un passaggio in più: l'operazione che modifica un dato viene preparata, mostrata in chiaro a chi decide, e applicata solo dopo un sì esplicito. Il modello può proporre la modifica; la conferma e l'applicazione stanno fuori da lui, e restano fuori anche quando il sistema è in funzione da un anno e sembra affidabile.</p>
-            <p>È il motivo per cui questa impostazione invecchia bene. Cambiare gestionale significa riscrivere le operazioni, non ripensare il sistema. Cambiare modello significa sostituire chi sceglie l'operazione, mentre i controlli restano dove sono. Le due cose che in un progetto cambiano più spesso sono anche le due che questa architettura rende sostituibili.</p>
+            <p>Il principio non cambia con la fonte: un database, il gestionale, il CRM, un servizio esterno, un archivio di documenti. Cambia chi esegue l'operazione e come viene dichiarata; restano fissi i tre pilastri. L'accesso passa da un insieme chiuso di operazioni con parametri controllati. L'assenza è un esito e non un silenzio. L'uscita si confronta con quello che è stato letto.</p>
+            <p>È anche il motivo per cui questa impostazione invecchia bene. Cambiare gestionale significa riscrivere le operazioni, non ripensare il sistema; cambiare modello significa sostituire chi sceglie l'operazione, mentre i controlli restano dove sono. Le due cose che in un progetto cambiano più spesso sono anche le due che questa architettura rende sostituibili.</p>
+            <div class="limite">
+            <p class="ann">Limiti dichiarati</p>
+            <p>Il cancello sull'uscita confronta valori, quindi vede le cifre inventate e non vede le relazioni sbagliate: se il testo attribuisce a un cliente un importo che appartiene davvero a un altro cliente letto nello stesso turno, tutti i valori risultano presenti e la risposta passa. Contro questo servono operazioni che restituiscano già la relazione, invece di lasciarla ricostruire alla prosa. E se tutti i componenti girano con la stessa utenza di sistema, tenere il processo dei dati separato toglie l'incidente ma non l'attacco: l'unico confine vero è un'utenza distinta per chi approva.</p>
+            </div>
           </div>
         </article>
 
@@ -165,50 +315,54 @@
     </div>
   </section>
 
-  <section class="section">
-    <div class="shell">
+  <section class="sez">
+    <div class="guscio">
       <aside class="next" data-reveal>
-  <p class="next__label">Pagina successiva</p>
-  <a class="next__link" href="modelli.html">
-    <span class="next__title">Modelli e strumenti</span>
-    <span class="next__arrow" aria-hidden="true">&rarr;</span>
-  </a>
-  <p class="next__line">Se i controlli stanno fuori dal modello, il modello diventa un pezzo sostituibile. Ecco quali uso, dove, e con che criterio li cambio.</p>
-</aside>
+        <p class="ann">Pagina successiva</p>
+        <a class="next__link" href="privacy.html">
+          <span class="next__title">Privacy e dati sensibili</span>
+          <span class="next__arrow" aria-hidden="true">&#8594;</span>
+        </a>
+        <p class="next__line">Un dato letto correttamente resta un dato di una persona. La domanda successiva è se possa uscire dall’azienda, e a quali condizioni.</p>
+      </aside>
     </div>
   </section>
 
   </main>
 
-  <footer class="site-foot">
-    <div class="shell site-foot__inner">
-      <div class="site-foot__block">
-        <p class="site-foot__name">Andrea Sforna</p>
-        <p class="site-foot__line">Progettazione, sicurezza e manutenzione di sistemi di agenti AI.</p>
+  <footer class="foot">
+    <div class="foot__inner">
+      <div class="foot__block">
+        <p class="foot__name">Andrea Sforna</p>
+        <p class="foot__line">Architetture di agenti AI: progettazione, confini di sicurezza, accesso verificabile ai dati.</p>
       </div>
-      <div class="site-foot__block">
-        <ul class="site-foot__links">
+      <div class="foot__block">
+        <p class="ann">Contatti</p>
+        <ul class="foot__links">
           <li><a href="mailto:andrea.sforna@gmail.com">andrea.sforna@gmail.com</a></li>
           <li><a href="https://www.instagram.com/andreasfornaai/" rel="me noopener" target="_blank">Instagram @andreasfornaai</a></li>
         </ul>
       </div>
-      <div class="site-foot__block site-foot__block--end">
-        <ul class="site-foot__links site-foot__links--nav">
-          <li><a href="competenze.html">Competenze</a></li>
+      <div class="foot__block">
+        <p class="ann">Pagine</p>
+        <ul class="foot__links foot__links--nav">
+          <li><a href="architettura.html">Architettura</a></li>
           <li><a href="sicurezza.html">Sicurezza</a></li>
           <li><a href="dati.html">Dati</a></li>
-          <li><a href="modelli.html">Modelli</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="automazione.html">Automazione</a></li>
+          <li><a href="stack.html">Stack</a></li>
           <li><a href="metodo.html">Metodo</a></li>
           <li><a href="contatti.html">Contatti</a></li>
         </ul>
       </div>
     </div>
-    <div class="shell site-foot__base">
+    <div class="foot__base">
       <p>&copy; 2026 Andrea Sforna</p>
       <p><a href="#top">Torna su</a></p>
     </div>
   </footer>
 
-  <script src="assets/js/site.js" defer></script>
+<script src="assets/js/site.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="it" id="top" data-tema="scuro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy e dati sensibili · Andrea Sforna</title>
+<meta name="description" content="Quando un agente lavora su dati reali, quei dati possono uscire verso il fornitore del modello. Le tre strade possibili, e un’applicazione desktop che sostituisce i dati personali prima dell’invio e li rimette nella risposta.">
+<link rel="canonical" href="https://navras98.github.io/privacy.html">
+<meta name="author" content="Andrea Sforna">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#0b0e12" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f2efe9" media="(prefers-color-scheme: light)">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Andrea Sforna">
+<meta property="og:locale" content="it_IT">
+<meta property="og:title" content="Privacy e dati sensibili · Andrea Sforna">
+<meta property="og:description" content="Quando un agente lavora su dati reali, quei dati possono uscire verso il fornitore del modello. Le tre strade possibili, e un’applicazione desktop che sostituisce i dati personali prima dell’invio e li rimette nella risposta.">
+<meta property="og:url" content="https://navras98.github.io/privacy.html">
+<meta property="og:image" content="https://navras98.github.io/assets/img/anteprima.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Privacy e dati sensibili · Andrea Sforna">
+<meta name="twitter:description" content="Quando un agente lavora su dati reali, quei dati possono uscire verso il fornitore del modello. Le tre strade possibili, e un’applicazione desktop che sostituisce i dati personali prima dell’invio e li rimette nella risposta.">
+<meta name="twitter:image" content="https://navras98.github.io/assets/img/anteprima.png">
+
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="assets/img/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/icona-180.png">
+<link rel="manifest" href="site.webmanifest">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- i caratteri non bloccano la prima pittura: il testo compare subito con i
+     ripieghi dichiarati nel foglio, e cambia carattere quando arrivano -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Literata:opsz,wght@7..72,300..600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Literata:opsz,wght@7..72,300..600&display=swap"></noscript>
+<link rel="stylesheet" href="assets/css/site.css">
+<script>
+/* Prima della prima pittura: tema salvato o preferenza di sistema, e la classe
+   che abilita il movimento. Senza questo blocco il tema chiaro lampeggerebbe scuro. */
+(function () {
+  var d = document.documentElement;
+  d.classList.add('js');
+  try {
+    var s = localStorage.getItem('tema');
+    var scuro = s ? s === 'scuro' : !window.matchMedia('(prefers-color-scheme: light)').matches;
+    d.setAttribute('data-tema', scuro ? 'scuro' : 'chiaro');
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('moto');
+  } catch (e) {}
+})();
+</script>
+</head>
+<body class="p-privacy">
+  <a class="skip" href="#main">Vai al contenuto</a>
+
+  <div class="progress" aria-hidden="true"><i class="progress__fill" data-progress></i></div>
+
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a class="mark" href="index.html">
+        <span class="mark__glyph" aria-hidden="true">AS</span>
+        <span class="mark__name">Andrea Sforna</span>
+      </a>
+
+      <nav class="nav" aria-label="Navigazione principale">
+        <ul class="nav__list">
+            <li><a class="nav__link" href="index.html">Home</a></li>
+            <li><a class="nav__link" href="architettura.html">Architettura</a></li>
+            <li><a class="nav__link" href="sicurezza.html">Sicurezza</a></li>
+            <li><a class="nav__link" href="dati.html">Dati</a></li>
+            <li><a class="nav__link is-current" href="privacy.html" aria-current="page">Privacy</a></li>
+            <li><a class="nav__link" href="automazione.html">Automazione</a></li>
+            <li><a class="nav__link" href="stack.html">Stack</a></li>
+            <li><a class="nav__link" href="metodo.html">Metodo</a></li>
+            <li><a class="nav__link" href="contatti.html">Contatti</a></li>
+        </ul>
+      </nav>
+
+      <div class="topbar__end">
+        <button class="theme" type="button" data-theme-toggle aria-live="polite">
+          <span class="theme__dot" aria-hidden="true"></span>
+          <span class="theme__label" data-theme-label>Tema</span>
+        </button>
+        <button class="burger" type="button" aria-expanded="false" aria-controls="menu-mobile" data-burger>
+          <span class="burger__bars" aria-hidden="true"><i></i><i></i></span>
+          <span class="burger__label">Menu</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- fuori dalla barra di proposito: il filtro sullo sfondo dell'intestazione
+       farebbe da blocco contenitore e schiaccerebbe il pannello ad altezza zero -->
+  <div class="drawer" id="menu-mobile" data-menu hidden>
+    <nav class="drawer__inner" aria-label="Navigazione mobile">
+      <ul class="drawer__list">
+            <li><a class="drawer__link" href="index.html">Home</a></li>
+            <li><a class="drawer__link" href="architettura.html">Architettura</a></li>
+            <li><a class="drawer__link" href="sicurezza.html">Sicurezza</a></li>
+            <li><a class="drawer__link" href="dati.html">Dati</a></li>
+            <li><a class="drawer__link is-current" href="privacy.html" aria-current="page">Privacy</a></li>
+            <li><a class="drawer__link" href="automazione.html">Automazione</a></li>
+            <li><a class="drawer__link" href="stack.html">Stack</a></li>
+            <li><a class="drawer__link" href="metodo.html">Metodo</a></li>
+            <li><a class="drawer__link" href="contatti.html">Contatti</a></li>
+      </ul>
+      <p class="drawer__foot"><a href="mailto:andrea.sforna@gmail.com">andrea.sforna@gmail.com</a></p>
+    </nav>
+  </div>
+
+  <main id="main">
+  <section class="sez">
+    <div class="guscio">
+      <div class="blk" data-reveal>
+        <p class="blk__ann ann">Privacy</p>
+        <div class="blk__body">
+          <h1>Dove vanno i dati delle persone</h1>
+          <p class="apertura__riga" style="margin-top:var(--s6)">Nel momento in cui un agente lavora su dati veri, quei dati possono uscire verso il fornitore del modello. Chi tratta dati di persone deve decidere questo prima, non dopo, perché è la decisione da cui dipende tutta l'architettura.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sez">
+    <div class="guscio">
+      <div class="blocchi">
+
+        <article class="blk" data-reveal>
+          <p class="blk__ann ann">La decisione</p>
+          <div class="blk__body">
+            <h2>Il confine di ingresso dei dati viene prima</h2>
+            <p>Prima di scegliere i modelli va deciso quali informazioni entrano nel sistema, chi vede cosa, e cosa può uscire dall'azienda. Deciderlo dopo significa rifare l'architettura, perché da quella risposta dipende dove girano i modelli, come sono separati i ruoli, cosa può restare in memoria e cosa no, e perfino il dimensionamento della macchina.</p>
+            <p>È anche la domanda che nessuno ha voglia di affrontare all'inizio, perché è noiosa e non produce niente di dimostrabile. Nella mia esperienza è l'unica che, rimandata, costa un progetto: tutto il resto si aggiusta strada facendo, questo no.</p>
+            <p>Le strade sono tre, e vanno messe sul tavolo per quello che sono. Un modello che gira dentro l'azienda, sulla macchina del cliente, e allora i dati non attraversano nessuna rete. Una riduzione dei dati prima dell'invio, cioè far uscire il testo senza le informazioni che identificano le persone. Oppure una scelta consapevole di mandare i dati fuori, messa per iscritto, con il fornitore nominato e le condizioni verificate. Le prime due sono lavoro; la terza è una decisione, e va presa da chi ne risponde.</p>
+          </div>
+        </article>
+
+        <article class="blk" data-reveal>
+          <p class="blk__ann ann">Lo strumento</p>
+          <div class="blk__body">
+            <h2>PrivacyBridge</h2>
+            <p>Per la seconda strada ho costruito un'applicazione desktop. Riconosce i dati personali dentro un testo o un documento, li sostituisce prima che il testo raggiunga il modello, e rimette i valori veri quando la risposta torna indietro. Gira in locale: non è un servizio a cui si manda il testo, e non è un pezzo di rete che si mette in mezzo alle comunicazioni.</p>
+            <p>La scelta più discussa è che il passaggio verso il modello resta un gesto della persona: si trasforma il testo, lo si porta all'assistente, si riporta indietro la risposta. Rallenta, ed è esattamente il punto. Un'integrazione automatica sarebbe più comoda e renderebbe possibile l'invio accidentale di testo non filtrato, che è precisamente il rischio che lo strumento esiste per togliere. Ogni trasformazione resta visibile invece di avvenire da qualche parte.</p>
+            <p>Il riconoscimento è a strati, e nessuno strato basta da solo. Regole deterministiche con validazione aritmetica per gli identificatori che hanno una struttura nota. Riconoscimento linguistico per i nomi di persona e di organizzazione, che una regola non può prendere. E un modello specializzato leggero per alzare il recupero su quello che sfugge ai primi due. La validazione con il carattere di controllo è ciò che rende usabile una regola larga: senza, la stessa espressione produce una valanga di falsi positivi e lo strumento diventa inservibile.</p>
+          </div>
+        </article>
+
+      </div>
+
+      <figure class="dia" data-reveal tabindex="0" role="group" aria-label="Il ciclo della sostituzione: il testo con i dati reali resta sul computer, il riconoscimento a strati individua i dati personali, i segnaposto numerati escono verso il modello, la risposta rientra e i valori veri vengono rimessi. Il valore reale non attraversa mai il confine.">
+  <svg viewBox="0 0 940 300" role="img" aria-label="Il ciclo della sostituzione: il testo con i dati reali resta sul computer, il riconoscimento a strati individua i dati personali, i segnaposto numerati escono verso il modello, la risposta rientra e i valori veri vengono rimessi. Il valore reale non attraversa mai il confine." preserveAspectRatio="xMidYMid meet" focusable="false">
+    <defs>
+      <marker id="punta" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0 0 L8 4 L0 8 z" class="dia__punta"/>
+      </marker>
+    </defs>
+      <text x="30" y="34" class="dia__eti">dentro l’azienda</text>
+      <text x="690" y="34" class="dia__eti">fuori</text>
+      
+    <g class="dia__nodo">
+      <rect x="30" y="66" width="330" height="50" class="dia__scatola"/>
+      <text x="46" y="88" class="dia__forte">Testo con i dati reali</text>
+      <text x="46" y="105" class="dia__min">sul computer di chi lavora</text>
+    </g>
+    <g class="dia__nodo">
+      <rect x="30" y="132" width="330" height="50" class="dia__scatola"/>
+      <text x="46" y="154" class="dia__forte">Riconoscimento a strati</text>
+      <text x="46" y="171" class="dia__min">regole, lingua, modello leggero</text>
+    </g>
+    <g class="dia__nodo">
+      <rect x="30" y="198" width="330" height="50" class="dia__scatola"/>
+      <text x="46" y="220" class="dia__forte">Segnaposto numerati</text>
+      <text x="46" y="237" class="dia__min">il valore resta in casa</text>
+    </g>
+      <path d="M420 20 V 270" class="dia__confine"/>
+      <text x="430" y="288" class="dia__min">confine</text>
+
+      <g class="dia__nodo">
+        <rect x="610" y="132" width="300" height="50" class="dia__scatola dia__scatola--fuori"/>
+        <text x="626" y="154" class="dia__forte">Il modello vede i segnaposto</text>
+        <text x="626" y="171" class="dia__min">non può risalire al valore, nemmeno provandoci</text>
+      </g>
+
+      <path d="M368 223 H602" class="dia__filo" marker-end="url(#punta)"/>
+      <path d="M602 196 H480 V 91 H368" class="dia__filo dia__filo--ritorno" marker-end="url(#punta)"/>
+      <text x="500" y="212" class="dia__min">la risposta rientra e i valori veri tornano al loro posto</text>
+  </svg>
+</figure>
+
+      <div class="blocchi" style="margin-top:var(--s16)">
+
+        <article class="blk" data-reveal>
+          <p class="blk__ann ann">La sostituzione</p>
+          <div class="blk__body">
+            <h2>Segnaposto, non cifratura</h2>
+            <p>I valori riconosciuti vengono sostituiti da segnaposto numerati per famiglia, così il testo resta comprensibile: chi legge sa che quella è una persona, quello un indirizzo, quello un conto, e il modello può ragionarci sopra. Il valore reale resta in un deposito locale, legato alla sessione di lavoro.</p>
+            <p>Va detto con precisione: i segnaposto non sono cifratura. Non c'è nessuna chiave che permetta di tornare indietro, quindi chi riceve il testo non può risalire al valore neanche provandoci. Il prezzo di questa proprietà è che il ciclo va chiuso senza perdere la sessione, perché la mappatura vive lì e non è ricostruibile. È un compromesso, ed è più sicuro dell'alternativa reversibile.</p>
+            <p>Il deposito locale è protetto dai permessi del sistema e non è cifrato. È una cosa da dichiarare all'utente invece di lasciarla intendere, perché cambia il modello di minaccia: protegge da quello che esce verso il fornitore del modello, non da chi ha già accesso a quel computer.</p>
+          </div>
+        </article>
+
+        <article class="blk" data-reveal>
+          <p class="blk__ann ann">La lingua</p>
+          <div class="blk__body">
+            <h2>Perché è tarato sull'italiano</h2>
+            <p>Non è una traduzione dell'interfaccia. È il motivo per cui esiste. Gli identificatori fiscali e societari italiani non hanno un equivalente anglosassone, e i riconoscitori generici semplicemente non li conoscono: passano attraverso il filtro come se fossero parole qualunque. I formati bancari arrivano con spaziature variabili e con conti esteri dentro documenti italiani. I nomi e i cognomi italiani vengono scambiati per parole comuni dai modelli addestrati su altra lingua, e sono tanti i cognomi che sono anche mestieri, luoghi o colori. Gli indirizzi con via, numero civico, codice postale e provincia hanno una struttura che i riconoscitori generici smontano male, prendendo il pezzo sbagliato. I numeri di telefono compaiono con spaziature interne irregolari che una regola rigida non tollera.</p>
+            <p>Il criterio che guida tutto è togliere solo ciò che è davvero un dato personale. Uno strumento che cancella tutto quello che comincia per maiuscola produce un testo che il modello non può più usare, e a quel punto la persona lo disattiva. Un filtro troppo aggressivo è un filtro spento.</p>
+            <p>La lezione più costosa di questo lavoro riguarda il metro di misura. Su un materiale costruito apposta i risultati erano ottimi; sui documenti veri no. I testi veri hanno ortografia irregolare, scansioni imperfette, formati misti e campi compilati da persone diverse in dieci anni. Il metro deve essere il documento vero, altrimenti si sta misurando la propria fantasia.</p>
+          </div>
+        </article>
+
+        <article class="blk" data-reveal>
+          <p class="blk__ann ann">Il controllo</p>
+          <div class="blk__body">
+            <h2>La revisione umana è dentro il flusso, non a valle</h2>
+            <p>Una tabella mostra riga per riga cosa è stato sostituito, e si corregge a mano. Il pannello con il testo originale non viene mai sovrascritto, perché serve al confronto: la persona deve poter vedere la stessa frase nelle due versioni, non fidarsi di un elenco. Prima di copiare, se restano sospetti, lo strumento lo dice invece di lasciar passare in silenzio.</p>
+            <p>È proprio la tabella visibile a rendere accettabile spingere sul recupero. Senza revisione conviene un filtro prudente che perde qualcosa; con la revisione conviene un filtro largo che ogni tanto esagera, perché l'eccesso si toglie con un clic mentre l'omissione non si vede. Il compromesso di fondo è questo: mancare un dato è un danno di privacy, esagerare è un danno d'uso, e la scelta fra i due dipende da chi guarda il risultato prima che parta.</p>
+            <div class="limite">
+            <p class="ann">Limiti dichiarati</p>
+            <p>Nessun sistema di riconoscimento è perfetto, e questo non fa eccezione: la revisione umana resta parte del processo, non un passaggio facoltativo. Sui documenti scansionati il riconoscimento cala in modo netto, perché un identificatore letto male dal riconoscimento ottico non supera più la validazione aritmetica e passa come testo qualunque. E lo strumento protegge il testo che si manda a un modello: non protegge il computer su cui gira, non sostituisce le decisioni di conformità e non rende automaticamente lecito un trattamento che non lo era.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="blk" data-reveal>
+          <p class="blk__ann ann">Il guasto</p>
+          <div class="blk__body">
+            <h2>Un componente che smette di lavorare senza dirlo</h2>
+            <p>Un principio generale, che qui ha una forma particolarmente sgradevole. Se un componente di riconoscimento fallisce e l'errore viene inghiottito, il sistema continua a funzionare con gli strati che restano e ogni tanto lascia passare un nome. Non si spegne niente, non compare nessun messaggio: il risultato somiglia moltissimo a quello giusto, e la differenza si vede solo su casi specifici, quando ormai il testo è già uscito.</p>
+            <p>La difesa è di forma, e vale ben oltre questo strumento. Non si inghiotte mai un'eccezione. E all'avvio si verifica che ogni componente produca davvero qualcosa, invece di dare per scontato che sia partito perché non ha protestato. Un componente che non protesta e non lavora è il guasto più caro che conosca.</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="sez">
+    <div class="guscio">
+      <aside class="next" data-reveal>
+        <p class="ann">Pagina successiva</p>
+        <a class="next__link" href="automazione.html">
+          <span class="next__title">Automazione e contenuti</span>
+          <span class="next__arrow" aria-hidden="true">&#8594;</span>
+        </a>
+        <p class="next__line">Decisi i confini dei dati, resta da capire quale lavoro conviene mettere su un binario e quale è meglio lasciare a una persona.</p>
+      </aside>
+    </div>
+  </section>
+
+  </main>
+
+  <footer class="foot">
+    <div class="foot__inner">
+      <div class="foot__block">
+        <p class="foot__name">Andrea Sforna</p>
+        <p class="foot__line">Architetture di agenti AI: progettazione, confini di sicurezza, accesso verificabile ai dati.</p>
+      </div>
+      <div class="foot__block">
+        <p class="ann">Contatti</p>
+        <ul class="foot__links">
+          <li><a href="mailto:andrea.sforna@gmail.com">andrea.sforna@gmail.com</a></li>
+          <li><a href="https://www.instagram.com/andreasfornaai/" rel="me noopener" target="_blank">Instagram @andreasfornaai</a></li>
+        </ul>
+      </div>
+      <div class="foot__block">
+        <p class="ann">Pagine</p>
+        <ul class="foot__links foot__links--nav">
+          <li><a href="architettura.html">Architettura</a></li>
+          <li><a href="sicurezza.html">Sicurezza</a></li>
+          <li><a href="dati.html">Dati</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="automazione.html">Automazione</a></li>
+          <li><a href="stack.html">Stack</a></li>
+          <li><a href="metodo.html">Metodo</a></li>
+          <li><a href="contatti.html">Contatti</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot__base">
+      <p>&copy; 2026 Andrea Sforna</p>
+      <p><a href="#top">Torna su</a></p>
+    </div>
+  </footer>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>
