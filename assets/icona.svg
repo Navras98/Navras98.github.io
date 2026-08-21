@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Andrea Sforna AI">
+  <rect width="64" height="64" fill="#0A0B0D"/>
+  <rect x="10.5" y="10.5" width="43" height="43" fill="none" stroke="rgba(255,255,255,.24)" stroke-width="2"/>
+  <text x="32" y="41.5" text-anchor="middle" fill="#EDEDEA"
+        font-family="Geist, Helvetica, Arial, sans-serif" font-size="21" font-weight="600"
+        letter-spacing="-1.3">AS</text>
+  <rect x="49" y="7" width="7" height="7" fill="#FF3B2F"/>
+</svg>

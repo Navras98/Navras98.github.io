@@ -143,6 +143,12 @@
       "nota": "3/15 dal 1 settembre 2026"
     },
     {
+      "modello": "Claude Haiku 4.5",
+      "ingresso": 1,
+      "uscita": 5,
+      "cache_letta": 0.1
+    },
+    {
       "modello": "GPT-5.6 Sol",
       "ingresso": 5,
       "uscita": 30,

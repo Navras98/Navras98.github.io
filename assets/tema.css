@@ -104,6 +104,61 @@ img{display:block;max-width:100%}
   html{scroll-behavior:auto}
   *{animation:none!important;transition:none!important}
   :root [data-reveal]{opacity:1!important;transform:none!important}
+  /* Le bolle delle chat partono da opacita' zero e si accendono con
+     l'animazione: spegnendo le animazioni restavano invisibili, e le
+     conversazioni dimostrative sparivano del tutto per chi ha attivo
+     "riduci movimento". Qui tornano visibili senza muoversi. */
+  :root [data-bolla]{opacity:1!important;transform:none!important}
   [data-draw]{stroke-dashoffset:0}
   [data-punto]{opacity:1}
 }
+
+/* Revisione 21 agosto 2026 — leggibilita' su schermo stretto e messa a fuoco.
+   Nessuna regola qui sotto ha effetto sopra i 980px: il disegno da tavolo
+   resta identico a prima. */
+
+/* Nelle sezioni dimostrative a colonne invertite il telaio della chat sta
+   prima del testo nel documento: su schermo largo si legge da sinistra a
+   destra ed e' voluto, ma quando la griglia crolla a una colonna la demo
+   finirebbe sopra il titolo che la introduce. Qui il testo torna per primo. */
+/* Le sezioni dimostrative stanno su due colonne solo se ci stanno davvero
+   (480+480+72 di distanza = 1032px). Sotto quella soglia si va a colonna sola:
+   scritto a mano perche' dentro repeat(auto-fit,...) la percentuale di
+   min(480px,100%) non si risolve e il browser tiene 480px fissi, spingendo il
+   riquadro della chat fuori dallo schermo. */
+@media (max-width:1040px){
+  [data-demo]{grid-template-columns:1fr!important}
+  /* Alcune sezioni dimostrative hanno il telaio della chat prima del testo:
+     su schermo largo si legge da sinistra a destra ed e' voluto, ma a colonna
+     sola la dimostrazione finirebbe sopra il titolo che la introduce.
+     Il caso si riconosce dalla struttura (il titolo sta nell'ultimo blocco),
+     non da un attributo scritto a mano che si puo' sbagliare. */
+  [data-demo]:has(> *:last-child h2) > *:last-child{order:-1}
+}
+
+/* Gli elementi di una griglia hanno una larghezza minima automatica pari al
+   loro contenuto: una tabella larga dentro una chat allargava la colonna oltre
+   lo schermo. Azzerare quel minimo lascia scorrere la tabella invece di
+   spingere fuori tutto il blocco. Sopra i 480px la colonna resta com'era. */
+[data-demo]>*,[data-demo] [data-lift]>*{min-width:0}
+
+/* Le tabelle a tre colonne hanno la prima colonna fissa: su uno schermo da
+   320px quello che resta alla terza colonna non basta e il testo esce. Qui le
+   proporzioni si stringono. Sopra i 430px non cambia nulla. */
+@media (max-width:430px){
+  [data-tabella]{grid-template-columns:26px minmax(0,1fr) minmax(0,1.35fr)!important;gap:10px!important}
+}
+
+/* Le tabelle dentro le chat non si schiacciano: scorrono in orizzontale. */
+@media (max-width:720px){
+  /* !important perche' lo stile in linea dichiara overflow:hidden e vincerebbe */
+  [data-tabella-chat]{overflow-x:auto!important;max-width:100%;min-width:0;-webkit-overflow-scrolling:touch}
+  [data-tabella-chat]>div{min-width:400px}
+}
+
+/* Messa a fuoco visibile da tastiera: prima il contorno spariva del tutto. */
+:where(a,button,[tabindex]):focus-visible{
+  outline:2px solid var(--acc);
+  outline-offset:3px;
+}
+main:focus{outline:none}

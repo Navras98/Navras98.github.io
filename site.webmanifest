@@ -1,0 +1,16 @@
+{
+  "name": "Andrea Sforna AI",
+  "short_name": "Sforna AI",
+  "description": "Progettazione, sicurezza e manutenzione di sistemi di agenti AI.",
+  "lang": "it",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0A0B0D",
+  "theme_color": "#0A0B0D",
+  "icons": [
+    { "src": "/assets/icona.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "/assets/icona-180.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "/assets/icona-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
