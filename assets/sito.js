@@ -1,12 +1,44 @@
 const CHIAVE = 'as-tema';
 
+// Chi ha gia' un ascoltatore lo si ricorda per identita' del nodo, non con un
+// attributo. Il motore che disegna la pagina rifa' i nodi e nel rifarli si
+// porta dietro gli attributi ma non gli ascoltatori: un segno scritto come
+// data-legato sopravvive al nodo che lo aveva, e la ripassata lo legge come
+// «gia' fatto». Risultato: su telefono il tasto Menu smetteva di aprire il
+// pannello, e il tasto del tema di cambiare tema. Con un WeakSet il segno
+// muore insieme al nodo, e la ripassata rilega quello nuovo.
+const legati = new WeakSet();
+function daLegare(n) {
+  if (legati.has(n)) return false;
+  legati.add(n);
+  return true;
+}
+
+// Il tasto del tema e' l'unica scritta della pagina che nasce qui dentro e non
+// nel documento. Sulle pagine inglesi diceva comunque «Chiaro»: una parola
+// italiana in mezzo a una pagina inglese, e nessun collaudo sul testo scritto
+// poteva accorgersene, perche' quella parola nel file non c'e'. La lingua la
+// dichiara il documento, non lo script: <html lang> e' gia' li' ed e' giusto.
+const PAROLE = {
+  it: { chiaro: 'Chiaro', scuro: 'Scuro',
+        vaiChiaro: 'Passa al tema chiaro', vaiScuro: 'Passa al tema scuro' },
+  en: { chiaro: 'Light', scuro: 'Dark',
+        vaiChiaro: 'Switch to the light theme', vaiScuro: 'Switch to the dark theme' },
+};
+
+function lingua() {
+  const l = (document.documentElement.getAttribute('lang') || 'it').slice(0, 2);
+  return PAROLE[l] ? l : 'it';
+}
+
 function applica(tema) {
   const r = document.documentElement;
   if (tema === 'chiaro') r.setAttribute('data-tema', 'chiaro');
   else r.removeAttribute('data-tema');
+  const p = PAROLE[lingua()];
   document.querySelectorAll('[data-tema-btn]').forEach((b) => {
-    b.textContent = tema === 'chiaro' ? 'Scuro' : 'Chiaro';
-    b.setAttribute('aria-label', tema === 'chiaro' ? 'Passa al tema scuro' : 'Passa al tema chiaro');
+    b.textContent = tema === 'chiaro' ? p.scuro : p.chiaro;
+    b.setAttribute('aria-label', tema === 'chiaro' ? p.vaiScuro : p.vaiChiaro);
   });
 }
 
@@ -17,8 +49,7 @@ function tema() {
   applica(salvato || (scuroDiSistema ? 'scuro' : 'chiaro'));
 
   document.querySelectorAll('[data-tema-btn]').forEach((b) => {
-    if (b.dataset.legato) return;
-    b.dataset.legato = '1';
+    if (!daLegare(b)) return;
     b.addEventListener('click', () => {
       const ora = document.documentElement.getAttribute('data-tema') === 'chiaro' ? 'scuro' : 'chiaro';
       applica(ora);
@@ -73,14 +104,13 @@ function avanzamento() {
 
 function copia() {
   document.querySelectorAll('[data-copia]').forEach((b) => {
-    if (b.dataset.legato) return;
-    b.dataset.legato = '1';
+    if (!daLegare(b)) return;
     b.addEventListener('click', async () => {
       const testo = b.getAttribute('data-copia');
       const prima = b.textContent;
       try {
         await navigator.clipboard.writeText(testo);
-        b.textContent = 'Copiato';
+        b.textContent = lingua() === 'en' ? 'Copied' : 'Copiato';
       } catch (e) {
         b.textContent = testo;
       }
@@ -92,8 +122,7 @@ function copia() {
 function menu() {
   const bottone = document.querySelector('[data-burger]');
   const pannello = document.querySelector('[data-pannello]');
-  if (!bottone || !pannello || bottone.dataset.legato) return;
-  bottone.dataset.legato = '1';
+  if (!bottone || !pannello || !daLegare(bottone)) return;
   const chiudi = () => {
     pannello.style.display = 'none';
     bottone.setAttribute('aria-expanded', 'false');
