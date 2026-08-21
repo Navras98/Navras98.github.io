@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><script type="module" src="./assets/sito.js"></script><title>Architettura — Andrea Sforna AI</title><meta name="description" content="Dieci ruoli con permessi calibrati, controllo dei giri a vuoto, memoria che sopravvive al riavvio."><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/tema.css"></helmet>
+
+<div data-avanzamento style="position:fixed;top:0;left:0;height:2px;width:0;background:var(--acc);z-index:60"></div>
+<div data-cursore style="position:fixed;inset:0;pointer-events:none;z-index:1"></div>
+<div style="position:fixed;inset:0;background:var(--grana);pointer-events:none;z-index:55"></div>
+
+<header style="position:sticky;top:0;z-index:50;background:var(--velo);backdrop-filter:blur(16px);border-bottom:1px solid var(--filo1)">
+  <div style="max-width:1360px;margin:0 auto;padding:14px clamp(20px,4vw,48px);display:flex;align-items:center;justify-content:space-between;gap:20px">
+    <a href="Home.dc.html" style="display:flex;align-items:center;gap:12px;flex:none;font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t1);white-space:nowrap"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;position:relative;width:30px;height:30px;border:1px solid var(--filo2);flex:none"><span style="font:600 12px Geist,'Instrument Sans',Helvetica,sans-serif;letter-spacing:-.06em;color:var(--t1)">AS</span><span style="position:absolute;right:-1px;top:-1px;width:3px;height:3px;background:var(--acc)"></span></span>Andrea Sforna AI</a>
+    <nav data-nav style="display:flex;align-items:center;gap:20px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase">
+      <a href="Agenti.dc.html" style="color:var(--t2)">Agenti</a>
+      <a href="Casi.dc.html" style="color:var(--t2)">Casi</a>
+      <a href="Modelli.dc.html" style="color:var(--t2)">Modelli</a>
+      <a href="Sicurezza.dc.html" style="color:var(--t2)">Sicurezza</a>
+      <a href="Dati.dc.html" style="color:var(--t2)">Dati</a>
+      <a href="Privacy.dc.html" style="color:var(--t2)">Privacy Bridge</a>
+      <a href="Formazione.dc.html" style="color:var(--t2)">Formazione</a>
+      <a href="Contatti.dc.html" style="color:var(--t2)">Contatti</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:10px">
+      <button type="button" data-tema-btn style="padding:7px 12px;background:transparent;border:1px solid var(--filo1);color:var(--t2);font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.09em;text-transform:uppercase;cursor:pointer" style-hover="border-color:var(--filo2);color:var(--t1)">Chiaro</button>
+      <button type="button" data-burger aria-expanded="false" aria-label="Apri il menu" style="display:none;align-items:center;padding:7px 12px;background:transparent;border:1px solid var(--filo1);color:var(--t1);font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.09em;text-transform:uppercase;cursor:pointer">Menu</button>
+    </div>
+  </div>
+  <div data-pannello style="display:none;border-top:1px solid var(--filo1);background:var(--sup1)">
+    <div style="max-width:1360px;margin:0 auto;padding:16px clamp(20px,4vw,48px);display:grid;gap:13px;font:500 12px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase">
+      <a href="Agenti.dc.html" style="color:var(--t2)">Agenti</a>
+      <a href="Casi.dc.html" style="color:var(--t2)">Casi</a>
+      <a href="Modelli.dc.html" style="color:var(--t2)">Modelli</a>
+      <a href="Sicurezza.dc.html" style="color:var(--t2)">Sicurezza</a>
+      <a href="Dati.dc.html" style="color:var(--t2)">Dati</a>
+      <a href="Privacy.dc.html" style="color:var(--t2)">Privacy Bridge</a>
+      <a href="Formazione.dc.html" style="color:var(--t2)">Formazione</a>
+      <a href="Contatti.dc.html" style="color:var(--t2)">Contatti</a>
+      <a href="Locali.dc.html" style="color:var(--t2)">Modelli in locale</a>
+      <a href="Architettura.dc.html" aria-current="page" style="color:var(--t1);border-bottom:1px solid var(--acc);padding-bottom:3px">Architettura</a>
+      <a href="Automazione.dc.html" style="color:var(--t2)">Automazione</a>
+      <a href="Strumenti.dc.html" style="color:var(--t2)">Strumenti</a>
+      <a href="Metodo.dc.html" style="color:var(--t2)">Metodo</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<section data-screen-label="01 Apertura" style="position:relative;padding:clamp(72px,10vw,150px) 0 clamp(48px,6vw,88px);overflow:hidden">
+  <div style="position:absolute;inset:0;background:var(--luce);pointer-events:none"></div>
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px);position:relative">
+    <p style="margin:0;font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t2);margin-bottom:clamp(24px,3vw,40px);animation:appari .9s ease .1s both">Architettura</p>
+    <h1 style="margin:0 0 clamp(24px,3vw,36px);font-weight:500;font-size:clamp(34px,6.4vw,92px);line-height:.98;letter-spacing:-.045em;color:var(--t1);max-width:20ch;text-wrap:pretty;animation:sali 1s cubic-bezier(.16,1,.3,1) .18s both">Più agenti, ruoli separati, permessi diversi</h1>
+    <div style="height:1px;background:var(--acc);max-width:560px;transform-origin:left;animation:filo 1.3s cubic-bezier(.16,1,.3,1) .3s both"></div>
+    <p style="margin:clamp(24px,3vw,36px) 0 0;max-width:60ch;font-weight:400;font-size:clamp(16px,1.5vw,22px);line-height:1.55;color:var(--t2);text-wrap:pretty;animation:sali 1s cubic-bezier(.16,1,.3,1) .38s both">Un agente solo che fa tutto è comodo da mostrare e fragile da tenere in piedi. Divido il lavoro in ruoli, e ogni ruolo ha soltanto i permessi che gli servono.</p>
+  </div>
+</section>
+
+<section data-screen-label="02 I ruoli che tengo in esercizio" style="padding:clamp(56px,8vw,120px) 0">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,64px);align-items:end;margin-bottom:clamp(32px,4vw,56px)" data-reveal>
+      <div>
+        <p style="margin:0 0 22px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);font-variant-numeric:tabular-nums">02</p>
+        <h2 style="margin:0 0 20px;font-weight:500;font-size:clamp(26px,3.2vw,42px);line-height:1.05;letter-spacing:-.035em;color:var(--t1);text-wrap:pretty;margin-bottom:0">I ruoli che tengo in esercizio</h2>
+      </div>
+      <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty;max-width:44ch">Dieci ruoli, ognuno con un profilo di permessi calibrato. Non è un organigramma: è un elenco di cose che ciascuno non può fare.</p>
+    </div>
+    <div style="border-top:1px solid var(--filo2)" data-reveal>
+      <div style="display:grid;grid-template-columns:70px minmax(150px,1fr) 2fr;gap:clamp(16px,2.4vw,40px);padding:14px 12px;border-bottom:1px solid var(--filo1);font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">
+        <span>#</span><span>Ruolo</span><span>Confine</span>
+      </div>
+      <div data-riga style="display:grid;grid-template-columns:70px minmax(150px,1fr) 2fr;gap:clamp(16px,2.4vw,40px);padding:clamp(20px,2.4vw,30px) 12px;border-bottom:1px solid var(--filo1);align-items:baseline">
+        <span data-num style="font:500 12px 'JetBrains Mono',monospace;color:var(--t3);font-variant-numeric:tabular-nums">01</span>
+        <span style="font-weight:500;font-size:clamp(17px,1.7vw,23px);letter-spacing:-.025em;color:var(--t1)">Assistente principale</span>
+        <span style="font-size:16px;line-height:1.55;color:var(--t2)">Riceve le richieste e decide chi lavora. Non esegue al posto degli altri.</span>
+      </div>
+      <div data-riga style="display:grid;grid-template-columns:70px minmax(150px,1fr) 2fr;gap:clamp(16px,2.4vw,40px);padding:clamp(20px,2.4vw,30px) 12px;border-bottom:1px solid var(--filo1);align-items:baseline">
+        <span data-num style="font:500 12px 'JetBrains Mono',monospace;color:var(--t3);font-variant-numeric:tabular-nums">02</span>
+        <span style="font-weight:500;font-size:clamp(17px,1.7vw,23px);letter-spacing:-.025em;color:var(--t1)">Esecutore tecnico</span>
+        <span style="font-size:16px;line-height:1.55;color:var(--t2)">Esegue e non delega a nessuno: la catena si ferma qui.</span>
+      </div>
+      <div data-riga style="display:grid;grid-template-columns:70px minmax(150px,1fr) 2fr;gap:clamp(16px,2.4vw,40px);padding:clamp(20px,2.4vw,30px) 12px;border-bottom:1px solid var(--filo1);align-items:baseline">
+        <span data-num style="font:500 12px 'JetBrains Mono',monospace;color:var(--t3);font-variant-numeric:tabular-nums">03</span>
+        <span style="font-weight:500;font-size:clamp(17px,1.7vw,23px);letter-spacing:-.025em;color:var(--t1)">Revisore</span>
+        <span style="font-size:16px;line-height:1.55;color:var(--t2)">Non può scrivere. Può solo leggere e giudicare, e non ha alcun interesse a dichiarare finito il lavoro.</span>
+      </div>
+      <div data-riga style="display:grid;grid-template-columns:70px minmax(150px,1fr) 2fr;gap:clamp(16px,2.4vw,40px);padding:clamp(20px,2.4vw,30px) 12px;border-bottom:1px solid var(--filo1);align-items:baseline">
+        <span data-num style="font:500 12px 'JetBrains Mono',monospace;color:var(--t3);font-variant-numeric:tabular-nums">04</span>
+        <span style="font-weight:500;font-size:clamp(17px,1.7vw,23px);letter-spacing:-.025em;color:var(--t1)">Coordinatore</span>
+        <span style="font-size:16px;line-height:1.55;color:var(--t2)">Distribuisce il lavoro e conta i giri: avvisa all&#8217;ottavo, si ferma al sedicesimo.</span>
+      </div>
+      <div data-riga style="display:grid;grid-template-columns:70px minmax(150px,1fr) 2fr;gap:clamp(16px,2.4vw,40px);padding:clamp(20px,2.4vw,30px) 12px;border-bottom:1px solid var(--filo1);align-items:baseline">
+        <span data-num style="font:500 12px 'JetBrains Mono',monospace;color:var(--t3);font-variant-numeric:tabular-nums">05</span>
+        <span style="font-weight:500;font-size:clamp(17px,1.7vw,23px);letter-spacing:-.025em;color:var(--t1)">Codice</span>
+        <span style="font-size:16px;line-height:1.55;color:var(--t2)">Lavora sui file di progetto, con gli strumenti di sviluppo e nulla di più.</span>
+      </div>
+      <div data-riga style="display:grid;grid-template-columns:70px minmax(150px,1fr) 2fr;gap:clamp(16px,2.4vw,40px);padding:clamp(20px,2.4vw,30px) 12px;border-bottom:1px solid var(--filo1);align-items:baseline">
+        <span data-num style="font:500 12px 'JetBrains Mono',monospace;color:var(--t3);font-variant-numeric:tabular-nums">06</span>
+        <span style="font-weight:500;font-size:clamp(17px,1.7vw,23px);letter-spacing:-.025em;color:var(--t1)">Interfacce</span>
+        <span style="font-size:16px;line-height:1.55;color:var(--t2)">Disegna e non pubblica.</span>
+      </div>
+      <div data-riga style="display:grid;grid-template-columns:70px minmax(150px,1fr) 2fr;gap:clamp(16px,2.4vw,40px);padding:clamp(20px,2.4vw,30px) 12px;border-bottom:1px solid var(--filo1);align-items:baseline">
+        <span data-num style="font:500 12px 'JetBrains Mono',monospace;color:var(--t3);font-variant-numeric:tabular-nums">07</span>
+        <span style="font-weight:500;font-size:clamp(17px,1.7vw,23px);letter-spacing:-.025em;color:var(--t1)">Privacy</span>
+        <span style="font-size:16px;line-height:1.55;color:var(--t2)">Controlla che dai dati non esca nulla. Ha il potere di bloccare, non di inviare.</span>
+      </div>
+      <div data-riga style="display:grid;grid-template-columns:70px minmax(150px,1fr) 2fr;gap:clamp(16px,2.4vw,40px);padding:clamp(20px,2.4vw,30px) 12px;border-bottom:1px solid var(--filo1);align-items:baseline">
+        <span data-num style="font:500 12px 'JetBrains Mono',monospace;color:var(--t3);font-variant-numeric:tabular-nums">08</span>
+        <span style="font-weight:500;font-size:clamp(17px,1.7vw,23px);letter-spacing:-.025em;color:var(--t1)">Dispositivi</span>
+        <span style="font-size:16px;line-height:1.55;color:var(--t2)">Comanda telefono e apparecchi di casa, dentro un elenco di comandi collaudati.</span>
+      </div>
+      <div data-riga style="display:grid;grid-template-columns:70px minmax(150px,1fr) 2fr;gap:clamp(16px,2.4vw,40px);padding:clamp(20px,2.4vw,30px) 12px;border-bottom:1px solid var(--filo1);align-items:baseline">
+        <span data-num style="font:500 12px 'JetBrains Mono',monospace;color:var(--t3);font-variant-numeric:tabular-nums">09</span>
+        <span style="font-weight:500;font-size:clamp(17px,1.7vw,23px);letter-spacing:-.025em;color:var(--t1)">Analisi</span>
+        <span style="font-size:16px;line-height:1.55;color:var(--t2)">Legge numeri e mercati in sola lettura.</span>
+      </div>
+      <div data-riga style="display:grid;grid-template-columns:70px minmax(150px,1fr) 2fr;gap:clamp(16px,2.4vw,40px);padding:clamp(20px,2.4vw,30px) 12px;border-bottom:1px solid var(--filo1);align-items:baseline;box-shadow:inset 3px 0 0 var(--acc)">
+        <span data-num style="font:500 12px 'JetBrains Mono',monospace;color:var(--acc);font-variant-numeric:tabular-nums">10</span>
+        <span style="font-weight:500;font-size:clamp(17px,1.7vw,23px);letter-spacing:-.025em;color:var(--t1)">Memoria</span>
+        <span style="font-size:16px;line-height:1.55;color:var(--t2)">Tiene il filo fra le sessioni. Non parla con l&#8217;esterno.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="03 I giri a vuoto" style="background:var(--sup1);border-top:1px solid var(--filo1);border-bottom:1px solid var(--filo1);padding:clamp(56px,8vw,120px) 0">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <article data-lift data-reveal style="border:1px solid var(--filo1);background:linear-gradient(180deg,var(--sup2),var(--sup1));display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(24px,4vw,72px);padding:clamp(28px,3.6vw,56px)">
+      <div>
+        <p style="margin:0 0 clamp(20px,2.4vw,32px);font-weight:500;font-size:clamp(40px,5vw,72px);line-height:1;letter-spacing:-.05em;color:var(--acc);font-variant-numeric:tabular-nums">03</p>
+        <h2 style="margin:0 0 20px;font-weight:500;font-size:clamp(26px,3.2vw,42px);line-height:1.05;letter-spacing:-.035em;color:var(--t1);text-wrap:pretty">I giri a vuoto</h2>
+        <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty">Il modo tipico in cui un sistema di agenti si rompe non è un errore: è una coppia di agenti che si rimanda lo stesso lavoro. Per questo il conteggio dei giri è nel sistema, non nelle istruzioni.</p>
+      </div>
+      <div style="align-self:center">
+          <div data-riga style="display:grid;grid-template-columns:minmax(90px,140px) 1fr;gap:clamp(16px,2vw,32px);padding:16px 12px;border-top:1px solid var(--filo1)"><span data-num style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">Ottavo giro</span><span style="font-size:15.5px;line-height:1.5;color:var(--t1)">Avviso: qualcosa non converge</span></div>
+          <div data-riga style="display:grid;grid-template-columns:minmax(90px,140px) 1fr;gap:clamp(16px,2vw,32px);padding:16px 12px;border-top:1px solid var(--filo1)"><span data-num style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">Sedicesimo</span><span style="font-size:15.5px;line-height:1.5;color:var(--t1)">Stop e richiesta a una persona</span></div>
+          <div data-riga style="display:grid;grid-template-columns:minmax(90px,140px) 1fr;gap:clamp(16px,2vw,32px);padding:16px 12px;border-top:1px solid var(--filo1);border-bottom:1px solid var(--filo1)"><span data-num style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">Sempre</span><span style="font-size:15.5px;line-height:1.5;color:var(--t1)">Un registro di chi ha fatto cosa</span></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section data-screen-label="04 La memoria fra le sessioni" style="padding:clamp(56px,8vw,120px) 0">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div style="margin-bottom:clamp(32px,4vw,56px)" data-reveal>
+      <p style="margin:0 0 22px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);font-variant-numeric:tabular-nums">04</p>
+      <h2 style="margin:0 0 20px;font-weight:500;font-size:clamp(26px,3.2vw,42px);line-height:1.05;letter-spacing:-.035em;color:var(--t1);text-wrap:pretty">La memoria fra le sessioni</h2>
+      <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty;max-width:56ch">Un agente che riparte da zero ogni volta fa perdere tempo a chi lo usa. Tengo una memoria che sopravvive al riavvio, e che invecchia in modo controllato.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(16px,2.4vw,32px)" data-reveal>
+      <div>
+        <p style="margin:0 0 4px;padding:14px 12px;border-bottom:1px solid var(--filo2);font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t1)">Resta</p>
+        <div data-riga style="padding:18px 12px;border-bottom:1px solid var(--filo1);font-size:16px;line-height:1.5;color:var(--t2)">Le decisioni prese e il perché</div>
+        <div data-riga style="padding:18px 12px;border-bottom:1px solid var(--filo1);font-size:16px;line-height:1.5;color:var(--t2)">I paletti stabili, distillati dai diari</div>
+        <div data-riga style="padding:18px 12px;border-bottom:1px solid var(--filo1);font-size:16px;line-height:1.5;color:var(--t2)">Le sintesi con la loro origine</div>
+        <div data-riga style="padding:18px 12px;border-bottom:1px solid var(--filo1);font-size:16px;line-height:1.5;color:var(--t2)">La ricerca sui contenuti, calcolata in locale</div>
+      </div>
+      <div>
+        <p style="margin:0 0 4px;padding:14px 12px;border-bottom:1px solid var(--acc);font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--acc)">Si consuma</p>
+        <div data-riga style="padding:18px 12px;border-bottom:1px solid var(--filo1);font-size:16px;line-height:1.5;color:var(--t2)">Gli appunti datati, che perdono peso col tempo</div>
+        <div data-riga style="padding:18px 12px;border-bottom:1px solid var(--filo1);font-size:16px;line-height:1.5;color:var(--t2)">Il rumore delle sessioni chiuse</div>
+        <div data-riga style="padding:18px 12px;border-bottom:1px solid var(--filo1);font-size:16px;line-height:1.5;color:var(--t2)">Tutto ciò che non ha una prova a monte</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="05 Come lo verifico" style="padding:clamp(56px,8vw,120px) 0">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <article data-lift data-reveal style="border:1px solid var(--filo1);background:linear-gradient(180deg,var(--sup2),var(--sup1));display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(24px,4vw,72px);padding:clamp(28px,3.6vw,56px)">
+      <div>
+        <p style="margin:0 0 clamp(20px,2.4vw,32px);font-weight:500;font-size:clamp(40px,5vw,72px);line-height:1;letter-spacing:-.05em;color:var(--acc);font-variant-numeric:tabular-nums">05</p>
+        <h2 style="margin:0 0 20px;font-weight:500;font-size:clamp(26px,3.2vw,42px);line-height:1.05;letter-spacing:-.035em;color:var(--t1);text-wrap:pretty">Come lo verifico</h2>
+        <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty">La memoria non si dichiara funzionante: si misura. Tengo un banco di prova con ventiquattro domande vere e lo rifaccio dopo ogni modifica.</p>
+      </div>
+      <div style="align-self:center">
+          <div data-riga style="display:grid;grid-template-columns:minmax(90px,140px) 1fr;gap:clamp(16px,2vw,32px);padding:16px 12px;border-top:1px solid var(--filo1)"><span data-num style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">Banco</span><span style="font-size:15.5px;line-height:1.5;color:var(--t1)">24 domande, esito 24 su 24</span></div>
+          <div data-riga style="display:grid;grid-template-columns:minmax(90px,140px) 1fr;gap:clamp(16px,2vw,32px);padding:16px 12px;border-top:1px solid var(--filo1)"><span data-num style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">Quando</span><span style="font-size:15.5px;line-height:1.5;color:var(--t1)">Dopo ogni modifica al sistema</span></div>
+          <div data-riga style="display:grid;grid-template-columns:minmax(90px,140px) 1fr;gap:clamp(16px,2vw,32px);padding:16px 12px;border-top:1px solid var(--filo1);border-bottom:1px solid var(--filo1)"><span data-num style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">Se cala</span><span style="font-size:15.5px;line-height:1.5;color:var(--t1)">Non si consegna</span></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section data-screen-label="06 Affermazione" style="background:var(--sup1);border-top:1px solid var(--acc);border-bottom:1px solid var(--filo1);padding:clamp(56px,8vw,120px) 0">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <p style="margin:0 0 clamp(20px,2.6vw,34px);font:500 11px 'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--acc)" data-reveal>La forma che regge</p>
+    <p style="margin:0;max-width:26ch;font-weight:500;font-size:clamp(28px,4.8vw,74px);line-height:1.02;letter-spacing:-.045em;text-wrap:pretty;color:var(--t1)" data-reveal>Il revisore non può scrivere. È una barriera reale, non un accordo fra gentiluomini.</p>
+  </div>
+</section>
+
+<section data-screen-label="07 Limite dichiarato" style="padding:clamp(48px,6vw,88px) 0">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div style="border-left:3px solid var(--acc);padding:clamp(22px,2.8vw,36px) clamp(22px,2.8vw,40px);background:linear-gradient(90deg,var(--acc-tenue),transparent 60%)" data-reveal>
+      <p style="margin:0 0 14px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--acc)">Limite dichiarato</p>
+      <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty;max-width:64ch;color:var(--t1)">Dividere in ruoli costa passaggi, tempo e denaro. Su un compito semplice è uno spreco, e lo dico: un flusso deterministico o un agente solo bastano nella maggior parte dei casi.</p>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="08 Pagina successiva" style="padding:0 0 clamp(72px,9vw,140px)">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <a href="Sicurezza.dc.html" data-lift style="display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:end;padding:clamp(28px,3.4vw,48px);border:1px solid var(--filo1);background:linear-gradient(180deg,var(--sup2),var(--sup1));color:var(--t1)" data-reveal>
+      <span style="display:block;max-width:56ch">
+        <span style="display:block;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3);margin-bottom:16px">Pagina successiva</span>
+        <span style="display:block;font-weight:500;font-size:clamp(22px,2.6vw,34px);line-height:1.1;letter-spacing:-.03em;margin-bottom:12px">Sicurezza</span>
+        <span style="display:block;font-weight:400;font-size:15px;line-height:1.6;color:var(--t2)">Dove vivono i permessi, e perché l'ultimo livello non è una garanzia.</span>
+      </span>
+      <span style="font:500 12px 'JetBrains Mono',monospace;letter-spacing:.09em;text-transform:uppercase;color:var(--acc)">Apri &#8594;</span>
+    </a>
+  </div>
+</section>
+</main>
+
+<footer style="border-top:1px solid var(--filo1);background:var(--sup1)">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px);padding-top:clamp(40px,5vw,72px);padding-bottom:clamp(28px,3.4vw,44px);display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:clamp(28px,4vw,56px)">
+    <div>
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;position:relative;width:44px;height:44px;border:1px solid var(--filo2);flex:none"><span style="font:600 18px Geist,'Instrument Sans',Helvetica,sans-serif;letter-spacing:-.06em;color:var(--t1)">AS</span><span style="position:absolute;right:-1px;top:-1px;width:3px;height:3px;background:var(--acc)"></span></span><span style="font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t1)">Andrea Sforna AI</span></div>
+      <p style="margin:0;max-width:34ch;font-size:15px;line-height:1.6;color:var(--t2)">Progettazione, sicurezza e manutenzione di sistemi di agenti AI.</p>
+    </div>
+    <div>
+      <p style="margin:0 0 16px;font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">Pagine</p>
+      <div style="display:grid;gap:10px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><a href="Agenti.dc.html" style="color:var(--t2)">Agenti</a><a href="Casi.dc.html" style="color:var(--t2)">Casi</a><a href="Modelli.dc.html" style="color:var(--t2)">Modelli</a><a href="Sicurezza.dc.html" style="color:var(--t2)">Sicurezza</a><a href="Dati.dc.html" style="color:var(--t2)">Dati</a><a href="Privacy.dc.html" style="color:var(--t2)">Privacy Bridge</a><a href="Formazione.dc.html" style="color:var(--t2)">Formazione</a><a href="Contatti.dc.html" style="color:var(--t2)">Contatti</a></div>
+    </div>
+    <div>
+      <p style="margin:0 0 16px;font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">Approfondimenti</p>
+      <div style="display:grid;gap:10px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><a href="Locali.dc.html" style="color:var(--t2)">Modelli in locale</a><a href="Architettura.dc.html" style="color:var(--t2)">Architettura</a><a href="Automazione.dc.html" style="color:var(--t2)">Automazione</a><a href="Strumenti.dc.html" style="color:var(--t2)">Strumenti</a><a href="Metodo.dc.html" style="color:var(--t2)">Metodo</a></div>
+    </div>
+    <div>
+      <p style="margin:0 0 16px;font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">Contatti</p>
+      <div style="display:grid;gap:10px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.06em">
+        <a href="mailto:andrea.sforna@gmail.com" style="color:var(--t2)">andrea.sforna@gmail.com</a>
+        <a href="https://www.instagram.com/andreasfornaai/" rel="me noopener" target="_blank" style="color:var(--t2)">Instagram @andreasfornaai</a>
+      </div>
+    </div>
+  </div>
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px);padding-top:20px;padding-bottom:clamp(28px,3.4vw,44px);border-top:1px solid var(--filo1);display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t3)">
+    <span>&#169; 2026 Andrea Sforna</span>
+    <span>Progettato e scritto da Andrea Sforna</span>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    import('./assets/sito.js').then((m) => m.avvia()).catch((e) => console.error(e));
+  }
+}
+</script>
+</body>
+</html>

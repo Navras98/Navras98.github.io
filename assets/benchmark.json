@@ -1,0 +1,169 @@
+{
+  "fonte": "Artificial Analysis",
+  "indirizzo": "https://artificialanalysis.ai",
+  "letto": "2026-08-21",
+  "indice_intelligenza": {
+    "versione": "v4.1.1",
+    "valutazioni": 9,
+    "modelli_in_classifica": 163,
+    "modelli_censiti": 610,
+    "valori": [
+      {
+        "nome": "Claude Opus 5 (max)",
+        "indice": 63,
+        "costo_per_compito": "$2,34",
+        "uso": true
+      },
+      {
+        "nome": "Claude Opus 5 (xhigh)",
+        "indice": 63,
+        "costo_per_compito": "$1,80",
+        "uso": true
+      },
+      {
+        "nome": "Claude Fable 5 (fallback)",
+        "indice": 62,
+        "costo_per_compito": "$3,14",
+        "uso": false
+      },
+      {
+        "nome": "Claude Opus 5 (high)",
+        "indice": 61,
+        "costo_per_compito": "$1,23",
+        "uso": true
+      },
+      {
+        "nome": "GPT-5.6 Sol (max)",
+        "indice": 61,
+        "costo_per_compito": "$1,23",
+        "uso": true
+      },
+      {
+        "nome": "Grok 4.6 (high)",
+        "indice": 61,
+        "costo_per_compito": "$0,84",
+        "uso": false
+      },
+      {
+        "nome": "Kimi K3 (max)",
+        "indice": 60,
+        "costo_per_compito": "$0,84",
+        "uso": true
+      },
+      {
+        "nome": "GLM-5.3 (max)",
+        "indice": 60,
+        "costo_per_compito": "$0,68",
+        "uso": false
+      },
+      {
+        "nome": "Qwen3.8 2.4T A95B",
+        "indice": 58,
+        "costo_per_compito": "$1,09",
+        "uso": true
+      },
+      {
+        "nome": "GPT-5.6 Sol (high)",
+        "indice": 57,
+        "costo_per_compito": "$0,55",
+        "uso": true
+      },
+      {
+        "nome": "Gemini 3.7 Flash (high)",
+        "indice": 56,
+        "costo_per_compito": "$0,40",
+        "uso": true
+      },
+      {
+        "nome": "DeepSeek V4 Pro (max)",
+        "indice": 53,
+        "costo_per_compito": "$0,25",
+        "uso": true
+      },
+      {
+        "nome": "GPT-5.6 Luna (max)",
+        "indice": 52,
+        "costo_per_compito": "$0,05",
+        "uso": false
+      },
+      {
+        "nome": "Qwen3.6 27B",
+        "indice": 38,
+        "costo_per_compito": "$0,29",
+        "uso": true
+      },
+      {
+        "nome": "Mistral Medium 3.5",
+        "indice": 30,
+        "costo_per_compito": "$0,46",
+        "uso": false
+      },
+      {
+        "nome": "gpt-oss-120b (high)",
+        "indice": 24,
+        "costo_per_compito": "$0,07",
+        "uso": true
+      }
+    ]
+  },
+  "indice_agenti_codice": {
+    "versione": "v1.4",
+    "prove": [
+      "DeepSWE (113)",
+      "Terminal-Bench v2.1 (89)",
+      "SWE-Atlas-QnA (124)"
+    ],
+    "valori": [
+      {
+        "nome": "Claude Code · Opus 5 (max)",
+        "indice": 67
+      },
+      {
+        "nome": "Claude Code · Opus 5 (high)",
+        "indice": 65.6
+      },
+      {
+        "nome": "Codex · GPT-5.6 Sol (high)",
+        "indice": 64.1
+      }
+    ]
+  },
+  "prezzi_per_milione_token": [
+    {
+      "modello": "Claude Opus 5",
+      "ingresso": 5,
+      "uscita": 25,
+      "cache_letta": 0.5
+    },
+    {
+      "modello": "Claude Sonnet 5",
+      "ingresso": 2,
+      "uscita": 10,
+      "cache_letta": 0.2,
+      "nota": "3/15 dal 1 settembre 2026"
+    },
+    {
+      "modello": "GPT-5.6 Sol",
+      "ingresso": 5,
+      "uscita": 30,
+      "cache_letta": 0.5
+    },
+    {
+      "modello": "GPT-5.6 Luna",
+      "ingresso": 1,
+      "uscita": 6
+    },
+    {
+      "modello": "Gemini 3.1 Pro",
+      "ingresso": 2,
+      "uscita": 12,
+      "nota": "raddoppia oltre 200K token"
+    },
+    {
+      "modello": "DeepSeek V4 Flash",
+      "ingresso": 0.14,
+      "uscita": 0.28,
+      "cache_letta": 0.0028
+    }
+  ]
+}
