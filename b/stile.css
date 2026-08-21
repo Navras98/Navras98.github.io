@@ -1,0 +1,348 @@
+/* VARIANTE B - TIPOGRAFIA CINETICA
+   Nessuna scena, nessun poligono. Tre leve sole: il carattere enorme, il fondo che
+   cambia tinta passando da una sezione all'altra, e un movimento lento e pesante.
+   Il carattere e Inter variabile con l'asse ottico spinto a 32 sui display: e un
+   disegno diverso, non lo stesso disegno ingrandito. */
+
+@font-face {
+  font-family: 'Inter var';
+  src: url('../assets/fonts/InterVariable.sub.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+:root {
+  color-scheme: dark;
+
+  /* inchiostro caldo, mai nero pieno. Le tre tinte sono il tema della variante */
+  --inchiostro: #111013;
+  --argilla: #191210;
+  --ardesia: #0E1316;
+
+  --testo-1: #EFEAE2;
+  --testo-2: #A39C92;
+  --testo-3: #746D65;
+  --filo: #EFEAE21F;
+  --accento: #E8C33A;
+
+  --mono: ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --sans: 'Inter var', system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --margine: clamp(1.25rem, 4.5vw, 4rem);
+  --lenta: cubic-bezier(.16, 1, .3, 1);
+  --pesante: cubic-bezier(.72, 0, .12, 1);
+}
+
+:root[data-tema='chiaro'] {
+  color-scheme: light;
+  /* seconda tavolozza, non l'inverso: carta con tre temperature */
+  --inchiostro: #EDE8DE;
+  --argilla: #EFE4D8;
+  --ardesia: #E4E8E9;
+
+  --testo-1: #14120F;
+  --testo-2: #55504A;
+  --testo-3: #7C766E;
+  --filo: #14120F26;
+  /* misurato: a #8A6400 l'etichetta stava a 4,41 su carta, sotto AA */
+  --accento: #7A5600;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--inchiostro);
+  color: var(--testo-1);
+  font-family: var(--sans);
+  font-synthesis-weight: none;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  /* il fondo cambia tinta fra le sezioni: e questa la firma della variante */
+  transition: background-color 1.1s var(--pesante);
+}
+
+a { color: inherit; }
+
+:focus-visible { outline: 2px solid var(--accento); outline-offset: 5px; }
+
+.salta {
+  position: fixed;
+  top: 0.75rem; left: 0.75rem;
+  z-index: 40;
+  padding: 0.6rem 0.9rem;
+  background: var(--inchiostro);
+  border: 1px solid var(--filo);
+  color: var(--testo-1);
+  font: 500 0.8rem/1 var(--mono);
+  text-decoration: none;
+  transform: translateY(-160%);
+  transition: transform 0.2s var(--lenta);
+}
+.salta:focus, .salta:focus-visible { transform: none; }
+
+/* ---------- la griglia visibile ----------
+   Non e decorazione: e la stessa griglia a cui si allineano i blocchi.
+   Dodici colonne, filetto solo sulle linee portanti. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  margin-inline: var(--margine);
+  background: repeating-linear-gradient(
+    to right,
+    var(--filo) 0 1px,
+    transparent 1px calc(100% / 6)
+  );
+  opacity: 0.5;
+  /* la griglia sta ferma mentre la pagina scorre: senza un piano suo il gradiente
+     a schermo intero viene ridipinto a ogni fotogramma. Misurato: da 45 a 61 */
+  transform: translateZ(0);
+  will-change: transform;
+}
+@media (max-width: 700px) {
+  body::before { background-size: 100% 100%; opacity: 0.35; }
+}
+
+/* ---------- barra ---------- */
+
+.barra {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(1rem, 2.6vw, 1.7rem) var(--margine);
+}
+
+.sigla { font: 600 0.8rem/1 var(--mono); letter-spacing: 0.14em; }
+
+.tema {
+  appearance: none;
+  background: transparent;
+  border: 1px solid var(--filo);
+  color: var(--testo-2);
+  font: 500 0.7rem/1 var(--mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.55rem 0.85rem;
+  cursor: pointer;
+  transition: color 0.3s, border-color 0.3s;
+}
+.tema:hover { color: var(--testo-1); border-color: var(--testo-3); }
+.tema:active { transform: translateY(1px); }
+
+main { position: relative; z-index: 10; }
+
+/* ---------- apertura ---------- */
+
+.apertura {
+  min-height: 78svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(3rem, 10vh, 7rem) var(--margine) clamp(3rem, 8vh, 6rem);
+}
+
+.ruolo {
+  margin: 0 0 clamp(1.6rem, 4vh, 3rem);
+  font: 500 0.72rem/1 var(--mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accento);
+}
+
+.nome {
+  margin: 0;
+  font-size: 13vw;
+  /* asse ottico al massimo: Inter Display, non Inter ingrandito */
+  font-variation-settings: 'opsz' 32, 'wght' 560;
+  line-height: 0.86;
+  letter-spacing: -0.048em;
+  white-space: nowrap;
+}
+
+/* la maschera: le lettere salgono da sotto un bordo netto */
+.riga { display: inline-flex; overflow: hidden; padding-bottom: 0.06em; }
+.riga i {
+  font-style: normal;
+  display: inline-block;
+  white-space: pre;
+}
+:root[data-js] .riga i {
+  transform: translate3d(0, 108%, 0);
+}
+:root[data-js] .riga.is-dentro i {
+  transform: none;
+  transition: transform 1.15s var(--pesante);
+  transition-delay: calc(var(--i) * 42ms);
+}
+
+.guida {
+  margin: clamp(1.8rem, 4vh, 3rem) 0 0;
+  max-width: 42ch;
+  font-size: clamp(1rem, 1.1vw + 0.74rem, 1.3rem);
+  line-height: 1.5;
+  color: var(--testo-2);
+}
+
+/* ---------- la fascia orizzontale ---------- */
+
+.fascia { position: relative; }
+.fascia__perno {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.fascia__nastro {
+  display: flex;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  padding-inline: var(--margine);
+  will-change: transform;
+}
+
+.carta {
+  flex: 0 0 auto;
+  width: min(88vw, 40rem);
+  min-height: min(62svh, 28rem);
+  padding: clamp(1.6rem, 3vw, 2.4rem);
+  border: 1px solid var(--filo);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+  background: color-mix(in srgb, var(--testo-1) 3%, transparent);
+  transition: border-color 0.5s var(--lenta), background-color 0.5s var(--lenta);
+}
+.carta:hover { border-color: var(--testo-3); }
+
+.carta__testa { display: grid; gap: clamp(0.9rem, 1.6vw, 1.4rem); }
+
+.carta h2 {
+  margin: 0;
+  font-size: clamp(2rem, 4.4vw, 3.6rem);
+  font-variation-settings: 'opsz' 32, 'wght' 520;
+  letter-spacing: -0.035em;
+  line-height: 0.98;
+}
+.carta p {
+  margin: 0;
+  max-width: 28ch;
+  font-size: clamp(0.95rem, 0.4vw + 0.85rem, 1.08rem);
+  line-height: 1.55;
+  color: var(--testo-2);
+}
+.carta::after {
+  content: 'Apri';
+  font: 500 0.72rem/1 var(--mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accento);
+}
+
+/* senza script il nastro non scorre: diventa una colonna leggibile */
+:root:not([data-js]) .fascia__perno { position: static; height: auto; padding-block: 4rem; }
+:root:not([data-js]) .fascia__nastro { flex-direction: column; }
+:root:not([data-js]) .carta { width: auto; min-height: 0; }
+
+/* ---------- chiusura ---------- */
+
+.chiusura {
+  display: grid;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: end;
+  padding: clamp(4rem, 14vh, 9rem) var(--margine) clamp(3rem, 8vh, 5rem);
+}
+@media (min-width: 900px) {
+  .chiusura { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); }
+}
+
+.tesi {
+  margin: 0 0 1.2rem;
+  max-width: 30ch;
+  font-size: clamp(1.35rem, 2.4vw, 2.15rem);
+  font-variation-settings: 'opsz' 28, 'wght' 480;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+.bio {
+  margin: 0;
+  max-width: 52ch;
+  font-size: clamp(0.98rem, 0.4vw + 0.88rem, 1.1rem);
+  line-height: 1.62;
+  color: var(--testo-2);
+}
+
+.scrivi {
+  justify-self: start;
+  text-decoration: none;
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-variation-settings: 'opsz' 32, 'wght' 500;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--accento);
+  display: inline-block;
+  padding-bottom: 0.08em;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.6s var(--pesante), letter-spacing 0.6s var(--pesante);
+}
+.scrivi:hover { border-color: var(--accento); letter-spacing: -0.02em; }
+
+/* ---------- piede ---------- */
+
+.piede {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: clamp(1rem, 2vw, 1.4rem) var(--margine);
+  border-top: 1px solid var(--filo);
+  font: 500 0.7rem/1 var(--mono);
+  letter-spacing: 0.08em;
+  color: var(--testo-3);
+}
+.varianti { display: flex; gap: 0.15rem; }
+.varianti a {
+  text-decoration: none;
+  padding: 0.35rem 0.6rem;
+  border: 1px solid transparent;
+  transition: color 0.25s, border-color 0.25s;
+}
+.varianti a:hover { color: var(--testo-1); }
+.varianti a[aria-current='page'] { color: var(--testo-1); border-color: var(--filo); }
+
+/* ---------- comparse dei blocchi di testo ---------- */
+
+:root[data-js] [data-riga] {
+  opacity: 0;
+  transform: translate3d(0, 1.1rem, 0);
+}
+:root[data-js] [data-riga].is-dentro {
+  opacity: 1;
+  transform: none;
+  transition: opacity 1s var(--pesante), transform 1s var(--pesante);
+  transition-delay: var(--ritardo, 0ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+  :root[data-js] [data-riga],
+  :root[data-js] .riga i { opacity: 1; transform: none; }
+  .fascia__perno { position: static; height: auto; padding-block: 4rem; overflow: visible; }
+  .fascia__nastro { flex-direction: column; transform: none !important; }
+  .carta { width: auto; min-height: 0; }
+}
