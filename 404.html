@@ -3,7 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="/./support.js"></script>
+<script>/* Le librerie stanno in casa: senza questa mappa il sito le chiede a
+   unpkg.com, e se quel dominio non risponde la pagina resta bianca. Il runtime
+   legge window.__resources e sostituisce l'indirizzo esterno con quello locale.
+   Le due copie sono byte per byte quelle che serviva il CDN: impronte sha384
+   verificate contro quelle dichiarate in support.js. */
+window.__resources={"https://unpkg.com/react@18.3.1/umd/react.production.min.js":"/assets/vendor/react-18.3.1.min.js","https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js":"/assets/vendor/react-dom-18.3.1.min.js"};</script>
+<script src="/support.js"></script>
 <title>Pagina non trovata — Andrea Sforna AI</title>
 <meta name="description" content="La pagina che cercavi non esiste. Da qui si torna all'inizio o si riparte dalle pagine principali.">
 <meta name="robots" content="noindex">
@@ -27,12 +33,11 @@
 <link rel="icon" href="/assets/icona.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/icona-180.png">
 <link rel="manifest" href="/site.webmanifest">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/caratteri.css">
 <link rel="stylesheet" href="/assets/tema.css">
 </head>
 <body>
-<a href="#contenuto" style="position:absolute;left:-9999px;top:0;z-index:100;padding:12px 18px;background:var(--acc);color:#fff;font:500 12px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase" onfocus="this.style.left='12px';this.style.top='12px'" onblur="this.style.left='-9999px'">Salta al contenuto</a>
+<a href="#contenuto" style="position:absolute;left:-9999px;top:0;z-index:100;padding:12px 18px;background:var(--acc);color:var(--su-acc);font:500 12px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase" onfocus="this.style.left='12px';this.style.top='12px'" onblur="this.style.left='-9999px'">Salta al contenuto</a>
 <x-dc>
 <helmet data-dc-atomics><script type="module" src="/./assets/sito.js"></script></helmet>
 
@@ -144,7 +149,7 @@
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   componentDidMount() {
-    import('./assets/sito.js').then((m) => m.avvia()).catch((e) => console.error(e));
+    import('/assets/sito.js').then((m) => m.avvia()).catch((e) => console.error(e));
   }
 }
 </script>

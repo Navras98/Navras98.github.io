@@ -3,6 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>/* Le librerie stanno in casa: senza questa mappa il sito le chiede a
+   unpkg.com, e se quel dominio non risponde la pagina resta bianca. Il runtime
+   legge window.__resources e sostituisce l'indirizzo esterno con quello locale.
+   Le due copie sono byte per byte quelle che serviva il CDN: impronte sha384
+   verificate contro quelle dichiarate in support.js. */
+window.__resources={"https://unpkg.com/react@18.3.1/umd/react.production.min.js":"/assets/vendor/react-18.3.1.min.js","https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js":"/assets/vendor/react-dom-18.3.1.min.js"};</script>
 <script src="/support.js"></script>
 <title>Strumenti — Andrea Sforna AI</title>
 <meta name="description" content="OpenClaw, Claude Code, server MCP, Hermes Agent, n8n, PostgreSQL, Docker: con cosa lavoro e che posto occupa ciascuno.">
@@ -27,12 +33,11 @@
 <link rel="icon" href="/assets/icona.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/icona-180.png">
 <link rel="manifest" href="/site.webmanifest">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/caratteri.css">
 <link rel="stylesheet" href="/assets/tema.css">
 </head>
 <body>
-<a href="#contenuto" style="position:absolute;left:-9999px;top:0;z-index:100;padding:12px 18px;background:var(--acc);color:#fff;font:500 12px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase" onfocus="this.style.left='12px';this.style.top='12px'" onblur="this.style.left='-9999px'">Salta al contenuto</a>
+<a href="#contenuto" style="position:absolute;left:-9999px;top:0;z-index:100;padding:12px 18px;background:var(--acc);color:var(--su-acc);font:500 12px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase" onfocus="this.style.left='12px';this.style.top='12px'" onblur="this.style.left='-9999px'">Salta al contenuto</a>
 <x-dc>
 <helmet data-dc-atomics><script type="module" src="/assets/sito.js"></script></helmet>
 
@@ -42,7 +47,7 @@
 
 <header style="position:sticky;top:0;z-index:50;background:var(--velo);backdrop-filter:blur(16px);border-bottom:1px solid var(--filo1)">
   <div style="max-width:1360px;margin:0 auto;padding:14px clamp(20px,4vw,48px);display:flex;align-items:center;justify-content:space-between;gap:20px">
-    <a href="./" style="display:flex;align-items:center;gap:12px;flex:none;font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t1);white-space:nowrap"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;position:relative;width:30px;height:30px;border:1px solid var(--filo2);flex:none"><span style="font:600 12px Geist,'Instrument Sans',Helvetica,sans-serif;letter-spacing:-.06em;color:var(--t1)">AS</span><span style="position:absolute;right:-1px;top:-1px;width:3px;height:3px;background:var(--acc)"></span></span>Andrea Sforna AI</a>
+    <a href="/" style="display:flex;align-items:center;gap:12px;flex:none;font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t1);white-space:nowrap"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;position:relative;width:30px;height:30px;border:1px solid var(--filo2);flex:none"><span style="font:600 12px Geist,'Instrument Sans',Helvetica,sans-serif;letter-spacing:-.06em;color:var(--t1)">AS</span><span style="position:absolute;right:-1px;top:-1px;width:3px;height:3px;background:var(--acc)"></span></span>Andrea Sforna AI</a>
     <nav data-nav style="display:flex;align-items:center;gap:20px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase">
       <a href="/agenti/" style="color:var(--t2)">Agenti</a>
       <a href="/casi/" style="color:var(--t2)">Casi</a>
@@ -84,7 +89,7 @@
     <p style="margin:0;font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t2);margin-bottom:clamp(24px,3vw,40px);animation:appari .9s ease .1s both">Strumenti</p>
     <h1 style="margin:0 0 clamp(24px,3vw,36px);font-weight:500;font-size:clamp(34px,6.4vw,92px);line-height:.98;letter-spacing:-.045em;color:var(--t1);max-width:20ch;text-wrap:pretty;animation:sali 1s cubic-bezier(.16,1,.3,1) .18s both">Con cosa lavoro, e cosa ci faccio</h1>
     <div style="height:1px;background:var(--acc);max-width:560px;transform-origin:left;animation:filo 1.3s cubic-bezier(.16,1,.3,1) .3s both"></div>
-    <p style="margin:clamp(24px,3vw,36px) 0 0;max-width:60ch;font-weight:400;font-size:clamp(16px,1.5vw,22px);line-height:1.55;color:var(--t2);text-wrap:pretty;animation:sali 1s cubic-bezier(.16,1,.3,1) .38s both">Non un elenco di marchi: per ogni strumento c'è il posto che occupa nei sistemi che costruisco. Le architetture sono quelle pubbliche dei rispettivi progetti, non versioni mie.</p>
+    <p style="margin:clamp(24px,3vw,36px) 0 0;max-width:60ch;font-weight:400;font-size:clamp(16px,1.5vw,22px);line-height:1.55;color:var(--t2);text-wrap:pretty;animation:sali 1s cubic-bezier(.16,1,.3,1) .38s both">Non un elenco di marchi: per ogni strumento c’è il posto che occupa nei sistemi che costruisco. Le architetture sono quelle pubbliche dei rispettivi progetti, non versioni mie.</p>
   </div>
 </section>
 
@@ -92,33 +97,33 @@
   <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px);margin-bottom:clamp(28px,3.4vw,44px)" data-reveal>
     <p style="margin:0;max-width:76ch;font:400 clamp(13px,1.05vw,15px)/1.7 'JetBrains Mono',monospace;color:var(--carta-t);text-wrap:pretty">Uso e confronto tutti i modelli e gli agenti in circolazione. Ogni settimana esce qualcosa: la scelta va rifatta, non ereditata. I marchi appartengono ai rispettivi titolari e sono citati solo per dire quali strumenti uso.</p>
   </div>
-  <div style="overflow:hidden;mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent);-webkit-mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent)">
+  <div data-nastro style="overflow:hidden;mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent);-webkit-mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent)">
     <div style="display:flex;width:max-content;animation:scorri 64s linear infinite">
       <div style="display:flex;align-items:center;gap:clamp(44px,5.4vw,80px);padding-right:clamp(44px,5.4vw,80px)">
-        <img data-logo src="/assets/loghi/claude.svg" alt="claude" style="height:30px;width:auto;flex:none">
-        <img data-logo src="/assets/loghi/openai.svg" alt="openai" style="height:22px;width:auto;flex:none">
-        <img data-logo src="/assets/loghi/gemini.svg" alt="gemini" style="height:26px;width:auto;flex:none">
-        <img data-logo src="/assets/loghi/deepseek-taglio.png" alt="deepseek-taglio" style="height:22px;width:auto;flex:none">
-        <img data-logo src="/assets/loghi/qwen.png" alt="qwen" style="height:26px;width:auto;flex:none">
-        <img data-logo src="/assets/loghi/kimi.svg" alt="kimi" style="height:24px;width:auto;flex:none">
-        <img data-logo src="/assets/loghi/mistral.svg" alt="mistral" style="height:26px;width:auto;flex:none">
-        <img data-logo src="/assets/loghi/openclaw.svg" alt="openclaw" style="height:32px;width:auto;flex:none">
-        <img data-logo src="/assets/loghi/openclaw-testo.png" alt="openclaw-testo" style="height:20px;width:auto;flex:none">
-        <img data-logo src="/assets/loghi/hermes-marchio.svg" alt="hermes-marchio" style="height:28px;width:auto;flex:none">
-        <img data-logo src="/assets/loghi/higgsfield.svg" alt="higgsfield" style="height:24px;width:auto;flex:none">
+        <img width="138" height="30" decoding="async" data-logo src="/assets/loghi/claude.svg" alt="Claude, di Anthropic" style="height:30px;width:auto;flex:none">
+        <img width="81" height="22" decoding="async" data-logo src="/assets/loghi/openai.svg" alt="OpenAI" style="height:22px;width:auto;flex:none">
+        <img width="115" height="26" decoding="async" data-logo src="/assets/loghi/gemini.svg" alt="Gemini, di Google" style="height:26px;width:auto;flex:none">
+        <img width="104" height="22" decoding="async" data-logo src="/assets/loghi/deepseek-taglio.webp" alt="DeepSeek" style="height:22px;width:auto;flex:none">
+        <img width="78" height="26" decoding="async" data-logo src="/assets/loghi/qwen.webp" alt="Qwen, di Alibaba" style="height:26px;width:auto;flex:none">
+        <img width="71" height="24" decoding="async" data-logo src="/assets/loghi/kimi.webp" alt="Kimi, di Moonshot AI" style="height:24px;width:auto;flex:none">
+        <img width="36" height="26" decoding="async" data-logo src="/assets/loghi/mistral.svg" alt="Mistral AI" style="height:26px;width:auto;flex:none">
+        <img width="32" height="32" decoding="async" data-logo src="/assets/loghi/openclaw.svg" alt="OpenClaw" style="height:32px;width:auto;flex:none">
+        <img width="116" height="20" decoding="async" data-logo src="/assets/loghi/openclaw-testo.webp" alt="OpenClaw" style="height:20px;width:auto;flex:none">
+        <img width="28" height="28" decoding="async" data-logo src="/assets/loghi/hermes-marchio.svg" alt="Hermes Agent" style="height:28px;width:auto;flex:none">
+        <img width="24" height="24" decoding="async" data-logo src="/assets/loghi/higgsfield.svg" alt="Higgsfield" style="height:24px;width:auto;flex:none">
       </div>
       <div aria-hidden="true" style="display:flex;align-items:center;gap:clamp(44px,5.4vw,80px);padding-right:clamp(44px,5.4vw,80px)">
-        <img data-logo src="/assets/loghi/claude.svg" alt="" style="height:30px;width:auto;flex:none">
-        <img data-logo src="/assets/loghi/openai.svg" alt="" style="height:22px;width:auto;flex:none">
-        <img data-logo src="/assets/loghi/gemini.svg" alt="" style="height:26px;width:auto;flex:none">
-        <img data-logo src="/assets/loghi/deepseek-taglio.png" alt="" style="height:22px;width:auto;flex:none">
-        <img data-logo src="/assets/loghi/qwen.png" alt="" style="height:26px;width:auto;flex:none">
-        <img data-logo src="/assets/loghi/kimi.svg" alt="" style="height:24px;width:auto;flex:none">
-        <img data-logo src="/assets/loghi/mistral.svg" alt="" style="height:26px;width:auto;flex:none">
-        <img data-logo src="/assets/loghi/openclaw.svg" alt="" style="height:32px;width:auto;flex:none">
-        <img data-logo src="/assets/loghi/openclaw-testo.png" alt="" style="height:20px;width:auto;flex:none">
-        <img data-logo src="/assets/loghi/hermes-marchio.svg" alt="" style="height:28px;width:auto;flex:none">
-        <img data-logo src="/assets/loghi/higgsfield.svg" alt="" style="height:24px;width:auto;flex:none">
+        <img width="138" height="30" decoding="async" data-logo src="/assets/loghi/claude.svg" alt="" style="height:30px;width:auto;flex:none">
+        <img width="81" height="22" decoding="async" data-logo src="/assets/loghi/openai.svg" alt="" style="height:22px;width:auto;flex:none">
+        <img width="115" height="26" decoding="async" data-logo src="/assets/loghi/gemini.svg" alt="" style="height:26px;width:auto;flex:none">
+        <img width="104" height="22" decoding="async" data-logo src="/assets/loghi/deepseek-taglio.webp" alt="" style="height:22px;width:auto;flex:none">
+        <img width="78" height="26" decoding="async" data-logo src="/assets/loghi/qwen.webp" alt="" style="height:26px;width:auto;flex:none">
+        <img width="71" height="24" decoding="async" data-logo src="/assets/loghi/kimi.webp" alt="" style="height:24px;width:auto;flex:none">
+        <img width="36" height="26" decoding="async" data-logo src="/assets/loghi/mistral.svg" alt="" style="height:26px;width:auto;flex:none">
+        <img width="32" height="32" decoding="async" data-logo src="/assets/loghi/openclaw.svg" alt="" style="height:32px;width:auto;flex:none">
+        <img width="116" height="20" decoding="async" data-logo src="/assets/loghi/openclaw-testo.webp" alt="" style="height:20px;width:auto;flex:none">
+        <img width="28" height="28" decoding="async" data-logo src="/assets/loghi/hermes-marchio.svg" alt="" style="height:28px;width:auto;flex:none">
+        <img width="24" height="24" decoding="async" data-logo src="/assets/loghi/higgsfield.svg" alt="" style="height:24px;width:auto;flex:none">
       </div>
     </div>
   </div>
@@ -213,7 +218,7 @@
       <div>
         <p style="margin:0 0 clamp(20px,2.4vw,32px);font-weight:500;font-size:clamp(40px,5vw,72px);line-height:1;letter-spacing:-.05em;color:var(--acc);font-variant-numeric:tabular-nums">02</p>
         <h2 style="margin:0 0 20px;font-weight:500;font-size:clamp(26px,3.2vw,42px);line-height:1.05;letter-spacing:-.035em;color:var(--t1);text-wrap:pretty">Come li metto insieme</h2>
-        <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty">L'ordine conta più della scelta dei pezzi. Un agente riceve gli strumenti da un server MCP, i permessi dal database e dal sistema operativo, e un registro che dice cosa ha fatto e con quale prova.</p>
+        <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty">L’ordine conta più della scelta dei pezzi. Un agente riceve gli strumenti da un server MCP, i permessi dal database e dal sistema operativo, e un registro che dice cosa ha fatto e con quale prova.</p>
       </div>
       <div style="align-self:center">
           <div data-riga style="display:grid;grid-template-columns:minmax(90px,140px) 1fr;gap:clamp(16px,2vw,32px);padding:16px 12px;border-top:1px solid var(--filo1)"><span data-num style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">Strumenti</span><span style="font-size:15.5px;line-height:1.5;color:var(--t1)">Un server MCP davanti a ogni operazione</span></div>
@@ -228,7 +233,7 @@
 <section data-screen-label="Affermazione" style="background:var(--sup1);border-top:1px solid var(--acc);border-bottom:1px solid var(--filo1);padding:clamp(56px,8vw,120px) 0">
   <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
     <p style="margin:0 0 clamp(20px,2.6vw,34px);font:500 11px 'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--acc)" data-reveal>Il criterio</p>
-    <p style="margin:0;max-width:26ch;font-weight:500;font-size:clamp(28px,4.8vw,74px);line-height:1.02;letter-spacing:-.045em;text-wrap:pretty;color:var(--t1)" data-reveal>Gli strumenti cambiano ogni mese. L'ordine in cui stanno insieme no.</p>
+    <p style="margin:0;max-width:26ch;font-weight:500;font-size:clamp(28px,4.8vw,74px);line-height:1.02;letter-spacing:-.045em;text-wrap:pretty;color:var(--t1)" data-reveal>Gli strumenti cambiano ogni mese. L’ordine in cui stanno insieme no.</p>
   </div>
 </section>
 
@@ -286,7 +291,7 @@
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   componentDidMount() {
-    import('./assets/sito.js').then((m) => m.avvia()).catch((e) => console.error(e));
+    import('/assets/sito.js').then((m) => m.avvia()).catch((e) => console.error(e));
   }
 }
 </script>

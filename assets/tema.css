@@ -4,10 +4,11 @@
   --sup2:#17191D;
   --sup3:#1D2027;
   --filo1:rgba(255,255,255,.08);
+  --filo-cmd:rgba(255,255,255,.34);   /* contorno dei comandi: 3,06:1 */
   --filo2:rgba(255,255,255,.16);
   --t1:#EDEDEA;
   --t2:#9A9CA1;
-  --t3:#6E727A;
+  --t3:#83878F;   /* 5,46:1 sul fondo, 4,52:1 sulla superficie piu'alta */
   --acc:#FF3B2F;
   --acc-tenue:rgba(255,59,47,.14);
   --grana:repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 1px,transparent 1px 3px);
@@ -26,10 +27,11 @@
   --sup2:#E7E2D9;
   --sup3:#E0DACF;
   --filo1:rgba(26,26,26,.12);
+  --filo-cmd:rgba(26,26,26,.42);      /* contorno dei comandi: 3,08:1 */
   --filo2:rgba(26,26,26,.24);
   --t1:#16181B;
   --t2:#4A4F57;
-  --t3:#6E747D;
+  --t3:#5A6069;   /* 5,53:1 sul fondo, 4,56:1 sulla superficie piu'alta */
   --acc:#C7301C;
   --acc-tenue:rgba(199,48,28,.1);
   --grana:repeating-linear-gradient(0deg,rgba(26,26,26,.028) 0 1px,transparent 1px 3px);
@@ -142,11 +144,51 @@ img{display:block;max-width:100%}
    spingere fuori tutto il blocco. Sopra i 480px la colonna resta com'era. */
 [data-demo]>*,[data-demo] [data-lift]>*{min-width:0}
 
-/* Le tabelle a tre colonne hanno la prima colonna fissa: su uno schermo da
-   320px quello che resta alla terza colonna non basta e il testo esce. Qui le
-   proporzioni si stringono. Sopra i 430px non cambia nulla. */
-@media (max-width:430px){
-  [data-tabella]{grid-template-columns:26px minmax(0,1fr) minmax(0,1.35fr)!important;gap:10px!important}
+/* Le tabelle a tre colonne hanno la prima colonna fissa: su uno schermo stretto
+   quello che resta alla terza colonna non basta e il testo esce.
+
+   La prima versione di questa regola stringeva la prima colonna a 26 px fissi,
+   dando per scontato che contenesse sempre un numero di due cifre. Non e' cosi':
+   la stessa struttura porta «01» su Architettura ma «Claude Opus 5» su Modelli e
+   «120B a esperti» su Modelli in locale. In quei due casi il contenuto usciva
+   dalla colonna e veniva tagliato — il difetto visibile su un telefono.
+
+   Qui la prima colonna non ha piu' una misura scritta a mano: si prende lo spazio
+   che le serve e non meno del suo pezzo di testo piu' lungo, e ogni cella puo'
+   andare a capo. Cosi' la regola vale per qualunque contenuto futuro, non solo
+   per quelli di oggi. Sopra i 560px non cambia nulla. */
+@media (max-width:560px){
+  [data-tabella]{
+    grid-template-columns:minmax(min-content,auto) minmax(0,1fr) minmax(0,1.35fr)!important;
+    gap:12px!important;
+  }
+  [data-tabella]>*{min-width:0;overflow-wrap:anywhere;hyphens:auto}
+}
+
+/* Nessuna cella di tabella deve troncare il testo con i puntini: a schermo
+   stretto un modello si chiamerebbe «Claude Fable 5 (fall...». Meglio due righe
+   di un nome monco. */
+@media (max-width:720px){
+  [data-tabella] *,[data-etichetta]{
+    text-overflow:clip!important;
+    white-space:normal!important;
+    overflow:visible!important;
+    overflow-wrap:anywhere;
+    line-height:1.35;
+  }
+}
+
+/* In testa alla pagina stanno il marchio, il tasto del tema e quello del menu.
+   Su uno schermo da 320px la somma faceva 345px: il tasto «Menu» finiva fuori
+   dallo schermo, cioe' proprio il comando che serve per navigare. Qui la riga
+   si stringe invece di sfondare: il marchio resta leggibile, i due tasti
+   perdono un po' di respiro e di spaziatura fra le lettere. Sopra i 400px
+   non cambia niente. */
+@media (max-width:400px){
+  header a[href="/"]{font-size:10.5px!important;letter-spacing:.055em!important;gap:8px!important}
+  header a[href="/"]>span[aria-hidden]{width:26px!important;height:26px!important}
+  header [data-tema-btn],header [data-burger]{padding:6px 9px!important;letter-spacing:.05em!important}
+  header>div{padding-left:14px!important;padding-right:14px!important;gap:10px!important}
 }
 
 /* Le tabelle dentro le chat non si schiacciano: scorrono in orizzontale. */
@@ -162,3 +204,8 @@ img{display:block;max-width:100%}
   outline-offset:3px;
 }
 main:focus{outline:none}
+
+/* Il contorno di un comando deve staccarsi dal fondo di almeno 3:1 (WCAG 1.4.11).
+   I fili sottili del disegno restano quelli: qui si alza solo il bordo di cio'
+   che si preme. */
+header [data-tema-btn],header [data-burger]{border-color:var(--filo-cmd)!important}

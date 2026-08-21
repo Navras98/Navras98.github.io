@@ -3,6 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>/* Le librerie stanno in casa: senza questa mappa il sito le chiede a
+   unpkg.com, e se quel dominio non risponde la pagina resta bianca. Il runtime
+   legge window.__resources e sostituisce l'indirizzo esterno con quello locale.
+   Le due copie sono byte per byte quelle che serviva il CDN: impronte sha384
+   verificate contro quelle dichiarate in support.js. */
+window.__resources={"https://unpkg.com/react@18.3.1/umd/react.production.min.js":"/assets/vendor/react-18.3.1.min.js","https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js":"/assets/vendor/react-dom-18.3.1.min.js"};</script>
 <script src="/support.js"></script>
 <title>Formazione e consulenza — Andrea Sforna AI</title>
 <meta name="description" content="Consulenza, formazione, messa in sicurezza e sistemi di agenti costruiti su misura per persone e aziende.">
@@ -27,12 +33,11 @@
 <link rel="icon" href="/assets/icona.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/icona-180.png">
 <link rel="manifest" href="/site.webmanifest">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/caratteri.css">
 <link rel="stylesheet" href="/assets/tema.css">
 </head>
 <body>
-<a href="#contenuto" style="position:absolute;left:-9999px;top:0;z-index:100;padding:12px 18px;background:var(--acc);color:#fff;font:500 12px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase" onfocus="this.style.left='12px';this.style.top='12px'" onblur="this.style.left='-9999px'">Salta al contenuto</a>
+<a href="#contenuto" style="position:absolute;left:-9999px;top:0;z-index:100;padding:12px 18px;background:var(--acc);color:var(--su-acc);font:500 12px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase" onfocus="this.style.left='12px';this.style.top='12px'" onblur="this.style.left='-9999px'">Salta al contenuto</a>
 <x-dc>
 <helmet data-dc-atomics><script>document.documentElement.setAttribute('data-js','')</script></helmet>
 
@@ -42,7 +47,7 @@
 
 <header style="position:sticky;top:0;z-index:50;background:var(--velo);backdrop-filter:blur(16px);border-bottom:1px solid var(--filo1)">
   <div style="max-width:1360px;margin:0 auto;padding:14px clamp(20px,4vw,48px);display:flex;align-items:center;justify-content:space-between;gap:20px">
-    <a href="./" style="display:flex;align-items:center;gap:12px;flex:none;font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t1);white-space:nowrap"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;position:relative;width:30px;height:30px;border:1px solid var(--filo2);flex:none"><span style="font:600 12px Geist,'Instrument Sans',Helvetica,sans-serif;letter-spacing:-.06em;color:var(--t1)">AS</span><span style="position:absolute;right:-1px;top:-1px;width:3px;height:3px;background:var(--acc)"></span></span>Andrea Sforna AI</a>
+    <a href="/" style="display:flex;align-items:center;gap:12px;flex:none;font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t1);white-space:nowrap"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;position:relative;width:30px;height:30px;border:1px solid var(--filo2);flex:none"><span style="font:600 12px Geist,'Instrument Sans',Helvetica,sans-serif;letter-spacing:-.06em;color:var(--t1)">AS</span><span style="position:absolute;right:-1px;top:-1px;width:3px;height:3px;background:var(--acc)"></span></span>Andrea Sforna AI</a>
     <nav data-nav style="display:flex;align-items:center;gap:20px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase">
       <a href="/agenti/" style="color:var(--t2)">Agenti</a>
       <a href="/casi/" style="color:var(--t2)">Casi</a>
@@ -225,7 +230,7 @@
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   componentDidMount() {
-    import('./assets/sito.js').then((m) => m.avvia()).catch((e) => console.warn('sito.js', e));
+    import('/assets/sito.js').then((m) => m.avvia()).catch((e) => console.warn('sito.js', e));
   }
 }
 </script>

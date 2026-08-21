@@ -3,6 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>/* Le librerie stanno in casa: senza questa mappa il sito le chiede a
+   unpkg.com, e se quel dominio non risponde la pagina resta bianca. Il runtime
+   legge window.__resources e sostituisce l'indirizzo esterno con quello locale.
+   Le due copie sono byte per byte quelle che serviva il CDN: impronte sha384
+   verificate contro quelle dichiarate in support.js. */
+window.__resources={"https://unpkg.com/react@18.3.1/umd/react.production.min.js":"/assets/vendor/react-18.3.1.min.js","https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js":"/assets/vendor/react-dom-18.3.1.min.js"};</script>
 <script src="/support.js"></script>
 <title>Automazione — Andrea Sforna AI</title>
 <meta name="description" content="Flussi collaudati per casi aziendali reali: posta, contatti dal sito, fatture fornitori, documenti, contenuti.">
@@ -27,12 +33,11 @@
 <link rel="icon" href="/assets/icona.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/icona-180.png">
 <link rel="manifest" href="/site.webmanifest">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/caratteri.css">
 <link rel="stylesheet" href="/assets/tema.css">
 </head>
 <body>
-<a href="#contenuto" style="position:absolute;left:-9999px;top:0;z-index:100;padding:12px 18px;background:var(--acc);color:#fff;font:500 12px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase" onfocus="this.style.left='12px';this.style.top='12px'" onblur="this.style.left='-9999px'">Salta al contenuto</a>
+<a href="#contenuto" style="position:absolute;left:-9999px;top:0;z-index:100;padding:12px 18px;background:var(--acc);color:var(--su-acc);font:500 12px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase" onfocus="this.style.left='12px';this.style.top='12px'" onblur="this.style.left='-9999px'">Salta al contenuto</a>
 <x-dc>
 <helmet data-dc-atomics><script type="module" src="/assets/sito.js"></script></helmet>
 
@@ -42,7 +47,7 @@
 
 <header style="position:sticky;top:0;z-index:50;background:var(--velo);backdrop-filter:blur(16px);border-bottom:1px solid var(--filo1)">
   <div style="max-width:1360px;margin:0 auto;padding:14px clamp(20px,4vw,48px);display:flex;align-items:center;justify-content:space-between;gap:20px">
-    <a href="./" style="display:flex;align-items:center;gap:12px;flex:none;font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t1);white-space:nowrap"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;position:relative;width:30px;height:30px;border:1px solid var(--filo2);flex:none"><span style="font:600 12px Geist,'Instrument Sans',Helvetica,sans-serif;letter-spacing:-.06em;color:var(--t1)">AS</span><span style="position:absolute;right:-1px;top:-1px;width:3px;height:3px;background:var(--acc)"></span></span>Andrea Sforna AI</a>
+    <a href="/" style="display:flex;align-items:center;gap:12px;flex:none;font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t1);white-space:nowrap"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;position:relative;width:30px;height:30px;border:1px solid var(--filo2);flex:none"><span style="font:600 12px Geist,'Instrument Sans',Helvetica,sans-serif;letter-spacing:-.06em;color:var(--t1)">AS</span><span style="position:absolute;right:-1px;top:-1px;width:3px;height:3px;background:var(--acc)"></span></span>Andrea Sforna AI</a>
     <nav data-nav style="display:flex;align-items:center;gap:20px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase">
       <a href="/agenti/" style="color:var(--t2)">Agenti</a>
       <a href="/casi/" style="color:var(--t2)">Casi</a>
@@ -94,7 +99,7 @@
     <div>
       <p style="margin:0 0 22px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);font-variant-numeric:tabular-nums">01</p>
       <h2 style="margin:0 0 20px;font-weight:500;font-size:clamp(26px,3.2vw,42px);line-height:1.05;letter-spacing:-.035em;color:var(--t1);text-wrap:pretty">La posta, poi la risposta</h2>
-      <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty">Prima cosa la mattina: quali email chiedono una risposta oggi, e perché. L'ordine è per urgenza, non per orario di arrivo.</p>
+      <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty">Prima cosa la mattina: quali email chiedono una risposta oggi, e perché. L’ordine è per urgenza, non per orario di arrivo.</p>
     </div>
     <div>
       <div data-lift style="display:flex;flex-direction:column;gap:16px;padding:clamp(22px,2.8vw,34px);border:1px solid var(--filo2);border-radius:26px;background:linear-gradient(180deg,var(--sup2),var(--sup1));box-shadow:var(--ombra-alta)">
@@ -141,7 +146,7 @@
     <div>
       <p style="margin:0 0 22px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);font-variant-numeric:tabular-nums">02</p>
       <h2 style="margin:0 0 20px;font-weight:500;font-size:clamp(26px,3.2vw,42px);line-height:1.05;letter-spacing:-.035em;color:var(--t1);text-wrap:pretty">La bozza, con i dati del cliente</h2>
-      <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty">Seconda cosa: rispondere. L'agente legge la scheda del cliente, gli ordini e le condizioni già concordate, e scrive una bozza che non inventa nulla.</p>
+      <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty">Seconda cosa: rispondere. L’agente legge la scheda del cliente, gli ordini e le condizioni già concordate, e scrive una bozza che non inventa nulla.</p>
     </div>
     
   </div>
@@ -183,12 +188,12 @@
       <div data-tabella data-riga style="display:grid;grid-template-columns:70px minmax(150px,1fr) 2fr;gap:clamp(16px,2.4vw,40px);padding:clamp(20px,2.4vw,30px) 12px;border-bottom:1px solid var(--filo1);align-items:baseline">
         <span data-num style="font:500 12px 'JetBrains Mono',monospace;color:var(--t3);font-variant-numeric:tabular-nums">05</span>
         <span style="font-weight:500;font-size:clamp(17px,1.7vw,23px);letter-spacing:-.025em;color:var(--t1)">Documenti</span>
-        <span style="font-size:16px;line-height:1.55;color:var(--t2)">Smista e archivia. Esiste in due versioni: una con il modello, una senza. La seconda è più veloce e non sbaglia mai due volte allo stesso modo.</span>
+        <span style="font-size:16px;line-height:1.55;color:var(--t2)">Smista e archivia. Esiste in due versioni: una con il modello, una senza. La seconda è più veloce e sbaglia sempre nello stesso punto: si ripara una volta sola.</span>
       </div>
       <div data-tabella data-riga style="display:grid;grid-template-columns:70px minmax(150px,1fr) 2fr;gap:clamp(16px,2.4vw,40px);padding:clamp(20px,2.4vw,30px) 12px;border-bottom:1px solid var(--filo1);align-items:baseline;box-shadow:inset 3px 0 0 var(--acc)">
         <span data-num style="font:500 12px 'JetBrains Mono',monospace;color:var(--acc);font-variant-numeric:tabular-nums">06</span>
         <span style="font-weight:500;font-size:clamp(17px,1.7vw,23px);letter-spacing:-.025em;color:var(--t1)">Contenuti</span>
-        <span style="font-size:16px;line-height:1.55;color:var(--t2)">Prepara caroselli, storie e newsletter con l'anteprima, e aspetta la conferma prima di pubblicare.</span>
+        <span style="font-size:16px;line-height:1.55;color:var(--t2)">Prepara caroselli, storie e newsletter con l’anteprima, e aspetta la conferma prima di pubblicare.</span>
       </div>
     </div>
   </div>
@@ -222,7 +227,7 @@
   <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
     <div style="border-left:3px solid var(--acc);padding:clamp(22px,2.8vw,36px) clamp(22px,2.8vw,40px);background:linear-gradient(90deg,var(--acc-tenue),transparent 60%)" data-reveal>
       <p style="margin:0 0 14px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--acc)">Limite dichiarato</p>
-      <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty;max-width:64ch;color:var(--t1)">Un'automazione che nessuno guarda diventa un guasto silenzioso. Ogni flusso che consegno ha un registro, un avviso quando salta e un modo per fermarlo: senza quelli non lo consegno.</p>
+      <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty;max-width:64ch;color:var(--t1)">Un’automazione che nessuno guarda diventa un guasto silenzioso. Ogni flusso che consegno ha un registro, un avviso quando salta e un modo per fermarlo: senza quelli non lo consegno.</p>
     </div>
   </div>
 </section>
@@ -272,7 +277,7 @@
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   componentDidMount() {
-    import('./assets/sito.js').then((m) => m.avvia()).catch((e) => console.error(e));
+    import('/assets/sito.js').then((m) => m.avvia()).catch((e) => console.error(e));
   }
 }
 </script>

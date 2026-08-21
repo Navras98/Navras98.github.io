@@ -3,6 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>/* Le librerie stanno in casa: senza questa mappa il sito le chiede a
+   unpkg.com, e se quel dominio non risponde la pagina resta bianca. Il runtime
+   legge window.__resources e sostituisce l'indirizzo esterno con quello locale.
+   Le due copie sono byte per byte quelle che serviva il CDN: impronte sha384
+   verificate contro quelle dichiarate in support.js. */
+window.__resources={"https://unpkg.com/react@18.3.1/umd/react.production.min.js":"/assets/vendor/react-18.3.1.min.js","https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js":"/assets/vendor/react-dom-18.3.1.min.js"};</script>
 <script src="/support.js"></script>
 <title>Sicurezza e isolamento — Andrea Sforna AI</title>
 <meta name="description" content="I permessi vivono nel database e nel sistema operativo, non nelle istruzioni date al modello.">
@@ -27,12 +33,11 @@
 <link rel="icon" href="/assets/icona.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/icona-180.png">
 <link rel="manifest" href="/site.webmanifest">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/caratteri.css">
 <link rel="stylesheet" href="/assets/tema.css">
 </head>
 <body>
-<a href="#contenuto" style="position:absolute;left:-9999px;top:0;z-index:100;padding:12px 18px;background:var(--acc);color:#fff;font:500 12px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase" onfocus="this.style.left='12px';this.style.top='12px'" onblur="this.style.left='-9999px'">Salta al contenuto</a>
+<a href="#contenuto" style="position:absolute;left:-9999px;top:0;z-index:100;padding:12px 18px;background:var(--acc);color:var(--su-acc);font:500 12px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase" onfocus="this.style.left='12px';this.style.top='12px'" onblur="this.style.left='-9999px'">Salta al contenuto</a>
 <x-dc>
 <helmet data-dc-atomics><script type="module" src="/assets/sito.js"></script></helmet>
 
@@ -42,7 +47,7 @@
 
 <header style="position:sticky;top:0;z-index:50;background:var(--velo);backdrop-filter:blur(16px);border-bottom:1px solid var(--filo1)">
   <div style="max-width:1360px;margin:0 auto;padding:14px clamp(20px,4vw,48px);display:flex;align-items:center;justify-content:space-between;gap:20px">
-    <a href="./" style="display:flex;align-items:center;gap:12px;flex:none;font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t1);white-space:nowrap"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;position:relative;width:30px;height:30px;border:1px solid var(--filo2);flex:none"><span style="font:600 12px Geist,'Instrument Sans',Helvetica,sans-serif;letter-spacing:-.06em;color:var(--t1)">AS</span><span style="position:absolute;right:-1px;top:-1px;width:3px;height:3px;background:var(--acc)"></span></span>Andrea Sforna AI</a>
+    <a href="/" style="display:flex;align-items:center;gap:12px;flex:none;font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t1);white-space:nowrap"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;position:relative;width:30px;height:30px;border:1px solid var(--filo2);flex:none"><span style="font:600 12px Geist,'Instrument Sans',Helvetica,sans-serif;letter-spacing:-.06em;color:var(--t1)">AS</span><span style="position:absolute;right:-1px;top:-1px;width:3px;height:3px;background:var(--acc)"></span></span>Andrea Sforna AI</a>
     <nav data-nav style="display:flex;align-items:center;gap:20px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase">
       <a href="/agenti/" style="color:var(--t2)">Agenti</a>
       <a href="/casi/" style="color:var(--t2)">Casi</a>
@@ -95,7 +100,7 @@
         <p style="margin:0 0 22px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--acc)">01</p>
         <h2 style="margin:0 0 20px;font-weight:500;font-size:clamp(26px,3.2vw,42px);line-height:1.05;letter-spacing:-.035em;color:var(--t1);text-wrap:pretty;margin-bottom:0">Cinque livelli, robustezza diversa</h2>
       </div>
-      <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty;max-width:40ch">Dal più robusto al più fragile. L'ultimo non garantisce niente.</p>
+      <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty;max-width:40ch">Dal più robusto al più fragile. L’ultimo non garantisce niente.</p>
     </div>
     <div style="display:grid;gap:10px;justify-items:center" data-reveal>
       <div data-lift style="width:100%;max-width:1080px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:clamp(18px,2.2vw,28px) clamp(20px,2.6vw,36px);border:1px solid var(--filo2);background:linear-gradient(180deg,var(--sup3),var(--sup2))">
@@ -107,11 +112,11 @@
         <span style="width:clamp(48px,12vw,160px);height:3px;background:var(--t2)"></span>
       </div>
       <div data-lift style="width:90%;max-width:980px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:clamp(18px,2.2vw,28px) clamp(20px,2.6vw,36px);border:1px solid var(--filo1);background:linear-gradient(180deg,var(--sup2),var(--sup1))">
-        <span style="font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t2)">03 &nbsp; Isolamento dell'esecuzione</span>
+        <span style="font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t2)">03 &nbsp; Isolamento dell’esecuzione</span>
         <span style="width:clamp(36px,9vw,120px);height:3px;background:var(--t2)"></span>
       </div>
       <div data-lift style="width:85%;max-width:930px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:clamp(18px,2.2vw,28px) clamp(20px,2.6vw,36px);border:1px solid var(--filo1);background:linear-gradient(180deg,var(--sup1),var(--fondo))">
-        <span style="font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t2)">04 &nbsp; Regole dell'applicazione</span>
+        <span style="font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t2)">04 &nbsp; Regole dell’applicazione</span>
         <span style="width:clamp(24px,6vw,80px);height:3px;background:var(--t3)"></span>
       </div>
       <div style="width:80%;max-width:880px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding:clamp(18px,2.2vw,28px) clamp(20px,2.6vw,36px);border:1px dashed var(--acc);background:var(--acc-tenue)">
@@ -135,7 +140,7 @@
       <div>
         <p style="margin:0 0 clamp(20px,2.4vw,32px);font-weight:500;font-size:clamp(40px,5vw,72px);line-height:1;letter-spacing:-.05em;color:var(--acc);font-variant-numeric:tabular-nums">02</p>
         <h2 style="margin:0 0 20px;font-weight:500;font-size:clamp(26px,3.2vw,42px);line-height:1.05;letter-spacing:-.035em;color:var(--t1);text-wrap:pretty">Togliere, non raccomandare</h2>
-        <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty">Dove è possibile il permesso viene tolto: l'agente non ha la chiave, quindi la domanda se userà la chiave non si pone. Un modello robusto riduce la frequenza di un errore, un privilegio tolto ne elimina la possibilità.</p>
+        <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty">Dove è possibile il permesso viene tolto: l’agente non ha la chiave, quindi la domanda se userà la chiave non si pone. Un modello robusto riduce la frequenza di un errore, un privilegio tolto ne elimina la possibilità.</p>
       </div>
       <div style="align-self:center">
           <div data-riga style="display:grid;grid-template-columns:minmax(90px,140px) 1fr;gap:clamp(16px,2vw,32px);padding:16px 12px;border-top:1px solid var(--filo1)"><span data-num style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">Permesso</span><span style="font-size:15.5px;line-height:1.5;color:var(--t1)">Tolto, non sconsigliato</span></div>
@@ -189,7 +194,7 @@
     <div>
       <p style="margin:0 0 22px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);font-variant-numeric:tabular-nums">04</p>
       <h2 style="margin:0 0 20px;font-weight:500;font-size:clamp(26px,3.2vw,42px);line-height:1.05;letter-spacing:-.035em;color:var(--t1);text-wrap:pretty">Quando il permesso non c&#8217;è</h2>
-      <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty">Il confine non è una frase nelle istruzioni: è un'operazione che per quel ruolo non esiste. L'agente non discute e non cerca una strada alternativa, perché la strada alternativa non gli è stata data.</p>
+      <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty">Il confine non è una frase nelle istruzioni: è un’operazione che per quel ruolo non esiste. L’agente non discute e non cerca una strada alternativa, perché la strada alternativa non gli è stata data.</p>
     </div>
     
   </div>
@@ -249,7 +254,7 @@
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   componentDidMount() {
-    import('./assets/sito.js').then((m) => m.avvia()).catch((e) => console.error(e));
+    import('/assets/sito.js').then((m) => m.avvia()).catch((e) => console.error(e));
   }
 }
 </script>

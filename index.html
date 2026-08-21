@@ -3,7 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
+<script>/* Le librerie stanno in casa: senza questa mappa il sito le chiede a
+   unpkg.com, e se quel dominio non risponde la pagina resta bianca. Il runtime
+   legge window.__resources e sostituisce l'indirizzo esterno con quello locale.
+   Le due copie sono byte per byte quelle che serviva il CDN: impronte sha384
+   verificate contro quelle dichiarate in support.js. */
+window.__resources={"https://unpkg.com/react@18.3.1/umd/react.production.min.js":"/assets/vendor/react-18.3.1.min.js","https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js":"/assets/vendor/react-dom-18.3.1.min.js"};</script>
+<script src="/support.js"></script>
 <title>Andrea Sforna AI — sistemi di agenti AI</title>
 <meta name="description" content="Progetto, costruisco e metto in sicurezza sistemi di agenti AI. Sistemi che lavorano su processi reali e restano in funzione nel tempo.">
 <link rel="canonical" href="https://navras98.github.io/">
@@ -27,12 +33,11 @@
 <link rel="icon" href="assets/icona.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/icona-180.png">
 <link rel="manifest" href="site.webmanifest">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/caratteri.css">
 <link rel="stylesheet" href="assets/tema.css">
 </head>
 <body>
-<a href="#contenuto" style="position:absolute;left:-9999px;top:0;z-index:100;padding:12px 18px;background:var(--acc);color:#fff;font:500 12px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase" onfocus="this.style.left='12px';this.style.top='12px'" onblur="this.style.left='-9999px'">Salta al contenuto</a>
+<a href="#contenuto" style="position:absolute;left:-9999px;top:0;z-index:100;padding:12px 18px;background:var(--acc);color:var(--su-acc);font:500 12px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase" onfocus="this.style.left='12px';this.style.top='12px'" onblur="this.style.left='-9999px'">Salta al contenuto</a>
 <x-dc>
 <helmet data-dc-atomics><script type="module" src="./assets/sito.js"></script></helmet>
 
@@ -42,7 +47,7 @@
 
 <header style="position:sticky;top:0;z-index:50;background:var(--velo);backdrop-filter:blur(16px);border-bottom:1px solid var(--filo1)">
   <div style="max-width:1360px;margin:0 auto;padding:14px clamp(20px,4vw,48px);display:flex;align-items:center;justify-content:space-between;gap:20px">
-    <a href="./" style="display:flex;align-items:center;gap:12px;flex:none;font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t1);white-space:nowrap"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;position:relative;width:30px;height:30px;border:1px solid var(--filo2);flex:none"><span style="font:600 12px Geist,'Instrument Sans',Helvetica,sans-serif;letter-spacing:-.06em;color:var(--t1)">AS</span><span style="position:absolute;right:-1px;top:-1px;width:3px;height:3px;background:var(--acc)"></span></span>Andrea Sforna AI</a>
+    <a href="/" style="display:flex;align-items:center;gap:12px;flex:none;font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t1);white-space:nowrap"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;position:relative;width:30px;height:30px;border:1px solid var(--filo2);flex:none"><span style="font:600 12px Geist,'Instrument Sans',Helvetica,sans-serif;letter-spacing:-.06em;color:var(--t1)">AS</span><span style="position:absolute;right:-1px;top:-1px;width:3px;height:3px;background:var(--acc)"></span></span>Andrea Sforna AI</a>
     <nav data-nav style="display:flex;align-items:center;gap:20px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase">
       <a href="/agenti/" style="color:var(--t2)">Agenti</a>
       <a href="/casi/" style="color:var(--t2)">Casi</a>
@@ -108,33 +113,33 @@
   <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px);margin-bottom:clamp(28px,3.4vw,44px)" data-reveal>
     <p style="margin:0;max-width:76ch;font:400 clamp(13px,1.05vw,15px)/1.7 'JetBrains Mono',monospace;color:var(--carta-t);text-wrap:pretty">I modelli e gli strumenti che uso ogni giorno. La scelta si fa in base all&#8217;obiettivo del singolo passaggio, non per abitudine: ogni settimana esce qualcosa e il confronto va rifatto.</p>
   </div>
-  <div style="overflow:hidden;mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent);-webkit-mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent)">
+  <div data-nastro style="overflow:hidden;mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent);-webkit-mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent)">
     <div style="display:flex;width:max-content;animation:scorri 64s linear infinite">
       <div style="display:flex;align-items:center;gap:clamp(44px,5.4vw,80px);padding-right:clamp(44px,5.4vw,80px)">
-        <img data-logo src="assets/loghi/claude.svg" alt="claude" style="height:30px;width:auto;flex:none">
-        <img data-logo src="assets/loghi/openai.svg" alt="openai" style="height:22px;width:auto;flex:none">
-        <img data-logo src="assets/loghi/gemini.svg" alt="gemini" style="height:26px;width:auto;flex:none">
-        <img data-logo src="assets/loghi/deepseek-taglio.png" alt="deepseek-taglio" style="height:22px;width:auto;flex:none">
-        <img data-logo src="assets/loghi/qwen.png" alt="qwen" style="height:26px;width:auto;flex:none">
-        <img data-logo src="assets/loghi/kimi.svg" alt="kimi" style="height:24px;width:auto;flex:none">
-        <img data-logo src="assets/loghi/mistral.svg" alt="mistral" style="height:26px;width:auto;flex:none">
-        <img data-logo src="assets/loghi/openclaw.svg" alt="openclaw" style="height:32px;width:auto;flex:none">
-        <img data-logo src="assets/loghi/openclaw-testo.png" alt="openclaw-testo" style="height:20px;width:auto;flex:none">
-        <img data-logo src="assets/loghi/hermes-marchio.svg" alt="hermes-marchio" style="height:28px;width:auto;flex:none">
-        <img data-logo src="assets/loghi/higgsfield.svg" alt="higgsfield" style="height:24px;width:auto;flex:none">
+        <img width="138" height="30" decoding="async" data-logo src="assets/loghi/claude.svg" alt="Claude, di Anthropic" style="height:30px;width:auto;flex:none">
+        <img width="81" height="22" decoding="async" data-logo src="assets/loghi/openai.svg" alt="OpenAI" style="height:22px;width:auto;flex:none">
+        <img width="115" height="26" decoding="async" data-logo src="assets/loghi/gemini.svg" alt="Gemini, di Google" style="height:26px;width:auto;flex:none">
+        <img width="104" height="22" decoding="async" data-logo src="assets/loghi/deepseek-taglio.webp" alt="DeepSeek" style="height:22px;width:auto;flex:none">
+        <img width="78" height="26" decoding="async" data-logo src="assets/loghi/qwen.webp" alt="Qwen, di Alibaba" style="height:26px;width:auto;flex:none">
+        <img width="71" height="24" decoding="async" data-logo src="assets/loghi/kimi.webp" alt="Kimi, di Moonshot AI" style="height:24px;width:auto;flex:none">
+        <img width="36" height="26" decoding="async" data-logo src="assets/loghi/mistral.svg" alt="Mistral AI" style="height:26px;width:auto;flex:none">
+        <img width="32" height="32" decoding="async" data-logo src="assets/loghi/openclaw.svg" alt="OpenClaw" style="height:32px;width:auto;flex:none">
+        <img width="116" height="20" decoding="async" data-logo src="assets/loghi/openclaw-testo.webp" alt="OpenClaw" style="height:20px;width:auto;flex:none">
+        <img width="28" height="28" decoding="async" data-logo src="assets/loghi/hermes-marchio.svg" alt="Hermes Agent" style="height:28px;width:auto;flex:none">
+        <img width="24" height="24" decoding="async" data-logo src="assets/loghi/higgsfield.svg" alt="Higgsfield" style="height:24px;width:auto;flex:none">
       </div>
       <div aria-hidden="true" style="display:flex;align-items:center;gap:clamp(44px,5.4vw,80px);padding-right:clamp(44px,5.4vw,80px)">
-        <img data-logo src="assets/loghi/claude.svg" alt="" style="height:30px;width:auto;flex:none">
-        <img data-logo src="assets/loghi/openai.svg" alt="" style="height:22px;width:auto;flex:none">
-        <img data-logo src="assets/loghi/gemini.svg" alt="" style="height:26px;width:auto;flex:none">
-        <img data-logo src="assets/loghi/deepseek-taglio.png" alt="" style="height:22px;width:auto;flex:none">
-        <img data-logo src="assets/loghi/qwen.png" alt="" style="height:26px;width:auto;flex:none">
-        <img data-logo src="assets/loghi/kimi.svg" alt="" style="height:24px;width:auto;flex:none">
-        <img data-logo src="assets/loghi/mistral.svg" alt="" style="height:26px;width:auto;flex:none">
-        <img data-logo src="assets/loghi/openclaw.svg" alt="" style="height:32px;width:auto;flex:none">
-        <img data-logo src="assets/loghi/openclaw-testo.png" alt="" style="height:20px;width:auto;flex:none">
-        <img data-logo src="assets/loghi/hermes-marchio.svg" alt="" style="height:28px;width:auto;flex:none">
-        <img data-logo src="assets/loghi/higgsfield.svg" alt="" style="height:24px;width:auto;flex:none">
+        <img width="138" height="30" decoding="async" data-logo src="assets/loghi/claude.svg" alt="" style="height:30px;width:auto;flex:none">
+        <img width="81" height="22" decoding="async" data-logo src="assets/loghi/openai.svg" alt="" style="height:22px;width:auto;flex:none">
+        <img width="115" height="26" decoding="async" data-logo src="assets/loghi/gemini.svg" alt="" style="height:26px;width:auto;flex:none">
+        <img width="104" height="22" decoding="async" data-logo src="assets/loghi/deepseek-taglio.webp" alt="" style="height:22px;width:auto;flex:none">
+        <img width="78" height="26" decoding="async" data-logo src="assets/loghi/qwen.webp" alt="" style="height:26px;width:auto;flex:none">
+        <img width="71" height="24" decoding="async" data-logo src="assets/loghi/kimi.webp" alt="" style="height:24px;width:auto;flex:none">
+        <img width="36" height="26" decoding="async" data-logo src="assets/loghi/mistral.svg" alt="" style="height:26px;width:auto;flex:none">
+        <img width="32" height="32" decoding="async" data-logo src="assets/loghi/openclaw.svg" alt="" style="height:32px;width:auto;flex:none">
+        <img width="116" height="20" decoding="async" data-logo src="assets/loghi/openclaw-testo.webp" alt="" style="height:20px;width:auto;flex:none">
+        <img width="28" height="28" decoding="async" data-logo src="assets/loghi/hermes-marchio.svg" alt="" style="height:28px;width:auto;flex:none">
+        <img width="24" height="24" decoding="async" data-logo src="assets/loghi/higgsfield.svg" alt="" style="height:24px;width:auto;flex:none">
       </div>
     </div>
   </div>
@@ -143,7 +148,7 @@
 <section data-screen-label="Chi sono" style="padding:clamp(80px,11vw,180px) 0">
   <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:clamp(36px,5vw,88px);align-items:start">
     <div style="position:relative" data-reveal>
-      <img src="assets/img/andrea.png" alt="Andrea Sforna" style="width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 22%;border:1px solid var(--filo1);box-shadow:var(--ombra)">
+      <img width="1000" height="1288" decoding="async" src="assets/img/andrea.webp" alt="Andrea Sforna" style="width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 22%;border:1px solid var(--filo1);box-shadow:var(--ombra)">
       <div style="position:absolute;left:0;bottom:0;padding:12px 16px;background:var(--acc);color:var(--su-acc);font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase">Andrea Sforna</div>
     </div>
     <div data-reveal>
@@ -282,7 +287,7 @@
         <p style="margin:0 0 24px;font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t2)">Sicurezza</p>
         <h2 style="margin:0;font-weight:500;font-size:clamp(30px,4.4vw,60px);line-height:1.02;letter-spacing:-.04em;color:var(--t1);text-wrap:pretty">Cinque livelli, robustezza diversa</h2>
       </div>
-      <p style="margin:0;max-width:40ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty">Dal più robusto al più fragile. L'ultimo non garantisce niente.</p>
+      <p style="margin:0;max-width:40ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty">Dal più robusto al più fragile. L’ultimo non garantisce niente.</p>
     </div>
 
     <div style="display:grid;gap:10px;justify-items:center" data-reveal>
@@ -295,11 +300,11 @@
         <span style="width:clamp(48px,12vw,160px);height:3px;background:var(--t2)"></span>
       </div>
       <div data-lift style="width:90%;max-width:980px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:clamp(18px,2.2vw,28px) clamp(20px,2.6vw,36px);border:1px solid var(--filo1);background:linear-gradient(180deg,var(--sup2),var(--sup1))">
-        <span style="font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t2)">03 &nbsp; Isolamento dell'esecuzione</span>
+        <span style="font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t2)">03 &nbsp; Isolamento dell’esecuzione</span>
         <span style="width:clamp(36px,9vw,120px);height:3px;background:var(--t2)"></span>
       </div>
       <div data-lift style="width:85%;max-width:930px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:clamp(18px,2.2vw,28px) clamp(20px,2.6vw,36px);border:1px solid var(--filo1);background:linear-gradient(180deg,var(--sup1),var(--fondo))">
-        <span style="font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t2)">04 &nbsp; Regole dell'applicazione</span>
+        <span style="font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t2)">04 &nbsp; Regole dell’applicazione</span>
         <span style="width:clamp(24px,6vw,80px);height:3px;background:var(--t3)"></span>
       </div>
       <div style="width:80%;max-width:880px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding:clamp(18px,2.2vw,28px) clamp(20px,2.6vw,36px);border:1px dashed var(--acc);background:var(--acc-tenue)">
@@ -333,7 +338,7 @@
       <div data-tabella data-riga style="display:grid;grid-template-columns:80px minmax(160px,1fr) 2fr;gap:clamp(16px,2.4vw,40px);padding:clamp(20px,2.4vw,30px) 12px;border-bottom:1px solid var(--filo1);align-items:baseline">
         <span data-num style="font:500 12px 'JetBrains Mono',monospace;color:var(--t3);font-variant-numeric:tabular-nums">01</span>
         <span style="font-weight:500;font-size:clamp(18px,1.8vw,24px);letter-spacing:-.025em;color:var(--t1)">Dato presente</span>
-        <span style="font-size:16px;line-height:1.55;color:var(--t2)">Arriva come è scritto nell'archivio, confrontabile con quello che è stato letto.</span>
+        <span style="font-size:16px;line-height:1.55;color:var(--t2)">Arriva come è scritto nell’archivio, confrontabile con quello che è stato letto.</span>
       </div>
       <div data-tabella data-riga style="display:grid;grid-template-columns:80px minmax(160px,1fr) 2fr;gap:clamp(16px,2.4vw,40px);padding:clamp(20px,2.4vw,30px) 12px;border-bottom:1px solid var(--filo1);align-items:baseline">
         <span data-num style="font:500 12px 'JetBrains Mono',monospace;color:var(--t3);font-variant-numeric:tabular-nums">02</span>
@@ -354,9 +359,9 @@
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:clamp(28px,4vw,64px);align-items:end;margin-bottom:clamp(36px,4.6vw,64px)" data-reveal>
       <div>
         <p style="margin:0 0 24px;font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t2)">Privacy</p>
-        <h2 style="margin:0;font-weight:500;font-size:clamp(30px,4.4vw,60px);line-height:1.02;letter-spacing:-.04em;color:var(--t1)">PrivacyBridge</h2>
+        <h2 style="margin:0;font-weight:500;font-size:clamp(30px,4.4vw,60px);line-height:1.02;letter-spacing:-.04em;color:var(--t1)">Privacy Bridge</h2>
       </div>
-      <p style="margin:0;max-width:48ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty">Applicazione desktop che toglie i dati personali prima che il testo raggiunga un modello, e li rimette nella risposta. Tarata sull'italiano. Gira in locale.</p>
+      <p style="margin:0;max-width:48ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty">Applicazione desktop che toglie i dati personali prima che il testo raggiunga un modello, e li rimette nella risposta. Tarata sull’italiano. Gira in locale.</p>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(290px,100%),1fr));gap:clamp(12px,1.6vw,20px)" data-reveal>
       <div data-lift style="padding:clamp(22px,2.8vw,36px);border:1px solid var(--filo1);background:linear-gradient(180deg,var(--sup2),var(--sup1))">
@@ -387,7 +392,7 @@
         <p style="margin:0 0 4px;padding:14px 12px;border-bottom:1px solid var(--filo2);font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t1)">Si automatizza</p>
         <div data-riga style="padding:18px 12px;border-bottom:1px solid var(--filo1);font-size:16px;line-height:1.5;color:var(--t2)">Passaggi che si ripetono sempre allo stesso modo</div>
         <div data-riga style="padding:18px 12px;border-bottom:1px solid var(--filo1);font-size:16px;line-height:1.5;color:var(--t2)">Attese, invii, condizioni, passaggi fissi</div>
-        <div data-riga style="padding:18px 12px;border-bottom:1px solid var(--filo1);font-size:16px;line-height:1.5;color:var(--t2)">Tutto ciò di cui esiste un modo per controllare l'esito</div>
+        <div data-riga style="padding:18px 12px;border-bottom:1px solid var(--filo1);font-size:16px;line-height:1.5;color:var(--t2)">Tutto ciò di cui esiste un modo per controllare l’esito</div>
       </div>
       <div>
         <p style="margin:0 0 4px;padding:14px 12px;border-bottom:1px solid var(--acc);font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--acc)">Resta a una persona</p>
@@ -459,7 +464,7 @@
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   componentDidMount() {
-    import('./assets/sito.js').then((m) => m.avvia()).catch((e) => console.error(e));
+    import('/assets/sito.js').then((m) => m.avvia()).catch((e) => console.error(e));
   }
 }
 </script>

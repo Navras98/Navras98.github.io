@@ -3,6 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>/* Le librerie stanno in casa: senza questa mappa il sito le chiede a
+   unpkg.com, e se quel dominio non risponde la pagina resta bianca. Il runtime
+   legge window.__resources e sostituisce l'indirizzo esterno con quello locale.
+   Le due copie sono byte per byte quelle che serviva il CDN: impronte sha384
+   verificate contro quelle dichiarate in support.js. */
+window.__resources={"https://unpkg.com/react@18.3.1/umd/react.production.min.js":"/assets/vendor/react-18.3.1.min.js","https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js":"/assets/vendor/react-dom-18.3.1.min.js"};</script>
 <script src="/support.js"></script>
 <title>Agenti — Andrea Sforna AI</title>
 <meta name="description" content="Che cos'è un agente AI, come è fatto dentro, a cosa serve e perché viene chiesto adesso.">
@@ -27,12 +33,11 @@
 <link rel="icon" href="/assets/icona.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/icona-180.png">
 <link rel="manifest" href="/site.webmanifest">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/caratteri.css">
 <link rel="stylesheet" href="/assets/tema.css">
 </head>
 <body>
-<a href="#contenuto" style="position:absolute;left:-9999px;top:0;z-index:100;padding:12px 18px;background:var(--acc);color:#fff;font:500 12px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase" onfocus="this.style.left='12px';this.style.top='12px'" onblur="this.style.left='-9999px'">Salta al contenuto</a>
+<a href="#contenuto" style="position:absolute;left:-9999px;top:0;z-index:100;padding:12px 18px;background:var(--acc);color:var(--su-acc);font:500 12px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase" onfocus="this.style.left='12px';this.style.top='12px'" onblur="this.style.left='-9999px'">Salta al contenuto</a>
 <x-dc>
 <helmet data-dc-atomics><script type="module" src="/assets/sito.js"></script></helmet>
 
@@ -42,7 +47,7 @@
 
 <header style="position:sticky;top:0;z-index:50;background:var(--velo);backdrop-filter:blur(16px);border-bottom:1px solid var(--filo1)">
   <div style="max-width:1360px;margin:0 auto;padding:14px clamp(20px,4vw,48px);display:flex;align-items:center;justify-content:space-between;gap:20px">
-    <a href="./" style="display:flex;align-items:center;gap:12px;flex:none;font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t1);white-space:nowrap"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;position:relative;width:30px;height:30px;border:1px solid var(--filo2);flex:none"><span style="font:600 12px Geist,'Instrument Sans',Helvetica,sans-serif;letter-spacing:-.06em;color:var(--t1)">AS</span><span style="position:absolute;right:-1px;top:-1px;width:3px;height:3px;background:var(--acc)"></span></span>Andrea Sforna AI</a>
+    <a href="/" style="display:flex;align-items:center;gap:12px;flex:none;font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t1);white-space:nowrap"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;position:relative;width:30px;height:30px;border:1px solid var(--filo2);flex:none"><span style="font:600 12px Geist,'Instrument Sans',Helvetica,sans-serif;letter-spacing:-.06em;color:var(--t1)">AS</span><span style="position:absolute;right:-1px;top:-1px;width:3px;height:3px;background:var(--acc)"></span></span>Andrea Sforna AI</a>
     <nav data-nav style="display:flex;align-items:center;gap:20px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase">
       <a href="/agenti/" aria-current="page" style="color:var(--t1);border-bottom:1px solid var(--acc);padding-bottom:3px">Agenti</a>
       <a href="/casi/" style="color:var(--t2)">Casi</a>
@@ -82,7 +87,7 @@
   <div style="position:absolute;inset:0;background:var(--luce);pointer-events:none"></div>
   <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px);position:relative">
     <p style="margin:0;font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t2);margin-bottom:clamp(24px,3vw,40px);animation:appari .9s ease .1s both">Agenti</p>
-    <h1 style="margin:0 0 clamp(24px,3vw,36px);font-weight:500;font-size:clamp(34px,6.4vw,92px);line-height:.98;letter-spacing:-.045em;color:var(--t1);max-width:20ch;text-wrap:pretty;animation:sali 1s cubic-bezier(.16,1,.3,1) .18s both">Che cos'è un agente AI</h1>
+    <h1 style="margin:0 0 clamp(24px,3vw,36px);font-weight:500;font-size:clamp(34px,6.4vw,92px);line-height:.98;letter-spacing:-.045em;color:var(--t1);max-width:20ch;text-wrap:pretty;animation:sali 1s cubic-bezier(.16,1,.3,1) .18s both">Che cos’è un agente AI</h1>
     <div style="height:1px;background:var(--acc);max-width:560px;transform-origin:left;animation:filo 1.3s cubic-bezier(.16,1,.3,1) .3s both"></div>
     <p style="margin:clamp(24px,3vw,36px) 0 0;max-width:60ch;font-weight:400;font-size:clamp(16px,1.5vw,22px);line-height:1.55;color:var(--t2);text-wrap:pretty;animation:sali 1s cubic-bezier(.16,1,.3,1) .38s both">Un modello risponde. Un agente riceve un obiettivo, sceglie quali operazioni chiamare, controlla il risultato e si ferma quando ha finito o quando non può proseguire.</p>
   </div>
@@ -111,7 +116,7 @@
     <div>
       <p style="margin:0 0 22px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);font-variant-numeric:tabular-nums">02</p>
       <h2 style="margin:0 0 20px;font-weight:500;font-size:clamp(26px,3.2vw,42px);line-height:1.05;letter-spacing:-.035em;color:var(--t1);text-wrap:pretty">Una domanda, una scheda</h2>
-      <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty">Sembra una conversazione normale. Sotto, ogni campo è il risultato di un'operazione dichiarata sul database aziendale: nessuna ricerca libera, nessun dato ricordato a memoria.</p>
+      <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty">Sembra una conversazione normale. Sotto, ogni campo è il risultato di un’operazione dichiarata sul database aziendale: nessuna ricerca libera, nessun dato ricordato a memoria.</p>
     </div>
     <div>
       <div data-lift style="display:flex;flex-direction:column;gap:16px;padding:clamp(22px,2.8vw,34px);border:1px solid var(--filo2);border-radius:26px;background:linear-gradient(180deg,var(--sup2),var(--sup1));box-shadow:var(--ombra-alta)">
@@ -161,7 +166,7 @@
     <div>
       <p style="margin:0 0 22px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);font-variant-numeric:tabular-nums">03</p>
       <h2 style="margin:0 0 20px;font-weight:500;font-size:clamp(26px,3.2vw,42px);line-height:1.05;letter-spacing:-.035em;color:var(--t1);text-wrap:pretty">Quando il dato non c&#8217;è</h2>
-      <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty">La domanda è legittima, la risposta non è nei dati. L'agente lo dice, spiega dove potrebbe essere, e aspetta un'istruzione invece di riempire il buco.</p>
+      <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty">La domanda è legittima, la risposta non è nei dati. L’agente lo dice, spiega dove potrebbe essere, e aspetta un’istruzione invece di riempire il buco.</p>
     </div>
     
   </div>
@@ -186,7 +191,7 @@
         <p style="margin:0 0 4px;padding:14px 12px;border-bottom:1px solid var(--acc);font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--acc)">Non serve quando</p>
         <div data-riga style="padding:18px 12px;border-bottom:1px solid var(--filo1);font-size:16px;line-height:1.5;color:var(--t2)">La decisione richiede la responsabilità di una persona</div>
         <div data-riga style="padding:18px 12px;border-bottom:1px solid var(--filo1);font-size:16px;line-height:1.5;color:var(--t2)">Il processo non esiste ancora, o cambia ogni volta</div>
-        <div data-riga style="padding:18px 12px;border-bottom:1px solid var(--filo1);font-size:16px;line-height:1.5;color:var(--t2)">Non c'è nessun modo di verificare l'esito</div>
+        <div data-riga style="padding:18px 12px;border-bottom:1px solid var(--filo1);font-size:16px;line-height:1.5;color:var(--t2)">Non c’è nessun modo di verificare l’esito</div>
         <div data-riga style="padding:18px 12px;border-bottom:1px solid var(--filo1);font-size:16px;line-height:1.5;color:var(--t2)">Il problema si risolve con una regola scritta bene</div>
       </div>
     </div>
@@ -217,7 +222,7 @@
       <div>
         <p style="margin:0 0 clamp(20px,2.4vw,32px);font-weight:500;font-size:clamp(40px,5vw,72px);line-height:1;letter-spacing:-.05em;color:var(--acc);font-variant-numeric:tabular-nums">06</p>
         <h2 style="margin:0 0 20px;font-weight:500;font-size:clamp(26px,3.2vw,42px);line-height:1.05;letter-spacing:-.035em;color:var(--t1);text-wrap:pretty">Perché viene chiesto adesso</h2>
-        <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty">Tre cose sono cambiate nello stesso periodo, e insieme rendono possibile quello che due anni prima non stava in piedi. Nessuna delle tre riguarda l'intelligenza del modello in sé.</p>
+        <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty">Tre cose sono cambiate nello stesso periodo, e insieme rendono possibile quello che due anni prima non stava in piedi. Nessuna delle tre riguarda l’intelligenza del modello in sé.</p>
       </div>
       <div style="align-self:center">
           <div data-riga style="display:grid;grid-template-columns:minmax(90px,140px) 1fr;gap:clamp(16px,2vw,32px);padding:16px 12px;border-top:1px solid var(--filo1)"><span data-num style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">Modelli</span><span style="font-size:15.5px;line-height:1.5;color:var(--t1)">Reggono compiti a più passaggi</span></div>
@@ -250,7 +255,7 @@
       <span style="display:block;max-width:56ch">
         <span style="display:block;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3);margin-bottom:16px">Pagina successiva</span>
         <span style="display:block;font-weight:500;font-size:clamp(22px,2.6vw,34px);line-height:1.1;letter-spacing:-.03em;margin-bottom:12px">Casi</span>
-        <span style="display:block;font-weight:400;font-size:15px;line-height:1.6;color:var(--t2)">Un agente che pubblica, un agente dentro un'applicazione, un gruppo di agenti che si controllano.</span>
+        <span style="display:block;font-weight:400;font-size:15px;line-height:1.6;color:var(--t2)">Un agente che pubblica, un agente dentro un’applicazione, un gruppo di agenti che si controllano.</span>
       </span>
       <span style="font:500 12px 'JetBrains Mono',monospace;letter-spacing:.09em;text-transform:uppercase;color:var(--acc)">Apri &#8594;</span>
     </a>
@@ -289,7 +294,7 @@
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   componentDidMount() {
-    import('./assets/sito.js').then((m) => m.avvia()).catch((e) => console.error(e));
+    import('/assets/sito.js').then((m) => m.avvia()).catch((e) => console.error(e));
   }
 }
 </script>

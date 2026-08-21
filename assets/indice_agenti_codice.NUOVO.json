@@ -1,0 +1,672 @@
+{
+  "versione": "v1.4",
+  "prove": [
+    "DeepSWE (113)",
+    "Terminal-Bench v2.1 (89)",
+    "SWE-Atlas-QnA (124)"
+  ],
+  "nota_prove": "punteggi in percentuale di compiti risolti (pass@1); costo_per_compito = media API pay-per-token su 326 compiti",
+  "agenti_in_classifica": 55,
+  "valori": [
+    {
+      "nome": "Claude Code · Opus 5 (xhigh)",
+      "agente": "Claude Code",
+      "modello": "Opus 5 (xhigh)",
+      "indice": 68.1,
+      "costo_per_compito": "$8,17",
+      "prove": {
+        "deepswe": 60.5,
+        "terminal_bench_v2_1": 89.1,
+        "swe_atlas_qna": 54.8
+      }
+    },
+    {
+      "nome": "Claude Code · Fable 5 (max) (with fallback)",
+      "agente": "Claude Code",
+      "modello": "Fable 5 (max) (with fallback)",
+      "indice": 67.2,
+      "costo_per_compito": "$11,69",
+      "prove": {
+        "deepswe": 66.1,
+        "terminal_bench_v2_1": 86.5,
+        "swe_atlas_qna": 48.9
+      }
+    },
+    {
+      "nome": "Claude Code · Opus 5 (max)",
+      "agente": "Claude Code",
+      "modello": "Opus 5 (max)",
+      "indice": 67.0,
+      "costo_per_compito": "$8,94",
+      "prove": {
+        "deepswe": 63.1,
+        "terminal_bench_v2_1": 88.8,
+        "swe_atlas_qna": 49.2
+      }
+    },
+    {
+      "nome": "Claude Code · Opus 5 (high)",
+      "agente": "Claude Code",
+      "modello": "Opus 5 (high)",
+      "indice": 65.6,
+      "costo_per_compito": "$3,92",
+      "prove": {
+        "deepswe": 60.8,
+        "terminal_bench_v2_1": 86.9,
+        "swe_atlas_qna": 49.2
+      }
+    },
+    {
+      "nome": "Codex · GPT-5.6 Sol (max)",
+      "agente": "Codex",
+      "modello": "GPT-5.6 Sol (max)",
+      "indice": 65.1,
+      "costo_per_compito": "$6,42",
+      "prove": {
+        "deepswe": 68.7,
+        "terminal_bench_v2_1": 83.1,
+        "swe_atlas_qna": 43.3
+      }
+    },
+    {
+      "nome": "Codex · GPT-5.6 Sol (high)",
+      "agente": "Codex",
+      "modello": "GPT-5.6 Sol (high)",
+      "indice": 64.1,
+      "costo_per_compito": "$3,85",
+      "prove": {
+        "deepswe": 64.9,
+        "terminal_bench_v2_1": 82.0,
+        "swe_atlas_qna": 45.4
+      }
+    },
+    {
+      "nome": "Grok Build · Grok 4.5 (high)",
+      "agente": "Grok Build",
+      "modello": "Grok 4.5 (high)",
+      "indice": 64.1,
+      "costo_per_compito": "$2,44",
+      "prove": {
+        "deepswe": 59.9,
+        "terminal_bench_v2_1": 84.3,
+        "swe_atlas_qna": 48.1
+      }
+    },
+    {
+      "nome": "Claude Code · Opus 5 (medium)",
+      "agente": "Claude Code",
+      "modello": "Opus 5 (medium)",
+      "indice": 64.1,
+      "costo_per_compito": "$3,17",
+      "prove": {
+        "deepswe": 62.8,
+        "terminal_bench_v2_1": 85.0,
+        "swe_atlas_qna": 44.4
+      }
+    },
+    {
+      "nome": "Codex · GPT-5.6 Sol (xhigh)",
+      "agente": "Codex",
+      "modello": "GPT-5.6 Sol (xhigh)",
+      "indice": 63.3,
+      "costo_per_compito": "$4,80",
+      "prove": {
+        "deepswe": 67.0,
+        "terminal_bench_v2_1": 79.8,
+        "swe_atlas_qna": 43.3
+      }
+    },
+    {
+      "nome": "Kimi Code CLI · Kimi K3",
+      "agente": "Kimi Code CLI",
+      "modello": "Kimi K3",
+      "indice": 62.6,
+      "costo_per_compito": "$3,08",
+      "prove": {
+        "deepswe": 63.7,
+        "terminal_bench_v2_1": 87.6,
+        "swe_atlas_qna": 36.6
+      }
+    },
+    {
+      "nome": "Claude Code · Opus 4.8 (max)",
+      "agente": "Claude Code",
+      "modello": "Opus 4.8 (max)",
+      "indice": 62.1,
+      "costo_per_compito": "$7,72",
+      "prove": {
+        "deepswe": 55.8,
+        "terminal_bench_v2_1": 83.9,
+        "swe_atlas_qna": 46.8
+      }
+    },
+    {
+      "nome": "Muse Code · Muse Spark 1.2 (xhigh)",
+      "agente": "Muse Code",
+      "modello": "Muse Spark 1.2 (xhigh)",
+      "indice": 61.6,
+      "costo_per_compito": "$2,07",
+      "prove": {
+        "deepswe": 58.1,
+        "terminal_bench_v2_1": 81.6,
+        "swe_atlas_qna": 45.2
+      }
+    },
+    {
+      "nome": "Codex · GPT-5.6 Sol (medium)",
+      "agente": "Codex",
+      "modello": "GPT-5.6 Sol (medium)",
+      "indice": 61.6,
+      "costo_per_compito": "$2,81",
+      "prove": {
+        "deepswe": 64.0,
+        "terminal_bench_v2_1": 80.5,
+        "swe_atlas_qna": 40.3
+      }
+    },
+    {
+      "nome": "Claude Code · Qwen3.8 Max",
+      "agente": "Claude Code",
+      "modello": "Qwen3.8 Max",
+      "indice": 61.3,
+      "costo_per_compito": "$3,23",
+      "prove": {
+        "deepswe": 51.9,
+        "terminal_bench_v2_1": 83.9,
+        "swe_atlas_qna": 48.1
+      }
+    },
+    {
+      "nome": "Codex · GPT-5.5 (xhigh)",
+      "agente": "Codex",
+      "modello": "GPT-5.5 (xhigh)",
+      "indice": 61.0,
+      "costo_per_compito": "$4,75",
+      "prove": {
+        "deepswe": 64.3,
+        "terminal_bench_v2_1": 82.8,
+        "swe_atlas_qna": 36.0
+      }
+    },
+    {
+      "nome": "Codex · GPT-5.6 Terra (max)",
+      "agente": "Codex",
+      "modello": "GPT-5.6 Terra (max)",
+      "indice": 60.4,
+      "costo_per_compito": "$2,70",
+      "prove": {
+        "deepswe": 67.0,
+        "terminal_bench_v2_1": 78.3,
+        "swe_atlas_qna": 36.0
+      }
+    },
+    {
+      "nome": "Opencode · Gemini 3.7 Flash (high)",
+      "agente": "Opencode",
+      "modello": "Gemini 3.7 Flash (high)",
+      "indice": 59.6,
+      "costo_per_compito": "$1,27",
+      "prove": {
+        "deepswe": 57.2,
+        "terminal_bench_v2_1": 91.0,
+        "swe_atlas_qna": 30.6
+      }
+    },
+    {
+      "nome": "Claude Code · Opus 5 (low)",
+      "agente": "Claude Code",
+      "modello": "Opus 5 (low)",
+      "indice": 59.4,
+      "costo_per_compito": "$2,30",
+      "prove": {
+        "deepswe": 56.9,
+        "terminal_bench_v2_1": 82.0,
+        "swe_atlas_qna": 39.2
+      }
+    },
+    {
+      "nome": "Claude Code · Opus 4.8 (xhigh)",
+      "agente": "Claude Code",
+      "modello": "Opus 4.8 (xhigh)",
+      "indice": 59.1,
+      "costo_per_compito": "$5,67",
+      "prove": {
+        "deepswe": 51.3,
+        "terminal_bench_v2_1": 83.1,
+        "swe_atlas_qna": 42.7
+      }
+    },
+    {
+      "nome": "Opencode · Muse Spark 1.2 (xhigh)",
+      "agente": "Opencode",
+      "modello": "Muse Spark 1.2 (xhigh)",
+      "indice": 58.9,
+      "costo_per_compito": "$1,91",
+      "prove": {
+        "deepswe": 52.8,
+        "terminal_bench_v2_1": 79.8,
+        "swe_atlas_qna": 44.1
+      }
+    },
+    {
+      "nome": "Claude Code · Opus 4.8 (high)",
+      "agente": "Claude Code",
+      "modello": "Opus 4.8 (high)",
+      "indice": 57.6,
+      "costo_per_compito": "$3,78",
+      "prove": {
+        "deepswe": 51.6,
+        "terminal_bench_v2_1": 82.4,
+        "swe_atlas_qna": 38.7
+      }
+    },
+    {
+      "nome": "Codex · GPT-5.6 Luna (max)",
+      "agente": "Codex",
+      "modello": "GPT-5.6 Luna (max)",
+      "indice": 57.2,
+      "costo_per_compito": "$1,51",
+      "prove": {
+        "deepswe": 63.4,
+        "terminal_bench_v2_1": 75.3,
+        "swe_atlas_qna": 32.8
+      }
+    },
+    {
+      "nome": "Antigravity SDK · Gemini 3.7 Flash (high)",
+      "agente": "Antigravity SDK",
+      "modello": "Gemini 3.7 Flash (high)",
+      "indice": 56.6,
+      "costo_per_compito": "$1,40",
+      "prove": {
+        "deepswe": 56.0,
+        "terminal_bench_v2_1": 86.5,
+        "swe_atlas_qna": 27.2
+      }
+    },
+    {
+      "nome": "Codex · GPT-5.6 Terra (xhigh)",
+      "agente": "Codex",
+      "modello": "GPT-5.6 Terra (xhigh)",
+      "indice": 56.0,
+      "costo_per_compito": "$1,88",
+      "prove": {
+        "deepswe": 58.4,
+        "terminal_bench_v2_1": 77.2,
+        "swe_atlas_qna": 32.5
+      }
+    },
+    {
+      "nome": "Claude Code · Opus 4.8 (medium)",
+      "agente": "Claude Code",
+      "modello": "Opus 4.8 (medium)",
+      "indice": 55.8,
+      "costo_per_compito": "$3,30",
+      "prove": {
+        "deepswe": 49.3,
+        "terminal_bench_v2_1": 82.0,
+        "swe_atlas_qna": 36.0
+      }
+    },
+    {
+      "nome": "Codex · GPT-5.5 (medium)",
+      "agente": "Codex",
+      "modello": "GPT-5.5 (medium)",
+      "indice": 55.3,
+      "costo_per_compito": "$2,65",
+      "prove": {
+        "deepswe": 56.6,
+        "terminal_bench_v2_1": 78.7,
+        "swe_atlas_qna": 30.6
+      }
+    },
+    {
+      "nome": "Codex · GPT-5.6 Sol (low)",
+      "agente": "Codex",
+      "modello": "GPT-5.6 Sol (low)",
+      "indice": 55.2,
+      "costo_per_compito": "$1,66",
+      "prove": {
+        "deepswe": 53.4,
+        "terminal_bench_v2_1": 77.9,
+        "swe_atlas_qna": 34.4
+      }
+    },
+    {
+      "nome": "Opencode · Muse Spark 1.1 (xhigh)",
+      "agente": "Opencode",
+      "modello": "Muse Spark 1.1 (xhigh)",
+      "indice": 54.9,
+      "costo_per_compito": "$1,44",
+      "prove": {
+        "deepswe": 54.3,
+        "terminal_bench_v2_1": 77.2,
+        "swe_atlas_qna": 33.3
+      }
+    },
+    {
+      "nome": "Codex · GPT-5.6 Terra (high)",
+      "agente": "Codex",
+      "modello": "GPT-5.6 Terra (high)",
+      "indice": 54.6,
+      "costo_per_compito": "$1,56",
+      "prove": {
+        "deepswe": 60.5,
+        "terminal_bench_v2_1": 72.3,
+        "swe_atlas_qna": 31.2
+      }
+    },
+    {
+      "nome": "Codex · GPT-5.6 Luna (xhigh)",
+      "agente": "Codex",
+      "modello": "GPT-5.6 Luna (xhigh)",
+      "indice": 53.0,
+      "costo_per_compito": "$1,21",
+      "prove": {
+        "deepswe": 56.6,
+        "terminal_bench_v2_1": 70.8,
+        "swe_atlas_qna": 31.5
+      }
+    },
+    {
+      "nome": "Codex · GPT-5.6 Luna (high)",
+      "agente": "Codex",
+      "modello": "GPT-5.6 Luna (high)",
+      "indice": 51.7,
+      "costo_per_compito": "$0,92",
+      "prove": {
+        "deepswe": 53.4,
+        "terminal_bench_v2_1": 72.7,
+        "swe_atlas_qna": 29.0
+      }
+    },
+    {
+      "nome": "Claude Code · Opus 4.7 (max)",
+      "agente": "Claude Code",
+      "modello": "Opus 4.7 (max)",
+      "indice": 51.6,
+      "costo_per_compito": "$5,92",
+      "prove": {
+        "deepswe": 40.1,
+        "terminal_bench_v2_1": 77.5,
+        "swe_atlas_qna": 37.1
+      }
+    },
+    {
+      "nome": "Opencode · Opus 4.7 (medium)",
+      "agente": "Opencode",
+      "modello": "Opus 4.7 (medium)",
+      "indice": 51.3,
+      "costo_per_compito": "$2,94",
+      "prove": {
+        "deepswe": 39.5,
+        "terminal_bench_v2_1": 78.3,
+        "swe_atlas_qna": 36.0
+      }
+    },
+    {
+      "nome": "Codex · DeepSeek V4 Flash 0731 (max)",
+      "agente": "Codex",
+      "modello": "DeepSeek V4 Flash 0731 (max)",
+      "indice": 49.8,
+      "costo_per_compito": "$0,06",
+      "prove": {
+        "deepswe": 42.8,
+        "terminal_bench_v2_1": 67.8,
+        "swe_atlas_qna": 38.7
+      }
+    },
+    {
+      "nome": "Claude Code · Opus 4.8 (low)",
+      "agente": "Claude Code",
+      "modello": "Opus 4.8 (low)",
+      "indice": 49.0,
+      "costo_per_compito": "$2,18",
+      "prove": {
+        "deepswe": 41.0,
+        "terminal_bench_v2_1": 77.9,
+        "swe_atlas_qna": 28.2
+      }
+    },
+    {
+      "nome": "Codex · GPT-5.6 Terra (medium)",
+      "agente": "Codex",
+      "modello": "GPT-5.6 Terra (medium)",
+      "indice": 48.0,
+      "costo_per_compito": "$0,88",
+      "prove": {
+        "deepswe": 45.7,
+        "terminal_bench_v2_1": 69.7,
+        "swe_atlas_qna": 28.8
+      }
+    },
+    {
+      "nome": "Opencode · Gemini 3.6 Flash (high)",
+      "agente": "Opencode",
+      "modello": "Gemini 3.6 Flash (high)",
+      "indice": 47.2,
+      "costo_per_compito": "$2,08",
+      "prove": {
+        "deepswe": 41.3,
+        "terminal_bench_v2_1": 78.7,
+        "swe_atlas_qna": 21.8
+      }
+    },
+    {
+      "nome": "Cursor CLI · GPT-5.5 (medium)",
+      "agente": "Cursor CLI",
+      "modello": "GPT-5.5 (medium)",
+      "indice": 47.1,
+      "costo_per_compito": "$2,00",
+      "prove": {
+        "deepswe": 37.2,
+        "terminal_bench_v2_1": 76.4,
+        "swe_atlas_qna": 27.7
+      }
+    },
+    {
+      "nome": "Cursor CLI · Opus 4.7 (medium)",
+      "agente": "Cursor CLI",
+      "modello": "Opus 4.7 (medium)",
+      "indice": 46.7,
+      "costo_per_compito": "$2,72",
+      "prove": {
+        "deepswe": 31.6,
+        "terminal_bench_v2_1": 74.5,
+        "swe_atlas_qna": 33.9
+      }
+    },
+    {
+      "nome": "Codex · GPT-5.6 Sol (none)",
+      "agente": "Codex",
+      "modello": "GPT-5.6 Sol (none)",
+      "indice": 43.4,
+      "costo_per_compito": "$1,40",
+      "prove": {
+        "deepswe": 35.4,
+        "terminal_bench_v2_1": 60.3,
+        "swe_atlas_qna": 34.4
+      }
+    },
+    {
+      "nome": "Claude Code · GLM-5.2",
+      "agente": "Claude Code",
+      "modello": "GLM-5.2",
+      "indice": 43.3,
+      "costo_per_compito": "$6,66",
+      "prove": {
+        "deepswe": 28.6,
+        "terminal_bench_v2_1": 72.3,
+        "swe_atlas_qna": 29.0
+      }
+    },
+    {
+      "nome": "Claude Code · Opus 4.7 (medium)",
+      "agente": "Claude Code",
+      "modello": "Opus 4.7 (medium)",
+      "indice": 42.4,
+      "costo_per_compito": "$1,80",
+      "prove": {
+        "deepswe": 27.4,
+        "terminal_bench_v2_1": 77.2,
+        "swe_atlas_qna": 22.6
+      }
+    },
+    {
+      "nome": "Codex · GPT-5.6 Luna (medium)",
+      "agente": "Codex",
+      "modello": "GPT-5.6 Luna (medium)",
+      "indice": 42.0,
+      "costo_per_compito": "$0,44",
+      "prove": {
+        "deepswe": 36.6,
+        "terminal_bench_v2_1": 62.2,
+        "swe_atlas_qna": 27.2
+      }
+    },
+    {
+      "nome": "Claude Code · Sonnet 4.6 (medium)",
+      "agente": "Claude Code",
+      "modello": "Sonnet 4.6 (medium)",
+      "indice": 38.6,
+      "costo_per_compito": "$2,04",
+      "prove": {
+        "deepswe": 28.9,
+        "terminal_bench_v2_1": 67.4,
+        "swe_atlas_qna": 19.6
+      }
+    },
+    {
+      "nome": "Codex · GPT-5.6 Terra (low)",
+      "agente": "Codex",
+      "modello": "GPT-5.6 Terra (low)",
+      "indice": 38.6,
+      "costo_per_compito": "$0,49",
+      "prove": {
+        "deepswe": 29.8,
+        "terminal_bench_v2_1": 63.3,
+        "swe_atlas_qna": 22.8
+      }
+    },
+    {
+      "nome": "Cursor CLI · Composer 2.5 Fast",
+      "agente": "Cursor CLI",
+      "modello": "Composer 2.5 Fast",
+      "indice": 38.3,
+      "costo_per_compito": "$0,56",
+      "prove": {
+        "deepswe": 15.9,
+        "terminal_bench_v2_1": 67.8,
+        "swe_atlas_qna": 31.2
+      }
+    },
+    {
+      "nome": "Cursor CLI · Composer 2.5",
+      "agente": "Cursor CLI",
+      "modello": "Composer 2.5",
+      "indice": 38.3,
+      "costo_per_compito": "$0,09",
+      "prove": {
+        "deepswe": 15.9,
+        "terminal_bench_v2_1": 67.8,
+        "swe_atlas_qna": 31.2
+      }
+    },
+    {
+      "nome": "Claude Code · Qwen3.7 Plus (thinking)",
+      "agente": "Claude Code",
+      "modello": "Qwen3.7 Plus (thinking)",
+      "indice": 38.1,
+      "costo_per_compito": "$6,30",
+      "prove": {
+        "deepswe": 19.2,
+        "terminal_bench_v2_1": 71.5,
+        "swe_atlas_qna": 23.7
+      }
+    },
+    {
+      "nome": "Claude Code · GLM-5.1",
+      "agente": "Claude Code",
+      "modello": "GLM-5.1",
+      "indice": 36.9,
+      "costo_per_compito": "$4,28",
+      "prove": {
+        "deepswe": 18.6,
+        "terminal_bench_v2_1": 67.4,
+        "swe_atlas_qna": 24.7
+      }
+    },
+    {
+      "nome": "Claude Code · Kimi K2.6",
+      "agente": "Claude Code",
+      "modello": "Kimi K2.6",
+      "indice": 33.9,
+      "costo_per_compito": "$1,22",
+      "prove": {
+        "deepswe": 16.5,
+        "terminal_bench_v2_1": 69.3,
+        "swe_atlas_qna": 15.9
+      }
+    },
+    {
+      "nome": "Gemini CLI · Gemini 3.1 Pro (high)",
+      "agente": "Gemini CLI",
+      "modello": "Gemini 3.1 Pro (high)",
+      "indice": 32.9,
+      "costo_per_compito": "$1,04",
+      "prove": {
+        "deepswe": 14.2,
+        "terminal_bench_v2_1": 76.0,
+        "swe_atlas_qna": 8.6
+      }
+    },
+    {
+      "nome": "Claude Code · DeepSeek V4 Pro (high)",
+      "agente": "Claude Code",
+      "modello": "DeepSeek V4 Pro (high)",
+      "indice": 32.8,
+      "costo_per_compito": "$0,25",
+      "prove": {
+        "deepswe": 8.6,
+        "terminal_bench_v2_1": 70.0,
+        "swe_atlas_qna": 19.9
+      }
+    },
+    {
+      "nome": "Codex · GPT-5.6 Luna (low)",
+      "agente": "Codex",
+      "modello": "GPT-5.6 Luna (low)",
+      "indice": 25.1,
+      "costo_per_compito": "$0,19",
+      "prove": {
+        "deepswe": 10.3,
+        "terminal_bench_v2_1": 49.8,
+        "swe_atlas_qna": 15.1
+      }
+    },
+    {
+      "nome": "Codex · GPT-5.6 Terra (none)",
+      "agente": "Codex",
+      "modello": "GPT-5.6 Terra (none)",
+      "indice": 23.1,
+      "costo_per_compito": "$0,36",
+      "prove": {
+        "deepswe": 13.3,
+        "terminal_bench_v2_1": 37.5,
+        "swe_atlas_qna": 18.5
+      }
+    },
+    {
+      "nome": "Codex · GPT-5.6 Luna (none)",
+      "agente": "Codex",
+      "modello": "GPT-5.6 Luna (none)",
+      "indice": 19.1,
+      "costo_per_compito": "$0,33",
+      "prove": {
+        "deepswe": 6.5,
+        "terminal_bench_v2_1": 33.3,
+        "swe_atlas_qna": 17.5
+      }
+    }
+  ]
+}
