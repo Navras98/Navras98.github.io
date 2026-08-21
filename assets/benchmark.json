@@ -1,111 +1,123 @@
 {
   "fonte": "Artificial Analysis",
   "indirizzo": "https://artificialanalysis.ai",
-  "letto": "2026-08-21",
+  "api": "https://artificialanalysis.ai/api/v2/data/llms/models",
+  "letto": "2026-08-21T20:48:09+02:00",
+  "misura_costo": "prezzo miscelato 3:1 per milione di token, in dollari",
+  "copertura": {
+    "censiti": 610,
+    "classifica": 597
+  },
   "indice_intelligenza": {
-    "versione": "v4.1.1",
-    "valutazioni": 9,
-    "modelli_in_classifica": 164,
-    "modelli_censiti": 611,
+    "valutazioni": 6,
+    "prove": [
+      "GPQA Diamond",
+      "Humanity's Last Exam",
+      "AA-LCR",
+      "SciCode",
+      "τ-Bench Banking",
+      "Terminal-Bench v2.1"
+    ],
     "valori": [
       {
         "nome": "Claude Opus 5 (max)",
-        "indice": 63,
-        "costo_per_compito": "$2,34",
+        "indice": 63.1,
+        "prezzo_per_milione_token_usd": 10.0,
         "uso": true
       },
       {
         "nome": "Claude Opus 5 (xhigh)",
-        "indice": 63,
-        "costo_per_compito": "$1,80",
+        "indice": 62.5,
+        "prezzo_per_milione_token_usd": 10.0,
         "uso": true
       },
       {
-        "nome": "Claude Fable 5 (fallback)",
-        "indice": 62,
-        "costo_per_compito": "$3,14",
+        "nome": "Claude Fable 5 (riserva)",
+        "indice": 62.1,
+        "prezzo_per_milione_token_usd": 20.0,
         "uso": false
       },
       {
         "nome": "Claude Opus 5 (high)",
-        "indice": 61,
-        "costo_per_compito": "$1,23",
-        "uso": true
-      },
-      {
-        "nome": "GPT-5.6 Sol (max)",
-        "indice": 61,
-        "costo_per_compito": "$1,23",
+        "indice": 61.5,
+        "prezzo_per_milione_token_usd": 10.0,
         "uso": true
       },
       {
         "nome": "Grok 4.6 (high)",
-        "indice": 61,
-        "costo_per_compito": "$0,84",
+        "indice": 60.9,
+        "prezzo_per_milione_token_usd": 3.0,
         "uso": false
       },
       {
+        "nome": "GPT-5.6 Sol (max)",
+        "indice": 60.9,
+        "prezzo_per_milione_token_usd": 11.25,
+        "uso": true
+      },
+      {
         "nome": "Kimi K3 (max)",
-        "indice": 60,
-        "costo_per_compito": "$0,84",
+        "indice": 59.7,
+        "prezzo_per_milione_token_usd": 6.0,
         "uso": true
       },
       {
         "nome": "GLM-5.3 (max)",
-        "indice": 60,
-        "costo_per_compito": "$0,68",
+        "indice": 59.5,
+        "prezzo_per_milione_token_usd": 2.15,
         "uso": false
       },
       {
         "nome": "Qwen3.8 2.4T A95B",
-        "indice": 58,
-        "costo_per_compito": "$1,09",
+        "indice": 57.7,
+        "prezzo_per_milione_token_usd": 3.0,
         "uso": true
       },
       {
         "nome": "GPT-5.6 Sol (high)",
-        "indice": 57,
-        "costo_per_compito": "$0,55",
+        "indice": 57.3,
+        "prezzo_per_milione_token_usd": 11.25,
         "uso": true
       },
       {
         "nome": "Gemini 3.7 Flash (high)",
-        "indice": 56,
-        "costo_per_compito": "$0,40",
-        "uso": true
-      },
-      {
-        "nome": "DeepSeek V4 Pro (max)",
-        "indice": 53,
-        "costo_per_compito": "$0,25",
+        "indice": 56.0,
+        "prezzo_per_milione_token_usd": 1.5,
         "uso": true
       },
       {
         "nome": "GPT-5.6 Luna (max)",
-        "indice": 52,
-        "costo_per_compito": "$0,05",
+        "indice": 52.3,
+        "prezzo_per_milione_token_usd": 0.45,
         "uso": false
       },
       {
+        "nome": "DeepSeek V4 Pro (max)",
+        "indice": 45.3,
+        "prezzo_per_milione_token_usd": 0.544,
+        "uso": true
+      },
+      {
         "nome": "Qwen3.6 27B",
-        "indice": 38,
-        "costo_per_compito": "$0,29",
+        "indice": 37.7,
+        "prezzo_per_milione_token_usd": 1.35,
         "uso": true
       },
       {
         "nome": "Mistral Medium 3.5",
-        "indice": 30,
-        "costo_per_compito": "$0,46",
+        "indice": 30.4,
+        "prezzo_per_milione_token_usd": 3.0,
         "uso": false
       },
       {
         "nome": "gpt-oss-120b (high)",
-        "indice": 24,
-        "costo_per_compito": "$0,07",
+        "indice": 24.1,
+        "prezzo_per_milione_token_usd": 0.262,
         "uso": true
       }
     ]
   },
+  "licenza": "dati di Artificial Analysis, citati con attribuzione. Fonte e metodo su https://artificialanalysis.ai",
   "indice_agenti_codice": {
     "versione": "v1.4",
     "prove": [
@@ -248,6 +260,5 @@
       "cache_letta": 0.014,
       "nota": "fuori dalle ore di punta 0,22 / 0,66"
     }
-  ],
-  "licenza": "dati di Artificial Analysis, citati con attribuzione. Fonte e metodo su https://artificialanalysis.ai"
+  ]
 }

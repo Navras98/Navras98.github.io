@@ -87,7 +87,11 @@ img{display:block;max-width:100%}
 @keyframes filoy{from{transform:scaleY(0)}to{transform:scaleY(1)}}
 @keyframes sali{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 @keyframes appari{from{opacity:0}to{opacity:1}}
-@keyframes deriva{0%{transform:translateY(0)}50%{transform:translateY(-12px)}100%{transform:translateY(0)}}
+/* Le tre forme di fondo in apertura sono centrate con translateX(-50%) scritto
+   in linea. Un'animazione che dichiara `transform` sostituisce quel valore, non
+   lo somma: mentre `deriva` girava, la centratura spariva e le forme scivolavano
+   a destra del titolo. Lo spostamento orizzontale va ripetuto in ogni fotogramma. */
+@keyframes deriva{0%{transform:translate(-50%,0)}50%{transform:translate(-50%,-12px)}100%{transform:translate(-50%,0)}}
 @keyframes disegna{to{stroke-dashoffset:0}}
 @keyframes scorri{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @keyframes bolla{from{opacity:0;transform:translateY(16px) scale(.985)}to{opacity:1;transform:none}}
@@ -215,6 +219,16 @@ img{display:block;max-width:100%}
 }
 @media (min-width:481px){
   [data-lingua-menu]{display:none!important}
+}
+
+/* Una scheda cliente non e' una tabella: e' un elenco di campi. Sotto i 560px
+   la colonna del valore restava larga 170px, e la regola generale delle
+   tabelle spezzava l'e-mail a meta' parola («contabilita @verdisapo-ri.it») e
+   la partita IVA su due righe. Qui l'etichetta va sopra e il valore ha tutta
+   la larghezza: nessuna sillabazione, nessun numero tagliato. */
+@media (max-width:560px){
+  [data-scheda]{grid-template-columns:1fr!important;gap:2px!important}
+  [data-scheda]>*{overflow-wrap:normal;word-break:normal;hyphens:none}
 }
 
 /* Le tabelle dentro le chat non si schiacciano: scorrono in orizzontale. */
