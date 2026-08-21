@@ -18,7 +18,7 @@ from pathlib import Path
 
 RADICE = Path(__file__).resolve().parent.parent
 FONTE = RADICE / "assets" / "benchmark.json"
-PAGINA = RADICE / "Modelli.dc.html"
+PAGINA = RADICE / "modelli" / "index.html"
 SILENZIO = "--silenzio" in sys.argv
 
 MESI = ["gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno",
