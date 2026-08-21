@@ -36,8 +36,19 @@ PAGINE = [
     "/", "/agenti/", "/casi/", "/modelli/", "/sicurezza/", "/dati/",
     "/privacy-bridge/", "/formazione/", "/contatti/", "/architettura/",
     "/automazione/", "/strumenti/", "/metodo/", "/modelli-in-locale/",
-    "/404.html",
 ]
+
+# le gemelle inglesi: l'elenco si deriva dalla tabella che le costruisce,
+# cosi' una pagina nuova non puo' restare fuori dal collaudo senza che si veda
+import os as _os
+import sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+from i18n_costruisci import IN_INGLESE as _EN  # noqa: E402
+
+PAGINE = PAGINE + [
+    "/en/" + (_EN.get(p.strip("/"), p.strip("/")) + "/" if p != "/" else "")
+    for p in PAGINE
+] + ["/404.html"]
 
 # Sotto questa soglia la pagina e' da considerarsi vuota. Il metro viene dal
 # guasto vero: con il CDN giu' le pagine si fermavano a 18 caratteri. La pagina

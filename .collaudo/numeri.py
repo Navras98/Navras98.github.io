@@ -18,11 +18,45 @@ from pathlib import Path
 
 RADICE = Path(__file__).resolve().parent.parent
 FONTE = RADICE / "assets" / "benchmark.json"
-PAGINA = RADICE / "modelli" / "index.html"
 SILENZIO = "--silenzio" in sys.argv
 
 MESI = ["gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno",
         "luglio", "agosto", "settembre", "ottobre", "novembre", "dicembre"]
+MESI_EN = ["January", "February", "March", "April", "May", "June", "July",
+           "August", "September", "October", "November", "December"]
+
+# La stessa classifica esce in due pagine. Se il controllo guardasse solo
+# l'italiana, la gemella inglese potrebbe restare indietro di una revisione
+# senza che nessuno se ne accorga: sono proprio i numeri, non le frasi, la
+# parte che un lettore straniero userebbe per decidere.
+LINGUE = {
+    "it": {
+        "pagina": RADICE / "modelli" / "index.html",
+        "indice": "Indice di intelligenza",
+        "fine_indice": "Intelligenza per euro speso",
+        "agenti": "Agenti di codice",
+        "fine_agenti": "Come \u00e8 costruito",
+        "prezzi": "Prezzo per milione di token",
+        "fine_prezzi": "La cache non \u00e8 un dettaglio",
+        "valutazioni": "%s valutazioni",
+        "censiti": "%s modelli censiti",
+        "classifica": "%s in classifica",
+        "data": lambda g, m, a: "%d %s %s" % (int(g), MESI[int(m) - 1], a),
+    },
+    "en": {
+        "pagina": RADICE / "en" / "models" / "index.html",
+        "indice": "Intelligence index",
+        "fine_indice": "Intelligence per euro spent",
+        "agenti": "Coding agents",
+        "fine_agenti": "How it is built",
+        "prezzi": "Price per million tokens",
+        "fine_prezzi": "The cache is not a detail",
+        "valutazioni": "%s evaluations",
+        "censiti": "%s models surveyed",
+        "classifica": "%s in the ranking",
+        "data": lambda g, m, a: "%d %s %s" % (int(g), MESI_EN[int(m) - 1], a),
+    },
+}
 
 # una riga di grafico a barre: nome, barra, valore (con eventuale coda "· costo")
 RIGA_BARRA = re.compile(
@@ -64,7 +98,9 @@ def sezione(html, dallo, allo=None):
     return html[i: j if j > 0 else len(html)]
 
 
-def main():
+def controlla(lingua):
+    voci = LINGUE[lingua]
+    PAGINA = voci["pagina"]
     dati = json.loads(FONTE.read_text(encoding="utf-8"))
     html = PAGINA.read_text(encoding="utf-8")
     vis = visibile(html)
@@ -80,20 +116,21 @@ def main():
     # ---------------------------------------------- intestazione e provenienza
     ii = dati["indice_intelligenza"]
     esigi("indice/versione", f"Intelligence Index {ii['versione']}")
-    esigi("indice/valutazioni", f"{ii['valutazioni']} valutazioni")
-    esigi("indice/censiti", f"{ii['modelli_censiti']} modelli censiti")
-    esigi("indice/in classifica", f"{ii['modelli_in_classifica']} in classifica")
+    esigi("indice/valutazioni", voci["valutazioni"] % ii["valutazioni"])
+    esigi("indice/censiti", voci["censiti"] % ii["modelli_censiti"])
+    esigi("indice/in classifica", voci["classifica"] % ii["modelli_in_classifica"])
     esigi("fonte", dati["fonte"])
 
     a, m, g = dati["letto"].split("-")
-    data_estesa = f"{int(g)} {MESI[int(m) - 1]} {a}"
+    data_estesa = voci["data"](g, m, a)
     esigi("data di lettura", data_estesa)
 
     # ------------------------------------- classifica dell'indice di intelligenza
-    blocco = sezione(html, "Indice di intelligenza", "Intelligenza per euro speso")
+    blocco = sezione(html, voci["indice"], voci["fine_indice"])
     letti = [(pulisci(x["nome"]), x["val"], pulisci(x["coda"] or ""))
              for x in (mm.groupdict() for mm in RIGA_BARRA.finditer(blocco))]
-    attesi = [(v["nome"], str(v["indice"]), v["costo_per_compito"]) for v in ii["valori"]]
+    attesi = [(v.get("nome_en", v["nome"]) if lingua != "it" else v["nome"],
+               str(v["indice"]), v["costo_per_compito"]) for v in ii["valori"]]
     n += max(len(letti), len(attesi))
 
     if [r[0] for r in letti] != [r[0] for r in attesi]:
@@ -115,9 +152,15 @@ def main():
     # ---------------------------------------------- indice degli agenti di codice
     ac = dati["indice_agenti_codice"]
     esigi("agenti di codice/versione", ac["versione"])
-    blocco = sezione(html, "Agenti di codice", "Come è costruito")
+    blocco = sezione(html, voci["agenti"], voci["fine_agenti"])
     letti = [(pulisci(x["nome"]), x["val"]) for x in (mm.groupdict() for mm in RIGA_BARRA.finditer(blocco))]
-    attesi = [(v["nome"], str(v["indice"])) for v in ac["valori"]]
+    # il nome di un modello e' un identificativo, non prosa: si traduce solo se
+    # la fonte stessa dichiara come si scrive nell'altra lingua (nome_en). Cosi'
+    # anche la pagina inglese resta agganciata al file, e non puo' scivolare.
+    def come_si_chiama(v):
+        return v.get("nome_en", v["nome"]) if lingua != "it" else v["nome"]
+
+    attesi = [(come_si_chiama(v), str(v["indice"])) for v in ac["valori"]]
     n += max(len(letti), len(attesi))
     for nome, val in letti:
         atteso = next((x for x in attesi if x[0] == nome), None)
@@ -143,7 +186,7 @@ def main():
             guasti.append(f"{etichetta}: la classifica non scende — fuori posto: {', '.join(fuori)}")
 
     # -------------------------------------------- prezzi per milione di token
-    blocco = sezione(html, "Prezzo per milione di token", "La cache non è un dettaglio")
+    blocco = sezione(html, voci["prezzi"], voci["fine_prezzi"])
     letti = [(pulisci(x["modello"]), pulisci(x["ing"]), pulisci(x["usc"]))
              for x in (mm.groupdict() for mm in RIGA_PREZZO.finditer(blocco))]
     attesi = [(p["modello"], euro(p["ingresso"]), euro(p["uscita"]))
@@ -163,6 +206,7 @@ def main():
 
     # ------------------------------------------------------------------- esito
     if not SILENZIO:
+        print(f"\n  lingua    {lingua}")
         print(f"  fonte     {FONTE.relative_to(RADICE)}")
         print(f"  pagina    {PAGINA.relative_to(RADICE)}")
         print(f"  letto il  {data_estesa}")
@@ -174,6 +218,10 @@ def main():
         else:
             print("\n  nessuno scostamento: la pagina dice quello che dice il file.")
     return 1 if guasti else 0
+
+
+def main():
+    return max(controlla(l) for l in LINGUE)
 
 
 if __name__ == "__main__":

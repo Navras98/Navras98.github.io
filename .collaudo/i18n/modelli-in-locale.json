@@ -1,0 +1,797 @@
+{
+ "pagina": "modelli-in-locale/index.html",
+ "pezzi": [
+  {
+   "id": 0,
+   "tipo": "testo",
+   "it": "Modelli in locale — Andrea Sforna AI"
+  },
+  {
+   "id": 1,
+   "tipo": "meta:description",
+   "it": "Quanta memoria serve per far girare un modello sulla vostra macchina: l'aritmetica per intero e uno strumento che legge il computer e consiglia la classe."
+  },
+  {
+   "id": 2,
+   "tipo": "meta:og:title",
+   "it": "Modelli in locale — Andrea Sforna AI"
+  },
+  {
+   "id": 3,
+   "tipo": "meta:og:description",
+   "it": "Quanta memoria serve per far girare un modello sulla vostra macchina: l'aritmetica per intero e uno strumento che legge il computer e consiglia la classe."
+  },
+  {
+   "id": 4,
+   "tipo": "meta:og:image:alt",
+   "it": "Andrea Sforna AI — progettazione, sicurezza e manutenzione di sistemi di agenti AI"
+  },
+  {
+   "id": 5,
+   "tipo": "meta:twitter:title",
+   "it": "Modelli in locale — Andrea Sforna AI"
+  },
+  {
+   "id": 6,
+   "tipo": "meta:twitter:description",
+   "it": "Quanta memoria serve per far girare un modello sulla vostra macchina: l'aritmetica per intero e uno strumento che legge il computer e consiglia la classe."
+  },
+  {
+   "id": 7,
+   "tipo": "testo",
+   "it": "Salta al contenuto"
+  },
+  {
+   "id": 8,
+   "tipo": "testo",
+   "it": "AS"
+  },
+  {
+   "id": 9,
+   "tipo": "testo",
+   "it": "Andrea Sforna AI"
+  },
+  {
+   "id": 10,
+   "tipo": "testo",
+   "it": "Agenti"
+  },
+  {
+   "id": 11,
+   "tipo": "testo",
+   "it": "Casi"
+  },
+  {
+   "id": 12,
+   "tipo": "testo",
+   "it": "Modelli"
+  },
+  {
+   "id": 13,
+   "tipo": "testo",
+   "it": "Sicurezza"
+  },
+  {
+   "id": 14,
+   "tipo": "testo",
+   "it": "Dati"
+  },
+  {
+   "id": 15,
+   "tipo": "testo",
+   "it": "Privacy Bridge"
+  },
+  {
+   "id": 16,
+   "tipo": "testo",
+   "it": "Formazione"
+  },
+  {
+   "id": 17,
+   "tipo": "testo",
+   "it": "Contatti"
+  },
+  {
+   "id": 18,
+   "tipo": "testo",
+   "it": "Chiaro"
+  },
+  {
+   "id": 19,
+   "tipo": "attributo:aria-label",
+   "it": "Apri il menu"
+  },
+  {
+   "id": 20,
+   "tipo": "testo",
+   "it": "Menu"
+  },
+  {
+   "id": 21,
+   "tipo": "testo",
+   "it": "Agenti"
+  },
+  {
+   "id": 22,
+   "tipo": "testo",
+   "it": "Casi"
+  },
+  {
+   "id": 23,
+   "tipo": "testo",
+   "it": "Modelli"
+  },
+  {
+   "id": 24,
+   "tipo": "testo",
+   "it": "Sicurezza"
+  },
+  {
+   "id": 25,
+   "tipo": "testo",
+   "it": "Dati"
+  },
+  {
+   "id": 26,
+   "tipo": "testo",
+   "it": "Privacy Bridge"
+  },
+  {
+   "id": 27,
+   "tipo": "testo",
+   "it": "Formazione"
+  },
+  {
+   "id": 28,
+   "tipo": "testo",
+   "it": "Contatti"
+  },
+  {
+   "id": 29,
+   "tipo": "testo",
+   "it": "Modelli in locale"
+  },
+  {
+   "id": 30,
+   "tipo": "testo",
+   "it": "Architettura"
+  },
+  {
+   "id": 31,
+   "tipo": "testo",
+   "it": "Automazione"
+  },
+  {
+   "id": 32,
+   "tipo": "testo",
+   "it": "Strumenti"
+  },
+  {
+   "id": 33,
+   "tipo": "testo",
+   "it": "Metodo"
+  },
+  {
+   "id": 34,
+   "tipo": "testo",
+   "it": "Modelli in locale"
+  },
+  {
+   "id": 35,
+   "tipo": "testo",
+   "it": "Il modello che gira in casa"
+  },
+  {
+   "id": 36,
+   "tipo": "testo",
+   "it": "Nessun dato esce dalla macchina, nessuna bolletta a token. In cambio serve memoria, e la memoria è un conto che si fa prima, non dopo."
+  },
+  {
+   "id": 37,
+   "tipo": "testo",
+   "it": "L’aritmetica, non l’opinione"
+  },
+  {
+   "id": 38,
+   "tipo": "testo",
+   "it": "Un modello occupa memoria in proporzione ai suoi parametri e al numero di bit con cui è salvato ciascun peso. Da qui si parte per sapere se una macchina regge, prima di scaricare venti gigabyte."
+  },
+  {
+   "id": 39,
+   "tipo": "testo",
+   "it": "FP16"
+  },
+  {
+   "id": 40,
+   "tipo": "testo",
+   "it": "circa 2 GB per miliardo di parametri"
+  },
+  {
+   "id": 41,
+   "tipo": "testo",
+   "it": "Q8"
+  },
+  {
+   "id": 42,
+   "tipo": "testo",
+   "it": "circa 1,06 GB per miliardo"
+  },
+  {
+   "id": 43,
+   "tipo": "testo",
+   "it": "Q5 / Q6"
+  },
+  {
+   "id": 44,
+   "tipo": "testo",
+   "it": "circa 0,62 GB per miliardo"
+  },
+  {
+   "id": 45,
+   "tipo": "testo",
+   "it": "Q4_K_M"
+  },
+  {
+   "id": 46,
+   "tipo": "testo",
+   "it": "circa 0,56 GB per miliardo"
+  },
+  {
+   "id": 47,
+   "tipo": "testo",
+   "it": "In più"
+  },
+  {
+   "id": 48,
+   "tipo": "testo",
+   "it": "la cache del contesto, che cresce con la lunghezza della conversazione"
+  },
+  {
+   "id": 49,
+   "tipo": "testo",
+   "it": "Classi e macchine"
+  },
+  {
+   "id": 50,
+   "tipo": "testo",
+   "it": "La tabella che uso quando qualcuno mi chiede se il suo computer basta. I nomi dei modelli cambiano ogni mese: le classi e i conti no."
+  },
+  {
+   "id": 51,
+   "tipo": "testo",
+   "it": "CLASSE"
+  },
+  {
+   "id": 52,
+   "tipo": "testo",
+   "it": "PESO A Q4"
+  },
+  {
+   "id": 53,
+   "tipo": "testo",
+   "it": "MEMORIA"
+  },
+  {
+   "id": 54,
+   "tipo": "testo",
+   "it": "4B"
+  },
+  {
+   "id": 55,
+   "tipo": "testo",
+   "it": "~2,2 GB"
+  },
+  {
+   "id": 56,
+   "tipo": "testo",
+   "it": "8 GB"
+  },
+  {
+   "id": 57,
+   "tipo": "testo",
+   "it": "7–9B"
+  },
+  {
+   "id": 58,
+   "tipo": "testo",
+   "it": "~4,8 GB"
+  },
+  {
+   "id": 59,
+   "tipo": "testo",
+   "it": "16 GB"
+  },
+  {
+   "id": 60,
+   "tipo": "testo",
+   "it": "12–14B"
+  },
+  {
+   "id": 61,
+   "tipo": "testo",
+   "it": "~8 GB"
+  },
+  {
+   "id": 62,
+   "tipo": "testo",
+   "it": "16–24 GB"
+  },
+  {
+   "id": 63,
+   "tipo": "testo",
+   "it": "20–24B"
+  },
+  {
+   "id": 64,
+   "tipo": "testo",
+   "it": "~13 GB"
+  },
+  {
+   "id": 65,
+   "tipo": "testo",
+   "it": "24–32 GB"
+  },
+  {
+   "id": 66,
+   "tipo": "testo",
+   "it": "27–35B"
+  },
+  {
+   "id": 67,
+   "tipo": "testo",
+   "it": "~19 GB"
+  },
+  {
+   "id": 68,
+   "tipo": "testo",
+   "it": "32 GB"
+  },
+  {
+   "id": 69,
+   "tipo": "testo",
+   "it": "70B"
+  },
+  {
+   "id": 70,
+   "tipo": "testo",
+   "it": "~40 GB"
+  },
+  {
+   "id": 71,
+   "tipo": "testo",
+   "it": "64 GB"
+  },
+  {
+   "id": 72,
+   "tipo": "testo",
+   "it": "120B a esperti"
+  },
+  {
+   "id": 73,
+   "tipo": "testo",
+   "it": "~63 GB"
+  },
+  {
+   "id": 74,
+   "tipo": "testo",
+   "it": "96–128 GB"
+  },
+  {
+   "id": 75,
+   "tipo": "testo",
+   "it": "Che cosa regge la tua macchina"
+  },
+  {
+   "id": 76,
+   "tipo": "testo",
+   "it": "Il browser dichiara poco per motivi di riservatezza: numero di processori, scheda grafica e un valore di memoria fermo a 8 GB. Il resto lo imposti tu, e il conto è aritmetica verificabile."
+  },
+  {
+   "id": 77,
+   "tipo": "testo",
+   "it": "Scheda grafica letta"
+  },
+  {
+   "id": 78,
+   "tipo": "testo",
+   "it": "{{ gpu }}"
+  },
+  {
+   "id": 79,
+   "tipo": "testo",
+   "it": "Processori logici"
+  },
+  {
+   "id": 80,
+   "tipo": "testo",
+   "it": "{{ core }}"
+  },
+  {
+   "id": 81,
+   "tipo": "testo",
+   "it": "Memoria dichiarata"
+  },
+  {
+   "id": 82,
+   "tipo": "testo",
+   "it": "{{ memoria }}"
+  },
+  {
+   "id": 83,
+   "tipo": "testo",
+   "it": "Memoria vera della macchina"
+  },
+  {
+   "id": 84,
+   "tipo": "testo",
+   "it": "{{ o.etichetta }}"
+  },
+  {
+   "id": 85,
+   "tipo": "testo",
+   "it": "A cosa deve servire"
+  },
+  {
+   "id": 86,
+   "tipo": "testo",
+   "it": "{{ o.etichetta }}"
+  },
+  {
+   "id": 87,
+   "tipo": "testo",
+   "it": "Classe che regge"
+  },
+  {
+   "id": 88,
+   "tipo": "testo",
+   "it": "{{ classe }}"
+  },
+  {
+   "id": 89,
+   "tipo": "testo",
+   "it": "{{ quant }}"
+  },
+  {
+   "id": 90,
+   "tipo": "testo",
+   "it": "DISPONIBILE"
+  },
+  {
+   "id": 91,
+   "tipo": "testo",
+   "it": "{{ disponibile }}"
+  },
+  {
+   "id": 92,
+   "tipo": "testo",
+   "it": "AI PESI"
+  },
+  {
+   "id": 93,
+   "tipo": "testo",
+   "it": "{{ pesi }}"
+  },
+  {
+   "id": 94,
+   "tipo": "testo",
+   "it": "AL CONTESTO"
+  },
+  {
+   "id": 95,
+   "tipo": "testo",
+   "it": "{{ contesto }}"
+  },
+  {
+   "id": 96,
+   "tipo": "testo",
+   "it": "ESEMPI"
+  },
+  {
+   "id": 97,
+   "tipo": "testo",
+   "it": "{{ esempi }}"
+  },
+  {
+   "id": 98,
+   "tipo": "testo",
+   "it": "{{ avvertenza }}"
+  },
+  {
+   "id": 99,
+   "tipo": "testo",
+   "it": "Cosa si perde comprimendo"
+  },
+  {
+   "id": 100,
+   "tipo": "testo",
+   "it": "La quantizzazione non peggiora tutto allo stesso modo, e il primo pezzo che cede non è quello che si guarda di solito."
+  },
+  {
+   "id": 101,
+   "tipo": "testo",
+   "it": "Q8"
+  },
+  {
+   "id": 102,
+   "tipo": "testo",
+   "it": "Differenza non percepibile sul testo"
+  },
+  {
+   "id": 103,
+   "tipo": "testo",
+   "it": "Q4_K_M"
+  },
+  {
+   "id": 104,
+   "tipo": "testo",
+   "it": "Perdita piccola sul testo, visibile su matematica e codice"
+  },
+  {
+   "id": 105,
+   "tipo": "testo",
+   "it": "Sotto Q4"
+  },
+  {
+   "id": 106,
+   "tipo": "testo",
+   "it": "Le chiamate agli strumenti cominciano a rompersi: formato sbagliato, parametri inventati"
+  },
+  {
+   "id": 107,
+   "tipo": "testo",
+   "it": "Conseguenza"
+  },
+  {
+   "id": 108,
+   "tipo": "testo",
+   "it": "Per un agente conto la memoria a Q5 o Q6, non a Q4"
+  },
+  {
+   "id": 109,
+   "tipo": "testo",
+   "it": "Quando il locale conviene"
+  },
+  {
+   "id": 110,
+   "tipo": "testo",
+   "it": "Non è una questione ideologica. È una questione di dove stanno i dati, quanto lavoro c’è e quanta qualità serve."
+  },
+  {
+   "id": 111,
+   "tipo": "testo",
+   "it": "Conviene"
+  },
+  {
+   "id": 112,
+   "tipo": "testo",
+   "it": "I dati non possono uscire dall&#8217;azienda"
+  },
+  {
+   "id": 113,
+   "tipo": "testo",
+   "it": "Volumi alti di compiti semplici e ripetitivi"
+  },
+  {
+   "id": 114,
+   "tipo": "testo",
+   "it": "Serve funzionare anche senza rete"
+  },
+  {
+   "id": 115,
+   "tipo": "testo",
+   "it": "Costo prevedibile: si paga la macchina, non il token"
+  },
+  {
+   "id": 116,
+   "tipo": "testo",
+   "it": "Non conviene"
+  },
+  {
+   "id": 117,
+   "tipo": "testo",
+   "it": "Ragionamento lungo su problemi difficili"
+  },
+  {
+   "id": 118,
+   "tipo": "testo",
+   "it": "Contesti molto lunghi su hardware modesto"
+  },
+  {
+   "id": 119,
+   "tipo": "testo",
+   "it": "Poche richieste al giorno: la macchina resta ferma"
+  },
+  {
+   "id": 120,
+   "tipo": "testo",
+   "it": "Nessuno che aggiorni e controlli il sistema"
+  },
+  {
+   "id": 121,
+   "tipo": "testo",
+   "it": "Il conto che salta sempre"
+  },
+  {
+   "id": 122,
+   "tipo": "testo",
+   "it": "Un modello che entra nella memoria ma non lascia spazio al contesto non è lento: si ferma."
+  },
+  {
+   "id": 123,
+   "tipo": "testo",
+   "it": "Limite dichiarato"
+  },
+  {
+   "id": 124,
+   "tipo": "testo",
+   "it": "Un modello in locale non raggiunge un modello di frontiera sui problemi difficili, e dire il contrario è disonesto. Quello che fa bene è il lavoro delimitato e ripetitivo, con i dati che restano dentro. La maggior parte dei sistemi che costruisco usa entrambi, e la scelta si fa per passaggio."
+  },
+  {
+   "id": 125,
+   "tipo": "testo",
+   "it": "Pagina successiva"
+  },
+  {
+   "id": 126,
+   "tipo": "testo",
+   "it": "Sicurezza"
+  },
+  {
+   "id": 127,
+   "tipo": "testo",
+   "it": "Dove vivono i permessi, e perché non possono vivere nelle istruzioni al modello."
+  },
+  {
+   "id": 128,
+   "tipo": "testo",
+   "it": "Apri &#8594;"
+  },
+  {
+   "id": 129,
+   "tipo": "testo",
+   "it": "AS"
+  },
+  {
+   "id": 130,
+   "tipo": "testo",
+   "it": "Andrea Sforna AI"
+  },
+  {
+   "id": 131,
+   "tipo": "testo",
+   "it": "Progettazione, sicurezza e manutenzione di sistemi di agenti AI."
+  },
+  {
+   "id": 132,
+   "tipo": "testo",
+   "it": "Pagine"
+  },
+  {
+   "id": 133,
+   "tipo": "testo",
+   "it": "Agenti"
+  },
+  {
+   "id": 134,
+   "tipo": "testo",
+   "it": "Casi"
+  },
+  {
+   "id": 135,
+   "tipo": "testo",
+   "it": "Modelli"
+  },
+  {
+   "id": 136,
+   "tipo": "testo",
+   "it": "Sicurezza"
+  },
+  {
+   "id": 137,
+   "tipo": "testo",
+   "it": "Dati"
+  },
+  {
+   "id": 138,
+   "tipo": "testo",
+   "it": "Privacy Bridge"
+  },
+  {
+   "id": 139,
+   "tipo": "testo",
+   "it": "Formazione"
+  },
+  {
+   "id": 140,
+   "tipo": "testo",
+   "it": "Contatti"
+  },
+  {
+   "id": 141,
+   "tipo": "testo",
+   "it": "Approfondimenti"
+  },
+  {
+   "id": 142,
+   "tipo": "testo",
+   "it": "Modelli in locale"
+  },
+  {
+   "id": 143,
+   "tipo": "testo",
+   "it": "Architettura"
+  },
+  {
+   "id": 144,
+   "tipo": "testo",
+   "it": "Automazione"
+  },
+  {
+   "id": 145,
+   "tipo": "testo",
+   "it": "Strumenti"
+  },
+  {
+   "id": 146,
+   "tipo": "testo",
+   "it": "Metodo"
+  },
+  {
+   "id": 147,
+   "tipo": "testo",
+   "it": "Contatti"
+  },
+  {
+   "id": 148,
+   "tipo": "testo",
+   "it": "andrea.sforna@gmail.com"
+  },
+  {
+   "id": 149,
+   "tipo": "testo",
+   "it": "Instagram @andreasfornaai"
+  },
+  {
+   "id": 150,
+   "tipo": "testo",
+   "it": "&#169; 2026 Andrea Sforna"
+  },
+  {
+   "id": 151,
+   "tipo": "testo",
+   "it": "Progettato e scritto da Andrea Sforna"
+  }
+ ],
+ "schema": [
+  {
+   "@graph.0.name": "Andrea Sforna",
+   "@graph.0.jobTitle": "Progettista di sistemi di agenti AI",
+   "@graph.0.description": "Progetta, costruisce e mette in sicurezza sistemi di agenti AI che lavorano su processi aziendali reali.",
+   "@graph.0.knowsAbout.0": "Agenti AI",
+   "@graph.0.knowsAbout.1": "Model Context Protocol",
+   "@graph.0.knowsAbout.2": "Automazione dei processi",
+   "@graph.0.knowsAbout.3": "Sicurezza dei sistemi AI",
+   "@graph.0.knowsAbout.4": "Modelli linguistici in locale",
+   "@graph.0.knowsAbout.5": "Orchestrazione multi-agente",
+   "@graph.0.knowsAbout.6": "n8n",
+   "@graph.0.knowsAbout.7": "Recupero di dati deterministico",
+   "@graph.1.name": "Andrea Sforna AI",
+   "@graph.1.description": "Progettazione, messa in sicurezza e manutenzione di sistemi di agenti AI per aziende e professionisti.",
+   "@graph.1.areaServed.name": "Italia",
+   "@graph.1.hasOfferCatalog.name": "Modi di lavorare insieme",
+   "@graph.1.hasOfferCatalog.itemListElement.0.itemOffered.name": "Consulenza",
+   "@graph.1.hasOfferCatalog.itemListElement.0.itemOffered.description": "Analisi di un processo esistente e perimetro scritto di cosa conviene affidare a un agente.",
+   "@graph.1.hasOfferCatalog.itemListElement.1.itemOffered.name": "Formazione",
+   "@graph.1.hasOfferCatalog.itemListElement.1.itemOffered.description": "Percorso sul caso reale dell'azienda, per costruire e mantenere agenti in autonomia.",
+   "@graph.1.hasOfferCatalog.itemListElement.2.itemOffered.name": "Messa in sicurezza",
+   "@graph.1.hasOfferCatalog.itemListElement.2.itemOffered.description": "Revisione dei permessi di un sistema di agenti gia' in funzione.",
+   "@graph.1.hasOfferCatalog.itemListElement.3.itemOffered.name": "Sistemi su misura",
+   "@graph.1.hasOfferCatalog.itemListElement.3.itemOffered.description": "Progetto e costruzione di un sistema di agenti sul processo del cliente.",
+   "@graph.2.name": "Modelli in locale",
+   "@graph.2.description": "Quanta memoria serve per far girare un modello sulla vostra macchina: l'aritmetica per intero e uno strumento che legge il computer e consiglia la classe.",
+   "@graph.2.isPartOf.name": "Andrea Sforna AI",
+   "@graph.2.breadcrumb.itemListElement.0.name": "Home",
+   "@graph.2.breadcrumb.itemListElement.1.name": "Modelli in locale"
+  }
+ ]
+}

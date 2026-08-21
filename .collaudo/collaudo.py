@@ -32,9 +32,19 @@ RADICE = Path(__file__).resolve().parent.parent
 BASE = (sys.argv[1] if len(sys.argv) > 1 else "http://127.0.0.1:8899").rstrip("/")
 CDP = "http://127.0.0.1:9333"
 
-PAGINE = ["", "agenti/", "casi/", "modelli/", "sicurezza/", "dati/", "privacy-bridge/",
-          "formazione/", "contatti/", "modelli-in-locale/", "architettura/",
-          "automazione/", "strumenti/", "metodo/", "404.html"]
+ITALIANE = ["", "agenti/", "casi/", "modelli/", "sicurezza/", "dati/", "privacy-bridge/",
+            "formazione/", "contatti/", "modelli-in-locale/", "architettura/",
+            "automazione/", "strumenti/", "metodo/"]
+
+# le gemelle inglesi hanno indirizzi inglesi: /en/security/, non /en/sicurezza/.
+# L'elenco non si scrive a mano, si deriva dalla stessa tabella che le costruisce.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from i18n_costruisci import IN_INGLESE  # noqa: E402
+
+INGLESI = ["en/" + (IN_INGLESE.get(p.rstrip("/"), p.rstrip("/")) + "/" if p else "")
+           for p in ITALIANE]
+
+PAGINE = ITALIANE + INGLESI + ["404.html"]
 
 # i vecchi indirizzi devono continuare a rispondere e a rimandare ai nuovi
 RIMANDI = {"Agenti.dc.html": "/agenti/", "Casi.dc.html": "/casi/", "Modelli.dc.html": "/modelli/",
@@ -175,10 +185,15 @@ async def main():
                     if not d.get(k)]
         if p != "404.html" and not d.get("canonico"):
             mancanti.append("canonico")
+        # la lingua attesa la decide l'indirizzo: sotto /en/ ci si aspetta "en",
+        # altrove "it". Una pagina inglese che si dichiara italiana e' un errore
+        # che nessun occhio vede e ogni lettore di schermo sente.
+        lingua_attesa = "en" if p.startswith("en/") else "it"
         if mancanti:
             segna(f"{etichetta} · testa", "ROSSO", "manca " + ", ".join(mancanti))
-        elif d["lang"] != "it":
-            segna(f"{etichetta} · testa", "ROSSO", f"lingua dichiarata «{d['lang']}»")
+        elif d["lang"] != lingua_attesa:
+            segna(f"{etichetta} · testa", "ROSSO",
+                  f"dice «{d['lang']}», dovrebbe dire «{lingua_attesa}»")
         else:
             segna(f"{etichetta} · testa", "ATTESO")
 

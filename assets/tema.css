@@ -203,6 +203,20 @@ img{display:block;max-width:100%}
   header>div{padding-left:14px!important;padding-right:14px!important;gap:10px!important}
 }
 
+/* Il passaggio fra italiano e inglese esiste in due copie, e non si vedono mai
+   insieme. Sopra i 480px e' la sigla in testa alla pagina, accanto al tema.
+   Sotto, quella riga conteneva gia' marchio, tema e menu: aggiungendo un quarto
+   elemento sfondava di 44px su uno schermo da 320px, e a finire fuori era il
+   tasto Menu, cioe' il comando che serve per navigare. Sotto i 480px la lingua
+   si legge per esteso dentro il pannello del menu, dove c'e' spazio per
+   scrivere «English» invece di «EN». */
+@media (max-width:480px){
+  header [data-lingua]{display:none!important}
+}
+@media (min-width:481px){
+  [data-lingua-menu]{display:none!important}
+}
+
 /* Le tabelle dentro le chat non si schiacciano: scorrono in orizzontale. */
 @media (max-width:720px){
   /* !important perche' lo stile in linea dichiara overflow:hidden e vincerebbe */

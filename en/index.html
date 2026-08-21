@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>/* Le librerie stanno in casa: senza questa mappa il sito le chiede a
+   unpkg.com, e se quel dominio non risponde la pagina resta bianca. Il runtime
+   legge window.__resources e sostituisce l'indirizzo esterno con quello locale.
+   Le due copie sono byte per byte quelle che serviva il CDN: impronte sha384
+   verificate contro quelle dichiarate in support.js. */
+window.__resources={"https://unpkg.com/react@18.3.1/umd/react.production.min.js":"/assets/vendor/react-18.3.1.min.js","https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js":"/assets/vendor/react-dom-18.3.1.min.js"};</script>
+<script src="/support.js"></script>
+<title>Andrea Sforna AI — AI agent systems</title>
+<meta name="description" content="I design, build and secure AI agent systems. Systems that work on the real processes of a company and stay in service over time.">
+<link rel="alternate" hreflang="it" href="https://navras98.github.io/">
+<link rel="alternate" hreflang="en" href="https://navras98.github.io/en/">
+<link rel="alternate" hreflang="x-default" href="https://navras98.github.io/">
+<link rel="canonical" href="https://navras98.github.io/en/">
+<meta name="author" content="Andrea Sforna">
+<meta name="theme-color" content="#0a0a0b" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f7f6f3" media="(prefers-color-scheme: light)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Andrea Sforna AI">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Andrea Sforna AI — AI agent systems">
+<meta property="og:description" content="I design, build and secure AI agent systems. Systems that work on the real processes of a company and stay in service over time.">
+<meta property="og:url" content="https://navras98.github.io/en/">
+<meta property="og:image" content="https://navras98.github.io/assets/anteprima.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Andrea Sforna AI — design, security and maintenance of AI agent systems">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Andrea Sforna AI — AI agent systems">
+<meta name="twitter:description" content="I design, build and secure AI agent systems. Systems that work on the real processes of a company and stay in service over time.">
+<meta name="twitter:image" content="https://navras98.github.io/assets/anteprima.png">
+<link rel="icon" href="/assets/icona.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/icona-180.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/assets/caratteri.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://navras98.github.io/#andrea","name":"Andrea Sforna","jobTitle":"Designer of AI agent systems","description":"Designs, builds and secures AI agent systems that work on real business processes.","url":"https://navras98.github.io/","image":"https://navras98.github.io/assets/img/andrea.webp","email":"mailto:andrea.sforna@gmail.com","sameAs":["https://www.instagram.com/andreasforna.ai/"],"knowsAbout":["AI agents","Model Context Protocol","Process automation","Security of AI systems","Local language models","Multi-agent orchestration","n8n","Deterministic data retrieval"],"knowsLanguage":["it","en"]},{"@type":"ProfessionalService","@id":"https://navras98.github.io/#servizio","name":"Andrea Sforna AI","description":"Design, security and maintenance of AI agent systems for companies and professionals.","url":"https://navras98.github.io/","provider":{"@id":"https://navras98.github.io/#andrea"},"areaServed":{"@type":"Country","name":"Italy"},"availableLanguage":["it","en"],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Ways of working together","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Consulting","description":"Analysis of an existing process and a written boundary of what is worth handing to an agent."}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Training","description":"A course built on the company's own case, to build and maintain agents independently."}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Security review","description":"Review of the permissions of an agent system already in service."}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Custom systems","description":"Design and construction of an agent system on the client's process."}}]}},{"@type":"WebPage","@id":"https://navras98.github.io/#pagina","url":"https://navras98.github.io/","name":"Home","description":"I design, build and secure AI agent systems. Systems that work on the real processes of a company and stay in service over time.","inLanguage":"it-IT","isPartOf":{"@type":"WebSite","@id":"https://navras98.github.io/#sito","name":"Andrea Sforna AI","url":"https://navras98.github.io/","inLanguage":"it-IT","publisher":{"@id":"https://navras98.github.io/#andrea"}},"about":{"@id":"https://navras98.github.io/#servizio"}}]}</script>
+<link rel="stylesheet" href="/assets/tema.css">
+</head>
+<body>
+<a href="#contenuto" style="position:absolute;left:-9999px;top:0;z-index:100;padding:12px 18px;background:var(--acc);color:var(--su-acc);font:500 12px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase" onfocus="this.style.left='12px';this.style.top='12px'" onblur="this.style.left='-9999px'">Skip to content</a>
+<x-dc>
+<helmet data-dc-atomics><script type="module" src="/assets/sito.js"></script></helmet>
+
+<div data-avanzamento style="position:fixed;top:0;left:0;height:2px;width:0;background:var(--acc);z-index:60"></div>
+<div data-cursore style="position:fixed;inset:0;pointer-events:none;z-index:1"></div>
+<div style="position:fixed;inset:0;background:var(--grana);pointer-events:none;z-index:55"></div>
+
+<header style="position:sticky;top:0;z-index:50;background:var(--velo);backdrop-filter:blur(16px);border-bottom:1px solid var(--filo1)">
+  <div style="max-width:1360px;margin:0 auto;padding:14px clamp(20px,4vw,48px);display:flex;align-items:center;justify-content:space-between;gap:20px">
+    <a href="/en/" style="display:flex;align-items:center;gap:12px;flex:none;font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t1);white-space:nowrap"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;position:relative;width:30px;height:30px;border:1px solid var(--filo2);flex:none"><span style="font:600 12px Geist,'Instrument Sans',Helvetica,sans-serif;letter-spacing:-.06em;color:var(--t1)">AS</span><span style="position:absolute;right:-1px;top:-1px;width:3px;height:3px;background:var(--acc)"></span></span>Andrea Sforna AI</a>
+    <nav data-nav style="display:flex;align-items:center;gap:20px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase">
+      <a href="/en/agents/" style="color:var(--t2)">Agents</a>
+      <a href="/en/case-studies/" style="color:var(--t2)">Case studies</a>
+      <a href="/en/models/" style="color:var(--t2)">Models</a>
+      <a href="/en/security/" style="color:var(--t2)">Security</a>
+      <a href="/en/data/" style="color:var(--t2)">Data</a>
+      <a href="/en/privacy-bridge/" style="color:var(--t2)">Privacy Bridge</a>
+      <a href="/en/training/" style="color:var(--t2)">Training</a>
+      <a href="/en/contact/" style="color:var(--t2)">Contact</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:10px">
+      
+      <a data-lingua href="/" hreflang="it" lang="it" aria-label="Leggi questa pagina in italiano" style="padding:7px 12px;border:1px solid var(--filo1);color:var(--t2);font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.09em;text-transform:uppercase" style-hover="border-color:var(--filo2);color:var(--t1)">IT</a>
+      <button type="button" data-tema-btn style="padding:7px 12px;background:transparent;border:1px solid var(--filo1);color:var(--t2);font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.09em;text-transform:uppercase;cursor:pointer" style-hover="border-color:var(--filo2);color:var(--t1)">Light</button>
+      <button type="button" data-burger aria-controls="menu-pagine" aria-expanded="false" aria-label="Open the menu" style="display:none;align-items:center;padding:7px 12px;background:transparent;border:1px solid var(--filo1);color:var(--t1);font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.09em;text-transform:uppercase;cursor:pointer">Menu</button>
+    </div>
+  </div>
+  <div data-pannello id="menu-pagine" style="display:none;border-top:1px solid var(--filo1);background:var(--sup1)">
+    <div style="max-width:1360px;margin:0 auto;padding:16px clamp(20px,4vw,48px);display:grid;gap:13px;font:500 12px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase">
+      <a href="/en/agents/" style="color:var(--t2)">Agents</a>
+      <a href="/en/case-studies/" style="color:var(--t2)">Case studies</a>
+      <a href="/en/models/" style="color:var(--t2)">Models</a>
+      <a href="/en/security/" style="color:var(--t2)">Security</a>
+      <a href="/en/data/" style="color:var(--t2)">Data</a>
+      <a href="/en/privacy-bridge/" style="color:var(--t2)">Privacy Bridge</a>
+      <a href="/en/training/" style="color:var(--t2)">Training</a>
+      <a href="/en/contact/" style="color:var(--t2)">Contact</a>
+      <a href="/en/local-models/" style="color:var(--t2)">Local models</a>
+      <a href="/en/architecture/" style="color:var(--t2)">Architecture</a>
+      <a href="/en/automation/" style="color:var(--t2)">Automation</a>
+      <a href="/en/tools/" style="color:var(--t2)">Tools</a>
+      <a href="/en/method/" style="color:var(--t2)">Method</a>
+      <a data-lingua-menu href="/" hreflang="it" lang="it" aria-label="Leggi questa pagina in italiano" style="color:var(--acc)">Italiano</a>
+    </div>
+  </div>
+</header>
+
+<main id="contenuto" tabindex="-1">
+
+<section data-screen-label="Apertura" style="position:relative;min-height:min(94vh,940px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:clamp(72px,10vw,120px) clamp(20px,4vw,48px) clamp(190px,26vw,310px);overflow:hidden">
+  <div style="position:absolute;inset:0;background:var(--luce);pointer-events:none"></div>
+  <div style="position:absolute;left:0;right:0;bottom:0;height:400px;pointer-events:none">
+    <div style="position:absolute;left:50%;bottom:146px;width:min(1280px,150vw);height:126px;transform:translateX(-50%);clip-path:polygon(19% 0,81% 0,100% 100%,0 100%);background:linear-gradient(to bottom,var(--filo2) 0 1px,var(--filo1) 1px,transparent 100%);animation:deriva 15s ease-in-out infinite"></div>
+    <div style="position:absolute;left:50%;bottom:78px;width:min(960px,116vw);height:112px;transform:translateX(-50%);clip-path:polygon(21% 0,79% 0,100% 100%,0 100%);background:linear-gradient(to bottom,var(--filo2) 0 1px,var(--filo1) 1px,transparent 100%);animation:deriva 12s ease-in-out .8s infinite"></div>
+    <div style="position:absolute;left:50%;bottom:18px;width:min(640px,80vw);height:110px;transform:translateX(-50%);clip-path:polygon(24% 0,76% 0,100% 100%,0 100%);background:linear-gradient(to bottom,var(--filo2) 0 1px,var(--filo1) 1px,transparent 100%);animation:deriva 10s ease-in-out 1.6s infinite"></div>
+    <div style="position:absolute;left:50%;bottom:118px;width:7px;height:7px;margin-left:-3.5px;background:var(--acc)"></div>
+  </div>
+
+  <div style="position:relative;width:1px;height:56px;background:linear-gradient(to bottom,transparent,var(--acc));transform-origin:top;animation:filoy 1.1s cubic-bezier(.16,1,.3,1) .1s both"></div>
+  <p style="position:relative;margin:22px 0 clamp(20px,3vw,34px);font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--t2);animation:appari .9s ease .25s both">Design <span style="color:var(--acc)">·</span> Security <span style="color:var(--acc)">·</span> Maintenance</p>
+
+  <h1 aria-label="Andrea Sforna AI" style="position:relative;margin:0 0 clamp(22px,3vw,34px);font-weight:500;font-size:clamp(38px,10.6vw,152px);line-height:1;letter-spacing:-.05em;color:var(--t1);white-space:nowrap"><span aria-hidden="true" style="display:inline-block;overflow:hidden;vertical-align:bottom"><span style="display:inline-block;animation:lettera 1.2s cubic-bezier(.16,1,.3,1) .3s both">A</span></span><span style="display:inline-block;overflow:hidden;vertical-align:bottom"><span style="display:inline-block;animation:lettera 1.2s cubic-bezier(.16,1,.3,1) .35s both">n</span></span><span style="display:inline-block;overflow:hidden;vertical-align:bottom"><span style="display:inline-block;animation:lettera 1.2s cubic-bezier(.16,1,.3,1) .4s both">d</span></span><span style="display:inline-block;overflow:hidden;vertical-align:bottom"><span style="display:inline-block;animation:lettera 1.2s cubic-bezier(.16,1,.3,1) .45s both">r</span></span><span style="display:inline-block;overflow:hidden;vertical-align:bottom"><span style="display:inline-block;animation:lettera 1.2s cubic-bezier(.16,1,.3,1) .5s both">e</span></span><span style="display:inline-block;overflow:hidden;vertical-align:bottom"><span style="display:inline-block;animation:lettera 1.2s cubic-bezier(.16,1,.3,1) .55s both">a</span></span><span style="display:inline-block;width:.26em"></span><span style="display:inline-block;overflow:hidden;vertical-align:bottom"><span style="display:inline-block;animation:lettera 1.2s cubic-bezier(.16,1,.3,1) .62s both">S</span></span><span style="display:inline-block;overflow:hidden;vertical-align:bottom"><span style="display:inline-block;animation:lettera 1.2s cubic-bezier(.16,1,.3,1) .67s both">f</span></span><span style="display:inline-block;overflow:hidden;vertical-align:bottom"><span style="display:inline-block;animation:lettera 1.2s cubic-bezier(.16,1,.3,1) .72s both">o</span></span><span style="display:inline-block;overflow:hidden;vertical-align:bottom"><span style="display:inline-block;animation:lettera 1.2s cubic-bezier(.16,1,.3,1) .77s both">r</span></span><span style="display:inline-block;overflow:hidden;vertical-align:bottom"><span style="display:inline-block;animation:lettera 1.2s cubic-bezier(.16,1,.3,1) .82s both">n</span></span><span style="display:inline-block;overflow:hidden;vertical-align:bottom"><span style="display:inline-block;animation:lettera 1.2s cubic-bezier(.16,1,.3,1) .87s both">a</span></span><span style="display:inline-block;width:.26em"></span><span style="display:inline-block;overflow:hidden;vertical-align:bottom"><span style="display:inline-block;animation:lettera 1.2s cubic-bezier(.16,1,.3,1) .94s both;color:var(--acc)">A</span></span><span style="display:inline-block;overflow:hidden;vertical-align:bottom"><span style="display:inline-block;animation:lettera 1.2s cubic-bezier(.16,1,.3,1) .99s both;color:var(--acc)">I</span></span>
+  </h1>
+
+  <p style="position:relative;margin:0 0 16px;max-width:760px;font-weight:500;font-size:clamp(20px,2.4vw,32px);line-height:1.3;letter-spacing:-.025em;color:var(--t1);text-wrap:pretty;animation:sali 1s cubic-bezier(.16,1,.3,1) .5s both">I design, build and secure AI agent systems.</p>
+  <p style="position:relative;margin:0 0 clamp(28px,4vw,44px);max-width:560px;font-weight:400;font-size:clamp(15px,1.2vw,17px);line-height:1.62;color:var(--t2);text-wrap:pretty;animation:sali 1s cubic-bezier(.16,1,.3,1) .62s both">Systems that work on real processes and stay in service over time.</p>
+  <a href="/en/method/" style="position:relative;display:inline-flex;align-items:center;gap:12px;padding:16px 26px;background:var(--acc);color:var(--su-acc);font:500 12px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;animation:sali 1s cubic-bezier(.16,1,.3,1) .74s both;box-shadow:0 24px 60px -30px var(--acc)" style-hover="background:var(--t1);color:var(--fondo)">How I work <span>&#8594;</span></a>
+
+  <div style="position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;gap:16px;padding:14px clamp(20px,4vw,48px);border-top:1px solid var(--filo1);font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3);background:var(--velo)">
+    <span>01 &nbsp;&#183;&nbsp; Opening</span>
+    <span>Scroll &#8595;</span>
+  </div>
+</section>
+
+<section data-screen-label="Strumenti" style="background:var(--carta);color:var(--carta-t);padding:clamp(40px,5vw,68px) 0;box-shadow:var(--ombra-alta);position:relative;z-index:2">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px);margin-bottom:clamp(28px,3.4vw,44px)" data-reveal>
+    <p style="margin:0;max-width:76ch;font:400 clamp(13px,1.05vw,15px)/1.7 'JetBrains Mono',monospace;color:var(--carta-t);text-wrap:pretty">The models and tools I use every day. The choice is made on the single step&#8217;s objective, not out of habit: something new comes out every week, and the comparison has to be done again.</p>
+  </div>
+  <div data-nastro style="overflow:hidden;mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent);-webkit-mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent)">
+    <div style="display:flex;width:max-content;animation:scorri 64s linear infinite">
+      <div style="display:flex;align-items:center;gap:clamp(44px,5.4vw,80px);padding-right:clamp(44px,5.4vw,80px)">
+        <img width="138" height="30" decoding="async" data-logo src="/assets/loghi/claude.svg" alt="Claude, by Anthropic" style="height:30px;width:auto;flex:none">
+        <img width="81" height="22" decoding="async" data-logo src="/assets/loghi/openai.svg" alt="OpenAI" style="height:22px;width:auto;flex:none">
+        <img width="115" height="26" decoding="async" data-logo src="/assets/loghi/gemini.svg" alt="Gemini, by Google" style="height:26px;width:auto;flex:none">
+        <img width="104" height="22" decoding="async" data-logo src="/assets/loghi/deepseek-taglio.webp" alt="DeepSeek" style="height:22px;width:auto;flex:none">
+        <img width="78" height="26" decoding="async" data-logo src="/assets/loghi/qwen.webp" alt="Qwen, by Alibaba" style="height:26px;width:auto;flex:none">
+        <img width="71" height="24" decoding="async" data-logo src="/assets/loghi/kimi.webp" alt="Kimi, by Moonshot AI" style="height:24px;width:auto;flex:none">
+        <img width="36" height="26" decoding="async" data-logo src="/assets/loghi/mistral.svg" alt="Mistral AI" style="height:26px;width:auto;flex:none">
+        <img width="32" height="32" decoding="async" data-logo src="/assets/loghi/openclaw.svg" alt="OpenClaw" style="height:32px;width:auto;flex:none">
+        <img width="116" height="20" decoding="async" data-logo src="/assets/loghi/openclaw-testo.webp" alt="OpenClaw" style="height:20px;width:auto;flex:none">
+        <img width="28" height="28" decoding="async" data-logo src="/assets/loghi/hermes-marchio.svg" alt="Hermes Agent" style="height:28px;width:auto;flex:none">
+        <img width="24" height="24" decoding="async" data-logo src="/assets/loghi/higgsfield.svg" alt="Higgsfield" style="height:24px;width:auto;flex:none">
+      </div>
+      <div aria-hidden="true" style="display:flex;align-items:center;gap:clamp(44px,5.4vw,80px);padding-right:clamp(44px,5.4vw,80px)">
+        <img width="138" height="30" decoding="async" data-logo src="/assets/loghi/claude.svg" alt="" style="height:30px;width:auto;flex:none">
+        <img width="81" height="22" decoding="async" data-logo src="/assets/loghi/openai.svg" alt="" style="height:22px;width:auto;flex:none">
+        <img width="115" height="26" decoding="async" data-logo src="/assets/loghi/gemini.svg" alt="" style="height:26px;width:auto;flex:none">
+        <img width="104" height="22" decoding="async" data-logo src="/assets/loghi/deepseek-taglio.webp" alt="" style="height:22px;width:auto;flex:none">
+        <img width="78" height="26" decoding="async" data-logo src="/assets/loghi/qwen.webp" alt="" style="height:26px;width:auto;flex:none">
+        <img width="71" height="24" decoding="async" data-logo src="/assets/loghi/kimi.webp" alt="" style="height:24px;width:auto;flex:none">
+        <img width="36" height="26" decoding="async" data-logo src="/assets/loghi/mistral.svg" alt="" style="height:26px;width:auto;flex:none">
+        <img width="32" height="32" decoding="async" data-logo src="/assets/loghi/openclaw.svg" alt="" style="height:32px;width:auto;flex:none">
+        <img width="116" height="20" decoding="async" data-logo src="/assets/loghi/openclaw-testo.webp" alt="" style="height:20px;width:auto;flex:none">
+        <img width="28" height="28" decoding="async" data-logo src="/assets/loghi/hermes-marchio.svg" alt="" style="height:28px;width:auto;flex:none">
+        <img width="24" height="24" decoding="async" data-logo src="/assets/loghi/higgsfield.svg" alt="" style="height:24px;width:auto;flex:none">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Chi sono" style="padding:clamp(80px,11vw,180px) 0">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:clamp(36px,5vw,88px);align-items:start">
+    <div style="position:relative" data-reveal>
+      <img width="1000" height="1288" decoding="async" src="/assets/img/andrea.webp" alt="Andrea Sforna" style="width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 22%;border:1px solid var(--filo1);box-shadow:var(--ombra)">
+      <div style="position:absolute;left:0;bottom:0;padding:12px 16px;background:var(--acc);color:var(--su-acc);font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase">Andrea Sforna</div>
+    </div>
+    <div data-reveal>
+      <p style="margin:0;font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t2);margin-bottom:clamp(24px,3vw,36px)">About me</p>
+      <h2 style="margin:0 0 24px;font-weight:500;font-size:clamp(28px,3.6vw,50px);line-height:1.04;letter-spacing:-.04em;color:var(--t1);text-wrap:pretty">My trade is not using the models. It is making them work together.</h2>
+      <p style="margin:0 0 20px;max-width:54ch;font-size:clamp(15px,1.2vw,18px);line-height:1.66;color:var(--t2);text-wrap:pretty">I have worked with language models since before they became a mass-market product, and I have tested them as they came out ever since: today I keep sixteen configurations under comparison, from seven different providers, and I switch when the numbers justify it.</p>
+      <p style="margin:0 0 clamp(28px,3.4vw,44px);max-width:54ch;font-size:clamp(15px,1.2vw,18px);line-height:1.66;color:var(--t2);text-wrap:pretty">I design and build agent systems: from the first line to maintenance. I connect them to the company&#8217;s data and tools, I close them inside security boundaries that do not depend on the good will of the model, and I keep them in service over time. I work both with cloud models and with models that run locally, when the data must not leave the building.</p>
+      <div style="border-bottom:1px solid var(--filo1)">
+        <div data-riga style="display:grid;grid-template-columns:minmax(100px,150px) 1fr;gap:clamp(16px,2vw,32px);padding:18px 12px;border-top:1px solid var(--filo1)">
+          <span data-num style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">Trade</span>
+          <p style="margin:0;font-size:16px;line-height:1.5;color:var(--t1)">Giving agents tools, limits and a way to prove what they say.</p>
+        </div>
+        <div data-riga style="display:grid;grid-template-columns:minmax(100px,150px) 1fr;gap:clamp(16px,2vw,32px);padding:18px 12px;border-top:1px solid var(--filo1)">
+          <span data-num style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">Material</span>
+          <p style="margin:0;font-size:16px;line-height:1.5;color:var(--t1)">Systems that stay on and have to work even when I am not watching them.</p>
+        </div>
+        <div data-riga style="display:grid;grid-template-columns:minmax(100px,150px) 1fr;gap:clamp(16px,2vw,32px);padding:18px 12px;border-top:1px solid var(--filo1)">
+          <span data-num style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">Measure</span>
+          <p style="margin:0;font-size:16px;line-height:1.5;color:var(--t1)">The third month, not the day of the demonstration.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Cosa ho costruito" style="background:var(--sup1);border-top:1px solid var(--filo1);border-bottom:1px solid var(--filo1);padding:clamp(48px,6vw,96px) 0">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <p style="margin:0;font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t2);margin-bottom:clamp(24px,3vw,40px)" data-reveal>What I have built, and what I keep in service</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(210px,100%),1fr));gap:1px;background:var(--filo1)">
+      <div data-reveal style="background:var(--sup1);padding:clamp(20px,2.6vw,34px) clamp(18px,2.2vw,28px)">
+        <p style="margin:0 0 10px;font-weight:500;font-size:clamp(34px,4.4vw,60px);line-height:.95;letter-spacing:-.04em;color:var(--t1)">11</p>
+        <p style="margin:0;max-width:26ch;font-size:14px;line-height:1.55;color:var(--t2)">Specialised agents in service every day, each with permissions of its own</p>
+      </div><div data-reveal style="background:var(--sup1);padding:clamp(20px,2.6vw,34px) clamp(18px,2.2vw,28px)">
+        <p style="margin:0 0 10px;font-weight:500;font-size:clamp(34px,4.4vw,60px);line-height:.95;letter-spacing:-.04em;color:var(--t1)">6</p>
+        <p style="margin:0;max-width:26ch;font-size:14px;line-height:1.55;color:var(--t2)">MCP servers written by me: the agent sees the operations I declare to it, not the data store</p>
+      </div><div data-reveal style="background:var(--sup1);padding:clamp(20px,2.6vw,34px) clamp(18px,2.2vw,28px)">
+        <p style="margin:0 0 10px;font-weight:500;font-size:clamp(34px,4.4vw,60px);line-height:.95;letter-spacing:-.04em;color:var(--t1)">16<span style="font-size:.42em;color:var(--acc);letter-spacing:0"> </span></p>
+        <p style="margin:0;max-width:26ch;font-size:14px;line-height:1.55;color:var(--t2)">Model configurations under comparison, read again on 21 August 2026</p>
+      </div><div data-reveal style="background:var(--sup1);padding:clamp(20px,2.6vw,34px) clamp(18px,2.2vw,28px)">
+        <p style="margin:0 0 10px;font-weight:500;font-size:clamp(34px,4.4vw,60px);line-height:.95;letter-spacing:-.04em;color:var(--t1)">24/7<span style="font-size:.42em;color:var(--acc);letter-spacing:0"> </span></p>
+        <p style="margin:0;max-width:26ch;font-size:14px;line-height:1.55;color:var(--t2)">Systems that stay on, and that someone has to maintain</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Che cos&#8217;è un agente" style="padding:clamp(72px,10vw,150px) 0">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(420px,100%),1fr));gap:clamp(32px,5vw,72px);align-items:center" data-reveal data-demo>
+    <div>
+      <p style="margin:0;font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t2);margin-bottom:20px">What&#8217;s an agent</p>
+      <h2 style="margin:0 0 20px;font-weight:500;font-size:clamp(26px,3.2vw,42px);line-height:1.05;letter-spacing:-.035em;color:var(--t1);text-wrap:pretty">A model answers. An agent works.</h2>
+      <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty;margin-bottom:24px">It takes an objective, chooses which operations to call, checks the result and stops when it is done or when it cannot go further.</p>
+      <a href="/en/agents/" style="display:inline-flex;align-items:center;gap:10px;font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t1);border-bottom:1px solid var(--acc);padding-bottom:4px">How it works &#8594;</a>
+    </div>
+    <div>
+      <div data-lift style="display:flex;flex-direction:column;gap:16px;padding:clamp(22px,2.8vw,34px);border:1px solid var(--filo2);border-radius:26px;background:linear-gradient(180deg,var(--sup2),var(--sup1));box-shadow:var(--ombra-alta)">
+        <div style="display:flex;justify-content:flex-end"><div data-bolla style="max-width:52ch;padding:13px 18px;border-radius:20px 20px 6px 20px;border:1px solid var(--filo2);background:var(--sup2);font-size:15.5px;line-height:1.55;color:var(--t1);animation-delay:0.30s">Can you list the unpaid invoices?</div></div>
+        <div data-bolla style="display:flex;align-items:center;gap:12px;padding:2px 0;animation-delay:1.05s">
+          <span style="width:5px;height:5px;border-radius:50%;background:var(--acc);flex:none"></span>
+          <span style="font:400 11.5px 'JetBrains Mono',monospace;letter-spacing:.06em;color:var(--t3)">1 tool call</span>
+          <span style="flex:1;height:1px;background:var(--filo1)"></span>
+          <span style="font:400 11.5px 'JetBrains Mono',monospace;letter-spacing:.06em;color:var(--t3)">8 s</span>
+        </div>
+        <div data-bolla style="max-width:66ch;font-size:15.5px;line-height:1.7;color:var(--t1);animation-delay:1.55s">Here are the unpaid invoices (status in_attesa), read just now from <span style="font-family:'JetBrains Mono',monospace;font-size:.92em;color:var(--t2)">fatture_per_stato</span>:</div>
+        <div data-bolla data-tabella-chat style="border:1px solid var(--filo2);border-radius:16px;background:var(--sup2);overflow:hidden;animation-delay:2.30s">
+          <div style="display:grid;grid-template-columns:1.05fr 1fr 1fr 1fr .75fr;gap:14px;padding:12px 18px;font:400 10.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);background:var(--sup1)"><span>INVOICE NO.</span><span>CLIENT</span><span>ISSUED</span><span>DUE</span><span>AMOUNT</span></div>
+          <div style="display:grid;grid-template-columns:1.05fr 1fr 1fr 1fr .75fr;gap:14px;padding:11px 18px;border-top:1px solid var(--filo1);font-size:13.5px;color:var(--t1);font-variant-numeric:tabular-nums"><span style="font:400 12.5px 'JetBrains Mono',monospace;color:var(--t2)">2026-013</span><span style="">Gialli Design Studio</span><span style="">2026-07-22</span><span style="">2026-08-21</span><span style=";text-align:right">2.240 &#8364;</span></div><div style="display:grid;grid-template-columns:1.05fr 1fr 1fr 1fr .75fr;gap:14px;padding:11px 18px;border-top:1px solid var(--filo1);font-size:13.5px;color:var(--t1);font-variant-numeric:tabular-nums"><span style="font:400 12.5px 'JetBrains Mono',monospace;color:var(--t2)">2026-012</span><span style="">Arancio Energie</span><span style="">2026-07-28</span><span style="">2026-08-27</span><span style=";text-align:right">1.430 &#8364;</span></div><div style="display:grid;grid-template-columns:1.05fr 1fr 1fr 1fr .75fr;gap:14px;padding:11px 18px;border-top:1px solid var(--filo1);font-size:13.5px;color:var(--t1);font-variant-numeric:tabular-nums"><span style="font:400 12.5px 'JetBrains Mono',monospace;color:var(--t2)">2026-014</span><span style="">Bianchi Costruzioni</span><span style="">2026-08-09</span><span style="">2026-09-08</span><span style=";text-align:right">1.120 &#8364;</span></div><div style="display:grid;grid-template-columns:1.05fr 1fr 1fr 1fr .75fr;gap:14px;padding:11px 18px;border-top:1px solid var(--filo1);font-size:13.5px;color:var(--t1);font-variant-numeric:tabular-nums"><span style="font:400 12.5px 'JetBrains Mono',monospace;color:var(--t2)">2026-015</span><span style="">Neri Logistics</span><span style="">2026-08-15</span><span style="">2026-09-14</span><span style=";text-align:right">2.960 &#8364;</span></div>
+        </div>
+        <div data-bolla style="max-width:64ch;font-size:14px;line-height:1.62;color:var(--t2);animation-delay:3.05s">Total 4 invoices pending. Note: 2026-013 (Gialli Design Studio) shows as overdue on 21 August 2026. If you also want the invoices already overdue and unpaid, tell me and I will check those separately.</div>
+      </div>
+      <p style="margin:14px 2px 0;font:400 11.5px 'JetBrains Mono',monospace;letter-spacing:.05em;color:var(--t3)">Every number goes back to a declared read. If the read doesn&#8217;t succeed, the agent says so instead of estimating.</p>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Cosa faccio" style="padding:clamp(56px,8vw,120px) 0;background:var(--sup1);border-top:1px solid var(--filo1);border-bottom:1px solid var(--filo1)">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:clamp(28px,4vw,64px);align-items:end;margin-bottom:clamp(36px,4.6vw,60px)" data-reveal>
+      <h2 style="margin:0 0 20px;font-weight:500;font-size:clamp(26px,3.2vw,42px);line-height:1.05;letter-spacing:-.035em;color:var(--t1);text-wrap:pretty;margin-bottom:0">What I do</h2>
+      <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty">Not three things. One whole trade: building the system, closing it, connecting it to the data and keeping it standing.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(290px,100%),1fr));gap:1px;background:var(--filo1)">
+      <a href="/en/agents/" data-lift data-reveal style="color:inherit;text-decoration:none;background:var(--sup2);padding:clamp(24px,2.8vw,38px);display:flex;flex-direction:column;gap:14px" aria-label="Agents from scratch: open the page">
+        <span style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;color:var(--acc)">01</span>
+        <h3 style="margin:0;font-weight:500;font-size:clamp(19px,1.6vw,23px);line-height:1.15;letter-spacing:-.025em;color:var(--t1)">Agents from scratch</h3>
+        <p style="margin:0;font-size:15px;line-height:1.6;color:var(--t2);text-wrap:pretty">I design and build both the agent and the agent&#8217;s boundary: objective, available operations, verification criteria.</p>
+      </a>
+      <a href="/en/architecture/" data-lift data-reveal style="color:inherit;text-decoration:none;background:var(--sup2);padding:clamp(24px,2.8vw,38px);display:flex;flex-direction:column;gap:14px" aria-label="Agent teams: open the page">
+        <span style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;color:var(--acc)">02</span>
+        <h3 style="margin:0;font-weight:500;font-size:clamp(19px,1.6vw,23px);line-height:1.15;letter-spacing:-.025em;color:var(--t1)">Agent teams</h3>
+        <p style="margin:0;font-size:15px;line-height:1.6;color:var(--t2);text-wrap:pretty">Several specialised agents that split the work and check one another. The one that executes is not the one that verifies.</p>
+      </a>
+      <a href="/en/data/" data-lift data-reveal style="color:inherit;text-decoration:none;background:var(--sup2);padding:clamp(24px,2.8vw,38px);display:flex;flex-direction:column;gap:14px" aria-label="Tools and databases: open the page">
+        <span style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;color:var(--acc)">03</span>
+        <h3 style="margin:0;font-weight:500;font-size:clamp(19px,1.6vw,23px);line-height:1.15;letter-spacing:-.025em;color:var(--t1)">Tools and databases</h3>
+        <p style="margin:0;font-size:15px;line-height:1.6;color:var(--t2);text-wrap:pretty">I connect the agents to the data and the programs the company&#8217;s already using, with operations written one by one.</p>
+      </a>
+      <a href="/en/tools/" data-lift data-reveal style="color:inherit;text-decoration:none;background:var(--sup2);padding:clamp(24px,2.8vw,38px);display:flex;flex-direction:column;gap:14px" aria-label="MCP servers: open the page">
+        <span style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;color:var(--acc)">04</span>
+        <h3 style="margin:0;font-weight:500;font-size:clamp(19px,1.6vw,23px);line-height:1.15;letter-spacing:-.025em;color:var(--t1)">MCP servers</h3>
+        <p style="margin:0;font-size:15px;line-height:1.6;color:var(--t2);text-wrap:pretty">I build and maintain the servers that expose those operations to the agents, with the permissions of whoever calls them.</p>
+      </a>
+      <a href="/en/security/" data-lift data-reveal style="color:inherit;text-decoration:none;background:var(--sup2);padding:clamp(24px,2.8vw,38px);display:flex;flex-direction:column;gap:14px" aria-label="Security architectures: open the page">
+        <span style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;color:var(--acc)">05</span>
+        <h3 style="margin:0;font-weight:500;font-size:clamp(19px,1.6vw,23px);line-height:1.15;letter-spacing:-.025em;color:var(--t1)">Security architectures</h3>
+        <p style="margin:0;font-size:15px;line-height:1.6;color:var(--t2);text-wrap:pretty">Permissions live in the database and in the operating system. Five levels, and the most fragile one is the layer of instructions.</p>
+      </a>
+      <a href="/en/data/" data-lift data-reveal style="color:inherit;text-decoration:none;background:var(--sup2);padding:clamp(24px,2.8vw,38px);display:flex;flex-direction:column;gap:14px" aria-label="Deterministic answers on data: open the page">
+        <span style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;color:var(--acc)">06</span>
+        <h3 style="margin:0;font-weight:500;font-size:clamp(19px,1.6vw,23px);line-height:1.15;letter-spacing:-.025em;color:var(--t1)">Deterministic answers on data</h3>
+        <p style="margin:0;font-size:15px;line-height:1.6;color:var(--t2);text-wrap:pretty">The model does not touch the data: it chooses among operations already written. Three outcomes, never confused.</p>
+      </a>
+      <a href="/en/local-models/" data-lift data-reveal style="color:inherit;text-decoration:none;background:var(--sup2);padding:clamp(24px,2.8vw,38px);display:flex;flex-direction:column;gap:14px" aria-label="Local models: open the page">
+        <span style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;color:var(--acc)">07</span>
+        <h3 style="margin:0;font-weight:500;font-size:clamp(19px,1.6vw,23px);line-height:1.15;letter-spacing:-.025em;color:var(--t1)">Local models</h3>
+        <p style="margin:0;font-size:15px;line-height:1.6;color:var(--t2);text-wrap:pretty">Choice of the parameter class, quantisation, fine-tuning on data from the client. Nothing leaves the machine.</p>
+      </a>
+      <a href="/en/automation/" data-lift data-reveal style="color:inherit;text-decoration:none;background:var(--sup2);padding:clamp(24px,2.8vw,38px);display:flex;flex-direction:column;gap:14px" aria-label="Automations and workflows: open the page">
+        <span style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;color:var(--acc)">08</span>
+        <h3 style="margin:0;font-weight:500;font-size:clamp(19px,1.6vw,23px);line-height:1.15;letter-spacing:-.025em;color:var(--t1)">Automations and workflows</h3>
+        <p style="margin:0;font-size:15px;line-height:1.6;color:var(--t2);text-wrap:pretty">What is repetitive and verifiable gets automated: where judgement is needed, a person stays.</p>
+      </a>
+      <a href="/en/method/" data-lift data-reveal style="color:inherit;text-decoration:none;background:var(--sup2);padding:clamp(24px,2.8vw,38px);display:flex;flex-direction:column;gap:14px" aria-label="Maintenance and verification: open the page">
+        <span style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;color:var(--acc)">09</span>
+        <h3 style="margin:0;font-weight:500;font-size:clamp(19px,1.6vw,23px);line-height:1.15;letter-spacing:-.025em;color:var(--t1)">Maintenance and verification</h3>
+        <p style="margin:0;font-size:15px;line-height:1.6;color:var(--t2);text-wrap:pretty">Periodic checks, regression tests, updating the models when the numbers move.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Sicurezza" style="padding:clamp(80px,11vw,168px) 0 clamp(56px,7vw,104px)">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:clamp(28px,4vw,64px);align-items:end;margin-bottom:clamp(40px,5vw,72px)" data-reveal>
+      <div>
+        <p style="margin:0 0 24px;font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t2)">Security</p>
+        <h2 style="margin:0;font-weight:500;font-size:clamp(30px,4.4vw,60px);line-height:1.02;letter-spacing:-.04em;color:var(--t1);text-wrap:pretty">Five levels, different strength</h2>
+      </div>
+      <p style="margin:0;max-width:40ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty">From the strongest to the most fragile. The last one guarantees nothing.</p>
+    </div>
+
+    <div style="display:grid;gap:10px;justify-items:center" data-reveal>
+      <div data-lift style="width:100%;max-width:1080px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:clamp(18px,2.2vw,28px) clamp(20px,2.6vw,36px);border:1px solid var(--filo2);background:linear-gradient(180deg,var(--sup3),var(--sup2))">
+        <span style="font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t1)">01 &nbsp; Database</span>
+        <span style="width:clamp(60px,15vw,200px);height:3px;background:var(--t1)"></span>
+      </div>
+      <div data-lift style="width:95%;max-width:1030px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:clamp(18px,2.2vw,28px) clamp(20px,2.6vw,36px);border:1px solid var(--filo2);background:linear-gradient(180deg,var(--sup2),var(--sup1))">
+        <span style="font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t1)">02 &nbsp; Operating system</span>
+        <span style="width:clamp(48px,12vw,160px);height:3px;background:var(--t2)"></span>
+      </div>
+      <div data-lift style="width:90%;max-width:980px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:clamp(18px,2.2vw,28px) clamp(20px,2.6vw,36px);border:1px solid var(--filo1);background:linear-gradient(180deg,var(--sup2),var(--sup1))">
+        <span style="font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t2)">03 &nbsp; Execution isolation</span>
+        <span style="width:clamp(36px,9vw,120px);height:3px;background:var(--t2)"></span>
+      </div>
+      <div data-lift style="width:85%;max-width:930px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:clamp(18px,2.2vw,28px) clamp(20px,2.6vw,36px);border:1px solid var(--filo1);background:linear-gradient(180deg,var(--sup1),var(--fondo))">
+        <span style="font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t2)">04 &nbsp; Application rules</span>
+        <span style="width:clamp(24px,6vw,80px);height:3px;background:var(--t3)"></span>
+      </div>
+      <div style="width:80%;max-width:880px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding:clamp(18px,2.2vw,28px) clamp(20px,2.6vw,36px);border:1px dashed var(--acc);background:var(--acc-tenue)">
+        <span style="font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--acc)">05 &nbsp; Instructions to the model</span>
+        <span style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--acc)">No guarantee</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Affermazione" style="background:var(--sup1);border-top:1px solid var(--acc);border-bottom:1px solid var(--filo1);padding:clamp(64px,9vw,140px) 0">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <p style="margin:0 0 clamp(24px,3vw,40px);font:500 11px 'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--acc)" data-reveal>The rule that is not up for negotiation</p>
+    <p data-reveal style="margin:0;max-width:24ch;font-weight:500;font-size:clamp(34px,6vw,88px);line-height:1;letter-spacing:-.04em;color:var(--t1);text-wrap:balance">If a prohibition lives only in the instructions to the model, for the client it does not exist.</p>
+  </div>
+</section>
+
+<section data-screen-label="Dati" style="padding:clamp(80px,11vw,168px) 0">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:clamp(28px,4vw,64px);align-items:end;margin-bottom:clamp(36px,4.6vw,64px)" data-reveal>
+      <div>
+        <p style="margin:0 0 24px;font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t2)">Data</p>
+        <h2 style="margin:0;font-weight:500;font-size:clamp(30px,4.4vw,60px);line-height:1.02;letter-spacing:-.04em;color:var(--t1);text-wrap:pretty">Three outcomes, never two</h2>
+      </div>
+      <p style="margin:0;max-width:44ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty">Confusing the last two is the flaw that makes numbers get invented.</p>
+    </div>
+    <div style="border-top:1px solid var(--filo2)" data-reveal role="table">
+      <div data-tabella style="display:grid;grid-template-columns:80px minmax(160px,1fr) 2fr;gap:clamp(16px,2.4vw,40px);padding:14px 12px;border-bottom:1px solid var(--filo1);font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">
+        <span>Outcome</span><span>Name</span><span>What arrives</span>
+      </div>
+      <div data-tabella data-riga style="display:grid;grid-template-columns:80px minmax(160px,1fr) 2fr;gap:clamp(16px,2.4vw,40px);padding:clamp(20px,2.4vw,30px) 12px;border-bottom:1px solid var(--filo1);align-items:baseline">
+        <span data-num style="font:500 12px 'JetBrains Mono',monospace;color:var(--t3);font-variant-numeric:tabular-nums">01</span>
+        <span style="font-weight:500;font-size:clamp(18px,1.8vw,24px);letter-spacing:-.025em;color:var(--t1)">Data present</span>
+        <span style="font-size:16px;line-height:1.55;color:var(--t2)">It arrives as it is written in the data store, comparable with what was read.</span>
+      </div>
+      <div data-tabella data-riga style="display:grid;grid-template-columns:80px minmax(160px,1fr) 2fr;gap:clamp(16px,2.4vw,40px);padding:clamp(20px,2.4vw,30px) 12px;border-bottom:1px solid var(--filo1);align-items:baseline">
+        <span data-num style="font:500 12px 'JetBrains Mono',monospace;color:var(--t3);font-variant-numeric:tabular-nums">02</span>
+        <span style="font-weight:500;font-size:clamp(18px,1.8vw,24px);letter-spacing:-.025em;color:var(--t1)">Data absent</span>
+        <span style="font-size:16px;line-height:1.55;color:var(--t2)">Declared absent. Not reconstructed, not estimated, not rounded.</span>
+      </div>
+      <div data-tabella data-riga style="display:grid;grid-template-columns:80px minmax(160px,1fr) 2fr;gap:clamp(16px,2.4vw,40px);padding:clamp(20px,2.4vw,30px) 12px;border-bottom:1px solid var(--filo1);align-items:baseline;box-shadow:inset 3px 0 0 var(--acc)">
+        <span data-num style="font:500 12px 'JetBrains Mono',monospace;color:var(--acc);font-variant-numeric:tabular-nums">03</span>
+        <span style="font-weight:500;font-size:clamp(18px,1.8vw,24px);letter-spacing:-.025em;color:var(--t1)">Read failed</span>
+        <span style="font-size:16px;line-height:1.55;color:var(--t2)">A visible error, never a plausible answer in place of a true one.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Privacy" style="padding:clamp(80px,11vw,168px) 0;background:var(--sup1);border-top:1px solid var(--filo1);border-bottom:1px solid var(--filo1)">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:clamp(28px,4vw,64px);align-items:end;margin-bottom:clamp(36px,4.6vw,64px)" data-reveal>
+      <div>
+        <p style="margin:0 0 24px;font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t2)">Privacy</p>
+        <h2 style="margin:0;font-weight:500;font-size:clamp(30px,4.4vw,60px);line-height:1.02;letter-spacing:-.04em;color:var(--t1)">Privacy Bridge</h2>
+      </div>
+      <p style="margin:0;max-width:48ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty">Desktop application that removes personal data before the text reaches a model, and puts it back into the answer. Tuned for Italian. Runs locally.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(290px,100%),1fr));gap:clamp(12px,1.6vw,20px)" data-reveal>
+      <div data-lift style="padding:clamp(22px,2.8vw,36px);border:1px solid var(--filo1);background:linear-gradient(180deg,var(--sup2),var(--sup1))">
+        <p style="margin:0 0 20px;font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">01 &nbsp; Incoming text</p>
+        <p style="margin:0;font:400 14.5px/1.95 'JetBrains Mono',monospace;color:var(--t2)">The quote for <span style="background:var(--acc-tenue);color:var(--acc);padding:1px 5px;animation:pulsa 4s ease-in-out infinite">Mario Rossi</span>, via <span style="background:var(--acc-tenue);color:var(--acc);padding:1px 5px;animation:pulsa 4s ease-in-out .4s infinite">Palermo 14</span>.</p>
+      </div>
+      <div data-lift style="padding:clamp(22px,2.8vw,36px);border:1px solid var(--filo1);background:linear-gradient(180deg,var(--sup2),var(--sup1))">
+        <p style="margin:0 0 20px;font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">02 &nbsp; What reaches the model</p>
+        <p style="margin:0;font:400 14.5px/1.95 'JetBrains Mono',monospace;color:var(--t2)">The quote for <span style="border:1px solid var(--filo2);padding:1px 5px;color:var(--t1)">NOME_1</span>, via <span style="border:1px solid var(--filo2);padding:1px 5px;color:var(--t1)">INDIRIZZO_1</span>.</p>
+      </div>
+      <div data-lift style="padding:clamp(22px,2.8vw,36px);border:1px solid var(--acc);background:linear-gradient(180deg,var(--sup2),var(--sup1))">
+        <p style="margin:0 0 20px;font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--acc)">03 &nbsp; The answer put back in place</p>
+        <p style="margin:0;font:400 14.5px/1.95 'JetBrains Mono',monospace;color:var(--t2)">The quote for <span style="background:var(--acc-tenue);color:var(--acc);padding:1px 5px">Mario Rossi</span> is ready.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Automazione" style="padding:clamp(80px,11vw,168px) 0">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div style="margin-bottom:clamp(36px,4.6vw,64px)" data-reveal>
+      <p style="margin:0 0 24px;font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t2)">Automation</p>
+      <h2 style="margin:0 0 20px;font-weight:500;font-size:clamp(30px,4.4vw,60px);line-height:1.02;letter-spacing:-.04em;color:var(--t1);max-width:26ch;text-wrap:pretty">Agents that publish, flows that take away the repetitive work</h2>
+      <p style="margin:0;max-width:52ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty">What is repetitive and verifiable gets automated: where judgement is needed, a person stays.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:clamp(16px,2.4vw,32px)" data-reveal>
+      <div>
+        <p style="margin:0 0 4px;padding:14px 12px;border-bottom:1px solid var(--filo2);font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t1)">What gets automated</p>
+        <div data-riga style="padding:18px 12px;border-bottom:1px solid var(--filo1);font-size:16px;line-height:1.5;color:var(--t2)">Steps that repeat always in the same way</div>
+        <div data-riga style="padding:18px 12px;border-bottom:1px solid var(--filo1);font-size:16px;line-height:1.5;color:var(--t2)">Waits, sends, conditions, fixed steps</div>
+        <div data-riga style="padding:18px 12px;border-bottom:1px solid var(--filo1);font-size:16px;line-height:1.5;color:var(--t2)">Anything for which there is a way to check the outcome</div>
+      </div>
+      <div>
+        <p style="margin:0 0 4px;padding:14px 12px;border-bottom:1px solid var(--acc);font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--acc)">What stays with a person</p>
+        <div data-riga style="padding:18px 12px;border-bottom:1px solid var(--filo1);font-size:16px;line-height:1.5;color:var(--t2)">The exceptions nobody has written down</div>
+        <div data-riga style="padding:18px 12px;border-bottom:1px solid var(--filo1);font-size:16px;line-height:1.5;color:var(--t2)">The decisions where judgement is needed</div>
+        <div data-riga style="padding:18px 12px;border-bottom:1px solid var(--filo1);font-size:16px;line-height:1.5;color:var(--t2)">Watching over what runs on its own</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Metodo" style="padding:clamp(80px,11vw,168px) 0;background:var(--sup1);border-top:1px solid var(--filo1);border-bottom:1px solid var(--filo1)">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <p style="margin:0 0 clamp(36px,5vw,72px);font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t2)" data-reveal>Method &#183; six rules</p>
+    <div style="border-top:1px solid var(--filo2)" data-reveal role="table">
+      <div data-riga style="display:grid;grid-template-columns:72px 1fr;gap:clamp(16px,2.4vw,40px);padding:clamp(20px,2.6vw,32px) 12px;border-bottom:1px solid var(--filo1);align-items:baseline"><span data-num style="font:500 12px 'JetBrains Mono',monospace;color:var(--t3);font-variant-numeric:tabular-nums">01</span><p style="margin:0;font-weight:500;font-size:clamp(17px,1.9vw,26px);line-height:1.25;letter-spacing:-.025em;color:var(--t1);text-wrap:pretty">The deterministic part before the model.</p></div>
+      <div data-riga style="display:grid;grid-template-columns:72px 1fr;gap:clamp(16px,2.4vw,40px);padding:clamp(20px,2.6vw,32px) 12px;border-bottom:1px solid var(--filo1);align-items:baseline"><span data-num style="font:500 12px 'JetBrains Mono',monospace;color:var(--t3);font-variant-numeric:tabular-nums">02</span><p style="margin:0;font-weight:500;font-size:clamp(17px,1.9vw,26px);line-height:1.25;letter-spacing:-.025em;color:var(--t1);text-wrap:pretty">Nothing is declared done without a test.</p></div>
+      <div data-riga style="display:grid;grid-template-columns:72px 1fr;gap:clamp(16px,2.4vw,40px);padding:clamp(20px,2.6vw,32px) 12px;border-bottom:1px solid var(--filo1);align-items:baseline"><span data-num style="font:500 12px 'JetBrains Mono',monospace;color:var(--t3);font-variant-numeric:tabular-nums">03</span><p style="margin:0;font-weight:500;font-size:clamp(17px,1.9vw,26px);line-height:1.25;letter-spacing:-.025em;color:var(--t1);text-wrap:pretty">Better a visible error than a plausible, wrong answer.</p></div>
+      <div data-riga style="display:grid;grid-template-columns:72px 1fr;gap:clamp(16px,2.4vw,40px);padding:clamp(20px,2.6vw,32px) 12px;border-bottom:1px solid var(--filo1);align-items:baseline"><span data-num style="font:500 12px 'JetBrains Mono',monospace;color:var(--t3);font-variant-numeric:tabular-nums">04</span><p style="margin:0;font-weight:500;font-size:clamp(17px,1.9vw,26px);line-height:1.25;letter-spacing:-.025em;color:var(--t1);text-wrap:pretty">Every agent has only the permissions it needs.</p></div>
+      <div data-riga style="display:grid;grid-template-columns:72px 1fr;gap:clamp(16px,2.4vw,40px);padding:clamp(20px,2.6vw,32px) 12px;border-bottom:1px solid var(--filo1);align-items:baseline"><span data-num style="font:500 12px 'JetBrains Mono',monospace;color:var(--t3);font-variant-numeric:tabular-nums">05</span><p style="margin:0;font-weight:500;font-size:clamp(17px,1.9vw,26px);line-height:1.25;letter-spacing:-.025em;color:var(--t1);text-wrap:pretty">Client data stays with the client.</p></div>
+      <div data-riga style="display:grid;grid-template-columns:72px 1fr;gap:clamp(16px,2.4vw,40px);padding:clamp(20px,2.6vw,32px) 12px;border-bottom:1px solid var(--filo1);align-items:baseline"><span data-num style="font:500 12px 'JetBrains Mono',monospace;color:var(--t3);font-variant-numeric:tabular-nums">06</span><p style="margin:0;font-weight:500;font-size:clamp(17px,1.9vw,26px);line-height:1.25;letter-spacing:-.025em;color:var(--t1);text-wrap:pretty">A system counts if it stays standing over time, not on the day of the demo.</p></div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Contatti" style="padding:clamp(88px,12vw,180px) 0 clamp(72px,9vw,140px)">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <p style="margin:0 0 clamp(28px,4vw,48px);font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t2)" data-reveal>Contact</p>
+    <a href="mailto:andrea.sforna@gmail.com" style="display:block;font-weight:500;font-size:clamp(26px,6.4vw,92px);line-height:1;letter-spacing:-.045em;color:var(--t1);word-break:break-word" style-hover="color:var(--acc)" data-reveal>andrea.sforna@gmail.com</a>
+    <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:clamp(32px,4vw,56px)" data-reveal>
+      <button type="button" data-copia="andrea.sforna@gmail.com" style="padding:15px 24px;background:transparent;border:1px solid var(--filo2);color:var(--t1);font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.09em;text-transform:uppercase;cursor:pointer;white-space:nowrap" style-hover="border-color:var(--acc);color:var(--acc)">Copy address</button>
+      <a href="https://www.instagram.com/andreasfornaai/" rel="me noopener" target="_blank" style="padding:15px 24px;border:1px solid var(--filo1);color:var(--t2);font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.09em;text-transform:uppercase;white-space:nowrap" style-hover="border-color:var(--filo2);color:var(--t1)">Instagram @andreasfornaai</a>
+    </div>
+    <p style="margin:clamp(36px,4.6vw,64px) 0 0;max-width:52ch;font-weight:400;font-size:clamp(16px,1.4vw,21px);line-height:1.55;color:var(--t2);text-wrap:pretty" data-reveal>Tell me about the work you do by hand today.</p>
+  </div>
+</section>
+
+</main>
+
+<footer style="border-top:1px solid var(--filo1);background:var(--sup1)">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px);padding-top:clamp(40px,5vw,72px);padding-bottom:clamp(28px,3.4vw,44px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));gap:clamp(28px,4vw,56px)">
+    <div>
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;position:relative;width:44px;height:44px;border:1px solid var(--filo2);flex:none"><span style="font:600 18px Geist,'Instrument Sans',Helvetica,sans-serif;letter-spacing:-.06em;color:var(--t1)">AS</span><span style="position:absolute;right:-1px;top:-1px;width:3px;height:3px;background:var(--acc)"></span></span><span style="font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t1)">Andrea Sforna AI</span></div>
+      <p style="margin:0;max-width:34ch;font-size:15px;line-height:1.6;color:var(--t2)">Design, security and maintenance of AI agent systems.</p>
+    </div>
+    <div>
+      <p style="margin:0 0 16px;font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">Pages</p>
+      <div style="display:grid;gap:10px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><a href="/en/agents/" style="color:var(--t2)">Agents</a><a href="/en/case-studies/" style="color:var(--t2)">Case studies</a><a href="/en/models/" style="color:var(--t2)">Models</a><a href="/en/security/" style="color:var(--t2)">Security</a><a href="/en/data/" style="color:var(--t2)">Data</a><a href="/en/privacy-bridge/" style="color:var(--t2)">Privacy Bridge</a><a href="/en/training/" style="color:var(--t2)">Training</a><a href="/en/contact/" style="color:var(--t2)">Contact</a></div>
+    </div>
+    <div>
+      <p style="margin:0 0 16px;font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">In depth</p>
+      <div style="display:grid;gap:10px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><a href="/en/local-models/" style="color:var(--t2)">Local models</a><a href="/en/architecture/" style="color:var(--t2)">Architecture</a><a href="/en/automation/" style="color:var(--t2)">Automation</a><a href="/en/tools/" style="color:var(--t2)">Tools</a><a href="/en/method/" style="color:var(--t2)">Method</a></div>
+    </div>
+    <div>
+      <p style="margin:0 0 16px;font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">Contact</p>
+      <div style="display:grid;gap:10px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.06em">
+        <a href="mailto:andrea.sforna@gmail.com" style="color:var(--t2)">andrea.sforna@gmail.com</a>
+        <a href="https://www.instagram.com/andreasfornaai/" rel="me noopener" target="_blank" style="color:var(--t2)">Instagram @andreasfornaai</a>
+      </div>
+    </div>
+  </div>
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px);padding-top:20px;padding-bottom:clamp(28px,3.4vw,44px);border-top:1px solid var(--filo1);display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t3)">
+    <span>&#169; 2026 Andrea Sforna</span>
+    <span>Designed and written by Andrea Sforna</span>
+  </div>
+</footer>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    import('/assets/sito.js').then((m) => m.avvia()).catch((e) => console.error(e));
+  }
+}
+</script>
+</body>
+</html>

@@ -124,7 +124,8 @@
         "nome": "Claude Code · Fable 5 (con riserva)",
         "indice": 67.2,
         "costo_per_compito": "$11,69",
-        "uso": false
+        "uso": false,
+        "nome_en": "Claude Code · Fable 5 (with reservations)"
       },
       {
         "nome": "Claude Code · Opus 5 (max)",

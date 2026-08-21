@@ -1,0 +1,1140 @@
+{
+ "pagina": "index.html",
+ "pezzi": [
+  {
+   "id": 0,
+   "tipo": "testo",
+   "it": "Andrea Sforna AI — sistemi di agenti AI"
+  },
+  {
+   "id": 1,
+   "tipo": "meta:description",
+   "it": "Progetto, costruisco e metto in sicurezza sistemi di agenti AI. Sistemi che lavorano su processi reali di un'azienda e restano in funzione nel tempo."
+  },
+  {
+   "id": 2,
+   "tipo": "meta:og:title",
+   "it": "Andrea Sforna AI — sistemi di agenti AI"
+  },
+  {
+   "id": 3,
+   "tipo": "meta:og:description",
+   "it": "Progetto, costruisco e metto in sicurezza sistemi di agenti AI. Sistemi che lavorano su processi reali di un'azienda e restano in funzione nel tempo."
+  },
+  {
+   "id": 4,
+   "tipo": "meta:og:image:alt",
+   "it": "Andrea Sforna AI — progettazione, sicurezza e manutenzione di sistemi di agenti AI"
+  },
+  {
+   "id": 5,
+   "tipo": "meta:twitter:title",
+   "it": "Andrea Sforna AI — sistemi di agenti AI"
+  },
+  {
+   "id": 6,
+   "tipo": "meta:twitter:description",
+   "it": "Progetto, costruisco e metto in sicurezza sistemi di agenti AI. Sistemi che lavorano su processi reali di un'azienda e restano in funzione nel tempo."
+  },
+  {
+   "id": 7,
+   "tipo": "testo",
+   "it": "Salta al contenuto"
+  },
+  {
+   "id": 8,
+   "tipo": "testo",
+   "it": "AS"
+  },
+  {
+   "id": 9,
+   "tipo": "testo",
+   "it": "Andrea Sforna AI"
+  },
+  {
+   "id": 10,
+   "tipo": "testo",
+   "it": "Agenti"
+  },
+  {
+   "id": 11,
+   "tipo": "testo",
+   "it": "Casi"
+  },
+  {
+   "id": 12,
+   "tipo": "testo",
+   "it": "Modelli"
+  },
+  {
+   "id": 13,
+   "tipo": "testo",
+   "it": "Sicurezza"
+  },
+  {
+   "id": 14,
+   "tipo": "testo",
+   "it": "Dati"
+  },
+  {
+   "id": 15,
+   "tipo": "testo",
+   "it": "Privacy Bridge"
+  },
+  {
+   "id": 16,
+   "tipo": "testo",
+   "it": "Formazione"
+  },
+  {
+   "id": 17,
+   "tipo": "testo",
+   "it": "Contatti"
+  },
+  {
+   "id": 18,
+   "tipo": "testo",
+   "it": "Chiaro"
+  },
+  {
+   "id": 19,
+   "tipo": "attributo:aria-label",
+   "it": "Apri il menu"
+  },
+  {
+   "id": 20,
+   "tipo": "testo",
+   "it": "Menu"
+  },
+  {
+   "id": 21,
+   "tipo": "testo",
+   "it": "Agenti"
+  },
+  {
+   "id": 22,
+   "tipo": "testo",
+   "it": "Casi"
+  },
+  {
+   "id": 23,
+   "tipo": "testo",
+   "it": "Modelli"
+  },
+  {
+   "id": 24,
+   "tipo": "testo",
+   "it": "Sicurezza"
+  },
+  {
+   "id": 25,
+   "tipo": "testo",
+   "it": "Dati"
+  },
+  {
+   "id": 26,
+   "tipo": "testo",
+   "it": "Privacy Bridge"
+  },
+  {
+   "id": 27,
+   "tipo": "testo",
+   "it": "Formazione"
+  },
+  {
+   "id": 28,
+   "tipo": "testo",
+   "it": "Contatti"
+  },
+  {
+   "id": 29,
+   "tipo": "testo",
+   "it": "Modelli in locale"
+  },
+  {
+   "id": 30,
+   "tipo": "testo",
+   "it": "Architettura"
+  },
+  {
+   "id": 31,
+   "tipo": "testo",
+   "it": "Automazione"
+  },
+  {
+   "id": 32,
+   "tipo": "testo",
+   "it": "Strumenti"
+  },
+  {
+   "id": 33,
+   "tipo": "testo",
+   "it": "Metodo"
+  },
+  {
+   "id": 34,
+   "tipo": "testo",
+   "it": "Progettazione"
+  },
+  {
+   "id": 35,
+   "tipo": "testo",
+   "it": "Sicurezza"
+  },
+  {
+   "id": 36,
+   "tipo": "testo",
+   "it": "Manutenzione"
+  },
+  {
+   "id": 37,
+   "tipo": "attributo:aria-label",
+   "it": "Andrea Sforna AI"
+  },
+  {
+   "id": 38,
+   "tipo": "testo",
+   "it": "A"
+  },
+  {
+   "id": 39,
+   "tipo": "testo",
+   "it": "n"
+  },
+  {
+   "id": 40,
+   "tipo": "testo",
+   "it": "d"
+  },
+  {
+   "id": 41,
+   "tipo": "testo",
+   "it": "r"
+  },
+  {
+   "id": 42,
+   "tipo": "testo",
+   "it": "e"
+  },
+  {
+   "id": 43,
+   "tipo": "testo",
+   "it": "a"
+  },
+  {
+   "id": 44,
+   "tipo": "testo",
+   "it": "S"
+  },
+  {
+   "id": 45,
+   "tipo": "testo",
+   "it": "f"
+  },
+  {
+   "id": 46,
+   "tipo": "testo",
+   "it": "o"
+  },
+  {
+   "id": 47,
+   "tipo": "testo",
+   "it": "r"
+  },
+  {
+   "id": 48,
+   "tipo": "testo",
+   "it": "n"
+  },
+  {
+   "id": 49,
+   "tipo": "testo",
+   "it": "a"
+  },
+  {
+   "id": 50,
+   "tipo": "testo",
+   "it": "A"
+  },
+  {
+   "id": 51,
+   "tipo": "testo",
+   "it": "I"
+  },
+  {
+   "id": 52,
+   "tipo": "testo",
+   "it": "Progetto, costruisco e metto in sicurezza sistemi di agenti AI."
+  },
+  {
+   "id": 53,
+   "tipo": "testo",
+   "it": "Sistemi che lavorano su processi reali e restano in funzione nel tempo."
+  },
+  {
+   "id": 54,
+   "tipo": "testo",
+   "it": "Come lavoro"
+  },
+  {
+   "id": 55,
+   "tipo": "testo",
+   "it": "01 &nbsp;&#183;&nbsp; Apertura"
+  },
+  {
+   "id": 56,
+   "tipo": "testo",
+   "it": "Scorri &#8595;"
+  },
+  {
+   "id": 57,
+   "tipo": "testo",
+   "it": "I modelli e gli strumenti che uso ogni giorno. La scelta si fa in base all&#8217;obiettivo del singolo passaggio, non per abitudine: ogni settimana esce qualcosa e il confronto va rifatto."
+  },
+  {
+   "id": 58,
+   "tipo": "attributo:alt",
+   "it": "Claude, di Anthropic"
+  },
+  {
+   "id": 59,
+   "tipo": "attributo:alt",
+   "it": "OpenAI"
+  },
+  {
+   "id": 60,
+   "tipo": "attributo:alt",
+   "it": "Gemini, di Google"
+  },
+  {
+   "id": 61,
+   "tipo": "attributo:alt",
+   "it": "DeepSeek"
+  },
+  {
+   "id": 62,
+   "tipo": "attributo:alt",
+   "it": "Qwen, di Alibaba"
+  },
+  {
+   "id": 63,
+   "tipo": "attributo:alt",
+   "it": "Kimi, di Moonshot AI"
+  },
+  {
+   "id": 64,
+   "tipo": "attributo:alt",
+   "it": "Mistral AI"
+  },
+  {
+   "id": 65,
+   "tipo": "attributo:alt",
+   "it": "OpenClaw"
+  },
+  {
+   "id": 66,
+   "tipo": "attributo:alt",
+   "it": "OpenClaw"
+  },
+  {
+   "id": 67,
+   "tipo": "attributo:alt",
+   "it": "Hermes Agent"
+  },
+  {
+   "id": 68,
+   "tipo": "attributo:alt",
+   "it": "Higgsfield"
+  },
+  {
+   "id": 69,
+   "tipo": "attributo:alt",
+   "it": "Andrea Sforna"
+  },
+  {
+   "id": 70,
+   "tipo": "testo",
+   "it": "Andrea Sforna"
+  },
+  {
+   "id": 71,
+   "tipo": "testo",
+   "it": "Chi sono"
+  },
+  {
+   "id": 72,
+   "tipo": "testo",
+   "it": "Il mio mestiere non è usare i modelli. È farli lavorare insieme."
+  },
+  {
+   "id": 73,
+   "tipo": "testo",
+   "it": "Lavoro con i modelli linguistici da prima che diventassero un prodotto di massa, e da allora li provo mentre escono: oggi ne tengo a confronto sedici configurazioni, di sette fornitori diversi, e cambio quando i numeri lo giustificano."
+  },
+  {
+   "id": 74,
+   "tipo": "testo",
+   "it": "Progetto e costruisco sistemi di agenti: dalla prima riga fino alla manutenzione. Li collego ai dati e agli strumenti dell&#8217;azienda, li chiudo dentro perimetri di sicurezza che non dipendono dalla buona volontà del modello, e li tengo in esercizio nel tempo. Lavoro sia con i modelli in cloud sia con modelli che girano in locale, quando i dati non devono uscire."
+  },
+  {
+   "id": 75,
+   "tipo": "testo",
+   "it": "Mestiere"
+  },
+  {
+   "id": 76,
+   "tipo": "testo",
+   "it": "Dare agli agenti strumenti, limiti e un modo per dimostrare quello che dicono."
+  },
+  {
+   "id": 77,
+   "tipo": "testo",
+   "it": "Materia"
+  },
+  {
+   "id": 78,
+   "tipo": "testo",
+   "it": "Sistemi che restano accesi e devono funzionare anche quando non li sto guardando."
+  },
+  {
+   "id": 79,
+   "tipo": "testo",
+   "it": "Misura"
+  },
+  {
+   "id": 80,
+   "tipo": "testo",
+   "it": "Il terzo mese, non il giorno della dimostrazione."
+  },
+  {
+   "id": 81,
+   "tipo": "testo",
+   "it": "Cosa ho costruito, e cosa tengo in esercizio"
+  },
+  {
+   "id": 82,
+   "tipo": "testo",
+   "it": "Agenti specializzati in esercizio ogni giorno, ognuno con permessi propri"
+  },
+  {
+   "id": 83,
+   "tipo": "testo",
+   "it": "Server MCP scritti da me: l’agente vede le operazioni che gli dichiaro, non l’archivio"
+  },
+  {
+   "id": 84,
+   "tipo": "testo",
+   "it": "Configurazioni di modello a confronto, rilette il 21 agosto 2026"
+  },
+  {
+   "id": 85,
+   "tipo": "testo",
+   "it": "Sistemi che restano accesi, e che qualcuno deve mantenere"
+  },
+  {
+   "id": 86,
+   "tipo": "testo",
+   "it": "Che cos&#8217;è un agente"
+  },
+  {
+   "id": 87,
+   "tipo": "testo",
+   "it": "Un modello risponde. Un agente lavora."
+  },
+  {
+   "id": 88,
+   "tipo": "testo",
+   "it": "Riceve un obiettivo, sceglie quali operazioni chiamare, controlla il risultato e si ferma quando ha finito o quando non può proseguire."
+  },
+  {
+   "id": 89,
+   "tipo": "testo",
+   "it": "Come funziona &#8594;"
+  },
+  {
+   "id": 90,
+   "tipo": "testo",
+   "it": "Mi elenchi le fatture non pagate?"
+  },
+  {
+   "id": 91,
+   "tipo": "testo",
+   "it": "1 chiamata strumento"
+  },
+  {
+   "id": 92,
+   "tipo": "testo",
+   "it": "8 s"
+  },
+  {
+   "id": 93,
+   "tipo": "testo",
+   "it": "Ecco le fatture non pagate (stato in_attesa), lette ora da"
+  },
+  {
+   "id": 94,
+   "tipo": "testo",
+   "it": "fatture_per_stato"
+  },
+  {
+   "id": 95,
+   "tipo": "testo",
+   "it": "N. FATTURA"
+  },
+  {
+   "id": 96,
+   "tipo": "testo",
+   "it": "CLIENTE"
+  },
+  {
+   "id": 97,
+   "tipo": "testo",
+   "it": "EMISSIONE"
+  },
+  {
+   "id": 98,
+   "tipo": "testo",
+   "it": "SCADENZA"
+  },
+  {
+   "id": 99,
+   "tipo": "testo",
+   "it": "IMPORTO"
+  },
+  {
+   "id": 100,
+   "tipo": "testo",
+   "it": "Gialli Design Studio"
+  },
+  {
+   "id": 101,
+   "tipo": "testo",
+   "it": "Arancio Energie"
+  },
+  {
+   "id": 102,
+   "tipo": "testo",
+   "it": "Bianchi Costruzioni"
+  },
+  {
+   "id": 103,
+   "tipo": "testo",
+   "it": "Neri Logistics"
+  },
+  {
+   "id": 104,
+   "tipo": "testo",
+   "it": "Totale 4 fatture in attesa. Nota: 2026-013 (Gialli Design Studio) risulta scaduta il 21 agosto 2026. Se vuoi anche le fatture già scadute e non pagate, dimmelo e le verifico a parte."
+  },
+  {
+   "id": 105,
+   "tipo": "testo",
+   "it": "Ogni numero risale a una lettura dichiarata. Se la lettura non riesce, l&#8217;agente lo dice invece di stimare."
+  },
+  {
+   "id": 106,
+   "tipo": "testo",
+   "it": "Cosa faccio"
+  },
+  {
+   "id": 107,
+   "tipo": "testo",
+   "it": "Non tre cose. Un mestiere intero: costruire il sistema, chiuderlo, collegarlo ai dati e tenerlo in piedi."
+  },
+  {
+   "id": 108,
+   "tipo": "attributo:aria-label",
+   "it": "Agenti da zero — apri la pagina"
+  },
+  {
+   "id": 109,
+   "tipo": "testo",
+   "it": "Agenti da zero"
+  },
+  {
+   "id": 110,
+   "tipo": "testo",
+   "it": "Progetto e costruisco l&#8217;agente e il suo perimetro: obiettivo, operazioni disponibili, criteri di verifica."
+  },
+  {
+   "id": 111,
+   "tipo": "attributo:aria-label",
+   "it": "Team di agenti — apri la pagina"
+  },
+  {
+   "id": 112,
+   "tipo": "testo",
+   "it": "Team di agenti"
+  },
+  {
+   "id": 113,
+   "tipo": "testo",
+   "it": "Più agenti specializzati che si dividono il lavoro e si controllano a vicenda. Chi esegue non è chi verifica."
+  },
+  {
+   "id": 114,
+   "tipo": "attributo:aria-label",
+   "it": "Strumenti e banche dati — apri la pagina"
+  },
+  {
+   "id": 115,
+   "tipo": "testo",
+   "it": "Strumenti e banche dati"
+  },
+  {
+   "id": 116,
+   "tipo": "testo",
+   "it": "Collego gli agenti ai dati e ai programmi che l&#8217;azienda già usa, con operazioni scritte una per una."
+  },
+  {
+   "id": 117,
+   "tipo": "attributo:aria-label",
+   "it": "Server MCP — apri la pagina"
+  },
+  {
+   "id": 118,
+   "tipo": "testo",
+   "it": "Server MCP"
+  },
+  {
+   "id": 119,
+   "tipo": "testo",
+   "it": "Costruisco e mantengo i server che espongono quelle operazioni agli agenti, con i permessi di chi li chiama."
+  },
+  {
+   "id": 120,
+   "tipo": "attributo:aria-label",
+   "it": "Architetture di sicurezza — apri la pagina"
+  },
+  {
+   "id": 121,
+   "tipo": "testo",
+   "it": "Architetture di sicurezza"
+  },
+  {
+   "id": 122,
+   "tipo": "testo",
+   "it": "I permessi vivono nel database e nel sistema operativo. Cinque livelli, e il più fragile è quello delle istruzioni."
+  },
+  {
+   "id": 123,
+   "tipo": "attributo:aria-label",
+   "it": "Risposte deterministiche sui dati — apri la pagina"
+  },
+  {
+   "id": 124,
+   "tipo": "testo",
+   "it": "Risposte deterministiche sui dati"
+  },
+  {
+   "id": 125,
+   "tipo": "testo",
+   "it": "Il modello non tocca i dati: sceglie fra operazioni già scritte. Tre esiti, mai confusi."
+  },
+  {
+   "id": 126,
+   "tipo": "attributo:aria-label",
+   "it": "Modelli in locale — apri la pagina"
+  },
+  {
+   "id": 127,
+   "tipo": "testo",
+   "it": "Modelli in locale"
+  },
+  {
+   "id": 128,
+   "tipo": "testo",
+   "it": "Scelta della classe di parametri, quantizzazione, perfezionamento sui dati del cliente. Niente esce dalla macchina."
+  },
+  {
+   "id": 129,
+   "tipo": "attributo:aria-label",
+   "it": "Automazioni e flussi di lavoro — apri la pagina"
+  },
+  {
+   "id": 130,
+   "tipo": "testo",
+   "it": "Automazioni e flussi di lavoro"
+  },
+  {
+   "id": 131,
+   "tipo": "testo",
+   "it": "Si automatizza ciò che è ripetitivo e verificabile: dove serve giudizio resta una persona."
+  },
+  {
+   "id": 132,
+   "tipo": "attributo:aria-label",
+   "it": "Manutenzione e verifica — apri la pagina"
+  },
+  {
+   "id": 133,
+   "tipo": "testo",
+   "it": "Manutenzione e verifica"
+  },
+  {
+   "id": 134,
+   "tipo": "testo",
+   "it": "Controlli periodici, prove di regressione, aggiornamento dei modelli quando i numeri si muovono."
+  },
+  {
+   "id": 135,
+   "tipo": "testo",
+   "it": "Sicurezza"
+  },
+  {
+   "id": 136,
+   "tipo": "testo",
+   "it": "Cinque livelli, robustezza diversa"
+  },
+  {
+   "id": 137,
+   "tipo": "testo",
+   "it": "Dal più robusto al più fragile. L’ultimo non garantisce niente."
+  },
+  {
+   "id": 138,
+   "tipo": "testo",
+   "it": "01 &nbsp; Database"
+  },
+  {
+   "id": 139,
+   "tipo": "testo",
+   "it": "02 &nbsp; Sistema operativo"
+  },
+  {
+   "id": 140,
+   "tipo": "testo",
+   "it": "03 &nbsp; Isolamento dell’esecuzione"
+  },
+  {
+   "id": 141,
+   "tipo": "testo",
+   "it": "04 &nbsp; Regole dell’applicazione"
+  },
+  {
+   "id": 142,
+   "tipo": "testo",
+   "it": "05 &nbsp; Istruzioni al modello"
+  },
+  {
+   "id": 143,
+   "tipo": "testo",
+   "it": "Nessuna garanzia"
+  },
+  {
+   "id": 144,
+   "tipo": "testo",
+   "it": "La regola che non si negozia"
+  },
+  {
+   "id": 145,
+   "tipo": "testo",
+   "it": "Se un divieto vive solo nelle istruzioni al modello, per il cliente non esiste."
+  },
+  {
+   "id": 146,
+   "tipo": "testo",
+   "it": "Dati"
+  },
+  {
+   "id": 147,
+   "tipo": "testo",
+   "it": "Tre esiti, mai due"
+  },
+  {
+   "id": 148,
+   "tipo": "testo",
+   "it": "Confondere gli ultimi due è il difetto che fa inventare i numeri."
+  },
+  {
+   "id": 149,
+   "tipo": "testo",
+   "it": "Esito"
+  },
+  {
+   "id": 150,
+   "tipo": "testo",
+   "it": "Nome"
+  },
+  {
+   "id": 151,
+   "tipo": "testo",
+   "it": "Cosa arriva"
+  },
+  {
+   "id": 152,
+   "tipo": "testo",
+   "it": "Dato presente"
+  },
+  {
+   "id": 153,
+   "tipo": "testo",
+   "it": "Arriva come è scritto nell’archivio, confrontabile con quello che è stato letto."
+  },
+  {
+   "id": 154,
+   "tipo": "testo",
+   "it": "Dato assente"
+  },
+  {
+   "id": 155,
+   "tipo": "testo",
+   "it": "Dichiarato assente. Non ricostruito, non stimato, non arrotondato."
+  },
+  {
+   "id": 156,
+   "tipo": "testo",
+   "it": "Lettura non riuscita"
+  },
+  {
+   "id": 157,
+   "tipo": "testo",
+   "it": "Errore visibile, mai una risposta plausibile al posto di una risposta vera."
+  },
+  {
+   "id": 158,
+   "tipo": "testo",
+   "it": "Privacy"
+  },
+  {
+   "id": 159,
+   "tipo": "testo",
+   "it": "Privacy Bridge"
+  },
+  {
+   "id": 160,
+   "tipo": "testo",
+   "it": "Applicazione desktop che toglie i dati personali prima che il testo raggiunga un modello, e li rimette nella risposta. Tarata sull’italiano. Gira in locale."
+  },
+  {
+   "id": 161,
+   "tipo": "testo",
+   "it": "01 &nbsp; Testo in ingresso"
+  },
+  {
+   "id": 162,
+   "tipo": "testo",
+   "it": "Il preventivo per"
+  },
+  {
+   "id": 163,
+   "tipo": "testo",
+   "it": "Mario Rossi"
+  },
+  {
+   "id": 164,
+   "tipo": "testo",
+   "it": ", via"
+  },
+  {
+   "id": 165,
+   "tipo": "testo",
+   "it": "Palermo 14"
+  },
+  {
+   "id": 166,
+   "tipo": "testo",
+   "it": "02 &nbsp; Quello che raggiunge il modello"
+  },
+  {
+   "id": 167,
+   "tipo": "testo",
+   "it": "Il preventivo per"
+  },
+  {
+   "id": 168,
+   "tipo": "testo",
+   "it": "NOME_1"
+  },
+  {
+   "id": 169,
+   "tipo": "testo",
+   "it": ", via"
+  },
+  {
+   "id": 170,
+   "tipo": "testo",
+   "it": "INDIRIZZO_1"
+  },
+  {
+   "id": 171,
+   "tipo": "testo",
+   "it": "03 &nbsp; Risposta rimessa a posto"
+  },
+  {
+   "id": 172,
+   "tipo": "testo",
+   "it": "Il preventivo per"
+  },
+  {
+   "id": 173,
+   "tipo": "testo",
+   "it": "Mario Rossi"
+  },
+  {
+   "id": 174,
+   "tipo": "testo",
+   "it": "è pronto."
+  },
+  {
+   "id": 175,
+   "tipo": "testo",
+   "it": "Automazione"
+  },
+  {
+   "id": 176,
+   "tipo": "testo",
+   "it": "Agenti che pubblicano, flussi che togliono il lavoro ripetitivo"
+  },
+  {
+   "id": 177,
+   "tipo": "testo",
+   "it": "Si automatizza ciò che è ripetitivo e verificabile: dove serve giudizio resta una persona."
+  },
+  {
+   "id": 178,
+   "tipo": "testo",
+   "it": "Si automatizza"
+  },
+  {
+   "id": 179,
+   "tipo": "testo",
+   "it": "Passaggi che si ripetono sempre allo stesso modo"
+  },
+  {
+   "id": 180,
+   "tipo": "testo",
+   "it": "Attese, invii, condizioni, passaggi fissi"
+  },
+  {
+   "id": 181,
+   "tipo": "testo",
+   "it": "Tutto ciò di cui esiste un modo per controllare l’esito"
+  },
+  {
+   "id": 182,
+   "tipo": "testo",
+   "it": "Resta a una persona"
+  },
+  {
+   "id": 183,
+   "tipo": "testo",
+   "it": "Le eccezioni che nessuno ha messo per iscritto"
+  },
+  {
+   "id": 184,
+   "tipo": "testo",
+   "it": "Le decisioni in cui serve giudizio"
+  },
+  {
+   "id": 185,
+   "tipo": "testo",
+   "it": "La sorveglianza di quello che gira da solo"
+  },
+  {
+   "id": 186,
+   "tipo": "testo",
+   "it": "Metodo &#183; sei regole"
+  },
+  {
+   "id": 187,
+   "tipo": "testo",
+   "it": "Il deterministico prima del modello."
+  },
+  {
+   "id": 188,
+   "tipo": "testo",
+   "it": "Niente si dichiara fatto senza una prova."
+  },
+  {
+   "id": 189,
+   "tipo": "testo",
+   "it": "Meglio un errore visibile che una risposta plausibile e sbagliata."
+  },
+  {
+   "id": 190,
+   "tipo": "testo",
+   "it": "Ogni agente ha solo i permessi che gli servono."
+  },
+  {
+   "id": 191,
+   "tipo": "testo",
+   "it": "I dati del cliente restano del cliente."
+  },
+  {
+   "id": 192,
+   "tipo": "testo",
+   "it": "Un sistema conta se resta in piedi nel tempo, non il giorno della demo."
+  },
+  {
+   "id": 193,
+   "tipo": "testo",
+   "it": "Contatti"
+  },
+  {
+   "id": 194,
+   "tipo": "testo",
+   "it": "andrea.sforna@gmail.com"
+  },
+  {
+   "id": 195,
+   "tipo": "testo",
+   "it": "Copia indirizzo"
+  },
+  {
+   "id": 196,
+   "tipo": "testo",
+   "it": "Instagram @andreasfornaai"
+  },
+  {
+   "id": 197,
+   "tipo": "testo",
+   "it": "Raccontami il lavoro che oggi fai a mano."
+  },
+  {
+   "id": 198,
+   "tipo": "testo",
+   "it": "AS"
+  },
+  {
+   "id": 199,
+   "tipo": "testo",
+   "it": "Andrea Sforna AI"
+  },
+  {
+   "id": 200,
+   "tipo": "testo",
+   "it": "Progettazione, sicurezza e manutenzione di sistemi di agenti AI."
+  },
+  {
+   "id": 201,
+   "tipo": "testo",
+   "it": "Pagine"
+  },
+  {
+   "id": 202,
+   "tipo": "testo",
+   "it": "Agenti"
+  },
+  {
+   "id": 203,
+   "tipo": "testo",
+   "it": "Casi"
+  },
+  {
+   "id": 204,
+   "tipo": "testo",
+   "it": "Modelli"
+  },
+  {
+   "id": 205,
+   "tipo": "testo",
+   "it": "Sicurezza"
+  },
+  {
+   "id": 206,
+   "tipo": "testo",
+   "it": "Dati"
+  },
+  {
+   "id": 207,
+   "tipo": "testo",
+   "it": "Privacy Bridge"
+  },
+  {
+   "id": 208,
+   "tipo": "testo",
+   "it": "Formazione"
+  },
+  {
+   "id": 209,
+   "tipo": "testo",
+   "it": "Contatti"
+  },
+  {
+   "id": 210,
+   "tipo": "testo",
+   "it": "Approfondimenti"
+  },
+  {
+   "id": 211,
+   "tipo": "testo",
+   "it": "Modelli in locale"
+  },
+  {
+   "id": 212,
+   "tipo": "testo",
+   "it": "Architettura"
+  },
+  {
+   "id": 213,
+   "tipo": "testo",
+   "it": "Automazione"
+  },
+  {
+   "id": 214,
+   "tipo": "testo",
+   "it": "Strumenti"
+  },
+  {
+   "id": 215,
+   "tipo": "testo",
+   "it": "Metodo"
+  },
+  {
+   "id": 216,
+   "tipo": "testo",
+   "it": "Contatti"
+  },
+  {
+   "id": 217,
+   "tipo": "testo",
+   "it": "andrea.sforna@gmail.com"
+  },
+  {
+   "id": 218,
+   "tipo": "testo",
+   "it": "Instagram @andreasfornaai"
+  },
+  {
+   "id": 219,
+   "tipo": "testo",
+   "it": "&#169; 2026 Andrea Sforna"
+  },
+  {
+   "id": 220,
+   "tipo": "testo",
+   "it": "Progettato e scritto da Andrea Sforna"
+  }
+ ],
+ "schema": [
+  {
+   "@graph.0.name": "Andrea Sforna",
+   "@graph.0.jobTitle": "Progettista di sistemi di agenti AI",
+   "@graph.0.description": "Progetta, costruisce e mette in sicurezza sistemi di agenti AI che lavorano su processi aziendali reali.",
+   "@graph.0.knowsAbout.0": "Agenti AI",
+   "@graph.0.knowsAbout.1": "Model Context Protocol",
+   "@graph.0.knowsAbout.2": "Automazione dei processi",
+   "@graph.0.knowsAbout.3": "Sicurezza dei sistemi AI",
+   "@graph.0.knowsAbout.4": "Modelli linguistici in locale",
+   "@graph.0.knowsAbout.5": "Orchestrazione multi-agente",
+   "@graph.0.knowsAbout.6": "n8n",
+   "@graph.0.knowsAbout.7": "Recupero di dati deterministico",
+   "@graph.1.name": "Andrea Sforna AI",
+   "@graph.1.description": "Progettazione, messa in sicurezza e manutenzione di sistemi di agenti AI per aziende e professionisti.",
+   "@graph.1.areaServed.name": "Italia",
+   "@graph.1.hasOfferCatalog.name": "Modi di lavorare insieme",
+   "@graph.1.hasOfferCatalog.itemListElement.0.itemOffered.name": "Consulenza",
+   "@graph.1.hasOfferCatalog.itemListElement.0.itemOffered.description": "Analisi di un processo esistente e perimetro scritto di cosa conviene affidare a un agente.",
+   "@graph.1.hasOfferCatalog.itemListElement.1.itemOffered.name": "Formazione",
+   "@graph.1.hasOfferCatalog.itemListElement.1.itemOffered.description": "Percorso sul caso reale dell'azienda, per costruire e mantenere agenti in autonomia.",
+   "@graph.1.hasOfferCatalog.itemListElement.2.itemOffered.name": "Messa in sicurezza",
+   "@graph.1.hasOfferCatalog.itemListElement.2.itemOffered.description": "Revisione dei permessi di un sistema di agenti gia' in funzione.",
+   "@graph.1.hasOfferCatalog.itemListElement.3.itemOffered.name": "Sistemi su misura",
+   "@graph.1.hasOfferCatalog.itemListElement.3.itemOffered.description": "Progetto e costruzione di un sistema di agenti sul processo del cliente.",
+   "@graph.2.name": "Home",
+   "@graph.2.description": "Progetto, costruisco e metto in sicurezza sistemi di agenti AI. Sistemi che lavorano su processi reali di un'azienda e restano in funzione nel tempo.",
+   "@graph.2.isPartOf.name": "Andrea Sforna AI"
+  }
+ ]
+}

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>/* Le librerie stanno in casa: senza questa mappa il sito le chiede a
+   unpkg.com, e se quel dominio non risponde la pagina resta bianca. Il runtime
+   legge window.__resources e sostituisce l'indirizzo esterno con quello locale.
+   Le due copie sono byte per byte quelle che serviva il CDN: impronte sha384
+   verificate contro quelle dichiarate in support.js. */
+window.__resources={"https://unpkg.com/react@18.3.1/umd/react.production.min.js":"/assets/vendor/react-18.3.1.min.js","https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js":"/assets/vendor/react-dom-18.3.1.min.js"};</script>
+<script src="/support.js"></script>
+<title>Automation — Andrea Sforna AI</title>
+<meta name="description" content="Automation flows tested on real business cases: mail sorted, enquiries from the site, supplier invoices, documents, content. With or without a model.">
+<link rel="alternate" hreflang="it" href="https://navras98.github.io/automazione/">
+<link rel="alternate" hreflang="en" href="https://navras98.github.io/en/automation/">
+<link rel="alternate" hreflang="x-default" href="https://navras98.github.io/automazione/">
+<link rel="canonical" href="https://navras98.github.io/en/automation/">
+<meta name="author" content="Andrea Sforna">
+<meta name="theme-color" content="#0a0a0b" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f7f6f3" media="(prefers-color-scheme: light)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Andrea Sforna AI">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Automation — Andrea Sforna AI">
+<meta property="og:description" content="Automation flows tested on real business cases: mail sorted, enquiries from the site, supplier invoices, documents, content. With or without a model.">
+<meta property="og:url" content="https://navras98.github.io/en/automation/">
+<meta property="og:image" content="https://navras98.github.io/assets/anteprima.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Andrea Sforna AI — design, security and maintenance of AI agent systems">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Automation — Andrea Sforna AI">
+<meta name="twitter:description" content="Automation flows tested on real business cases: mail sorted, enquiries from the site, supplier invoices, documents, content. With or without a model.">
+<meta name="twitter:image" content="https://navras98.github.io/assets/anteprima.png">
+<link rel="icon" href="/assets/icona.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/icona-180.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/assets/caratteri.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://navras98.github.io/#andrea","name":"Andrea Sforna","jobTitle":"Designer of AI agent systems","description":"Designs, builds and secures AI agent systems that work on real business processes.","url":"https://navras98.github.io/","image":"https://navras98.github.io/assets/img/andrea.webp","email":"mailto:andrea.sforna@gmail.com","sameAs":["https://www.instagram.com/andreasforna.ai/"],"knowsAbout":["AI agents","Model Context Protocol","Process automation","Security of AI systems","Local language models","Multi-agent orchestration","n8n","Deterministic data retrieval"],"knowsLanguage":["it","en"]},{"@type":"ProfessionalService","@id":"https://navras98.github.io/#servizio","name":"Andrea Sforna AI","description":"Design, security and maintenance of AI agent systems for companies and professionals.","url":"https://navras98.github.io/","provider":{"@id":"https://navras98.github.io/#andrea"},"areaServed":{"@type":"Country","name":"Italy"},"availableLanguage":["it","en"],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Ways of working together","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Consulting","description":"Analysis of an existing process and a written scope of what is worth handing to an agent."}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Training","description":"A course on the company's real case, to build and maintain agents independently."}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Security review","description":"Review of the permissions of an agent system already in service."}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Bespoke systems","description":"Design and construction of an agent system on the client's process."}}]}},{"@type":"WebPage","@id":"https://navras98.github.io/automazione/#pagina","url":"https://navras98.github.io/automazione/","name":"Automation","description":"Automation flows tested on real business cases: mail sorted, enquiries from the site, supplier invoices, documents, content. With or without a model.","inLanguage":"it-IT","isPartOf":{"@type":"WebSite","@id":"https://navras98.github.io/#sito","name":"Andrea Sforna AI","url":"https://navras98.github.io/","inLanguage":"it-IT","publisher":{"@id":"https://navras98.github.io/#andrea"}},"about":{"@id":"https://navras98.github.io/#servizio"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://navras98.github.io/"},{"@type":"ListItem","position":2,"name":"Automation","item":"https://navras98.github.io/automazione/"}]}}]}</script>
+<link rel="stylesheet" href="/assets/tema.css">
+</head>
+<body>
+<a href="#contenuto" style="position:absolute;left:-9999px;top:0;z-index:100;padding:12px 18px;background:var(--acc);color:var(--su-acc);font:500 12px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase" onfocus="this.style.left='12px';this.style.top='12px'" onblur="this.style.left='-9999px'">Skip to content</a>
+<x-dc>
+<helmet data-dc-atomics><script type="module" src="/assets/sito.js"></script></helmet>
+
+<div data-avanzamento style="position:fixed;top:0;left:0;height:2px;width:0;background:var(--acc);z-index:60"></div>
+<div data-cursore style="position:fixed;inset:0;pointer-events:none;z-index:1"></div>
+<div style="position:fixed;inset:0;background:var(--grana);pointer-events:none;z-index:55"></div>
+
+<header style="position:sticky;top:0;z-index:50;background:var(--velo);backdrop-filter:blur(16px);border-bottom:1px solid var(--filo1)">
+  <div style="max-width:1360px;margin:0 auto;padding:14px clamp(20px,4vw,48px);display:flex;align-items:center;justify-content:space-between;gap:20px">
+    <a href="/en/" style="display:flex;align-items:center;gap:12px;flex:none;font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t1);white-space:nowrap"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;position:relative;width:30px;height:30px;border:1px solid var(--filo2);flex:none"><span style="font:600 12px Geist,'Instrument Sans',Helvetica,sans-serif;letter-spacing:-.06em;color:var(--t1)">AS</span><span style="position:absolute;right:-1px;top:-1px;width:3px;height:3px;background:var(--acc)"></span></span>Andrea Sforna AI</a>
+    <nav data-nav style="display:flex;align-items:center;gap:20px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase">
+      <a href="/en/agents/" style="color:var(--t2)">Agents</a>
+      <a href="/en/case-studies/" style="color:var(--t2)">Case studies</a>
+      <a href="/en/models/" style="color:var(--t2)">Models</a>
+      <a href="/en/security/" style="color:var(--t2)">Security</a>
+      <a href="/en/data/" style="color:var(--t2)">Data</a>
+      <a href="/en/privacy-bridge/" style="color:var(--t2)">Privacy Bridge</a>
+      <a href="/en/training/" style="color:var(--t2)">Training</a>
+      <a href="/en/contact/" style="color:var(--t2)">Contact</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:10px">
+      
+      <a data-lingua href="/automazione/" hreflang="it" lang="it" aria-label="Leggi questa pagina in italiano" style="padding:7px 12px;border:1px solid var(--filo1);color:var(--t2);font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.09em;text-transform:uppercase" style-hover="border-color:var(--filo2);color:var(--t1)">IT</a>
+      <button type="button" data-tema-btn style="padding:7px 12px;background:transparent;border:1px solid var(--filo1);color:var(--t2);font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.09em;text-transform:uppercase;cursor:pointer" style-hover="border-color:var(--filo2);color:var(--t1)">Light</button>
+      <button type="button" data-burger aria-controls="menu-pagine" aria-expanded="false" aria-label="Open the menu" style="display:none;align-items:center;padding:7px 12px;background:transparent;border:1px solid var(--filo1);color:var(--t1);font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.09em;text-transform:uppercase;cursor:pointer">Menu</button>
+    </div>
+  </div>
+  <div data-pannello id="menu-pagine" style="display:none;border-top:1px solid var(--filo1);background:var(--sup1)">
+    <div style="max-width:1360px;margin:0 auto;padding:16px clamp(20px,4vw,48px);display:grid;gap:13px;font:500 12px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase">
+      <a href="/en/agents/" style="color:var(--t2)">Agents</a>
+      <a href="/en/case-studies/" style="color:var(--t2)">Case studies</a>
+      <a href="/en/models/" style="color:var(--t2)">Models</a>
+      <a href="/en/security/" style="color:var(--t2)">Security</a>
+      <a href="/en/data/" style="color:var(--t2)">Data</a>
+      <a href="/en/privacy-bridge/" style="color:var(--t2)">Privacy Bridge</a>
+      <a href="/en/training/" style="color:var(--t2)">Training</a>
+      <a href="/en/contact/" style="color:var(--t2)">Contact</a>
+      <a href="/en/local-models/" style="color:var(--t2)">Local models</a>
+      <a href="/en/architecture/" style="color:var(--t2)">Architecture</a>
+      <a href="/en/automation/" aria-current="page" style="color:var(--t1);border-bottom:1px solid var(--acc);padding-bottom:3px">Automation</a>
+      <a href="/en/tools/" style="color:var(--t2)">Tools</a>
+      <a href="/en/method/" style="color:var(--t2)">Method</a>
+      <a data-lingua-menu href="/automazione/" hreflang="it" lang="it" aria-label="Leggi questa pagina in italiano" style="color:var(--acc)">Italiano</a>
+    </div>
+  </div>
+</header>
+
+<main id="contenuto" tabindex="-1">
+<section data-screen-label="Apertura" style="position:relative;padding:clamp(72px,10vw,150px) 0 clamp(48px,6vw,88px);overflow:hidden">
+  <div style="position:absolute;inset:0;background:var(--luce);pointer-events:none"></div>
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px);position:relative">
+    <p style="margin:0;font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t2);margin-bottom:clamp(24px,3vw,40px);animation:appari .9s ease .1s both">Automation</p>
+    <h1 style="margin:0 0 clamp(24px,3vw,36px);font-weight:500;font-size:clamp(34px,6.4vw,92px);line-height:.98;letter-spacing:-.045em;color:var(--t1);max-width:20ch;text-wrap:pretty;animation:sali 1s cubic-bezier(.16,1,.3,1) .18s both">Work that runs on its own, and lets itself be checked</h1>
+    <div style="height:1px;background:var(--acc);max-width:560px;transform-origin:left;animation:filo 1.3s cubic-bezier(.16,1,.3,1) .3s both"></div>
+    <p style="margin:clamp(24px,3vw,36px) 0 0;max-width:60ch;font-weight:400;font-size:clamp(16px,1.5vw,22px);line-height:1.55;color:var(--t2);text-wrap:pretty;animation:sali 1s cubic-bezier(.16,1,.3,1) .38s both">Flows that take repetitive work out of the way, and agents that prepare the work of judgement without deciding it. Where a signature is needed, a person stays.</p>
+  </div>
+</section>
+
+<section data-screen-label="La posta, poi la risposta" style="padding:clamp(56px,8vw,120px) 0;background:var(--sup1);border-top:1px solid var(--filo1);border-bottom:1px solid var(--filo1)">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(480px,100%),1fr));gap:clamp(32px,5vw,72px);align-items:center" data-reveal data-demo>
+    
+    <div>
+      <p style="margin:0 0 22px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);font-variant-numeric:tabular-nums">01</p>
+      <h2 style="margin:0 0 20px;font-weight:500;font-size:clamp(26px,3.2vw,42px);line-height:1.05;letter-spacing:-.035em;color:var(--t1);text-wrap:pretty">The mail first, then the reply</h2>
+      <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty">First thing in the morning: which emails need an answer today, and why. The order is by urgency, not by time of arrival.</p>
+    </div>
+    <div>
+      <div data-lift style="display:flex;flex-direction:column;gap:16px;padding:clamp(22px,2.8vw,34px);border:1px solid var(--filo2);border-radius:26px;background:linear-gradient(180deg,var(--sup2),var(--sup1));box-shadow:var(--ombra-alta)">
+        <div style="display:flex;justify-content:flex-end"><div data-bolla style="max-width:52ch;padding:13px 18px;border-radius:20px 20px 6px 20px;border:1px solid var(--filo2);background:var(--sup2);font-size:15.5px;line-height:1.55;color:var(--t1);animation-delay:0.30s">Show me today’s most important emails</div></div>
+        <div data-bolla style="display:flex;align-items:center;gap:12px;padding:2px 0;animation-delay:1.05s">
+          <span style="width:5px;height:5px;border-radius:50%;background:var(--acc);flex:none"></span>
+          <span style="font:400 11.5px 'JetBrains Mono',monospace;letter-spacing:.06em;color:var(--t3)">2 tool calls</span>
+          <span style="flex:1;height:1px;background:var(--filo1)"></span>
+          <span style="font:400 11.5px 'JetBrains Mono',monospace;letter-spacing:.06em;color:var(--t3)">11 s</span>
+        </div>
+        <div data-bolla style="max-width:66ch;font-size:15.5px;line-height:1.7;color:var(--t1);animation-delay:1.55s">Four emails need an answer today, ordered by urgency and not by time of arrival:</div>
+        <div data-bolla data-tabella-chat style="border:1px solid var(--filo2);border-radius:16px;background:var(--sup2);overflow:hidden;animation-delay:2.30s">
+          <div style="display:grid;grid-template-columns:1.05fr 1fr .75fr;gap:14px;padding:12px 18px;font:400 10.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);background:var(--sup1)"><span>FROM</span><span>SUBJECT</span><span>WHY NOW</span></div>
+          <div style="display:grid;grid-template-columns:1.05fr 1fr .75fr;gap:14px;padding:11px 18px;border-top:1px solid var(--filo1);font-size:13.5px;color:var(--t1);font-variant-numeric:tabular-nums"><span style="font:400 12.5px 'JetBrains Mono',monospace;color:var(--t2)">Gialli Design Studio</span><span style="">Reminder, invoice 2026-013</span><span style=";text-align:right">Overdue since 21/08, 2.240 &#8364;</span></div><div style="display:grid;grid-template-columns:1.05fr 1fr .75fr;gap:14px;padding:11px 18px;border-top:1px solid var(--filo1);font-size:13.5px;color:var(--t1);font-variant-numeric:tabular-nums"><span style="font:400 12.5px 'JetBrains Mono',monospace;color:var(--t2)">Bianchi Costruzioni</span><span style="">Quote request, 3 sites</span><span style=";text-align:right">Asks for an answer by Friday</span></div><div style="display:grid;grid-template-columns:1.05fr 1fr .75fr;gap:14px;padding:11px 18px;border-top:1px solid var(--filo1);font-size:13.5px;color:var(--t1);font-variant-numeric:tabular-nums"><span style="font:400 12.5px 'JetBrains Mono',monospace;color:var(--t2)">Neri Logistics</span><span style="">Contract: two clauses to clarify</span><span style=";text-align:right">Signing planned for Monday</span></div><div style="display:grid;grid-template-columns:1.05fr 1fr .75fr;gap:14px;padding:11px 18px;border-top:1px solid var(--filo1);font-size:13.5px;color:var(--t1);font-variant-numeric:tabular-nums"><span style="font:400 12.5px 'JetBrains Mono',monospace;color:var(--t2)">Arancio Energie</span><span style="">Meeting moved to Thursday</span><span style=";text-align:right">It overlaps with another commitment</span></div>
+        </div>
+        <div data-bolla style="max-width:64ch;font-size:14px;line-height:1.62;color:var(--t2);animation-delay:3.05s">The other 34 are already sorted: 19 need no action, 12 filed, 3 marketing. None of them has been deleted.</div>
+      </div>
+      <p style="margin:14px 2px 0;font:400 11.5px 'JetBrains Mono',monospace;letter-spacing:.05em;color:var(--t3)">The agent&#8217;s job is to read and to order. It does not reply and it files nothing unless told to.</p>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="La bozza, con i dati del cliente" style="padding:clamp(56px,8vw,120px) 0;background:var(--sup1);border-top:1px solid var(--filo1);border-bottom:1px solid var(--filo1)">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(480px,100%),1fr));gap:clamp(32px,5vw,72px);align-items:center" data-reveal data-demo>
+    <div>
+      <div data-lift style="display:flex;flex-direction:column;gap:16px;padding:clamp(22px,2.8vw,34px);border:1px solid var(--filo2);border-radius:26px;background:linear-gradient(180deg,var(--sup2),var(--sup1));box-shadow:var(--ombra-alta)">
+        <div style="display:flex;justify-content:flex-end"><div data-bolla style="max-width:52ch;padding:13px 18px;border-radius:20px 20px 6px 20px;border:1px solid var(--filo2);background:var(--sup2);font-size:15.5px;line-height:1.55;color:var(--t1);animation-delay:0.30s">Draft me a reply to Bianchi Costruzioni, with their data on record</div></div>
+        <div data-bolla style="display:flex;align-items:center;gap:12px;padding:2px 0;animation-delay:1.05s">
+          <span style="width:5px;height:5px;border-radius:50%;background:var(--acc);flex:none"></span>
+          <span style="font:400 11.5px 'JetBrains Mono',monospace;letter-spacing:.06em;color:var(--t3)">3 tool calls</span>
+          <span style="flex:1;height:1px;background:var(--filo1)"></span>
+          <span style="font:400 11.5px 'JetBrains Mono',monospace;letter-spacing:.06em;color:var(--t3)">14 s</span>
+        </div>
+        <div data-bolla style="max-width:66ch;font-size:15.5px;line-height:1.7;color:var(--t1);animation-delay:1.55s">Read <span style="font-family:'JetBrains Mono',monospace;font-size:.92em;color:var(--t2)">cerca_clienti</span>, <span style="font-family:'JetBrains Mono',monospace;font-size:.92em;color:var(--t2)">ordini_per_cliente</span> and <span style="font-family:'JetBrains Mono',monospace;font-size:.92em;color:var(--t2)">listino_attivo</span>. The draft uses only what the system holds:</div>
+        <div data-bolla style="border:1px solid var(--filo2);border-radius:16px;background:var(--sup2);padding:18px 20px;display:grid;gap:10px;max-width:44ch;animation-delay:2.30s">
+          <p style="margin:0 0 4px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--acc)">Data used in the draft</p>
+          <div style="display:grid;grid-template-columns:minmax(84px,120px) 1fr;gap:14px;font-size:14px"><span style="font:400 12px 'JetBrains Mono',monospace;color:var(--t3)">Contact person</span><span style="color:var(--t1)">Ing. Luca Bianchi</span></div><div style="display:grid;grid-template-columns:minmax(84px,120px) 1fr;gap:14px;font-size:14px"><span style="font:400 12px 'JetBrains Mono',monospace;color:var(--t3)">Last order</span><span style="color:var(--t1)">14 June 2026 &#183; 3 sites</span></div><div style="display:grid;grid-template-columns:minmax(84px,120px) 1fr;gap:14px;font-size:14px"><span style="font:400 12px 'JetBrains Mono',monospace;color:var(--t3)">Terms</span><span style="color:var(--t1)">Payment at 30 days, 8% discount</span></div><div style="display:grid;grid-template-columns:minmax(84px,120px) 1fr;gap:14px;font-size:14px"><span style="font:400 12px 'JetBrains Mono',monospace;color:var(--t3)">Open</span><span style="color:var(--t1)">Invoice 2026-014, due 8 September</span></div>
+        </div>
+        <div data-bolla style="max-width:66ch;font-size:15.5px;line-height:1.7;color:var(--t1);animation-delay:3.05s">Draft ready: it takes up the terms of June&#8217;s order, confirms the discount already applied and asks which of the three sites goes into the new quote. I have not written delivery times: the system does not hold them.</div>
+        <div data-bolla style="display:inline-flex;align-self:flex-start;align-items:center;gap:10px;padding:8px 14px;border:1px dashed var(--acc);border-radius:999px;background:var(--acc-tenue);font:400 11.5px 'JetBrains Mono',monospace;letter-spacing:.06em;color:var(--acc);animation-delay:3.80s">AWAITING APPROVAL &#183; nothing goes out without your yes</div>
+      </div>
+      <p style="margin:14px 2px 0;font:400 11.5px 'JetBrains Mono',monospace;letter-spacing:.05em;color:var(--t3)">The field that is missing stays empty and declared. That is the difference between a draft to reread and one to redo.</p>
+    </div>
+    <div>
+      <p style="margin:0 0 22px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);font-variant-numeric:tabular-nums">02</p>
+      <h2 style="margin:0 0 20px;font-weight:500;font-size:clamp(26px,3.2vw,42px);line-height:1.05;letter-spacing:-.035em;color:var(--t1);text-wrap:pretty">The draft, with the customer’s data</h2>
+      <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty">Second thing: replying. The agent reads the customer record, the orders and the terms already agreed, and writes a draft that invents nothing.</p>
+    </div>
+    
+  </div>
+</section>
+
+<section data-screen-label="I flussi che tengo in esercizio" style="background:var(--sup1);border-top:1px solid var(--filo1);border-bottom:1px solid var(--filo1);padding:clamp(56px,8vw,120px) 0">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:clamp(28px,4vw,64px);align-items:end;margin-bottom:clamp(32px,4vw,56px)" data-reveal>
+      <div>
+        <p style="margin:0 0 22px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);font-variant-numeric:tabular-nums">03</p>
+        <h2 style="margin:0 0 20px;font-weight:500;font-size:clamp(26px,3.2vw,42px);line-height:1.05;letter-spacing:-.035em;color:var(--t1);text-wrap:pretty;margin-bottom:0">The flows I keep in service</h2>
+      </div>
+      <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty;max-width:44ch">Real business cases, each one tested before it is delivered. The value is not the flow: it is knowing which of the two ways is needed.</p>
+    </div>
+    <div style="border-top:1px solid var(--filo2)" data-reveal role="table">
+      <div data-tabella style="display:grid;grid-template-columns:70px minmax(150px,1fr) 2fr;gap:clamp(16px,2.4vw,40px);padding:14px 12px;border-bottom:1px solid var(--filo1);font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">
+        <span>#</span><span>Flow</span><span>What it does</span>
+      </div>
+      <div data-tabella data-riga style="display:grid;grid-template-columns:70px minmax(150px,1fr) 2fr;gap:clamp(16px,2.4vw,40px);padding:clamp(20px,2.4vw,30px) 12px;border-bottom:1px solid var(--filo1);align-items:baseline">
+        <span data-num style="font:500 12px 'JetBrains Mono',monospace;color:var(--t3);font-variant-numeric:tabular-nums">01</span>
+        <span style="font-weight:500;font-size:clamp(17px,1.7vw,23px);letter-spacing:-.025em;color:var(--t1)">Enquiries from the site</span>
+        <span style="font-size:16px;line-height:1.55;color:var(--t2)">It checks the data, scores it on five weighted dimensions, gives it a priority and routes it with different response times. At the end it explains why it gave that score.</span>
+      </div>
+      <div data-tabella data-riga style="display:grid;grid-template-columns:70px minmax(150px,1fr) 2fr;gap:clamp(16px,2.4vw,40px);padding:clamp(20px,2.4vw,30px) 12px;border-bottom:1px solid var(--filo1);align-items:baseline">
+        <span data-num style="font:500 12px 'JetBrains Mono',monospace;color:var(--t3);font-variant-numeric:tabular-nums">02</span>
+        <span style="font-weight:500;font-size:clamp(17px,1.7vw,23px);letter-spacing:-.025em;color:var(--t1)">Supplier invoices</span>
+        <span style="font-size:16px;line-height:1.55;color:var(--t2)">It checks the VAT number, the consistency between taxable amount and tax, duplicates and the gap from the historical median. It stops the ones that do not add up.</span>
+      </div>
+      <div data-tabella data-riga style="display:grid;grid-template-columns:70px minmax(150px,1fr) 2fr;gap:clamp(16px,2.4vw,40px);padding:clamp(20px,2.4vw,30px) 12px;border-bottom:1px solid var(--filo1);align-items:baseline">
+        <span data-num style="font:500 12px 'JetBrains Mono',monospace;color:var(--t3);font-variant-numeric:tabular-nums">03</span>
+        <span style="font-weight:500;font-size:clamp(17px,1.7vw,23px);letter-spacing:-.025em;color:var(--t1)">Currency exchange</span>
+        <span style="font-size:16px;line-height:1.55;color:var(--t2)">It reads the official rates and gives notice only when the change goes past half a point. No pointless notifications.</span>
+      </div>
+      <div data-tabella data-riga style="display:grid;grid-template-columns:70px minmax(150px,1fr) 2fr;gap:clamp(16px,2.4vw,40px);padding:clamp(20px,2.4vw,30px) 12px;border-bottom:1px solid var(--filo1);align-items:baseline">
+        <span data-num style="font:500 12px 'JetBrains Mono',monospace;color:var(--t3);font-variant-numeric:tabular-nums">04</span>
+        <span style="font-weight:500;font-size:clamp(17px,1.7vw,23px);letter-spacing:-.025em;color:var(--t1)">Support requests</span>
+        <span style="font-size:16px;line-height:1.55;color:var(--t2)">It classifies, assigns and routes. What it cannot classify it puts in a queue for a person, it does not guess.</span>
+      </div>
+      <div data-tabella data-riga style="display:grid;grid-template-columns:70px minmax(150px,1fr) 2fr;gap:clamp(16px,2.4vw,40px);padding:clamp(20px,2.4vw,30px) 12px;border-bottom:1px solid var(--filo1);align-items:baseline">
+        <span data-num style="font:500 12px 'JetBrains Mono',monospace;color:var(--t3);font-variant-numeric:tabular-nums">05</span>
+        <span style="font-weight:500;font-size:clamp(17px,1.7vw,23px);letter-spacing:-.025em;color:var(--t1)">Documents</span>
+        <span style="font-size:16px;line-height:1.55;color:var(--t2)">It sorts and files. It exists in two versions: one with the model, one without. The second is faster and always fails at the same point: it is fixed once and for all.</span>
+      </div>
+      <div data-tabella data-riga style="display:grid;grid-template-columns:70px minmax(150px,1fr) 2fr;gap:clamp(16px,2.4vw,40px);padding:clamp(20px,2.4vw,30px) 12px;border-bottom:1px solid var(--filo1);align-items:baseline;box-shadow:inset 3px 0 0 var(--acc)">
+        <span data-num style="font:500 12px 'JetBrains Mono',monospace;color:var(--acc);font-variant-numeric:tabular-nums">06</span>
+        <span style="font-weight:500;font-size:clamp(17px,1.7vw,23px);letter-spacing:-.025em;color:var(--t1)">Content</span>
+        <span style="font-size:16px;line-height:1.55;color:var(--t2)">It prepares carousels, stories and newsletters with a preview, and waits for confirmation before publishing.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Con il modello, o senza" style="padding:clamp(56px,8vw,120px) 0">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <article data-lift data-reveal style="border:1px solid var(--filo1);background:linear-gradient(180deg,var(--sup2),var(--sup1));display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:clamp(24px,4vw,72px);padding:clamp(28px,3.6vw,56px)">
+      <div>
+        <p style="margin:0 0 clamp(20px,2.4vw,32px);font-weight:500;font-size:clamp(40px,5vw,72px);line-height:1;letter-spacing:-.05em;color:var(--acc);font-variant-numeric:tabular-nums">04</p>
+        <h2 style="margin:0 0 20px;font-weight:500;font-size:clamp(26px,3.2vw,42px);line-height:1.05;letter-spacing:-.035em;color:var(--t1);text-wrap:pretty">With the model, or without</h2>
+        <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty">The question I ask first. A deterministic flow costs less, is fixed in a minute and always fails at the same point: where it is enough, I use that.</p>
+      </div>
+      <div style="align-self:center">
+          <div data-riga style="display:grid;grid-template-columns:minmax(90px,140px) 1fr;gap:clamp(16px,2vw,32px);padding:16px 12px;border-top:1px solid var(--filo1)"><span data-num style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">Without a model</span><span style="font-size:15.5px;line-height:1.5;color:var(--t1)">When the rule can be written down</span></div>
+          <div data-riga style="display:grid;grid-template-columns:minmax(90px,140px) 1fr;gap:clamp(16px,2vw,32px);padding:16px 12px;border-top:1px solid var(--filo1)"><span data-num style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">With the model</span><span style="font-size:15.5px;line-height:1.5;color:var(--t1)">When the text changes every time</span></div>
+          <div data-riga style="display:grid;grid-template-columns:minmax(90px,140px) 1fr;gap:clamp(16px,2vw,32px);padding:16px 12px;border-top:1px solid var(--filo1);border-bottom:1px solid var(--filo1)"><span data-num style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">The skill</span><span style="font-size:15.5px;line-height:1.5;color:var(--t1)">Knowing which of the two is needed</span></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section data-screen-label="Affermazione" style="background:var(--sup1);border-top:1px solid var(--acc);border-bottom:1px solid var(--filo1);padding:clamp(56px,8vw,120px) 0">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <p style="margin:0 0 clamp(20px,2.6vw,34px);font:500 11px 'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--acc)" data-reveal>The rule</p>
+    <p style="margin:0;max-width:26ch;font-weight:500;font-size:clamp(28px,4.8vw,74px);line-height:1.02;letter-spacing:-.045em;text-wrap:pretty;color:var(--t1)" data-reveal>What is repetitive and verifiable gets automated. Where judgement is needed, a person stays.</p>
+  </div>
+</section>
+
+<section data-screen-label="Limite dichiarato" style="padding:clamp(48px,6vw,88px) 0">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div style="border-left:3px solid var(--acc);padding:clamp(22px,2.8vw,36px) clamp(22px,2.8vw,40px);background:linear-gradient(90deg,var(--acc-tenue),transparent 60%)" data-reveal>
+      <p style="margin:0 0 14px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--acc)">Stated limit</p>
+      <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty;max-width:64ch;color:var(--t1)">An automation nobody watches becomes a silent failure. Every flow I deliver has a log, an alert when it breaks and a way to stop it: without those I do not deliver it.</p>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Pagina successiva" style="padding:0 0 clamp(72px,9vw,140px)">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <a href="/en/tools/" data-lift style="display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:end;padding:clamp(28px,3.4vw,48px);border:1px solid var(--filo1);background:linear-gradient(180deg,var(--sup2),var(--sup1));color:var(--t1)" data-reveal>
+      <span style="display:block;max-width:56ch">
+        <span style="display:block;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3);margin-bottom:16px">Next page</span>
+        <span style="display:block;font-weight:500;font-size:clamp(22px,2.6vw,34px);line-height:1.1;letter-spacing:-.03em;margin-bottom:12px">Tools</span>
+        <span style="display:block;font-weight:400;font-size:15px;line-height:1.6;color:var(--t2)">OpenClaw, Claude Code, MCP servers, n8n, PostgreSQL: what I use and the place each one holds.</span>
+      </span>
+      <span style="font:500 12px 'JetBrains Mono',monospace;letter-spacing:.09em;text-transform:uppercase;color:var(--acc)">Open &#8594;</span>
+    </a>
+  </div>
+</section>
+</main>
+
+<footer style="border-top:1px solid var(--filo1);background:var(--sup1)">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px);padding-top:clamp(40px,5vw,72px);padding-bottom:clamp(28px,3.4vw,44px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));gap:clamp(28px,4vw,56px)">
+    <div>
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;position:relative;width:44px;height:44px;border:1px solid var(--filo2);flex:none"><span style="font:600 18px Geist,'Instrument Sans',Helvetica,sans-serif;letter-spacing:-.06em;color:var(--t1)">AS</span><span style="position:absolute;right:-1px;top:-1px;width:3px;height:3px;background:var(--acc)"></span></span><span style="font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t1)">Andrea Sforna AI</span></div>
+      <p style="margin:0;max-width:34ch;font-size:15px;line-height:1.6;color:var(--t2)">Design, security and maintenance of AI agent systems.</p>
+    </div>
+    <div>
+      <p style="margin:0 0 16px;font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">Pages</p>
+      <div style="display:grid;gap:10px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><a href="/en/agents/" style="color:var(--t2)">Agents</a><a href="/en/case-studies/" style="color:var(--t2)">Case studies</a><a href="/en/models/" style="color:var(--t2)">Models</a><a href="/en/security/" style="color:var(--t2)">Security</a><a href="/en/data/" style="color:var(--t2)">Data</a><a href="/en/privacy-bridge/" style="color:var(--t2)">Privacy Bridge</a><a href="/en/training/" style="color:var(--t2)">Training</a><a href="/en/contact/" style="color:var(--t2)">Contact</a></div>
+    </div>
+    <div>
+      <p style="margin:0 0 16px;font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">Further reading</p>
+      <div style="display:grid;gap:10px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><a href="/en/local-models/" style="color:var(--t2)">Local models</a><a href="/en/architecture/" style="color:var(--t2)">Architecture</a><a href="/en/automation/" style="color:var(--t2)">Automation</a><a href="/en/tools/" style="color:var(--t2)">Tools</a><a href="/en/method/" style="color:var(--t2)">Method</a></div>
+    </div>
+    <div>
+      <p style="margin:0 0 16px;font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">Contact</p>
+      <div style="display:grid;gap:10px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.06em">
+        <a href="mailto:andrea.sforna@gmail.com" style="color:var(--t2)">andrea.sforna@gmail.com</a>
+        <a href="https://www.instagram.com/andreasfornaai/" rel="me noopener" target="_blank" style="color:var(--t2)">Instagram @andreasfornaai</a>
+      </div>
+    </div>
+  </div>
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px);padding-top:20px;padding-bottom:clamp(28px,3.4vw,44px);border-top:1px solid var(--filo1);display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t3)">
+    <span>&#169; 2026 Andrea Sforna</span>
+    <span>Designed and written by Andrea Sforna</span>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    import('/assets/sito.js').then((m) => m.avvia()).catch((e) => console.error(e));
+  }
+}
+</script>
+</body>
+</html>

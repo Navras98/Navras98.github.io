@@ -1,0 +1,727 @@
+{
+ "pagina": "automazione/index.html",
+ "pezzi": [
+  {
+   "id": 0,
+   "tipo": "testo",
+   "it": "Automazione — Andrea Sforna AI"
+  },
+  {
+   "id": 1,
+   "tipo": "meta:description",
+   "it": "Flussi di automazione collaudati su casi aziendali reali: posta smistata, contatti dal sito, fatture fornitori, documenti, contenuti. Con o senza modello."
+  },
+  {
+   "id": 2,
+   "tipo": "meta:og:title",
+   "it": "Automazione — Andrea Sforna AI"
+  },
+  {
+   "id": 3,
+   "tipo": "meta:og:description",
+   "it": "Flussi di automazione collaudati su casi aziendali reali: posta smistata, contatti dal sito, fatture fornitori, documenti, contenuti. Con o senza modello."
+  },
+  {
+   "id": 4,
+   "tipo": "meta:og:image:alt",
+   "it": "Andrea Sforna AI — progettazione, sicurezza e manutenzione di sistemi di agenti AI"
+  },
+  {
+   "id": 5,
+   "tipo": "meta:twitter:title",
+   "it": "Automazione — Andrea Sforna AI"
+  },
+  {
+   "id": 6,
+   "tipo": "meta:twitter:description",
+   "it": "Flussi di automazione collaudati su casi aziendali reali: posta smistata, contatti dal sito, fatture fornitori, documenti, contenuti. Con o senza modello."
+  },
+  {
+   "id": 7,
+   "tipo": "testo",
+   "it": "Salta al contenuto"
+  },
+  {
+   "id": 8,
+   "tipo": "testo",
+   "it": "AS"
+  },
+  {
+   "id": 9,
+   "tipo": "testo",
+   "it": "Andrea Sforna AI"
+  },
+  {
+   "id": 10,
+   "tipo": "testo",
+   "it": "Agenti"
+  },
+  {
+   "id": 11,
+   "tipo": "testo",
+   "it": "Casi"
+  },
+  {
+   "id": 12,
+   "tipo": "testo",
+   "it": "Modelli"
+  },
+  {
+   "id": 13,
+   "tipo": "testo",
+   "it": "Sicurezza"
+  },
+  {
+   "id": 14,
+   "tipo": "testo",
+   "it": "Dati"
+  },
+  {
+   "id": 15,
+   "tipo": "testo",
+   "it": "Privacy Bridge"
+  },
+  {
+   "id": 16,
+   "tipo": "testo",
+   "it": "Formazione"
+  },
+  {
+   "id": 17,
+   "tipo": "testo",
+   "it": "Contatti"
+  },
+  {
+   "id": 18,
+   "tipo": "testo",
+   "it": "Chiaro"
+  },
+  {
+   "id": 19,
+   "tipo": "attributo:aria-label",
+   "it": "Apri il menu"
+  },
+  {
+   "id": 20,
+   "tipo": "testo",
+   "it": "Menu"
+  },
+  {
+   "id": 21,
+   "tipo": "testo",
+   "it": "Agenti"
+  },
+  {
+   "id": 22,
+   "tipo": "testo",
+   "it": "Casi"
+  },
+  {
+   "id": 23,
+   "tipo": "testo",
+   "it": "Modelli"
+  },
+  {
+   "id": 24,
+   "tipo": "testo",
+   "it": "Sicurezza"
+  },
+  {
+   "id": 25,
+   "tipo": "testo",
+   "it": "Dati"
+  },
+  {
+   "id": 26,
+   "tipo": "testo",
+   "it": "Privacy Bridge"
+  },
+  {
+   "id": 27,
+   "tipo": "testo",
+   "it": "Formazione"
+  },
+  {
+   "id": 28,
+   "tipo": "testo",
+   "it": "Contatti"
+  },
+  {
+   "id": 29,
+   "tipo": "testo",
+   "it": "Modelli in locale"
+  },
+  {
+   "id": 30,
+   "tipo": "testo",
+   "it": "Architettura"
+  },
+  {
+   "id": 31,
+   "tipo": "testo",
+   "it": "Automazione"
+  },
+  {
+   "id": 32,
+   "tipo": "testo",
+   "it": "Strumenti"
+  },
+  {
+   "id": 33,
+   "tipo": "testo",
+   "it": "Metodo"
+  },
+  {
+   "id": 34,
+   "tipo": "testo",
+   "it": "Automazione"
+  },
+  {
+   "id": 35,
+   "tipo": "testo",
+   "it": "Lavoro che si fa da solo, e si lascia controllare"
+  },
+  {
+   "id": 36,
+   "tipo": "testo",
+   "it": "Flussi che tolgono di mezzo il lavoro ripetitivo, e agenti che preparano il lavoro di giudizio senza deciderlo. Dove serve una firma, resta una persona."
+  },
+  {
+   "id": 37,
+   "tipo": "testo",
+   "it": "La posta, poi la risposta"
+  },
+  {
+   "id": 38,
+   "tipo": "testo",
+   "it": "Prima cosa la mattina: quali email chiedono una risposta oggi, e perché. L’ordine è per urgenza, non per orario di arrivo."
+  },
+  {
+   "id": 39,
+   "tipo": "testo",
+   "it": "Mostrami le email più importanti di oggi"
+  },
+  {
+   "id": 40,
+   "tipo": "testo",
+   "it": "2 chiamate strumento"
+  },
+  {
+   "id": 41,
+   "tipo": "testo",
+   "it": "11 s"
+  },
+  {
+   "id": 42,
+   "tipo": "testo",
+   "it": "Quattro email chiedono una risposta oggi, ordinate per urgenza e non per orario di arrivo:"
+  },
+  {
+   "id": 43,
+   "tipo": "testo",
+   "it": "DA"
+  },
+  {
+   "id": 44,
+   "tipo": "testo",
+   "it": "OGGETTO"
+  },
+  {
+   "id": 45,
+   "tipo": "testo",
+   "it": "PERCHÉ ORA"
+  },
+  {
+   "id": 46,
+   "tipo": "testo",
+   "it": "Gialli Design Studio"
+  },
+  {
+   "id": 47,
+   "tipo": "testo",
+   "it": "Sollecito fattura 2026-013"
+  },
+  {
+   "id": 48,
+   "tipo": "testo",
+   "it": "Scaduta il 21/08, 2.240 &#8364;"
+  },
+  {
+   "id": 49,
+   "tipo": "testo",
+   "it": "Bianchi Costruzioni"
+  },
+  {
+   "id": 50,
+   "tipo": "testo",
+   "it": "Richiesta preventivo, 3 sedi"
+  },
+  {
+   "id": 51,
+   "tipo": "testo",
+   "it": "Chiede risposta entro venerdì"
+  },
+  {
+   "id": 52,
+   "tipo": "testo",
+   "it": "Neri Logistics"
+  },
+  {
+   "id": 53,
+   "tipo": "testo",
+   "it": "Contratto: due clausole da chiarire"
+  },
+  {
+   "id": 54,
+   "tipo": "testo",
+   "it": "Firma prevista lunedì"
+  },
+  {
+   "id": 55,
+   "tipo": "testo",
+   "it": "Arancio Energie"
+  },
+  {
+   "id": 56,
+   "tipo": "testo",
+   "it": "Riunione spostata a giovedì"
+  },
+  {
+   "id": 57,
+   "tipo": "testo",
+   "it": "Si sovrappone a un altro impegno"
+  },
+  {
+   "id": 58,
+   "tipo": "testo",
+   "it": "Le altre 34 sono già smistate: 19 senza azione, 12 in archivio, 3 pubblicità. Nessuna è stata cancellata."
+  },
+  {
+   "id": 59,
+   "tipo": "testo",
+   "it": "L&#8217;agente legge e ordina. Non risponde e non archivia nulla senza che glielo si dica."
+  },
+  {
+   "id": 60,
+   "tipo": "testo",
+   "it": "Preparami una bozza per rispondere a Bianchi Costruzioni, con i suoi dati registrati"
+  },
+  {
+   "id": 61,
+   "tipo": "testo",
+   "it": "3 chiamate strumento"
+  },
+  {
+   "id": 62,
+   "tipo": "testo",
+   "it": "14 s"
+  },
+  {
+   "id": 63,
+   "tipo": "testo",
+   "it": "Letti"
+  },
+  {
+   "id": 64,
+   "tipo": "testo",
+   "it": "cerca_clienti"
+  },
+  {
+   "id": 65,
+   "tipo": "testo",
+   "it": "ordini_per_cliente"
+  },
+  {
+   "id": 66,
+   "tipo": "testo",
+   "it": "e"
+  },
+  {
+   "id": 67,
+   "tipo": "testo",
+   "it": "listino_attivo"
+  },
+  {
+   "id": 68,
+   "tipo": "testo",
+   "it": ". La bozza usa solo quello che risulta a sistema:"
+  },
+  {
+   "id": 69,
+   "tipo": "testo",
+   "it": "Dati usati nella bozza"
+  },
+  {
+   "id": 70,
+   "tipo": "testo",
+   "it": "Referente"
+  },
+  {
+   "id": 71,
+   "tipo": "testo",
+   "it": "Ing. Luca Bianchi"
+  },
+  {
+   "id": 72,
+   "tipo": "testo",
+   "it": "Ultimo ordine"
+  },
+  {
+   "id": 73,
+   "tipo": "testo",
+   "it": "14 giugno 2026 &#183; 3 sedi"
+  },
+  {
+   "id": 74,
+   "tipo": "testo",
+   "it": "Condizioni"
+  },
+  {
+   "id": 75,
+   "tipo": "testo",
+   "it": "Pagamento a 30 giorni, sconto 8%"
+  },
+  {
+   "id": 76,
+   "tipo": "testo",
+   "it": "Aperto"
+  },
+  {
+   "id": 77,
+   "tipo": "testo",
+   "it": "Fattura 2026-014, scadenza 8 settembre"
+  },
+  {
+   "id": 78,
+   "tipo": "testo",
+   "it": "Bozza pronta: riprende le condizioni dell&#8217;ordine di giugno, conferma lo sconto già applicato e chiede quali delle tre sedi entra nel nuovo preventivo. Non ho scritto tempi di consegna: non risultano a sistema."
+  },
+  {
+   "id": 79,
+   "tipo": "testo",
+   "it": "IN ATTESA DI APPROVAZIONE &#183; niente parte senza il tuo sì"
+  },
+  {
+   "id": 80,
+   "tipo": "testo",
+   "it": "Il campo che manca resta vuoto e dichiarato. È la differenza fra una bozza da rileggere e una da rifare."
+  },
+  {
+   "id": 81,
+   "tipo": "testo",
+   "it": "La bozza, con i dati del cliente"
+  },
+  {
+   "id": 82,
+   "tipo": "testo",
+   "it": "Seconda cosa: rispondere. L’agente legge la scheda del cliente, gli ordini e le condizioni già concordate, e scrive una bozza che non inventa nulla."
+  },
+  {
+   "id": 83,
+   "tipo": "testo",
+   "it": "I flussi che tengo in esercizio"
+  },
+  {
+   "id": 84,
+   "tipo": "testo",
+   "it": "Casi aziendali reali, ognuno collaudato prima di essere consegnato. Il valore non è il flusso: è sapere quale dei due modi serve."
+  },
+  {
+   "id": 85,
+   "tipo": "testo",
+   "it": "Flusso"
+  },
+  {
+   "id": 86,
+   "tipo": "testo",
+   "it": "Cosa fa"
+  },
+  {
+   "id": 87,
+   "tipo": "testo",
+   "it": "Contatti dal sito"
+  },
+  {
+   "id": 88,
+   "tipo": "testo",
+   "it": "Controlla i dati, assegna un punteggio su cinque dimensioni pesate, dà una priorità e instrada con tempi di risposta diversi. In fondo spiega perché ha dato quel punteggio."
+  },
+  {
+   "id": 89,
+   "tipo": "testo",
+   "it": "Fatture dei fornitori"
+  },
+  {
+   "id": 90,
+   "tipo": "testo",
+   "it": "Verifica la partita IVA, la coerenza fra imponibile e imposta, i duplicati e lo scostamento dalla mediana storica. Ferma quelle che non tornano."
+  },
+  {
+   "id": 91,
+   "tipo": "testo",
+   "it": "Cambio valuta"
+  },
+  {
+   "id": 92,
+   "tipo": "testo",
+   "it": "Legge i tassi ufficiali e avvisa solo quando la variazione supera mezzo punto. Nessuna notifica inutile."
+  },
+  {
+   "id": 93,
+   "tipo": "testo",
+   "it": "Richieste di assistenza"
+  },
+  {
+   "id": 94,
+   "tipo": "testo",
+   "it": "Classifica, assegna e instrada. Quello che non sa classificare lo mette in coda a una persona, non lo indovina."
+  },
+  {
+   "id": 95,
+   "tipo": "testo",
+   "it": "Documenti"
+  },
+  {
+   "id": 96,
+   "tipo": "testo",
+   "it": "Smista e archivia. Esiste in due versioni: una con il modello, una senza. La seconda è più veloce e sbaglia sempre nello stesso punto: si ripara una volta sola."
+  },
+  {
+   "id": 97,
+   "tipo": "testo",
+   "it": "Contenuti"
+  },
+  {
+   "id": 98,
+   "tipo": "testo",
+   "it": "Prepara caroselli, storie e newsletter con l’anteprima, e aspetta la conferma prima di pubblicare."
+  },
+  {
+   "id": 99,
+   "tipo": "testo",
+   "it": "Con il modello, o senza"
+  },
+  {
+   "id": 100,
+   "tipo": "testo",
+   "it": "La domanda che faccio per prima. Un flusso deterministico costa meno, si ripara in un minuto e sbaglia sempre nello stesso punto: dove basta, uso quello."
+  },
+  {
+   "id": 101,
+   "tipo": "testo",
+   "it": "Senza modello"
+  },
+  {
+   "id": 102,
+   "tipo": "testo",
+   "it": "Quando la regola si può scrivere"
+  },
+  {
+   "id": 103,
+   "tipo": "testo",
+   "it": "Con il modello"
+  },
+  {
+   "id": 104,
+   "tipo": "testo",
+   "it": "Quando il testo cambia ogni volta"
+  },
+  {
+   "id": 105,
+   "tipo": "testo",
+   "it": "La competenza"
+  },
+  {
+   "id": 106,
+   "tipo": "testo",
+   "it": "Sapere quale dei due serve"
+  },
+  {
+   "id": 107,
+   "tipo": "testo",
+   "it": "La regola"
+  },
+  {
+   "id": 108,
+   "tipo": "testo",
+   "it": "Si automatizza ciò che è ripetitivo e verificabile. Dove serve giudizio resta una persona."
+  },
+  {
+   "id": 109,
+   "tipo": "testo",
+   "it": "Limite dichiarato"
+  },
+  {
+   "id": 110,
+   "tipo": "testo",
+   "it": "Un’automazione che nessuno guarda diventa un guasto silenzioso. Ogni flusso che consegno ha un registro, un avviso quando salta e un modo per fermarlo: senza quelli non lo consegno."
+  },
+  {
+   "id": 111,
+   "tipo": "testo",
+   "it": "Pagina successiva"
+  },
+  {
+   "id": 112,
+   "tipo": "testo",
+   "it": "Strumenti"
+  },
+  {
+   "id": 113,
+   "tipo": "testo",
+   "it": "OpenClaw, Claude Code, server MCP, n8n, PostgreSQL: cosa uso e che posto occupa."
+  },
+  {
+   "id": 114,
+   "tipo": "testo",
+   "it": "Apri &#8594;"
+  },
+  {
+   "id": 115,
+   "tipo": "testo",
+   "it": "AS"
+  },
+  {
+   "id": 116,
+   "tipo": "testo",
+   "it": "Andrea Sforna AI"
+  },
+  {
+   "id": 117,
+   "tipo": "testo",
+   "it": "Progettazione, sicurezza e manutenzione di sistemi di agenti AI."
+  },
+  {
+   "id": 118,
+   "tipo": "testo",
+   "it": "Pagine"
+  },
+  {
+   "id": 119,
+   "tipo": "testo",
+   "it": "Agenti"
+  },
+  {
+   "id": 120,
+   "tipo": "testo",
+   "it": "Casi"
+  },
+  {
+   "id": 121,
+   "tipo": "testo",
+   "it": "Modelli"
+  },
+  {
+   "id": 122,
+   "tipo": "testo",
+   "it": "Sicurezza"
+  },
+  {
+   "id": 123,
+   "tipo": "testo",
+   "it": "Dati"
+  },
+  {
+   "id": 124,
+   "tipo": "testo",
+   "it": "Privacy Bridge"
+  },
+  {
+   "id": 125,
+   "tipo": "testo",
+   "it": "Formazione"
+  },
+  {
+   "id": 126,
+   "tipo": "testo",
+   "it": "Contatti"
+  },
+  {
+   "id": 127,
+   "tipo": "testo",
+   "it": "Approfondimenti"
+  },
+  {
+   "id": 128,
+   "tipo": "testo",
+   "it": "Modelli in locale"
+  },
+  {
+   "id": 129,
+   "tipo": "testo",
+   "it": "Architettura"
+  },
+  {
+   "id": 130,
+   "tipo": "testo",
+   "it": "Automazione"
+  },
+  {
+   "id": 131,
+   "tipo": "testo",
+   "it": "Strumenti"
+  },
+  {
+   "id": 132,
+   "tipo": "testo",
+   "it": "Metodo"
+  },
+  {
+   "id": 133,
+   "tipo": "testo",
+   "it": "Contatti"
+  },
+  {
+   "id": 134,
+   "tipo": "testo",
+   "it": "andrea.sforna@gmail.com"
+  },
+  {
+   "id": 135,
+   "tipo": "testo",
+   "it": "Instagram @andreasfornaai"
+  },
+  {
+   "id": 136,
+   "tipo": "testo",
+   "it": "&#169; 2026 Andrea Sforna"
+  },
+  {
+   "id": 137,
+   "tipo": "testo",
+   "it": "Progettato e scritto da Andrea Sforna"
+  }
+ ],
+ "schema": [
+  {
+   "@graph.0.name": "Andrea Sforna",
+   "@graph.0.jobTitle": "Progettista di sistemi di agenti AI",
+   "@graph.0.description": "Progetta, costruisce e mette in sicurezza sistemi di agenti AI che lavorano su processi aziendali reali.",
+   "@graph.0.knowsAbout.0": "Agenti AI",
+   "@graph.0.knowsAbout.1": "Model Context Protocol",
+   "@graph.0.knowsAbout.2": "Automazione dei processi",
+   "@graph.0.knowsAbout.3": "Sicurezza dei sistemi AI",
+   "@graph.0.knowsAbout.4": "Modelli linguistici in locale",
+   "@graph.0.knowsAbout.5": "Orchestrazione multi-agente",
+   "@graph.0.knowsAbout.6": "n8n",
+   "@graph.0.knowsAbout.7": "Recupero di dati deterministico",
+   "@graph.1.name": "Andrea Sforna AI",
+   "@graph.1.description": "Progettazione, messa in sicurezza e manutenzione di sistemi di agenti AI per aziende e professionisti.",
+   "@graph.1.areaServed.name": "Italia",
+   "@graph.1.hasOfferCatalog.name": "Modi di lavorare insieme",
+   "@graph.1.hasOfferCatalog.itemListElement.0.itemOffered.name": "Consulenza",
+   "@graph.1.hasOfferCatalog.itemListElement.0.itemOffered.description": "Analisi di un processo esistente e perimetro scritto di cosa conviene affidare a un agente.",
+   "@graph.1.hasOfferCatalog.itemListElement.1.itemOffered.name": "Formazione",
+   "@graph.1.hasOfferCatalog.itemListElement.1.itemOffered.description": "Percorso sul caso reale dell'azienda, per costruire e mantenere agenti in autonomia.",
+   "@graph.1.hasOfferCatalog.itemListElement.2.itemOffered.name": "Messa in sicurezza",
+   "@graph.1.hasOfferCatalog.itemListElement.2.itemOffered.description": "Revisione dei permessi di un sistema di agenti gia' in funzione.",
+   "@graph.1.hasOfferCatalog.itemListElement.3.itemOffered.name": "Sistemi su misura",
+   "@graph.1.hasOfferCatalog.itemListElement.3.itemOffered.description": "Progetto e costruzione di un sistema di agenti sul processo del cliente.",
+   "@graph.2.name": "Automazione",
+   "@graph.2.description": "Flussi di automazione collaudati su casi aziendali reali: posta smistata, contatti dal sito, fatture fornitori, documenti, contenuti. Con o senza modello.",
+   "@graph.2.isPartOf.name": "Andrea Sforna AI",
+   "@graph.2.breadcrumb.itemListElement.0.name": "Home",
+   "@graph.2.breadcrumb.itemListElement.1.name": "Automazione"
+  }
+ ]
+}

@@ -1,73 +1,228 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://navras98.github.io/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://navras98.github.io/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://navras98.github.io/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://navras98.github.io/"/>
+    <lastmod>2026-08-21</lastmod>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://navras98.github.io/en/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://navras98.github.io/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://navras98.github.io/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://navras98.github.io/"/>
     <lastmod>2026-08-21</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://navras98.github.io/agenti/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://navras98.github.io/agenti/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://navras98.github.io/en/agents/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://navras98.github.io/agenti/"/>
     <lastmod>2026-08-21</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://navras98.github.io/casi/</loc>
+    <loc>https://navras98.github.io/en/agents/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://navras98.github.io/agenti/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://navras98.github.io/en/agents/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://navras98.github.io/agenti/"/>
     <lastmod>2026-08-21</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://navras98.github.io/modelli/</loc>
-    <lastmod>2026-08-21</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://navras98.github.io/sicurezza/</loc>
-    <lastmod>2026-08-21</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://navras98.github.io/dati/</loc>
-    <lastmod>2026-08-21</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://navras98.github.io/privacy-bridge/</loc>
-    <lastmod>2026-08-21</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://navras98.github.io/formazione/</loc>
-    <lastmod>2026-08-21</lastmod>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://navras98.github.io/contatti/</loc>
-    <lastmod>2026-08-21</lastmod>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://navras98.github.io/modelli-in-locale/</loc>
+    <loc>https://navras98.github.io/architettura/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://navras98.github.io/architettura/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://navras98.github.io/en/architecture/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://navras98.github.io/architettura/"/>
     <lastmod>2026-08-21</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://navras98.github.io/architettura/</loc>
+    <loc>https://navras98.github.io/en/architecture/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://navras98.github.io/architettura/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://navras98.github.io/en/architecture/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://navras98.github.io/architettura/"/>
     <lastmod>2026-08-21</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://navras98.github.io/automazione/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://navras98.github.io/automazione/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://navras98.github.io/en/automation/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://navras98.github.io/automazione/"/>
     <lastmod>2026-08-21</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://navras98.github.io/strumenti/</loc>
+    <loc>https://navras98.github.io/en/automation/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://navras98.github.io/automazione/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://navras98.github.io/en/automation/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://navras98.github.io/automazione/"/>
     <lastmod>2026-08-21</lastmod>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://navras98.github.io/casi/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://navras98.github.io/casi/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://navras98.github.io/en/case-studies/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://navras98.github.io/casi/"/>
+    <lastmod>2026-08-21</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://navras98.github.io/en/case-studies/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://navras98.github.io/casi/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://navras98.github.io/en/case-studies/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://navras98.github.io/casi/"/>
+    <lastmod>2026-08-21</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://navras98.github.io/contatti/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://navras98.github.io/contatti/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://navras98.github.io/en/contact/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://navras98.github.io/contatti/"/>
+    <lastmod>2026-08-21</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://navras98.github.io/en/contact/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://navras98.github.io/contatti/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://navras98.github.io/en/contact/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://navras98.github.io/contatti/"/>
+    <lastmod>2026-08-21</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://navras98.github.io/dati/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://navras98.github.io/dati/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://navras98.github.io/en/data/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://navras98.github.io/dati/"/>
+    <lastmod>2026-08-21</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://navras98.github.io/en/data/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://navras98.github.io/dati/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://navras98.github.io/en/data/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://navras98.github.io/dati/"/>
+    <lastmod>2026-08-21</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://navras98.github.io/formazione/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://navras98.github.io/formazione/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://navras98.github.io/en/training/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://navras98.github.io/formazione/"/>
+    <lastmod>2026-08-21</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://navras98.github.io/en/training/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://navras98.github.io/formazione/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://navras98.github.io/en/training/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://navras98.github.io/formazione/"/>
+    <lastmod>2026-08-21</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://navras98.github.io/metodo/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://navras98.github.io/metodo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://navras98.github.io/en/method/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://navras98.github.io/metodo/"/>
     <lastmod>2026-08-21</lastmod>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://navras98.github.io/en/method/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://navras98.github.io/metodo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://navras98.github.io/en/method/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://navras98.github.io/metodo/"/>
+    <lastmod>2026-08-21</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://navras98.github.io/modelli-in-locale/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://navras98.github.io/modelli-in-locale/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://navras98.github.io/en/local-models/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://navras98.github.io/modelli-in-locale/"/>
+    <lastmod>2026-08-21</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://navras98.github.io/en/local-models/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://navras98.github.io/modelli-in-locale/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://navras98.github.io/en/local-models/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://navras98.github.io/modelli-in-locale/"/>
+    <lastmod>2026-08-21</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://navras98.github.io/modelli/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://navras98.github.io/modelli/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://navras98.github.io/en/models/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://navras98.github.io/modelli/"/>
+    <lastmod>2026-08-21</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://navras98.github.io/en/models/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://navras98.github.io/modelli/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://navras98.github.io/en/models/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://navras98.github.io/modelli/"/>
+    <lastmod>2026-08-21</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://navras98.github.io/privacy-bridge/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://navras98.github.io/privacy-bridge/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://navras98.github.io/en/privacy-bridge/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://navras98.github.io/privacy-bridge/"/>
+    <lastmod>2026-08-21</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://navras98.github.io/en/privacy-bridge/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://navras98.github.io/privacy-bridge/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://navras98.github.io/en/privacy-bridge/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://navras98.github.io/privacy-bridge/"/>
+    <lastmod>2026-08-21</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://navras98.github.io/sicurezza/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://navras98.github.io/sicurezza/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://navras98.github.io/en/security/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://navras98.github.io/sicurezza/"/>
+    <lastmod>2026-08-21</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://navras98.github.io/en/security/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://navras98.github.io/sicurezza/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://navras98.github.io/en/security/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://navras98.github.io/sicurezza/"/>
+    <lastmod>2026-08-21</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://navras98.github.io/strumenti/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://navras98.github.io/strumenti/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://navras98.github.io/en/tools/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://navras98.github.io/strumenti/"/>
+    <lastmod>2026-08-21</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://navras98.github.io/en/tools/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://navras98.github.io/strumenti/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://navras98.github.io/en/tools/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://navras98.github.io/strumenti/"/>
+    <lastmod>2026-08-21</lastmod>
+    <priority>0.7</priority>
   </url>
 </urlset>

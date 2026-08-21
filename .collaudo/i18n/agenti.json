@@ -1,0 +1,737 @@
+{
+ "pagina": "agenti/index.html",
+ "pezzi": [
+  {
+   "id": 0,
+   "tipo": "testo",
+   "it": "Agenti — Andrea Sforna AI"
+  },
+  {
+   "id": 1,
+   "tipo": "meta:description",
+   "it": "Che cos'è davvero un agente AI: com'è fatto dentro, di quali quattro parti ha bisogno per reggere in esercizio e perché le aziende lo chiedono adesso."
+  },
+  {
+   "id": 2,
+   "tipo": "meta:og:title",
+   "it": "Agenti — Andrea Sforna AI"
+  },
+  {
+   "id": 3,
+   "tipo": "meta:og:description",
+   "it": "Che cos'è davvero un agente AI: com'è fatto dentro, di quali quattro parti ha bisogno per reggere in esercizio e perché le aziende lo chiedono adesso."
+  },
+  {
+   "id": 4,
+   "tipo": "meta:og:image:alt",
+   "it": "Andrea Sforna AI — progettazione, sicurezza e manutenzione di sistemi di agenti AI"
+  },
+  {
+   "id": 5,
+   "tipo": "meta:twitter:title",
+   "it": "Agenti — Andrea Sforna AI"
+  },
+  {
+   "id": 6,
+   "tipo": "meta:twitter:description",
+   "it": "Che cos'è davvero un agente AI: com'è fatto dentro, di quali quattro parti ha bisogno per reggere in esercizio e perché le aziende lo chiedono adesso."
+  },
+  {
+   "id": 7,
+   "tipo": "testo",
+   "it": "Salta al contenuto"
+  },
+  {
+   "id": 8,
+   "tipo": "testo",
+   "it": "AS"
+  },
+  {
+   "id": 9,
+   "tipo": "testo",
+   "it": "Andrea Sforna AI"
+  },
+  {
+   "id": 10,
+   "tipo": "testo",
+   "it": "Agenti"
+  },
+  {
+   "id": 11,
+   "tipo": "testo",
+   "it": "Casi"
+  },
+  {
+   "id": 12,
+   "tipo": "testo",
+   "it": "Modelli"
+  },
+  {
+   "id": 13,
+   "tipo": "testo",
+   "it": "Sicurezza"
+  },
+  {
+   "id": 14,
+   "tipo": "testo",
+   "it": "Dati"
+  },
+  {
+   "id": 15,
+   "tipo": "testo",
+   "it": "Privacy Bridge"
+  },
+  {
+   "id": 16,
+   "tipo": "testo",
+   "it": "Formazione"
+  },
+  {
+   "id": 17,
+   "tipo": "testo",
+   "it": "Contatti"
+  },
+  {
+   "id": 18,
+   "tipo": "testo",
+   "it": "Chiaro"
+  },
+  {
+   "id": 19,
+   "tipo": "attributo:aria-label",
+   "it": "Apri il menu"
+  },
+  {
+   "id": 20,
+   "tipo": "testo",
+   "it": "Menu"
+  },
+  {
+   "id": 21,
+   "tipo": "testo",
+   "it": "Agenti"
+  },
+  {
+   "id": 22,
+   "tipo": "testo",
+   "it": "Casi"
+  },
+  {
+   "id": 23,
+   "tipo": "testo",
+   "it": "Modelli"
+  },
+  {
+   "id": 24,
+   "tipo": "testo",
+   "it": "Sicurezza"
+  },
+  {
+   "id": 25,
+   "tipo": "testo",
+   "it": "Dati"
+  },
+  {
+   "id": 26,
+   "tipo": "testo",
+   "it": "Privacy Bridge"
+  },
+  {
+   "id": 27,
+   "tipo": "testo",
+   "it": "Formazione"
+  },
+  {
+   "id": 28,
+   "tipo": "testo",
+   "it": "Contatti"
+  },
+  {
+   "id": 29,
+   "tipo": "testo",
+   "it": "Modelli in locale"
+  },
+  {
+   "id": 30,
+   "tipo": "testo",
+   "it": "Architettura"
+  },
+  {
+   "id": 31,
+   "tipo": "testo",
+   "it": "Automazione"
+  },
+  {
+   "id": 32,
+   "tipo": "testo",
+   "it": "Strumenti"
+  },
+  {
+   "id": 33,
+   "tipo": "testo",
+   "it": "Metodo"
+  },
+  {
+   "id": 34,
+   "tipo": "testo",
+   "it": "Agenti"
+  },
+  {
+   "id": 35,
+   "tipo": "testo",
+   "it": "Che cos’è un agente AI"
+  },
+  {
+   "id": 36,
+   "tipo": "testo",
+   "it": "Un modello risponde. Un agente riceve un obiettivo, sceglie quali operazioni chiamare, controlla il risultato e si ferma quando ha finito o quando non può proseguire."
+  },
+  {
+   "id": 37,
+   "tipo": "testo",
+   "it": "Modello, assistente, agente"
+  },
+  {
+   "id": 38,
+   "tipo": "testo",
+   "it": "Sono tre cose diverse e vengono confuse continuamente. La differenza non è quanto è intelligente il modello: è quanta autonomia ha, e chi gli ha messo i confini."
+  },
+  {
+   "id": 39,
+   "tipo": "testo",
+   "it": "Modello"
+  },
+  {
+   "id": 40,
+   "tipo": "testo",
+   "it": "Genera una risposta e si ferma"
+  },
+  {
+   "id": 41,
+   "tipo": "testo",
+   "it": "Assistente"
+  },
+  {
+   "id": 42,
+   "tipo": "testo",
+   "it": "Risponde, una domanda per volta"
+  },
+  {
+   "id": 43,
+   "tipo": "testo",
+   "it": "Agente"
+  },
+  {
+   "id": 44,
+   "tipo": "testo",
+   "it": "Riceve un obiettivo, agisce, verifica"
+  },
+  {
+   "id": 45,
+   "tipo": "testo",
+   "it": "Una domanda, una scheda"
+  },
+  {
+   "id": 46,
+   "tipo": "testo",
+   "it": "Sembra una conversazione normale. Sotto, ogni campo è il risultato di un’operazione dichiarata sul database aziendale: nessuna ricerca libera, nessun dato ricordato a memoria."
+  },
+  {
+   "id": 47,
+   "tipo": "testo",
+   "it": "Cercami scheda cliente Rossi"
+  },
+  {
+   "id": 48,
+   "tipo": "testo",
+   "it": "1 chiamata strumento"
+  },
+  {
+   "id": 49,
+   "tipo": "testo",
+   "it": "4 s"
+  },
+  {
+   "id": 50,
+   "tipo": "testo",
+   "it": "Ecco la scheda del cliente trovato con &#8220;Rossi&#8221; ("
+  },
+  {
+   "id": 51,
+   "tipo": "testo",
+   "it": "cerca_clienti"
+  },
+  {
+   "id": 52,
+   "tipo": "testo",
+   "it": ", id 1):"
+  },
+  {
+   "id": 53,
+   "tipo": "testo",
+   "it": "Cliente"
+  },
+  {
+   "id": 54,
+   "tipo": "testo",
+   "it": "Ragione sociale"
+  },
+  {
+   "id": 55,
+   "tipo": "testo",
+   "it": "Rossi &amp; C. S.r.l."
+  },
+  {
+   "id": 56,
+   "tipo": "testo",
+   "it": "Partita IVA"
+  },
+  {
+   "id": 57,
+   "tipo": "testo",
+   "it": "Email"
+  },
+  {
+   "id": 58,
+   "tipo": "testo",
+   "it": "info@rossiec.it"
+  },
+  {
+   "id": 59,
+   "tipo": "testo",
+   "it": "Telefono"
+  },
+  {
+   "id": 60,
+   "tipo": "testo",
+   "it": "Referente"
+  },
+  {
+   "id": 61,
+   "tipo": "testo",
+   "it": "Mario Rossi"
+  },
+  {
+   "id": 62,
+   "tipo": "testo",
+   "it": "Saldo dovuto"
+  },
+  {
+   "id": 63,
+   "tipo": "testo",
+   "it": "Un solo risultato. Se vuoi i dettagli completi (fatture scadute, ordini) dimmelo."
+  },
+  {
+   "id": 64,
+   "tipo": "testo",
+   "it": "Nessuna ricerca libera: l&#8217;agente chiama l&#8217;operazione che gli è stata data, con i permessi di chi la chiede."
+  },
+  {
+   "id": 65,
+   "tipo": "testo",
+   "it": "Quanto abbiamo speso in trasporti nel primo semestre?"
+  },
+  {
+   "id": 66,
+   "tipo": "testo",
+   "it": "2 chiamate strumento"
+  },
+  {
+   "id": 67,
+   "tipo": "testo",
+   "it": "7 s"
+  },
+  {
+   "id": 68,
+   "tipo": "testo",
+   "it": "DATO ASSENTE &#183; nessuna voce &#8220;trasporti&#8221; nel piano dei conti"
+  },
+  {
+   "id": 69,
+   "tipo": "testo",
+   "it": "Non lo stimo."
+  },
+  {
+   "id": 70,
+   "tipo": "testo",
+   "it": "spese_per_categoria"
+  },
+  {
+   "id": 71,
+   "tipo": "testo",
+   "it": "restituisce sette categorie e nessuna è trasporti: le spese potrebbero essere dentro &#8220;logistica&#8221; o registrate come costi generali."
+  },
+  {
+   "id": 72,
+   "tipo": "testo",
+   "it": "Guarda in logistica"
+  },
+  {
+   "id": 73,
+   "tipo": "testo",
+   "it": "1 chiamata strumento"
+  },
+  {
+   "id": 74,
+   "tipo": "testo",
+   "it": "3 s"
+  },
+  {
+   "id": 75,
+   "tipo": "testo",
+   "it": "Logistica, gennaio&#8211;giugno 2026: 18.940 &#8364; su 62 documenti. Se vuoi verifico quali sono trasporti veri e quali magazzino, ma serve leggere le singole voci."
+  },
+  {
+   "id": 76,
+   "tipo": "testo",
+   "it": "Il momento che distingue un sistema serio: dichiarare l&#8217;assenza invece di produrre un numero plausibile."
+  },
+  {
+   "id": 77,
+   "tipo": "testo",
+   "it": "Quando il dato non c&#8217;è"
+  },
+  {
+   "id": 78,
+   "tipo": "testo",
+   "it": "La domanda è legittima, la risposta non è nei dati. L’agente lo dice, spiega dove potrebbe essere, e aspetta un’istruzione invece di riempire il buco."
+  },
+  {
+   "id": 79,
+   "tipo": "testo",
+   "it": "A cosa serve, e a cosa no"
+  },
+  {
+   "id": 80,
+   "tipo": "testo",
+   "it": "La domanda utile non è se un agente può fare una cosa, ma se quella cosa è ripetitiva, verificabile e delimitata."
+  },
+  {
+   "id": 81,
+   "tipo": "testo",
+   "it": "Serve quando"
+  },
+  {
+   "id": 82,
+   "tipo": "testo",
+   "it": "Il lavoro si ripete e ha una regola riconoscibile"
+  },
+  {
+   "id": 83,
+   "tipo": "testo",
+   "it": "Le informazioni stanno in archivi a cui si può accedere"
+  },
+  {
+   "id": 84,
+   "tipo": "testo",
+   "it": "Esiste un modo per controllare che il risultato sia giusto"
+  },
+  {
+   "id": 85,
+   "tipo": "testo",
+   "it": "Il compito attraversa più passaggi e più strumenti"
+  },
+  {
+   "id": 86,
+   "tipo": "testo",
+   "it": "Non serve quando"
+  },
+  {
+   "id": 87,
+   "tipo": "testo",
+   "it": "La decisione richiede la responsabilità di una persona"
+  },
+  {
+   "id": 88,
+   "tipo": "testo",
+   "it": "Il processo non esiste ancora, o cambia ogni volta"
+  },
+  {
+   "id": 89,
+   "tipo": "testo",
+   "it": "Non c’è nessun modo di verificare l’esito"
+  },
+  {
+   "id": 90,
+   "tipo": "testo",
+   "it": "Il problema si risolve con una regola scritta bene"
+  },
+  {
+   "id": 91,
+   "tipo": "testo",
+   "it": "Come è fatto dentro"
+  },
+  {
+   "id": 92,
+   "tipo": "testo",
+   "it": "Un agente serio è quattro cose messe insieme, e nessuna delle quattro è il modello. Il modello è il pezzo sostituibile."
+  },
+  {
+   "id": 93,
+   "tipo": "testo",
+   "it": "Strumenti"
+  },
+  {
+   "id": 94,
+   "tipo": "testo",
+   "it": "Operazioni dichiarate, con un server MCP davanti"
+  },
+  {
+   "id": 95,
+   "tipo": "testo",
+   "it": "Confini"
+  },
+  {
+   "id": 96,
+   "tipo": "testo",
+   "it": "Permessi nel database e nel sistema operativo"
+  },
+  {
+   "id": 97,
+   "tipo": "testo",
+   "it": "Prova"
+  },
+  {
+   "id": 98,
+   "tipo": "testo",
+   "it": "Ogni affermazione risale a una lettura"
+  },
+  {
+   "id": 99,
+   "tipo": "testo",
+   "it": "Esercizio"
+  },
+  {
+   "id": 100,
+   "tipo": "testo",
+   "it": "Registro, ripartenze, sorveglianza"
+  },
+  {
+   "id": 101,
+   "tipo": "testo",
+   "it": "Perché viene chiesto adesso"
+  },
+  {
+   "id": 102,
+   "tipo": "testo",
+   "it": "Tre cose sono cambiate nello stesso periodo, e insieme rendono possibile quello che due anni prima non stava in piedi. Nessuna delle tre riguarda l’intelligenza del modello in sé."
+  },
+  {
+   "id": 103,
+   "tipo": "testo",
+   "it": "Modelli"
+  },
+  {
+   "id": 104,
+   "tipo": "testo",
+   "it": "Reggono compiti a più passaggi"
+  },
+  {
+   "id": 105,
+   "tipo": "testo",
+   "it": "Strumenti"
+  },
+  {
+   "id": 106,
+   "tipo": "testo",
+   "it": "Le operazioni si dichiarano invece di improvvisarle"
+  },
+  {
+   "id": 107,
+   "tipo": "testo",
+   "it": "Costo"
+  },
+  {
+   "id": 108,
+   "tipo": "testo",
+   "it": "Il lavoro continuo è diventato economico"
+  },
+  {
+   "id": 109,
+   "tipo": "testo",
+   "it": "La definizione che uso"
+  },
+  {
+   "id": 110,
+   "tipo": "testo",
+   "it": "Un agente non è un modello più intelligente. È un modello con confini."
+  },
+  {
+   "id": 111,
+   "tipo": "testo",
+   "it": "Limite dichiarato"
+  },
+  {
+   "id": 112,
+   "tipo": "testo",
+   "it": "Un agente non elimina il lavoro di chi decide. Lo sposta: da eseguire a definire obiettivi, perimetri e criteri di verifica. Se quella parte non la fa nessuno, il sistema non regge."
+  },
+  {
+   "id": 113,
+   "tipo": "testo",
+   "it": "Pagina successiva"
+  },
+  {
+   "id": 114,
+   "tipo": "testo",
+   "it": "Casi"
+  },
+  {
+   "id": 115,
+   "tipo": "testo",
+   "it": "Un agente che pubblica, un agente dentro un’applicazione, un gruppo di agenti che si controllano."
+  },
+  {
+   "id": 116,
+   "tipo": "testo",
+   "it": "Apri &#8594;"
+  },
+  {
+   "id": 117,
+   "tipo": "testo",
+   "it": "AS"
+  },
+  {
+   "id": 118,
+   "tipo": "testo",
+   "it": "Andrea Sforna AI"
+  },
+  {
+   "id": 119,
+   "tipo": "testo",
+   "it": "Progettazione, sicurezza e manutenzione di sistemi di agenti AI."
+  },
+  {
+   "id": 120,
+   "tipo": "testo",
+   "it": "Pagine"
+  },
+  {
+   "id": 121,
+   "tipo": "testo",
+   "it": "Agenti"
+  },
+  {
+   "id": 122,
+   "tipo": "testo",
+   "it": "Casi"
+  },
+  {
+   "id": 123,
+   "tipo": "testo",
+   "it": "Modelli"
+  },
+  {
+   "id": 124,
+   "tipo": "testo",
+   "it": "Sicurezza"
+  },
+  {
+   "id": 125,
+   "tipo": "testo",
+   "it": "Dati"
+  },
+  {
+   "id": 126,
+   "tipo": "testo",
+   "it": "Privacy Bridge"
+  },
+  {
+   "id": 127,
+   "tipo": "testo",
+   "it": "Formazione"
+  },
+  {
+   "id": 128,
+   "tipo": "testo",
+   "it": "Contatti"
+  },
+  {
+   "id": 129,
+   "tipo": "testo",
+   "it": "Approfondimenti"
+  },
+  {
+   "id": 130,
+   "tipo": "testo",
+   "it": "Modelli in locale"
+  },
+  {
+   "id": 131,
+   "tipo": "testo",
+   "it": "Architettura"
+  },
+  {
+   "id": 132,
+   "tipo": "testo",
+   "it": "Automazione"
+  },
+  {
+   "id": 133,
+   "tipo": "testo",
+   "it": "Strumenti"
+  },
+  {
+   "id": 134,
+   "tipo": "testo",
+   "it": "Metodo"
+  },
+  {
+   "id": 135,
+   "tipo": "testo",
+   "it": "Contatti"
+  },
+  {
+   "id": 136,
+   "tipo": "testo",
+   "it": "andrea.sforna@gmail.com"
+  },
+  {
+   "id": 137,
+   "tipo": "testo",
+   "it": "Instagram @andreasfornaai"
+  },
+  {
+   "id": 138,
+   "tipo": "testo",
+   "it": "&#169; 2026 Andrea Sforna"
+  },
+  {
+   "id": 139,
+   "tipo": "testo",
+   "it": "Progettato e scritto da Andrea Sforna"
+  }
+ ],
+ "schema": [
+  {
+   "@graph.0.name": "Andrea Sforna",
+   "@graph.0.jobTitle": "Progettista di sistemi di agenti AI",
+   "@graph.0.description": "Progetta, costruisce e mette in sicurezza sistemi di agenti AI che lavorano su processi aziendali reali.",
+   "@graph.0.knowsAbout.0": "Agenti AI",
+   "@graph.0.knowsAbout.1": "Model Context Protocol",
+   "@graph.0.knowsAbout.2": "Automazione dei processi",
+   "@graph.0.knowsAbout.3": "Sicurezza dei sistemi AI",
+   "@graph.0.knowsAbout.4": "Modelli linguistici in locale",
+   "@graph.0.knowsAbout.5": "Orchestrazione multi-agente",
+   "@graph.0.knowsAbout.6": "n8n",
+   "@graph.0.knowsAbout.7": "Recupero di dati deterministico",
+   "@graph.1.name": "Andrea Sforna AI",
+   "@graph.1.description": "Progettazione, messa in sicurezza e manutenzione di sistemi di agenti AI per aziende e professionisti.",
+   "@graph.1.areaServed.name": "Italia",
+   "@graph.1.hasOfferCatalog.name": "Modi di lavorare insieme",
+   "@graph.1.hasOfferCatalog.itemListElement.0.itemOffered.name": "Consulenza",
+   "@graph.1.hasOfferCatalog.itemListElement.0.itemOffered.description": "Analisi di un processo esistente e perimetro scritto di cosa conviene affidare a un agente.",
+   "@graph.1.hasOfferCatalog.itemListElement.1.itemOffered.name": "Formazione",
+   "@graph.1.hasOfferCatalog.itemListElement.1.itemOffered.description": "Percorso sul caso reale dell'azienda, per costruire e mantenere agenti in autonomia.",
+   "@graph.1.hasOfferCatalog.itemListElement.2.itemOffered.name": "Messa in sicurezza",
+   "@graph.1.hasOfferCatalog.itemListElement.2.itemOffered.description": "Revisione dei permessi di un sistema di agenti gia' in funzione.",
+   "@graph.1.hasOfferCatalog.itemListElement.3.itemOffered.name": "Sistemi su misura",
+   "@graph.1.hasOfferCatalog.itemListElement.3.itemOffered.description": "Progetto e costruzione di un sistema di agenti sul processo del cliente.",
+   "@graph.2.name": "Agenti",
+   "@graph.2.description": "Che cos'è davvero un agente AI: com'è fatto dentro, di quali quattro parti ha bisogno per reggere in esercizio e perché le aziende lo chiedono adesso.",
+   "@graph.2.isPartOf.name": "Andrea Sforna AI",
+   "@graph.2.breadcrumb.itemListElement.0.name": "Home",
+   "@graph.2.breadcrumb.itemListElement.1.name": "Agenti"
+  }
+ ]
+}

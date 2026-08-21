@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>/* Le librerie stanno in casa: senza questa mappa il sito le chiede a
+   unpkg.com, e se quel dominio non risponde la pagina resta bianca. Il runtime
+   legge window.__resources e sostituisce l'indirizzo esterno con quello locale.
+   Le due copie sono byte per byte quelle che serviva il CDN: impronte sha384
+   verificate contro quelle dichiarate in support.js. */
+window.__resources={"https://unpkg.com/react@18.3.1/umd/react.production.min.js":"/assets/vendor/react-18.3.1.min.js","https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js":"/assets/vendor/react-dom-18.3.1.min.js"};</script>
+<script src="/support.js"></script>
+<title>Models — Andrea Sforna AI</title>
+<meta name="description" content="Intelligence index, cost per task, ranking of the agents that work on code and prices per million tokens: the numbers I use to choose a model.">
+<link rel="alternate" hreflang="it" href="https://navras98.github.io/modelli/">
+<link rel="alternate" hreflang="en" href="https://navras98.github.io/en/models/">
+<link rel="alternate" hreflang="x-default" href="https://navras98.github.io/modelli/">
+<link rel="canonical" href="https://navras98.github.io/en/models/">
+<meta name="author" content="Andrea Sforna">
+<meta name="theme-color" content="#0a0a0b" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f7f6f3" media="(prefers-color-scheme: light)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Andrea Sforna AI">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Models — Andrea Sforna AI">
+<meta property="og:description" content="Intelligence index, cost per task, ranking of the agents that work on code and prices per million tokens: the numbers I use to choose a model.">
+<meta property="og:url" content="https://navras98.github.io/en/models/">
+<meta property="og:image" content="https://navras98.github.io/assets/anteprima.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Andrea Sforna AI — design, security and maintenance of AI agent systems">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Models — Andrea Sforna AI">
+<meta name="twitter:description" content="Intelligence index, cost per task, ranking of the agents that work on code and prices per million tokens: the numbers I use to choose a model.">
+<meta name="twitter:image" content="https://navras98.github.io/assets/anteprima.png">
+<link rel="icon" href="/assets/icona.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/icona-180.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/assets/caratteri.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://navras98.github.io/#andrea","name":"Andrea Sforna","jobTitle":"Designer of AI agent systems","description":"Designs, builds and secures AI agent systems that work on real business processes.","url":"https://navras98.github.io/","image":"https://navras98.github.io/assets/img/andrea.webp","email":"mailto:andrea.sforna@gmail.com","sameAs":["https://www.instagram.com/andreasforna.ai/"],"knowsAbout":["AI agents","Model Context Protocol","Process automation","Security of AI systems","Local language models","Multi-agent orchestration","n8n","Deterministic data retrieval"],"knowsLanguage":["it","en"]},{"@type":"ProfessionalService","@id":"https://navras98.github.io/#servizio","name":"Andrea Sforna AI","description":"Design, security and maintenance of AI agent systems for companies and professionals.","url":"https://navras98.github.io/","provider":{"@id":"https://navras98.github.io/#andrea"},"areaServed":{"@type":"Country","name":"Italy"},"availableLanguage":["it","en"],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Ways of working together","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Consulting","description":"Analysis of an existing process and a written scope of what is worth entrusting to an agent."}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Training","description":"A course built on the company's real case, to build and maintain agents independently."}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Securing","description":"Review of the permissions of an agent system already in service."}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Custom systems","description":"Design and construction of an agent system on the client's process."}}]}},{"@type":"WebPage","@id":"https://navras98.github.io/modelli/#pagina","url":"https://navras98.github.io/modelli/","name":"Models","description":"Intelligence index, cost per task, ranking of the agents that work on code and prices per million tokens: the numbers I use to choose a model.","inLanguage":"it-IT","isPartOf":{"@type":"WebSite","@id":"https://navras98.github.io/#sito","name":"Andrea Sforna AI","url":"https://navras98.github.io/","inLanguage":"it-IT","publisher":{"@id":"https://navras98.github.io/#andrea"}},"about":{"@id":"https://navras98.github.io/#servizio"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://navras98.github.io/"},{"@type":"ListItem","position":2,"name":"Models","item":"https://navras98.github.io/modelli/"}]}}]}</script>
+<link rel="stylesheet" href="/assets/tema.css">
+</head>
+<body>
+<a href="#contenuto" style="position:absolute;left:-9999px;top:0;z-index:100;padding:12px 18px;background:var(--acc);color:var(--su-acc);font:500 12px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase" onfocus="this.style.left='12px';this.style.top='12px'" onblur="this.style.left='-9999px'">Skip to content</a>
+<x-dc>
+<helmet data-dc-atomics><script>document.documentElement.setAttribute('data-js','')</script></helmet>
+
+<div data-avanzamento style="position:fixed;top:0;left:0;height:2px;width:0;background:var(--acc);z-index:60"></div>
+<div data-cursore style="position:fixed;inset:0;pointer-events:none;z-index:1"></div>
+<div style="position:fixed;inset:0;background:var(--grana);pointer-events:none;z-index:55"></div>
+
+<header style="position:sticky;top:0;z-index:50;background:var(--velo);backdrop-filter:blur(16px);border-bottom:1px solid var(--filo1)">
+  <div style="max-width:1360px;margin:0 auto;padding:14px clamp(20px,4vw,48px);display:flex;align-items:center;justify-content:space-between;gap:20px">
+    <a href="/en/" style="display:flex;align-items:center;gap:12px;flex:none;font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t1);white-space:nowrap"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;position:relative;width:30px;height:30px;border:1px solid var(--filo2);flex:none"><span style="font:600 12px Geist,'Instrument Sans',Helvetica,sans-serif;letter-spacing:-.06em;color:var(--t1)">AS</span><span style="position:absolute;right:-1px;top:-1px;width:3px;height:3px;background:var(--acc)"></span></span>Andrea Sforna AI</a>
+    <nav data-nav style="display:flex;align-items:center;gap:20px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase">
+      <a href="/en/agents/" style="color:var(--t2)">Agents</a>
+      <a href="/en/case-studies/" style="color:var(--t2)">Case studies</a>
+      <a href="/en/models/" aria-current="page" style="color:var(--t1);border-bottom:1px solid var(--acc);padding-bottom:3px">Models</a>
+      <a href="/en/security/" style="color:var(--t2)">Security</a>
+      <a href="/en/data/" style="color:var(--t2)">Data</a>
+      <a href="/en/privacy-bridge/" style="color:var(--t2)">Privacy Bridge</a>
+      <a href="/en/training/" style="color:var(--t2)">Training</a>
+      <a href="/en/contact/" style="color:var(--t2)">Contact</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:10px">
+      
+      <a data-lingua href="/modelli/" hreflang="it" lang="it" aria-label="Leggi questa pagina in italiano" style="padding:7px 12px;border:1px solid var(--filo1);color:var(--t2);font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.09em;text-transform:uppercase" style-hover="border-color:var(--filo2);color:var(--t1)">IT</a>
+      <button type="button" data-tema-btn style="padding:7px 12px;background:transparent;border:1px solid var(--filo1);color:var(--t2);font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.09em;text-transform:uppercase;cursor:pointer" style-hover="border-color:var(--filo2);color:var(--t1)">Light</button>
+      <button type="button" data-burger aria-controls="menu-pagine" aria-expanded="false" aria-label="Open the menu" style="display:none;align-items:center;padding:7px 12px;background:transparent;border:1px solid var(--filo1);color:var(--t1);font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.09em;text-transform:uppercase;cursor:pointer">Menu</button>
+    </div>
+  </div>
+  <div data-pannello id="menu-pagine" style="display:none;border-top:1px solid var(--filo1);background:var(--sup1)">
+    <div style="max-width:1360px;margin:0 auto;padding:16px clamp(20px,4vw,48px);display:grid;gap:13px;font:500 12px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase">
+      <a href="/en/agents/" style="color:var(--t2)">Agents</a>
+      <a href="/en/case-studies/" style="color:var(--t2)">Case studies</a>
+      <a href="/en/models/" aria-current="page" style="color:var(--t1);border-bottom:1px solid var(--acc);padding-bottom:3px">Models</a>
+      <a href="/en/security/" style="color:var(--t2)">Security</a>
+      <a href="/en/data/" style="color:var(--t2)">Data</a>
+      <a href="/en/privacy-bridge/" style="color:var(--t2)">Privacy Bridge</a>
+      <a href="/en/training/" style="color:var(--t2)">Training</a>
+      <a href="/en/contact/" style="color:var(--t2)">Contact</a>
+      <a href="/en/local-models/" style="color:var(--t2)">Local models</a>
+      <a href="/en/architecture/" style="color:var(--t2)">Architecture</a>
+      <a href="/en/automation/" style="color:var(--t2)">Automation</a>
+      <a href="/en/tools/" style="color:var(--t2)">Tools</a>
+      <a href="/en/method/" style="color:var(--t2)">Method</a>
+      <a data-lingua-menu href="/modelli/" hreflang="it" lang="it" aria-label="Leggi questa pagina in italiano" style="color:var(--acc)">Italiano</a>
+    </div>
+  </div>
+</header>
+
+<main id="contenuto" tabindex="-1">
+<section data-screen-label="Apertura" style="position:relative;padding:clamp(72px,10vw,150px) 0 clamp(48px,6vw,88px);overflow:hidden">
+  <div style="position:absolute;inset:0;background:var(--luce);pointer-events:none"></div>
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px);position:relative">
+    <p style="margin:0;font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t2);margin-bottom:clamp(24px,3vw,40px);animation:appari .9s ease .1s both">Models</p>
+    <h1 style="margin:0 0 clamp(24px,3vw,36px);font-weight:500;font-size:clamp(34px,6.4vw,92px);line-height:.98;letter-spacing:-.045em;color:var(--t1);max-width:20ch;text-wrap:pretty;animation:sali 1s cubic-bezier(.16,1,.3,1) .18s both">The benchmarks, read today</h1>
+    <div style="height:1px;background:var(--acc);max-width:560px;transform-origin:left;animation:filo 1.3s cubic-bezier(.16,1,.3,1) .3s both"></div>
+    <p style="margin:clamp(24px,3vw,36px) 0 0;max-width:60ch;font-weight:400;font-size:clamp(16px,1.5vw,22px);line-height:1.55;color:var(--t2);text-wrap:pretty;animation:sali 1s cubic-bezier(.16,1,.3,1) .38s both">Something new comes out every week. I read the benchmarks again instead of inheriting last year’s choice: intelligence index, cost per task, coding agents index.</p>
+  </div>
+</section>
+
+<section data-screen-label="Che cosa sto leggendo" style="background:var(--sup1);border-top:1px solid var(--filo1);border-bottom:1px solid var(--filo1);padding:clamp(56px,8vw,120px) 0">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <article data-lift data-reveal style="border:1px solid var(--filo1);background:linear-gradient(180deg,var(--sup2),var(--sup1));display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:clamp(24px,4vw,72px);padding:clamp(28px,3.6vw,56px)">
+      <div>
+        <p style="margin:0 0 clamp(20px,2.4vw,32px);font-weight:500;font-size:clamp(40px,5vw,72px);line-height:1;letter-spacing:-.05em;color:var(--acc);font-variant-numeric:tabular-nums">01</p>
+        <h2 style="margin:0 0 20px;font-weight:500;font-size:clamp(26px,3.2vw,42px);line-height:1.05;letter-spacing:-.035em;color:var(--t1);text-wrap:pretty">What I’m reading</h2>
+        <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty">Artificial Analysis publishes independent indices. The intelligence index is a composite: nine weighted evaluations, not a single exam. The version matters, because the numbers from one version to the next are not comparable.</p>
+      </div>
+      <div style="align-self:center">
+          <div data-riga style="display:grid;grid-template-columns:minmax(90px,140px) 1fr;gap:clamp(16px,2vw,32px);padding:16px 12px;border-top:1px solid var(--filo1)"><span data-num style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">Index</span><span style="font-size:15.5px;line-height:1.5;color:var(--t1)">Intelligence Index v4.1.1 &#183; 9 evaluations</span></div>
+          <div data-riga style="display:grid;grid-template-columns:minmax(90px,140px) 1fr;gap:clamp(16px,2vw,32px);padding:16px 12px;border-top:1px solid var(--filo1)"><span data-num style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">Inside</span><span style="font-size:15.5px;line-height:1.5;color:var(--t1)">GDPval-AA v2, τ³-Banking, Terminal-Bench v2.1, SciCode, HLE, GPQA Diamond, CritPt, AA-Omniscience, AA-LCR</span></div>
+          <div data-riga style="display:grid;grid-template-columns:minmax(90px,140px) 1fr;gap:clamp(16px,2vw,32px);padding:16px 12px;border-top:1px solid var(--filo1)"><span data-num style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">Coverage</span><span style="font-size:15.5px;line-height:1.5;color:var(--t1)">611 models surveyed, 164 in the ranking</span></div>
+          <div data-riga style="display:grid;grid-template-columns:minmax(90px,140px) 1fr;gap:clamp(16px,2vw,32px);padding:16px 12px;border-top:1px solid var(--filo1);border-bottom:1px solid var(--filo1)"><span data-num style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">Read on</span><span style="font-size:15.5px;line-height:1.5;color:var(--t1)">21 August 2026</span></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section data-screen-label="Indice di intelligenza" style="padding:clamp(56px,8vw,120px) 0">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:clamp(28px,4vw,64px);align-items:end;margin-bottom:clamp(28px,3.4vw,44px)" data-reveal>
+      <div><h2 style="margin:0 0 20px;font-weight:500;font-size:clamp(26px,3.2vw,42px);line-height:1.05;letter-spacing:-.035em;color:var(--t1);text-wrap:pretty;margin-bottom:0">Intelligence index</h2></div>
+      <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty">In red, the models I use or am weighing up for client work. Next to the score, the index’s average cost per task: two numbers to be read together, never one alone.</p>
+    </div>
+    <div data-reveal style="border:1px solid var(--filo1);background:linear-gradient(180deg,var(--sup2),var(--sup1));padding:clamp(20px,2.6vw,34px)">
+      <div style="display:flex;justify-content:space-between;gap:16px;padding-bottom:14px;font:400 10.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t3)"><span>MODEL</span><span>INDEX &#183; COST/TASK</span></div>
+      <div style="display:grid;grid-template-columns:minmax(140px,230px) 1fr auto;gap:clamp(12px,1.6vw,22px);align-items:center;padding:9px 0;border-top:1px solid var(--filo1)">
+        <span data-etichetta style="font:400 12.5px 'JetBrains Mono',monospace;color:var(--t1);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Claude Opus 5 (max)</span>
+        <span style="position:relative;display:block;height:9px;background:var(--filo1)"><i style="position:absolute;top:0;bottom:0;left:0;width:90.0%;background:var(--acc);box-shadow:0 0 18px var(--acc-tenue)"></i></span>
+        <span style="font:500 13px 'JetBrains Mono',monospace;color:var(--t1);font-variant-numeric:tabular-nums;min-width:74px;text-align:right">63<span style="color:var(--t3)"> · $2,34</span></span>
+      </div><div style="display:grid;grid-template-columns:minmax(140px,230px) 1fr auto;gap:clamp(12px,1.6vw,22px);align-items:center;padding:9px 0;border-top:1px solid var(--filo1)">
+        <span data-etichetta style="font:400 12.5px 'JetBrains Mono',monospace;color:var(--t1);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Claude Opus 5 (xhigh)</span>
+        <span style="position:relative;display:block;height:9px;background:var(--filo1)"><i style="position:absolute;top:0;bottom:0;left:0;width:90.0%;background:var(--acc);box-shadow:0 0 18px var(--acc-tenue)"></i></span>
+        <span style="font:500 13px 'JetBrains Mono',monospace;color:var(--t1);font-variant-numeric:tabular-nums;min-width:74px;text-align:right">63<span style="color:var(--t3)"> · $1,80</span></span>
+      </div><div style="display:grid;grid-template-columns:minmax(140px,230px) 1fr auto;gap:clamp(12px,1.6vw,22px);align-items:center;padding:9px 0;border-top:1px solid var(--filo1)">
+        <span data-etichetta style="font:400 12.5px 'JetBrains Mono',monospace;color:var(--t2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Claude Fable 5 (fallback)</span>
+        <span style="position:relative;display:block;height:9px;background:var(--filo1)"><i style="position:absolute;top:0;bottom:0;left:0;width:88.6%;background:var(--t3);"></i></span>
+        <span style="font:500 13px 'JetBrains Mono',monospace;color:var(--t1);font-variant-numeric:tabular-nums;min-width:74px;text-align:right">62<span style="color:var(--t3)"> · $3,14</span></span>
+      </div><div style="display:grid;grid-template-columns:minmax(140px,230px) 1fr auto;gap:clamp(12px,1.6vw,22px);align-items:center;padding:9px 0;border-top:1px solid var(--filo1)">
+        <span data-etichetta style="font:400 12.5px 'JetBrains Mono',monospace;color:var(--t1);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Claude Opus 5 (high)</span>
+        <span style="position:relative;display:block;height:9px;background:var(--filo1)"><i style="position:absolute;top:0;bottom:0;left:0;width:87.1%;background:var(--acc);box-shadow:0 0 18px var(--acc-tenue)"></i></span>
+        <span style="font:500 13px 'JetBrains Mono',monospace;color:var(--t1);font-variant-numeric:tabular-nums;min-width:74px;text-align:right">61<span style="color:var(--t3)"> · $1,23</span></span>
+      </div><div style="display:grid;grid-template-columns:minmax(140px,230px) 1fr auto;gap:clamp(12px,1.6vw,22px);align-items:center;padding:9px 0;border-top:1px solid var(--filo1)">
+        <span data-etichetta style="font:400 12.5px 'JetBrains Mono',monospace;color:var(--t1);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">GPT-5.6 Sol (max)</span>
+        <span style="position:relative;display:block;height:9px;background:var(--filo1)"><i style="position:absolute;top:0;bottom:0;left:0;width:87.1%;background:var(--acc);box-shadow:0 0 18px var(--acc-tenue)"></i></span>
+        <span style="font:500 13px 'JetBrains Mono',monospace;color:var(--t1);font-variant-numeric:tabular-nums;min-width:74px;text-align:right">61<span style="color:var(--t3)"> · $1,23</span></span>
+      </div><div style="display:grid;grid-template-columns:minmax(140px,230px) 1fr auto;gap:clamp(12px,1.6vw,22px);align-items:center;padding:9px 0;border-top:1px solid var(--filo1)">
+        <span data-etichetta style="font:400 12.5px 'JetBrains Mono',monospace;color:var(--t2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Grok 4.6 (high)</span>
+        <span style="position:relative;display:block;height:9px;background:var(--filo1)"><i style="position:absolute;top:0;bottom:0;left:0;width:87.1%;background:var(--t3);"></i></span>
+        <span style="font:500 13px 'JetBrains Mono',monospace;color:var(--t1);font-variant-numeric:tabular-nums;min-width:74px;text-align:right">61<span style="color:var(--t3)"> · $0,84</span></span>
+      </div><div style="display:grid;grid-template-columns:minmax(140px,230px) 1fr auto;gap:clamp(12px,1.6vw,22px);align-items:center;padding:9px 0;border-top:1px solid var(--filo1)">
+        <span data-etichetta style="font:400 12.5px 'JetBrains Mono',monospace;color:var(--t1);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Kimi K3 (max)</span>
+        <span style="position:relative;display:block;height:9px;background:var(--filo1)"><i style="position:absolute;top:0;bottom:0;left:0;width:85.7%;background:var(--acc);box-shadow:0 0 18px var(--acc-tenue)"></i></span>
+        <span style="font:500 13px 'JetBrains Mono',monospace;color:var(--t1);font-variant-numeric:tabular-nums;min-width:74px;text-align:right">60<span style="color:var(--t3)"> · $0,84</span></span>
+      </div><div style="display:grid;grid-template-columns:minmax(140px,230px) 1fr auto;gap:clamp(12px,1.6vw,22px);align-items:center;padding:9px 0;border-top:1px solid var(--filo1)">
+        <span data-etichetta style="font:400 12.5px 'JetBrains Mono',monospace;color:var(--t2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">GLM-5.3 (max)</span>
+        <span style="position:relative;display:block;height:9px;background:var(--filo1)"><i style="position:absolute;top:0;bottom:0;left:0;width:85.7%;background:var(--t3);"></i></span>
+        <span style="font:500 13px 'JetBrains Mono',monospace;color:var(--t1);font-variant-numeric:tabular-nums;min-width:74px;text-align:right">60<span style="color:var(--t3)"> · $0,68</span></span>
+      </div><div style="display:grid;grid-template-columns:minmax(140px,230px) 1fr auto;gap:clamp(12px,1.6vw,22px);align-items:center;padding:9px 0;border-top:1px solid var(--filo1)">
+        <span data-etichetta style="font:400 12.5px 'JetBrains Mono',monospace;color:var(--t1);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Qwen3.8 2.4T A95B</span>
+        <span style="position:relative;display:block;height:9px;background:var(--filo1)"><i style="position:absolute;top:0;bottom:0;left:0;width:82.9%;background:var(--acc);box-shadow:0 0 18px var(--acc-tenue)"></i></span>
+        <span style="font:500 13px 'JetBrains Mono',monospace;color:var(--t1);font-variant-numeric:tabular-nums;min-width:74px;text-align:right">58<span style="color:var(--t3)"> · $1,09</span></span>
+      </div><div style="display:grid;grid-template-columns:minmax(140px,230px) 1fr auto;gap:clamp(12px,1.6vw,22px);align-items:center;padding:9px 0;border-top:1px solid var(--filo1)">
+        <span data-etichetta style="font:400 12.5px 'JetBrains Mono',monospace;color:var(--t1);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">GPT-5.6 Sol (high)</span>
+        <span style="position:relative;display:block;height:9px;background:var(--filo1)"><i style="position:absolute;top:0;bottom:0;left:0;width:81.4%;background:var(--acc);box-shadow:0 0 18px var(--acc-tenue)"></i></span>
+        <span style="font:500 13px 'JetBrains Mono',monospace;color:var(--t1);font-variant-numeric:tabular-nums;min-width:74px;text-align:right">57<span style="color:var(--t3)"> · $0,55</span></span>
+      </div><div style="display:grid;grid-template-columns:minmax(140px,230px) 1fr auto;gap:clamp(12px,1.6vw,22px);align-items:center;padding:9px 0;border-top:1px solid var(--filo1)">
+        <span data-etichetta style="font:400 12.5px 'JetBrains Mono',monospace;color:var(--t1);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Gemini 3.7 Flash (high)</span>
+        <span style="position:relative;display:block;height:9px;background:var(--filo1)"><i style="position:absolute;top:0;bottom:0;left:0;width:80.0%;background:var(--acc);box-shadow:0 0 18px var(--acc-tenue)"></i></span>
+        <span style="font:500 13px 'JetBrains Mono',monospace;color:var(--t1);font-variant-numeric:tabular-nums;min-width:74px;text-align:right">56<span style="color:var(--t3)"> · $0,40</span></span>
+      </div><div style="display:grid;grid-template-columns:minmax(140px,230px) 1fr auto;gap:clamp(12px,1.6vw,22px);align-items:center;padding:9px 0;border-top:1px solid var(--filo1)">
+        <span data-etichetta style="font:400 12.5px 'JetBrains Mono',monospace;color:var(--t1);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">DeepSeek V4 Pro (max)</span>
+        <span style="position:relative;display:block;height:9px;background:var(--filo1)"><i style="position:absolute;top:0;bottom:0;left:0;width:75.7%;background:var(--acc);box-shadow:0 0 18px var(--acc-tenue)"></i></span>
+        <span style="font:500 13px 'JetBrains Mono',monospace;color:var(--t1);font-variant-numeric:tabular-nums;min-width:74px;text-align:right">53<span style="color:var(--t3)"> · $0,25</span></span>
+      </div><div style="display:grid;grid-template-columns:minmax(140px,230px) 1fr auto;gap:clamp(12px,1.6vw,22px);align-items:center;padding:9px 0;border-top:1px solid var(--filo1)">
+        <span data-etichetta style="font:400 12.5px 'JetBrains Mono',monospace;color:var(--t2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">GPT-5.6 Luna (max)</span>
+        <span style="position:relative;display:block;height:9px;background:var(--filo1)"><i style="position:absolute;top:0;bottom:0;left:0;width:74.3%;background:var(--t3);"></i></span>
+        <span style="font:500 13px 'JetBrains Mono',monospace;color:var(--t1);font-variant-numeric:tabular-nums;min-width:74px;text-align:right">52<span style="color:var(--t3)"> · $0,05</span></span>
+      </div><div style="display:grid;grid-template-columns:minmax(140px,230px) 1fr auto;gap:clamp(12px,1.6vw,22px);align-items:center;padding:9px 0;border-top:1px solid var(--filo1)">
+        <span data-etichetta style="font:400 12.5px 'JetBrains Mono',monospace;color:var(--t1);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Qwen3.6 27B</span>
+        <span style="position:relative;display:block;height:9px;background:var(--filo1)"><i style="position:absolute;top:0;bottom:0;left:0;width:54.3%;background:var(--acc);box-shadow:0 0 18px var(--acc-tenue)"></i></span>
+        <span style="font:500 13px 'JetBrains Mono',monospace;color:var(--t1);font-variant-numeric:tabular-nums;min-width:74px;text-align:right">38<span style="color:var(--t3)"> · $0,29</span></span>
+      </div><div style="display:grid;grid-template-columns:minmax(140px,230px) 1fr auto;gap:clamp(12px,1.6vw,22px);align-items:center;padding:9px 0;border-top:1px solid var(--filo1)">
+        <span data-etichetta style="font:400 12.5px 'JetBrains Mono',monospace;color:var(--t2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Mistral Medium 3.5</span>
+        <span style="position:relative;display:block;height:9px;background:var(--filo1)"><i style="position:absolute;top:0;bottom:0;left:0;width:42.9%;background:var(--t3);"></i></span>
+        <span style="font:500 13px 'JetBrains Mono',monospace;color:var(--t1);font-variant-numeric:tabular-nums;min-width:74px;text-align:right">30<span style="color:var(--t3)"> · $0,46</span></span>
+      </div><div style="display:grid;grid-template-columns:minmax(140px,230px) 1fr auto;gap:clamp(12px,1.6vw,22px);align-items:center;padding:9px 0;border-top:1px solid var(--filo1)">
+        <span data-etichetta style="font:400 12.5px 'JetBrains Mono',monospace;color:var(--t1);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">gpt-oss-120b (high)</span>
+        <span style="position:relative;display:block;height:9px;background:var(--filo1)"><i style="position:absolute;top:0;bottom:0;left:0;width:34.3%;background:var(--acc);box-shadow:0 0 18px var(--acc-tenue)"></i></span>
+        <span style="font:500 13px 'JetBrains Mono',monospace;color:var(--t1);font-variant-numeric:tabular-nums;min-width:74px;text-align:right">24<span style="color:var(--t3)"> · $0,07</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Intelligenza per euro speso" style="padding:clamp(56px,8vw,120px) 0">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:clamp(28px,4vw,64px);align-items:end;margin-bottom:clamp(28px,3.4vw,44px)" data-reveal>
+      <div><h2 style="margin:0 0 20px;font-weight:500;font-size:clamp(26px,3.2vw,42px);line-height:1.05;letter-spacing:-.035em;color:var(--t1);text-wrap:pretty;margin-bottom:0">Intelligence per euro spent</h2></div>
+      <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty">Every dot is a model. Bottom left, you spend little and get little. Top right, you get a lot and spend a lot. The dashed line joins the models that, at that cost, nobody beats: that is where the choice is made.</p>
+    </div>
+    <div data-reveal style="border:1px solid var(--filo1);background:linear-gradient(180deg,var(--sup2),var(--sup1));padding:clamp(18px,2.2vw,30px)">
+      <svg viewBox="0 0 1040 720" style="width:100%;height:auto;display:block" role="img" aria-label="Intelligence per euro spent">
+        <line x1="76.0" y1="30" x2="76.0" y2="654" stroke="var(--filo1)" stroke-width="1"/><text x="76.0" y="678" fill="var(--t3)" font-family="JetBrains Mono, monospace" font-size="12" text-anchor="middle">$0,03</text><line x1="168.9" y1="30" x2="168.9" y2="654" stroke="var(--filo1)" stroke-width="1"/><text x="168.9" y="678" fill="var(--t3)" font-family="JetBrains Mono, monospace" font-size="12" text-anchor="middle">$0,05</text><line x1="294.9" y1="30" x2="294.9" y2="654" stroke="var(--filo1)" stroke-width="1"/><text x="294.9" y="678" fill="var(--t3)" font-family="JetBrains Mono, monospace" font-size="12" text-anchor="middle">$0,10</text><line x1="461.4" y1="30" x2="461.4" y2="654" stroke="var(--filo1)" stroke-width="1"/><text x="461.4" y="678" fill="var(--t3)" font-family="JetBrains Mono, monospace" font-size="12" text-anchor="middle">$0,25</text><line x1="587.4" y1="30" x2="587.4" y2="654" stroke="var(--filo1)" stroke-width="1"/><text x="587.4" y="678" fill="var(--t3)" font-family="JetBrains Mono, monospace" font-size="12" text-anchor="middle">$0,50</text><line x1="713.4" y1="30" x2="713.4" y2="654" stroke="var(--filo1)" stroke-width="1"/><text x="713.4" y="678" fill="var(--t3)" font-family="JetBrains Mono, monospace" font-size="12" text-anchor="middle">$1</text><line x1="839.4" y1="30" x2="839.4" y2="654" stroke="var(--filo1)" stroke-width="1"/><text x="839.4" y="678" fill="var(--t3)" font-family="JetBrains Mono, monospace" font-size="12" text-anchor="middle">$2</text><line x1="1006.0" y1="30" x2="1006.0" y2="654" stroke="var(--filo1)" stroke-width="1"/><text x="1006.0" y="678" fill="var(--t3)" font-family="JetBrains Mono, monospace" font-size="12" text-anchor="middle">$5</text><line x1="76" y1="654.0" x2="1006" y2="654.0" stroke="var(--filo1)" stroke-width="1"/><text x="62" y="658.0" fill="var(--t3)" font-family="JetBrains Mono, monospace" font-size="12" text-anchor="end">20</text><line x1="76" y1="518.3" x2="1006" y2="518.3" stroke="var(--filo1)" stroke-width="1"/><text x="62" y="522.3" fill="var(--t3)" font-family="JetBrains Mono, monospace" font-size="12" text-anchor="end">30</text><line x1="76" y1="382.7" x2="1006" y2="382.7" stroke="var(--filo1)" stroke-width="1"/><text x="62" y="386.7" fill="var(--t3)" font-family="JetBrains Mono, monospace" font-size="12" text-anchor="end">40</text><line x1="76" y1="247.0" x2="1006" y2="247.0" stroke="var(--filo1)" stroke-width="1"/><text x="62" y="251.0" fill="var(--t3)" font-family="JetBrains Mono, monospace" font-size="12" text-anchor="end">50</text><line x1="76" y1="111.4" x2="1006" y2="111.4" stroke="var(--filo1)" stroke-width="1"/><text x="62" y="115.4" fill="var(--t3)" font-family="JetBrains Mono, monospace" font-size="12" text-anchor="end">60</text><polyline points="168.9,219.9 461.4,206.3 546.9,165.7 604.8,152.1 643.3,111.4 681.7,97.8 820.3,70.7" fill="none" stroke="var(--acc)" stroke-width="1.5" stroke-dasharray="5 5" opacity=".7"/><g><circle cx="868.0" cy="70.7" r="6" fill="var(--acc)" stroke="var(--sup1)" stroke-width="2"/><text x="882.0" y="70.7" fill="var(--t1)" font-family="JetBrains Mono, monospace" font-size="12.5" text-anchor="start" paint-order="stroke" stroke="var(--sup1)" stroke-width="4" stroke-linejoin="round">Opus 5 (max)</text></g><g><circle cx="820.3" cy="70.7" r="6" fill="var(--acc)" stroke="var(--sup1)" stroke-width="2"/><text x="806.3" y="70.7" fill="var(--t1)" font-family="JetBrains Mono, monospace" font-size="12.5" text-anchor="end" paint-order="stroke" stroke="var(--sup1)" stroke-width="4" stroke-linejoin="round">Opus 5 (xhigh)</text></g><g><line x1="927.0" y1="84.3" x2="933.3" y2="87.7" stroke="var(--filo2)" stroke-width="1"/><circle cx="921.4" cy="84.3" r="4.5" fill="var(--t3)" stroke="var(--sup1)" stroke-width="1.5"/><text x="935.4" y="91.7" fill="var(--t2)" font-family="JetBrains Mono, monospace" font-size="12.5" text-anchor="start" paint-order="stroke" stroke="var(--sup1)" stroke-width="4" stroke-linejoin="round">Fable 5</text></g><g><circle cx="751.1" cy="97.8" r="6" fill="var(--acc)" stroke="var(--sup1)" stroke-width="2"/><text x="737.1" y="97.8" fill="var(--t1)" font-family="JetBrains Mono, monospace" font-size="12.5" text-anchor="end" paint-order="stroke" stroke="var(--sup1)" stroke-width="4" stroke-linejoin="round">Opus 5 (high)</text></g><g><line x1="756.7" y1="97.8" x2="763.0" y2="108.7" stroke="var(--filo2)" stroke-width="1"/><circle cx="751.1" cy="97.8" r="6" fill="var(--acc)" stroke="var(--sup1)" stroke-width="2"/><text x="765.1" y="112.7" fill="var(--t1)" font-family="JetBrains Mono, monospace" font-size="12.5" text-anchor="start" paint-order="stroke" stroke="var(--sup1)" stroke-width="4" stroke-linejoin="round">GPT-5.6 Sol (max)</text></g><g><line x1="676.1" y1="97.8" x2="669.8" y2="114.8" stroke="var(--filo2)" stroke-width="1"/><circle cx="681.7" cy="97.8" r="4.5" fill="var(--t3)" stroke="var(--sup1)" stroke-width="1.5"/><text x="667.7" y="118.8" fill="var(--t2)" font-family="JetBrains Mono, monospace" font-size="12.5" text-anchor="end" paint-order="stroke" stroke="var(--sup1)" stroke-width="4" stroke-linejoin="round">Grok 4.6</text></g><g><line x1="687.3" y1="111.4" x2="693.6" y2="129.7" stroke="var(--filo2)" stroke-width="1"/><circle cx="681.7" cy="111.4" r="6" fill="var(--acc)" stroke="var(--sup1)" stroke-width="2"/><text x="695.7" y="133.7" fill="var(--t1)" font-family="JetBrains Mono, monospace" font-size="12.5" text-anchor="start" paint-order="stroke" stroke="var(--sup1)" stroke-width="4" stroke-linejoin="round">Kimi K3 (max)</text></g><g><line x1="637.7" y1="111.4" x2="631.4" y2="135.8" stroke="var(--filo2)" stroke-width="1"/><circle cx="643.3" cy="111.4" r="4.5" fill="var(--t3)" stroke="var(--sup1)" stroke-width="1.5"/><text x="629.3" y="139.8" fill="var(--t2)" font-family="JetBrains Mono, monospace" font-size="12.5" text-anchor="end" paint-order="stroke" stroke="var(--sup1)" stroke-width="4" stroke-linejoin="round">GLM-5.3</text></g><g><line x1="734.7" y1="138.5" x2="741.0" y2="150.7" stroke="var(--filo2)" stroke-width="1"/><circle cx="729.1" cy="138.5" r="6" fill="var(--acc)" stroke="var(--sup1)" stroke-width="2"/><text x="743.1" y="154.7" fill="var(--t1)" font-family="JetBrains Mono, monospace" font-size="12.5" text-anchor="start" paint-order="stroke" stroke="var(--sup1)" stroke-width="4" stroke-linejoin="round">Qwen3.8 2.4T</text></g><g><line x1="599.2" y1="152.1" x2="592.9" y2="156.8" stroke="var(--filo2)" stroke-width="1"/><circle cx="604.8" cy="152.1" r="6" fill="var(--acc)" stroke="var(--sup1)" stroke-width="2"/><text x="590.8" y="160.8" fill="var(--t1)" font-family="JetBrains Mono, monospace" font-size="12.5" text-anchor="end" paint-order="stroke" stroke="var(--sup1)" stroke-width="4" stroke-linejoin="round">GPT-5.6 Sol (high)</text></g><g><line x1="552.5" y1="165.7" x2="558.8" y2="171.7" stroke="var(--filo2)" stroke-width="1"/><circle cx="546.9" cy="165.7" r="6" fill="var(--acc)" stroke="var(--sup1)" stroke-width="2"/><text x="560.9" y="175.7" fill="var(--t1)" font-family="JetBrains Mono, monospace" font-size="12.5" text-anchor="start" paint-order="stroke" stroke="var(--sup1)" stroke-width="4" stroke-linejoin="round">Gemini 3.7 Flash</text></g><g><circle cx="461.4" cy="206.3" r="6" fill="var(--acc)" stroke="var(--sup1)" stroke-width="2"/><text x="447.4" y="206.3" fill="var(--t1)" font-family="JetBrains Mono, monospace" font-size="12.5" text-anchor="end" paint-order="stroke" stroke="var(--sup1)" stroke-width="4" stroke-linejoin="round">DeepSeek V4 Pro</text></g><g><circle cx="168.9" cy="219.9" r="4.5" fill="var(--t3)" stroke="var(--sup1)" stroke-width="1.5"/><text x="182.9" y="219.9" fill="var(--t2)" font-family="JetBrains Mono, monospace" font-size="12.5" text-anchor="start" paint-order="stroke" stroke="var(--sup1)" stroke-width="4" stroke-linejoin="round">GPT-5.6 Luna (max)</text></g><g><circle cx="488.4" cy="409.8" r="6" fill="var(--acc)" stroke="var(--sup1)" stroke-width="2"/><text x="502.4" y="409.8" fill="var(--t1)" font-family="JetBrains Mono, monospace" font-size="12.5" text-anchor="start" paint-order="stroke" stroke="var(--sup1)" stroke-width="4" stroke-linejoin="round">Qwen3.6 27B</text></g><g><circle cx="572.3" cy="518.3" r="4.5" fill="var(--t3)" stroke="var(--sup1)" stroke-width="1.5"/><text x="586.3" y="518.3" fill="var(--t2)" font-family="JetBrains Mono, monospace" font-size="12.5" text-anchor="start" paint-order="stroke" stroke="var(--sup1)" stroke-width="4" stroke-linejoin="round">Mistral Medium 3.5</text></g><g><circle cx="230.0" cy="599.7" r="6" fill="var(--acc)" stroke="var(--sup1)" stroke-width="2"/><text x="244.0" y="599.7" fill="var(--t1)" font-family="JetBrains Mono, monospace" font-size="12.5" text-anchor="start" paint-order="stroke" stroke="var(--sup1)" stroke-width="4" stroke-linejoin="round">gpt-oss-120b</text></g>
+        <text x="76" y="704" fill="var(--t3)" font-family="JetBrains Mono, monospace" font-size="12">COST PER TASK (USD, LOGARITHMIC SCALE) &#8594;</text>
+        <text x="36" y="40" fill="var(--t3)" font-family="JetBrains Mono, monospace" font-size="12" transform="rotate(-90 36 40)" text-anchor="end">&#8592; INTELLIGENCE INDEX</text>
+      </svg>
+      <p style="margin:14px 4px 0;font:400 11.5px 'JetBrains Mono',monospace;letter-spacing:.05em;color:var(--t3)"><a href="https://artificialanalysis.ai/leaderboards/models" target="_blank" rel="noopener" style="color:var(--t2);border-bottom:1px solid var(--filo2)">Artificial Analysis</a>, Intelligence Index v4.1.1 and average cost per task &#183; read on 21 August 2026 &#183; logarithmic horizontal scale</p>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Agenti di codice" style="background:var(--sup1);border-top:1px solid var(--filo1);border-bottom:1px solid var(--filo1);padding:clamp(56px,8vw,120px) 0">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:clamp(28px,4vw,64px);align-items:end;margin-bottom:clamp(28px,3.4vw,44px)" data-reveal>
+      <div><h2 style="margin:0 0 20px;font-weight:500;font-size:clamp(26px,3.2vw,42px);line-height:1.05;letter-spacing:-.035em;color:var(--t1);text-wrap:pretty;margin-bottom:0">Coding agents</h2></div>
+      <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty">A separate index: it does not measure the model on its own, it measures the agent plus model pair on software engineering tasks carried through to the end. It is the measure that counts when an agent works inside a repository.</p>
+    </div>
+    <div data-reveal style="border:1px solid var(--filo1);background:linear-gradient(180deg,var(--sup2),var(--sup1));padding:clamp(20px,2.6vw,34px)">
+      <div style="display:flex;justify-content:space-between;gap:16px;padding-bottom:14px;font:400 10.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t3)"><span>AGENT + MODEL</span><span>INDEX v1.4 &#183; COST PER TASK</span></div>
+      <div style="display:grid;grid-template-columns:minmax(140px,230px) 1fr auto;gap:clamp(12px,1.6vw,22px);align-items:center;padding:9px 0;border-top:1px solid var(--filo1)">
+        <span data-etichetta style="font:400 12.5px 'JetBrains Mono',monospace;color:var(--t1);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Claude Code &#183; Opus 5 (xhigh)</span>
+        <span style="position:relative;display:block;height:9px;background:var(--filo1)"><i style="position:absolute;top:0;bottom:0;left:0;width:90.8%;background:var(--acc);box-shadow:0 0 18px var(--acc-tenue)"></i></span>
+        <span style="font:500 13px 'JetBrains Mono',monospace;color:var(--t1);font-variant-numeric:tabular-nums;min-width:74px;text-align:right">68.1<span style="color:var(--t3)"> · $8,17</span></span>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(140px,230px) 1fr auto;gap:clamp(12px,1.6vw,22px);align-items:center;padding:9px 0;border-top:1px solid var(--filo1)">
+        <span data-etichetta style="font:400 12.5px 'JetBrains Mono',monospace;color:var(--t2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Claude Code &#183; Fable 5 (with reservations)</span>
+        <span style="position:relative;display:block;height:9px;background:var(--filo1)"><i style="position:absolute;top:0;bottom:0;left:0;width:89.6%;background:var(--t3);"></i></span>
+        <span style="font:500 13px 'JetBrains Mono',monospace;color:var(--t1);font-variant-numeric:tabular-nums;min-width:74px;text-align:right">67.2<span style="color:var(--t3)"> · $11,69</span></span>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(140px,230px) 1fr auto;gap:clamp(12px,1.6vw,22px);align-items:center;padding:9px 0;border-top:1px solid var(--filo1)">
+        <span data-etichetta style="font:400 12.5px 'JetBrains Mono',monospace;color:var(--t1);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Claude Code &#183; Opus 5 (max)</span>
+        <span style="position:relative;display:block;height:9px;background:var(--filo1)"><i style="position:absolute;top:0;bottom:0;left:0;width:89.3%;background:var(--acc);box-shadow:0 0 18px var(--acc-tenue)"></i></span>
+        <span style="font:500 13px 'JetBrains Mono',monospace;color:var(--t1);font-variant-numeric:tabular-nums;min-width:74px;text-align:right">67.0<span style="color:var(--t3)"> · $8,94</span></span>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(140px,230px) 1fr auto;gap:clamp(12px,1.6vw,22px);align-items:center;padding:9px 0;border-top:1px solid var(--filo1)">
+        <span data-etichetta style="font:400 12.5px 'JetBrains Mono',monospace;color:var(--t1);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Claude Code &#183; Opus 5 (high)</span>
+        <span style="position:relative;display:block;height:9px;background:var(--filo1)"><i style="position:absolute;top:0;bottom:0;left:0;width:87.5%;background:var(--acc);box-shadow:0 0 18px var(--acc-tenue)"></i></span>
+        <span style="font:500 13px 'JetBrains Mono',monospace;color:var(--t1);font-variant-numeric:tabular-nums;min-width:74px;text-align:right">65.6<span style="color:var(--t3)"> · $3,92</span></span>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(140px,230px) 1fr auto;gap:clamp(12px,1.6vw,22px);align-items:center;padding:9px 0;border-top:1px solid var(--filo1)">
+        <span data-etichetta style="font:400 12.5px 'JetBrains Mono',monospace;color:var(--t1);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Codex &#183; GPT-5.6 Sol (max)</span>
+        <span style="position:relative;display:block;height:9px;background:var(--filo1)"><i style="position:absolute;top:0;bottom:0;left:0;width:86.8%;background:var(--acc);box-shadow:0 0 18px var(--acc-tenue)"></i></span>
+        <span style="font:500 13px 'JetBrains Mono',monospace;color:var(--t1);font-variant-numeric:tabular-nums;min-width:74px;text-align:right">65.1<span style="color:var(--t3)"> · $6,42</span></span>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(140px,230px) 1fr auto;gap:clamp(12px,1.6vw,22px);align-items:center;padding:9px 0;border-top:1px solid var(--filo1)">
+        <span data-etichetta style="font:400 12.5px 'JetBrains Mono',monospace;color:var(--t1);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Codex &#183; GPT-5.6 Sol (high)</span>
+        <span style="position:relative;display:block;height:9px;background:var(--filo1)"><i style="position:absolute;top:0;bottom:0;left:0;width:85.5%;background:var(--acc);box-shadow:0 0 18px var(--acc-tenue)"></i></span>
+        <span style="font:500 13px 'JetBrains Mono',monospace;color:var(--t1);font-variant-numeric:tabular-nums;min-width:74px;text-align:right">64.1<span style="color:var(--t3)"> · $3,85</span></span>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(140px,230px) 1fr auto;gap:clamp(12px,1.6vw,22px);align-items:center;padding:9px 0;border-top:1px solid var(--filo1)">
+        <span data-etichetta style="font:400 12.5px 'JetBrains Mono',monospace;color:var(--t2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Grok Build &#183; Grok 4.5 (high)</span>
+        <span style="position:relative;display:block;height:9px;background:var(--filo1)"><i style="position:absolute;top:0;bottom:0;left:0;width:85.5%;background:var(--t3);"></i></span>
+        <span style="font:500 13px 'JetBrains Mono',monospace;color:var(--t1);font-variant-numeric:tabular-nums;min-width:74px;text-align:right">64.1<span style="color:var(--t3)"> · $2,44</span></span>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(140px,230px) 1fr auto;gap:clamp(12px,1.6vw,22px);align-items:center;padding:9px 0;border-top:1px solid var(--filo1)">
+        <span data-etichetta style="font:400 12.5px 'JetBrains Mono',monospace;color:var(--t1);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Claude Code &#183; Opus 5 (medium)</span>
+        <span style="position:relative;display:block;height:9px;background:var(--filo1)"><i style="position:absolute;top:0;bottom:0;left:0;width:85.5%;background:var(--acc);box-shadow:0 0 18px var(--acc-tenue)"></i></span>
+        <span style="font:500 13px 'JetBrains Mono',monospace;color:var(--t1);font-variant-numeric:tabular-nums;min-width:74px;text-align:right">64.1<span style="color:var(--t3)"> · $3,17</span></span>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(140px,230px) 1fr auto;gap:clamp(12px,1.6vw,22px);align-items:center;padding:9px 0;border-top:1px solid var(--filo1)">
+        <span data-etichetta style="font:400 12.5px 'JetBrains Mono',monospace;color:var(--t1);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Kimi Code CLI &#183; Kimi K3</span>
+        <span style="position:relative;display:block;height:9px;background:var(--filo1)"><i style="position:absolute;top:0;bottom:0;left:0;width:83.5%;background:var(--acc);box-shadow:0 0 18px var(--acc-tenue)"></i></span>
+        <span style="font:500 13px 'JetBrains Mono',monospace;color:var(--t1);font-variant-numeric:tabular-nums;min-width:74px;text-align:right">62.6<span style="color:var(--t3)"> · $3,08</span></span>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(140px,230px) 1fr auto;gap:clamp(12px,1.6vw,22px);align-items:center;padding:9px 0;border-top:1px solid var(--filo1)">
+        <span data-etichetta style="font:400 12.5px 'JetBrains Mono',monospace;color:var(--t2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Muse Code &#183; Muse Spark 1.2 (xhigh)</span>
+        <span style="position:relative;display:block;height:9px;background:var(--filo1)"><i style="position:absolute;top:0;bottom:0;left:0;width:82.1%;background:var(--t3);"></i></span>
+        <span style="font:500 13px 'JetBrains Mono',monospace;color:var(--t1);font-variant-numeric:tabular-nums;min-width:74px;text-align:right">61.6<span style="color:var(--t3)"> · $2,07</span></span>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(140px,230px) 1fr auto;gap:clamp(12px,1.6vw,22px);align-items:center;padding:9px 0;border-top:1px solid var(--filo1)">
+        <span data-etichetta style="font:400 12.5px 'JetBrains Mono',monospace;color:var(--t1);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Opencode &#183; Gemini 3.7 Flash (high)</span>
+        <span style="position:relative;display:block;height:9px;background:var(--filo1)"><i style="position:absolute;top:0;bottom:0;left:0;width:79.5%;background:var(--acc);box-shadow:0 0 18px var(--acc-tenue)"></i></span>
+        <span style="font:500 13px 'JetBrains Mono',monospace;color:var(--t1);font-variant-numeric:tabular-nums;min-width:74px;text-align:right">59.6<span style="color:var(--t3)"> · $1,27</span></span>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(140px,230px) 1fr auto;gap:clamp(12px,1.6vw,22px);align-items:center;padding:9px 0;border-top:1px solid var(--filo1)">
+        <span data-etichetta style="font:400 12.5px 'JetBrains Mono',monospace;color:var(--t2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Antigravity SDK &#183; Gemini 3.7 Flash (high)</span>
+        <span style="position:relative;display:block;height:9px;background:var(--filo1)"><i style="position:absolute;top:0;bottom:0;left:0;width:75.5%;background:var(--t3);"></i></span>
+        <span style="font:500 13px 'JetBrains Mono',monospace;color:var(--t1);font-variant-numeric:tabular-nums;min-width:74px;text-align:right">56.6<span style="color:var(--t3)"> · $1,40</span></span>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(140px,230px) 1fr auto;gap:clamp(12px,1.6vw,22px);align-items:center;padding:9px 0;border-top:1px solid var(--filo1)">
+        <span data-etichetta style="font:400 12.5px 'JetBrains Mono',monospace;color:var(--t1);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Codex &#183; DeepSeek V4 Flash 0731 (max)</span>
+        <span style="position:relative;display:block;height:9px;background:var(--filo1)"><i style="position:absolute;top:0;bottom:0;left:0;width:66.4%;background:var(--acc);box-shadow:0 0 18px var(--acc-tenue)"></i></span>
+        <span style="font:500 13px 'JetBrains Mono',monospace;color:var(--t1);font-variant-numeric:tabular-nums;min-width:74px;text-align:right">49.8<span style="color:var(--t3)"> · $0,06</span></span>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(140px,230px) 1fr auto;gap:clamp(12px,1.6vw,22px);align-items:center;padding:9px 0;border-top:1px solid var(--filo1)">
+        <span data-etichetta style="font:400 12.5px 'JetBrains Mono',monospace;color:var(--t2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Cursor CLI &#183; Composer 2.5</span>
+        <span style="position:relative;display:block;height:9px;background:var(--filo1)"><i style="position:absolute;top:0;bottom:0;left:0;width:51.1%;background:var(--t3);"></i></span>
+        <span style="font:500 13px 'JetBrains Mono',monospace;color:var(--t1);font-variant-numeric:tabular-nums;min-width:74px;text-align:right">38.3<span style="color:var(--t3)"> · $0,09</span></span>
+      </div>
+      <p style="margin:16px 2px 0;font:400 11.5px 'JetBrains Mono',monospace;letter-spacing:.05em;color:var(--t3)"><a href="https://artificialanalysis.ai/agents/coding-agents" target="_blank" rel="noopener" style="color:var(--t2);border-bottom:1px solid var(--filo2)">Artificial Analysis</a>, coding agents index v1.4 &#183; 14 rows out of the 55 in the ranking &#183; read on 21 August 2026 &#183; <a href="/assets/benchmark.json" style="color:var(--t2);border-bottom:1px solid var(--filo2)">the file with the numbers</a></p>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Come è costruito" style="padding:clamp(56px,8vw,120px) 0">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <article data-lift data-reveal style="border:1px solid var(--filo1);background:linear-gradient(180deg,var(--sup2),var(--sup1));display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:clamp(24px,4vw,72px);padding:clamp(28px,3.6vw,56px)">
+      <div>
+        <p style="margin:0 0 clamp(20px,2.4vw,32px);font-weight:500;font-size:clamp(40px,5vw,72px);line-height:1;letter-spacing:-.05em;color:var(--acc);font-variant-numeric:tabular-nums">02</p>
+        <h2 style="margin:0 0 20px;font-weight:500;font-size:clamp(26px,3.2vw,42px);line-height:1.05;letter-spacing:-.035em;color:var(--t1);text-wrap:pretty">How it is built</h2>
+        <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty">Three tests with equal weights, each with its own number of tasks. Every task is attempted three times, and what counts is how often it succeeds on the first try: one lucky attempt is not enough.</p>
+      </div>
+      <div style="align-self:center">
+          <div data-riga style="display:grid;grid-template-columns:minmax(90px,140px) 1fr;gap:clamp(16px,2vw,32px);padding:16px 12px;border-top:1px solid var(--filo1)"><span data-num style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">DeepSWE</span><span style="font-size:15.5px;line-height:1.5;color:var(--t1)">113 software engineering tasks</span></div>
+          <div data-riga style="display:grid;grid-template-columns:minmax(90px,140px) 1fr;gap:clamp(16px,2vw,32px);padding:16px 12px;border-top:1px solid var(--filo1)"><span data-num style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">Terminal-Bench v2.1</span><span style="font-size:15.5px;line-height:1.5;color:var(--t1)">89 terminal use tasks</span></div>
+          <div data-riga style="display:grid;grid-template-columns:minmax(90px,140px) 1fr;gap:clamp(16px,2vw,32px);padding:16px 12px;border-top:1px solid var(--filo1)"><span data-num style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">SWE-Atlas-QnA</span><span style="font-size:15.5px;line-height:1.5;color:var(--t1)">124 technical questions about code</span></div>
+          <div data-riga style="display:grid;grid-template-columns:minmax(90px,140px) 1fr;gap:clamp(16px,2vw,32px);padding:16px 12px;border-top:1px solid var(--filo1);border-bottom:1px solid var(--filo1)"><span data-num style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">Note</span><span style="font-size:15.5px;line-height:1.5;color:var(--t1)">In the ranking the top ten sit within 6,5 points: the distance between first and tenth is smaller than the price suggests</span></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section data-screen-label="Affermazione" style="background:var(--sup1);border-top:1px solid var(--acc);border-bottom:1px solid var(--filo1);padding:clamp(56px,8vw,120px) 0">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <p style="margin:0 0 clamp(20px,2.6vw,34px);font:500 11px 'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--acc)" data-reveal>The number that decides the quote</p>
+    <p style="margin:0;max-width:26ch;font-weight:500;font-size:clamp(28px,4.8vw,74px);line-height:1.02;letter-spacing:-.045em;text-wrap:pretty;color:var(--t1)" data-reveal>Between first and fourth place there&#8217;s a gap of two and a half points of index and, vis-&#224;-vis the leader, less than half the cost per task.</p>
+  </div>
+</section>
+
+<section data-screen-label="Prezzo per milione di token" style="background:var(--sup1);border-top:1px solid var(--filo1);border-bottom:1px solid var(--filo1);padding:clamp(56px,8vw,120px) 0">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:clamp(28px,4vw,64px);align-items:end;margin-bottom:clamp(32px,4vw,56px)" data-reveal>
+      <div>
+        <p style="margin:0 0 22px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);font-variant-numeric:tabular-nums">03</p>
+        <h2 style="margin:0 0 20px;font-weight:500;font-size:clamp(26px,3.2vw,42px);line-height:1.05;letter-spacing:-.035em;color:var(--t1);text-wrap:pretty;margin-bottom:0">Price per million tokens</h2>
+      </div>
+      <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty;max-width:44ch">The list price is not the cost: it changes with the cache, with the length of the context and with reasoning tokens. These are the items to look at separately.</p>
+    </div>
+    <div style="border-top:1px solid var(--filo2)" data-reveal role="table">
+      <div data-tabella style="display:grid;grid-template-columns:70px minmax(150px,1fr) 2fr;gap:clamp(16px,2.4vw,40px);padding:14px 12px;border-bottom:1px solid var(--filo1);font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">
+        <span>MODEL</span><span>INPUT</span><span>OUTPUT</span>
+      </div>
+      <div data-tabella data-riga style="display:grid;grid-template-columns:70px minmax(150px,1fr) 2fr;gap:clamp(16px,2.4vw,40px);padding:clamp(20px,2.4vw,30px) 12px;border-bottom:1px solid var(--filo1);align-items:baseline">
+        <span data-num style="font:500 12px 'JetBrains Mono',monospace;color:var(--t3);font-variant-numeric:tabular-nums">Claude Opus 5</span>
+        <span style="font-weight:500;font-size:clamp(17px,1.7vw,23px);letter-spacing:-.025em;color:var(--t1)">$5,00</span>
+        <span style="font-size:16px;line-height:1.55;color:var(--t2)">$25,00</span>
+      </div>
+      <div data-tabella data-riga style="display:grid;grid-template-columns:70px minmax(150px,1fr) 2fr;gap:clamp(16px,2.4vw,40px);padding:clamp(20px,2.4vw,30px) 12px;border-bottom:1px solid var(--filo1);align-items:baseline">
+        <span data-num style="font:500 12px 'JetBrains Mono',monospace;color:var(--t3);font-variant-numeric:tabular-nums">Claude Sonnet 5</span>
+        <span style="font-weight:500;font-size:clamp(17px,1.7vw,23px);letter-spacing:-.025em;color:var(--t1)">$2,00</span>
+        <span style="font-size:16px;line-height:1.55;color:var(--t2)">$10,00</span>
+      </div>
+      <div data-tabella data-riga style="display:grid;grid-template-columns:70px minmax(150px,1fr) 2fr;gap:clamp(16px,2.4vw,40px);padding:clamp(20px,2.4vw,30px) 12px;border-bottom:1px solid var(--filo1);align-items:baseline">
+        <span data-num style="font:500 12px 'JetBrains Mono',monospace;color:var(--t3);font-variant-numeric:tabular-nums">Claude Haiku 4.5</span>
+        <span style="font-weight:500;font-size:clamp(17px,1.7vw,23px);letter-spacing:-.025em;color:var(--t1)">$1,00</span>
+        <span style="font-size:16px;line-height:1.55;color:var(--t2)">$5,00</span>
+      </div>
+      <div data-tabella data-riga style="display:grid;grid-template-columns:70px minmax(150px,1fr) 2fr;gap:clamp(16px,2.4vw,40px);padding:clamp(20px,2.4vw,30px) 12px;border-bottom:1px solid var(--filo1);align-items:baseline">
+        <span data-num style="font:500 12px 'JetBrains Mono',monospace;color:var(--t3);font-variant-numeric:tabular-nums">GPT-5.6 Sol</span>
+        <span style="font-weight:500;font-size:clamp(17px,1.7vw,23px);letter-spacing:-.025em;color:var(--t1)">$5,00</span>
+        <span style="font-size:16px;line-height:1.55;color:var(--t2)">$30,00</span>
+      </div>
+      <div data-tabella data-riga style="display:grid;grid-template-columns:70px minmax(150px,1fr) 2fr;gap:clamp(16px,2.4vw,40px);padding:clamp(20px,2.4vw,30px) 12px;border-bottom:1px solid var(--filo1);align-items:baseline">
+        <span data-num style="font:500 12px 'JetBrains Mono',monospace;color:var(--t3);font-variant-numeric:tabular-nums">GPT-5.6 Luna</span>
+        <span style="font-weight:500;font-size:clamp(17px,1.7vw,23px);letter-spacing:-.025em;color:var(--t1)">$0,20</span>
+        <span style="font-size:16px;line-height:1.55;color:var(--t2)">$1,20</span>
+      </div>
+      <div data-tabella data-riga style="display:grid;grid-template-columns:70px minmax(150px,1fr) 2fr;gap:clamp(16px,2.4vw,40px);padding:clamp(20px,2.4vw,30px) 12px;border-bottom:1px solid var(--filo1);align-items:baseline">
+        <span data-num style="font:500 12px 'JetBrains Mono',monospace;color:var(--t3);font-variant-numeric:tabular-nums">Gemini 3.1 Pro</span>
+        <span style="font-weight:500;font-size:clamp(17px,1.7vw,23px);letter-spacing:-.025em;color:var(--t1)">$2,00</span>
+        <span style="font-size:16px;line-height:1.55;color:var(--t2)">$12,00</span>
+      </div>
+      <div data-tabella data-riga style="display:grid;grid-template-columns:70px minmax(150px,1fr) 2fr;gap:clamp(16px,2.4vw,40px);padding:clamp(20px,2.4vw,30px) 12px;border-bottom:1px solid var(--filo1);align-items:baseline;box-shadow:inset 3px 0 0 var(--acc)">
+        <span data-num style="font:500 12px 'JetBrains Mono',monospace;color:var(--acc);font-variant-numeric:tabular-nums">DeepSeek V4 Flash</span>
+        <span style="font-weight:500;font-size:clamp(17px,1.7vw,23px);letter-spacing:-.025em;color:var(--t1)">$0,44</span>
+        <span style="font-size:16px;line-height:1.55;color:var(--t2)">$1,32</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="La cache non è un dettaglio" style="background:var(--sup1);border-top:1px solid var(--filo1);border-bottom:1px solid var(--filo1);padding:clamp(56px,8vw,120px) 0">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <article data-lift data-reveal style="border:1px solid var(--filo1);background:linear-gradient(180deg,var(--sup2),var(--sup1));display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:clamp(24px,4vw,72px);padding:clamp(28px,3.6vw,56px)">
+      <div>
+        <p style="margin:0 0 clamp(20px,2.4vw,32px);font-weight:500;font-size:clamp(40px,5vw,72px);line-height:1;letter-spacing:-.05em;color:var(--acc);font-variant-numeric:tabular-nums">04</p>
+        <h2 style="margin:0 0 20px;font-weight:500;font-size:clamp(26px,3.2vw,42px);line-height:1.05;letter-spacing:-.035em;color:var(--t1);text-wrap:pretty">The cache is not a detail</h2>
+        <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty">On an agent that rereads the same instructions at every step, the cache decides the bill. The rules change from provider to provider and have to be read before choosing.</p>
+      </div>
+      <div style="align-self:center">
+          <div data-riga style="display:grid;grid-template-columns:minmax(90px,140px) 1fr;gap:clamp(16px,2vw,32px);padding:16px 12px;border-top:1px solid var(--filo1)"><span data-num style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">Read</span><span style="font-size:15.5px;line-height:1.5;color:var(--t1)">A tenth of an input token&#8217;s price (Anthropic)</span></div>
+          <div data-riga style="display:grid;grid-template-columns:minmax(90px,140px) 1fr;gap:clamp(16px,2vw,32px);padding:16px 12px;border-top:1px solid var(--filo1)"><span data-num style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">Write, 5 min</span><span style="font-size:15.5px;line-height:1.5;color:var(--t1)">A quarter more than an input token&#8217;s price</span></div>
+          <div data-riga style="display:grid;grid-template-columns:minmax(90px,140px) 1fr;gap:clamp(16px,2vw,32px);padding:16px 12px;border-top:1px solid var(--filo1)"><span data-num style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">Write, 1 hour</span><span style="font-size:15.5px;line-height:1.5;color:var(--t1)">Twice an input token&#8217;s price</span></div>
+          <div data-riga style="display:grid;grid-template-columns:minmax(90px,140px) 1fr;gap:clamp(16px,2vw,32px);padding:16px 12px;border-top:1px solid var(--filo1);border-bottom:1px solid var(--filo1)"><span data-num style="font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3);color:var(--acc)">Consequence</span><span style="font-size:15.5px;line-height:1.5;color:var(--t1)">A badly written agent pays for the cache on writes and never uses it on reads</span></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section data-screen-label="Come scelgo" style="padding:clamp(56px,8vw,120px) 0">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div style="margin-bottom:clamp(32px,4vw,56px)" data-reveal>
+      <p style="margin:0 0 22px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);font-variant-numeric:tabular-nums">05</p>
+      <h2 style="margin:0 0 20px;font-weight:500;font-size:clamp(26px,3.2vw,42px);line-height:1.05;letter-spacing:-.035em;color:var(--t1);text-wrap:pretty">How I choose</h2>
+      <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty;max-width:56ch">There is no best model. There is the right model for that step, and the choice is made again when the numbers move.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:clamp(16px,2.4vw,32px)" data-reveal>
+      <div>
+        <p style="margin:0 0 4px;padding:14px 12px;border-bottom:1px solid var(--filo2);font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t1)">Frontier model</p>
+        <div data-riga style="padding:18px 12px;border-bottom:1px solid var(--filo1);font-size:16px;line-height:1.5;color:var(--t2)">Steps that decide: planning, verification, review</div>
+        <div data-riga style="padding:18px 12px;border-bottom:1px solid var(--filo1);font-size:16px;line-height:1.5;color:var(--t2)">Tasks where a silent error costs more than the token</div>
+        <div data-riga style="padding:18px 12px;border-bottom:1px solid var(--filo1);font-size:16px;line-height:1.5;color:var(--t2)">Work on repositories and the terminal</div>
+      </div>
+      <div>
+        <p style="margin:0 0 4px;padding:14px 12px;border-bottom:1px solid var(--acc);font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--acc)">Cheap or local model</p>
+        <div data-riga style="padding:18px 12px;border-bottom:1px solid var(--filo1);font-size:16px;line-height:1.5;color:var(--t2)">Sorting, extraction, rewriting, classification</div>
+        <div data-riga style="padding:18px 12px;border-bottom:1px solid var(--filo1);font-size:16px;line-height:1.5;color:var(--t2)">High volumes with automatic verification downstream</div>
+        <div data-riga style="padding:18px 12px;border-bottom:1px solid var(--filo1);font-size:16px;line-height:1.5;color:var(--t2)">Data that must not leave the machine</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:clamp(48px,6vw,88px) 0">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div style="border-left:3px solid var(--acc);padding:clamp(22px,2.8vw,36px) clamp(22px,2.8vw,40px);background:linear-gradient(90deg,var(--acc-tenue),transparent 60%)" data-reveal>
+      <p style="margin:0 0 14px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--acc)">Stated limit</p>
+      <p style="margin:0;max-width:46ch;font-weight:400;font-size:clamp(15px,1.2vw,18px);line-height:1.62;color:var(--t2);text-wrap:pretty;max-width:64ch;color:var(--t1)">These numbers have a date: they are the photograph of 21 August 2026. A ranking read six months from now says something else, and anyone quoting it without a date is selling an old decision. The values sit in a single file next to the site, and an automatic check compares the page against that file: if the two drift apart, the check turns red and the page is not published.</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding:0 0 clamp(72px,9vw,140px)">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <a href="/en/local-models/" data-lift style="display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:end;padding:clamp(28px,3.4vw,48px);border:1px solid var(--filo1);background:linear-gradient(180deg,var(--sup2),var(--sup1));color:var(--t1)" data-reveal>
+      <span style="display:block;max-width:56ch">
+        <span style="display:block;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3);margin-bottom:16px">Next page</span>
+        <span style="display:block;font-weight:500;font-size:clamp(22px,2.6vw,34px);line-height:1.1;letter-spacing:-.03em;margin-bottom:12px">Local models</span>
+        <span style="display:block;font-weight:400;font-size:15px;line-height:1.6;color:var(--t2)">What your machine&#8217;s really able to run, with the arithmetic that proves it.</span>
+      </span>
+      <span style="font:500 12px 'JetBrains Mono',monospace;letter-spacing:.09em;text-transform:uppercase;color:var(--acc)">Open &#8594;</span>
+    </a>
+  </div>
+</section>
+</main>
+
+<footer style="border-top:1px solid var(--filo1);background:var(--sup1)">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px);padding-top:clamp(40px,5vw,72px);padding-bottom:clamp(28px,3.4vw,44px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));gap:clamp(28px,4vw,56px)">
+    <div>
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;position:relative;width:44px;height:44px;border:1px solid var(--filo2);flex:none"><span style="font:600 18px Geist,'Instrument Sans',Helvetica,sans-serif;letter-spacing:-.06em;color:var(--t1)">AS</span><span style="position:absolute;right:-1px;top:-1px;width:3px;height:3px;background:var(--acc)"></span></span><span style="font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t1)">Andrea Sforna AI</span></div>
+      <p style="margin:0;max-width:34ch;font-size:15px;line-height:1.6;color:var(--t2)">Design, security and maintenance of AI agent systems.</p>
+    </div>
+    <div>
+      <p style="margin:0 0 16px;font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">Pages</p>
+      <div style="display:grid;gap:10px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><a href="/en/agents/" style="color:var(--t2)">Agents</a><a href="/en/case-studies/" style="color:var(--t2)">Case studies</a><a href="/en/models/" style="color:var(--t2)">Models</a><a href="/en/security/" style="color:var(--t2)">Security</a><a href="/en/data/" style="color:var(--t2)">Data</a><a href="/en/privacy-bridge/" style="color:var(--t2)">Privacy Bridge</a><a href="/en/training/" style="color:var(--t2)">Training</a><a href="/en/contact/" style="color:var(--t2)">Contact</a></div>
+    </div>
+    <div>
+      <p style="margin:0 0 16px;font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">Further reading</p>
+      <div style="display:grid;gap:10px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><a href="/en/local-models/" style="color:var(--t2)">Local models</a><a href="/en/architecture/" style="color:var(--t2)">Architecture</a><a href="/en/automation/" style="color:var(--t2)">Automation</a><a href="/en/tools/" style="color:var(--t2)">Tools</a><a href="/en/method/" style="color:var(--t2)">Method</a></div>
+    </div>
+    <div>
+      <p style="margin:0 0 16px;font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)">Contact</p>
+      <div style="display:grid;gap:10px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.06em">
+        <a href="mailto:andrea.sforna@gmail.com" style="color:var(--t2)">andrea.sforna@gmail.com</a>
+        <a href="https://www.instagram.com/andreasfornaai/" rel="me noopener" target="_blank" style="color:var(--t2)">Instagram @andreasfornaai</a>
+      </div>
+    </div>
+  </div>
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px);padding-top:20px;padding-bottom:clamp(28px,3.4vw,44px);border-top:1px solid var(--filo1);display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--t3)">
+    <span>&#169; 2026 Andrea Sforna</span>
+    <span>Designed and written by Andrea Sforna</span>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    import('/assets/sito.js').then((m) => m.avvia()).catch((e) => console.warn('sito.js', e));
+  }
+}
+</script>
+</body>
+</html>
