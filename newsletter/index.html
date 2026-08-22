@@ -303,6 +303,15 @@ import('/assets/sito.js').then((m) => m.avvia()).catch((e) => console.error(e));
                                azienda: (form.querySelector('input[name=azienda]') || {}).value || '' })
       }).then(function(r){
         if (!r.ok) throw new Error('rifiutata');
+        // Non basta il 200: quando il flusso a monte si ferma a meta' (indirizzo
+        // rifiutato, Brevo giu', freno antiflood) la risposta arriva **200 con il
+        // corpo vuoto**. Fidarsi dello stato vorrebbe dire dire «ti ho mandato una
+        // email» a chi non ricevera' niente. La conferma e' il corpo: {ok:true}.
+        return r.text();
+      }).then(function(testo){
+        var esitoJson = null;
+        try { esitoJson = JSON.parse(testo); } catch (err) { esitoJson = null; }
+        if (!esitoJson || esitoJson.ok !== true) throw new Error('rifiutata');
         esito.style.color = 'var(--t1)';
         esito.textContent = 'Fatto. Ti ho mandato una email: apri il link dentro per confermare.';
         form.querySelector('input[name=email]').value = '';
