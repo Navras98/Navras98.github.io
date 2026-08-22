@@ -253,6 +253,93 @@ img{display:block;max-width:100%}
   [data-tabella-chat]>div{min-width:400px}
 }
 
+/* Revisione 22 agosto 2026 — nessuna cella scoperta, nessuna colonna a meta'.
+   Il difetto non si vedeva leggendo il sorgente: dipendeva da quante colonne il
+   browser decideva di fare a quella larghezza. Lo ha trovato `vuoti.py`, che
+   apre le 31 pagine a nove larghezze e conta le celle rimaste senza niente
+   sopra: 156 la prima volta. */
+
+/* Le griglie di schede erano `repeat(auto-fit,minmax(min(Npx,100%),1fr))`.
+   Con auto-fit tutte le colonne sono larghe uguali, quindi quando le schede non
+   sono un multiplo delle colonne l'ultima riga resta spaiata: nove schede in
+   quattro colonne lasciano tre celle scoperte, e siccome queste griglie
+   disegnano i propri fili con `gap:1px` sopra un fondo, quelle celle si vedono
+   come rettangoli di colore diverso in fondo alla sezione.
+
+   Le stesse schede messe in fila (flex) avvolgono negli stessi identici punti —
+   il conto di quante ne stanno in una riga e' lo stesso, floor((spazio+filo)/
+   (misura+filo)) — ma l'ultima riga si allarga fino al bordo invece di lasciare
+   il buco. Sopra, dove le righe sono piene, non cambia un pixel.
+
+   Quali contenitori sono griglie di schede lo dice `data-schede`, che ce lo
+   scrive `patch-04-schede.py` rileggendo la misura minima dallo stile in linea:
+   sono le griglie auto-fit con almeno tre figli. Le griglie a due elementi
+   (testo + ritratto, testo + dimostrazione) non sono schede e restano griglie.
+
+   Un selettore che leggeva direttamente lo stile in linea non funzionava, ed e'
+   il tipo di guasto che non si vede: le pagine le disegna React a runtime e
+   normalizza l'attributo `style` («minmax(min(210px, 100%)», con gli spazi),
+   quindi il selettore agganciava il sorgente ma non la pagina vera. */
+[data-schede]{display:flex!important;flex-wrap:wrap}
+[data-schede="200"]{--scheda:200px}
+[data-schede="210"]{--scheda:210px}
+[data-schede="230"]{--scheda:230px}
+[data-schede="260"]{--scheda:260px}
+[data-schede="280"]{--scheda:280px}
+[data-schede="290"]{--scheda:290px}
+[data-schede="300"]{--scheda:300px}
+[data-schede]>*{flex:1 1 var(--scheda,280px);min-width:0}
+
+/* Nove schede sono l'unico caso in cui riempire l'ultima riga non basta: a
+   schermo largo ne entravano quattro per riga, e la nona restava sola ad
+   allargarsi per tutta la pagina. Nove si dividono per tre: qui le righe sono
+   tre da tre a qualunque larghezza da tavolo, e la griglia torna quadrata.
+   Il minimo resta il suo (290px) ma scritto come `min(290px,100%)`: su uno
+   schermo da 320px un minimo fisso spingerebbe la scheda fuori dal bordo. */
+[data-schede]:has(> :nth-child(9))>*{
+  flex-basis:calc(33.333% - .67px);
+  min-width:min(290px,100%);
+}
+
+/* Quattro schede hanno lo stesso problema al contrario: riempire l'ultima riga
+   toglie il buco ma lascia tre schede strette e la quarta larga come la pagina.
+   Quattro si dividono per quattro e per due, mai per tre: nella fascia di
+   larghezze in cui ne entrerebbero tre per riga si passa direttamente a due.
+   `flex-basis:40%` fa esattamente questo senza dover sapere quanto e' larga la
+   distanza fra le schede: due stanno in una riga (80%), tre no (120%). Il minimo
+   della griglia torna come `min-width`, cosi' sul telefono si va a una per riga
+   nello stesso punto di prima.
+   Le fasce non sono stimate: misurate a passi di 20px sulle pagine vere, il
+   22 agosto 2026. Se cambia la larghezza massima del contenuto vanno rimisurate,
+   e `vuoti.py` se ne accorge solo per i buchi, non per l'equilibrio. */
+@media (max-width:900px){
+  [data-schede="210"]:has(> :nth-child(4):last-child)>*{flex-basis:40%;min-width:min(var(--scheda),100%)}
+}
+@media (max-width:1120px){
+  [data-schede="260"]:has(> :nth-child(4):last-child)>*{flex-basis:40%;min-width:min(var(--scheda),100%)}
+}
+@media (max-width:1140px){
+  [data-schede="230"]:has(> :nth-child(4):last-child)>*{flex-basis:40%;min-width:min(var(--scheda),100%)}
+}
+@media (max-width:1280px){
+  [data-schede="300"]:has(> :nth-child(4):last-child)>*{flex-basis:40%;min-width:min(var(--scheda),100%)}
+}
+
+/* Il ritratto era largo 380px fissi dentro una colonna che a schermo largo ne
+   misura 594: 214px di niente fra la foto e il testo, e la foto sembrava
+   piccola. Da telefono la stessa regola non si vedeva, perche' a una colonna
+   380px sono gia' piu' della larghezza disponibile — per questo il difetto
+   c'era solo da tavolo.
+   Qui la colonna della foto ha una misura sua (poco meno della meta') e la foto
+   la riempie tutta. Sotto i 745px la griglia va a colonna sola da se', ed e' lo
+   stesso punto in cui ci andava prima: la regola non tocca il telefono. */
+@media (min-width:745px){
+  section[data-screen-label="Chi sono"]>div{
+    grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr)!important;
+  }
+  section[data-screen-label="Chi sono"]>div>*:first-child{max-width:none!important}
+}
+
 /* Messa a fuoco visibile da tastiera: prima il contorno spariva del tutto. */
 :where(a,button,[tabindex]):focus-visible{
   outline:2px solid var(--acc);
