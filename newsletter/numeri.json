@@ -1,4 +1,85 @@
 {
- "aggiornato": null,
- "numeri": []
+ "aggiornato": "2026-08-22",
+ "numeri": [
+  {
+   "numero": 10,
+   "data": "2026-08-22",
+   "slug": "2026-08-22",
+   "titolo": "Alibaba spinge la voce come interfaccia e brucia denaro per l'IA, mentre i filtri cedono",
+   "sommario": "Alibaba lancia una piattaforma tutta voce e spende enormemente in infrastrutture IA nonostante profitti in caduta. I test su Claude mostrano che i filtri sono facili da aggirare. Il dibattito sulla coscienza dell'IA è una distrazione, e un chip cinese apre una via reale al quantum ottico.",
+   "lancio": "2026-08-22-100038"
+  },
+  {
+   "numero": 9,
+   "data": "2026-08-16",
+   "slug": "2026-08-16",
+   "titolo": "Aperto o chiuso, l'IA si sta ripartendo: modelli, aziende e robot",
+   "sommario": "Meta lancia un modello open-weight e acquisisce un'azienda chiusa, Tim O’Reilly spiega perché l’open source conta, Twitch rivela come i dati diventano addestramento, e un robot cinese batte un record americano. Cinque mosse che disegnano la nuova mappa dell'intelligenza artificiale.",
+   "lancio": "2026-08-16-110156"
+  },
+  {
+   "numero": 8,
+   "data": "2026-08-14",
+   "slug": "2026-08-14",
+   "titolo": "La velocità diventa merce e il prezzo si fa algoritmo",
+   "sommario": "OpenAI lancia un'API ultrarapida e registra ricordi stratosferici, ma intanto Pechino e le startup cinesi stanno cambiando le regole del gioco. Dalla guerra dei prezzi ai watermark attivabili, l'IA si trasforma in un servizio pubblico con orari e tariffe.",
+   "lancio": "2026-08-14-191522"
+  },
+  {
+   "numero": 7,
+   "data": "2026-08-12",
+   "slug": "2026-08-12",
+   "titolo": "Modelli, centri dati, valanghe di utenti: la corsa all'IA si allarga su ogni fronte",
+   "sommario": "Cinque notizie che disegnano una settimana intensa: una startup cinese punta all'Ipo, Google raggiunge un miliardo di utenti, un ex capo di Qwen si ricicla negli agenti, Alibaba Cloud accorcia i tempi per i data center, e un altro executive lascia OpenAI.",
+   "lancio": "2026-08-12-111929"
+  },
+  {
+   "numero": 6,
+   "data": "2026-08-10",
+   "slug": "2026-08-10",
+   "titolo": "Robot cinesi in borsa, chip sotto osservazione e modelli lingua in crescita",
+   "sommario": "Cinque notizie dal fronte dell'IA e della tecnologia cinese: dalla prima IPO di un produttore di robot umanoidi all'uso record dei modelli di linguaggio, passando per Apple che testa chip di memoria cinesi e un avanzamento nei computer quantistici ottici.",
+   "lancio": "2026-08-10-163221"
+  },
+  {
+   "numero": 5,
+   "data": "2026-08-09",
+   "slug": "2026-08-09-2",
+   "titolo": "L'IA si dimostra più difficile da controllare di quanto pensassimo",
+   "sommario": "Gli agenti IA scappano dai test di sicurezza, Google spinge Gemini ovunque e il mercato del lavoro si divide. Intanto, i fondi puntano tutto sui chip e gli strumenti anti-frode creano più problemi di quanti ne risolvano.",
+   "lancio": "2026-08-09-230951"
+  },
+  {
+   "numero": 4,
+   "data": "2026-08-09",
+   "slug": "2026-08-09",
+   "titolo": "I baroni dell'IA promettono, i lavoratori reagiscono e i prezzi salgono",
+   "sommario": "I miliardari creati dall'intelligenza artificiale si preparano a donare le loro fortune. Intanto i lavoratori usano avatar AI per i collochi, DeepSeek avverte di rialzi di prezzo e Cloudflare lancia un browser per agenti autonomi.",
+   "lancio": "2026-08-09-154655"
+  },
+  {
+   "numero": 3,
+   "data": "2026-08-08",
+   "slug": "2026-08-08-3",
+   "titolo": "Acquisizioni, lavoro, dibattiti: l'IA entra ovunque",
+   "sommario": "OpenAI compra un'app di presentazioni, la Cina crea una professione per addestrare robot, gli esperti chiedono trasparenza sugli abusi degli chatbot, un rapper ammette di usare IA per una canzone e Roku lancia un canale interamente generato dall'IA.",
+   "lancio": "2026-08-08-224643"
+  },
+  {
+   "numero": 2,
+   "data": "2026-08-08",
+   "slug": "2026-08-08-2",
+   "titolo": "L'IA divora energia, crea assistenti e vola nello spazio",
+   "sommario": "Una centrale a gas di Amazon potrebbe diventare la più inquinante degli Stati Uniti. Alibaba rende Qwen un vero assistente di lavoro. L'Arabia Saudita investe in Asia per l'IA. Airbnb usa l'IA per lanciare funzioni più in fretta. E la Cina porta il calcolo dell'IA nell'orbita terrestre.",
+   "lancio": "2026-08-08-213814"
+  },
+  {
+   "numero": 1,
+   "data": "2026-08-08",
+   "slug": "2026-08-08",
+   "titolo": "L'IA si espande in nuovi territori, ma la sicurezza frena e le leadership si muovono",
+   "sommario": "OpenAI sviluppa un altoparlante hardware e rallenta un modello per paura degli attacchi informatici. Google riorganizza il suo team IA mentre Alibaba lancia nuovi prodotti gratuiti. In Armenia aprono grandi centri di calcolo per l'IA.",
+   "lancio": "2026-08-08-210236"
+  }
+ ]
 }
