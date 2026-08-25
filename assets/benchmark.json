@@ -2,7 +2,7 @@
   "fonte": "Artificial Analysis",
   "indirizzo": "https://artificialanalysis.ai",
   "api": "https://artificialanalysis.ai/api/v2/data/llms/models",
-  "letto": "2026-08-23T19:30:05+02:00",
+  "letto": "2026-08-25T07:30:01+02:00",
   "misura_costo": "prezzo miscelato 3:1 per milione di token, in dollari",
   "copertura": {
     "censiti": 616,
@@ -52,7 +52,7 @@
       {
         "nome": "GPT-5.6 Sol (max)",
         "indice": 60.9,
-        "prezzo_per_milione_token_usd": 11.25,
+        "prezzo_per_milione_token_usd": 8.0,
         "uso": true
       },
       {
@@ -76,7 +76,7 @@
       {
         "nome": "GPT-5.6 Sol (high)",
         "indice": 57.3,
-        "prezzo_per_milione_token_usd": 11.25,
+        "prezzo_per_milione_token_usd": 8.0,
         "uso": true
       },
       {
