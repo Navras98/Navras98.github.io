@@ -1,6 +1,14 @@
 {
- "aggiornato": "2026-08-22",
+ "aggiornato": "2026-08-26",
  "numeri": [
+  {
+   "numero": 11,
+   "data": "2026-08-26",
+   "slug": "2026-08-26",
+   "titolo": "Chi finanzia, chi produce e chi regola: i cinque movimenti che disegnano la nuova mappa dell'IA",
+   "sommario": "Dall'ennesimo round di Stability AI al chip proprietario di OpenAI, passando per i robot umanoidi cinesi e le polizie dei mercati. Una settimana che mostra dove scorre il denaro e dove si spostano le linee di confine dell'industria.",
+   "lancio": "2026-08-26-115709"
+  },
   {
    "numero": 10,
    "data": "2026-08-22",
