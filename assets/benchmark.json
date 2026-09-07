@@ -2,11 +2,11 @@
   "fonte": "Artificial Analysis",
   "indirizzo": "https://artificialanalysis.ai",
   "api": "https://artificialanalysis.ai/api/v2/data/llms/models",
-  "letto": "2026-09-05T07:30:01+02:00",
+  "letto": "2026-09-07T19:30:02+02:00",
   "misura_costo": "prezzo miscelato 3:1 per milione di token, in dollari",
   "copertura": {
-    "censiti": 643,
-    "classifica": 630
+    "censiti": 644,
+    "classifica": 631
   },
   "indice_intelligenza": {
     "valutazioni": 5,
@@ -92,7 +92,7 @@
       },
       {
         "nome": "DeepSeek V4 Pro (max)",
-        "indice": 35.8,
+        "indice": 34.5,
         "prezzo_per_milione_token_usd": 0.544,
         "uso": true
       },
