@@ -2,115 +2,116 @@
   "fonte": "Artificial Analysis",
   "indirizzo": "https://artificialanalysis.ai",
   "api": "https://artificialanalysis.ai/api/v2/data/llms/models",
-  "letto": "2026-09-07T19:30:02+02:00",
+  "letto": "2026-09-09T07:30:02+02:00",
   "misura_costo": "prezzo miscelato 3:1 per milione di token, in dollari",
   "copertura": {
     "censiti": 644,
-    "classifica": 631
+    "classifica": 633
   },
   "indice_intelligenza": {
-    "valutazioni": 5,
+    "valutazioni": 6,
     "prove": [
       "GPQA Diamond",
       "Humanity's Last Exam",
       "AA-LCR",
+      "SciCode",
       "τ-Bench Banking",
       "Terminal-Bench v2.1"
     ],
     "valori": [
       {
         "nome": "Claude Opus 5 (max)",
-        "indice": 54.1,
+        "indice": 50.7,
         "prezzo_per_milione_token_usd": 10.0,
         "uso": true
       },
       {
         "nome": "Claude Opus 5 (xhigh)",
-        "indice": 53.4,
+        "indice": 49.7,
         "prezzo_per_milione_token_usd": 10.0,
         "uso": true
       },
       {
         "nome": "Claude Fable 5 (riserva)",
-        "indice": 53.2,
+        "indice": 49.7,
         "prezzo_per_milione_token_usd": 20.0,
         "uso": false
       },
       {
         "nome": "Claude Opus 5 (high)",
-        "indice": 52.0,
+        "indice": 48.2,
         "prezzo_per_milione_token_usd": 10.0,
         "uso": true
       },
       {
         "nome": "GPT-5.6 Sol (max)",
-        "indice": 51.3,
+        "indice": 47.1,
         "prezzo_per_milione_token_usd": 8.0,
         "uso": true
       },
       {
+        "nome": "GLM-5.3 (max)",
+        "indice": 44.9,
+        "prezzo_per_milione_token_usd": 2.15,
+        "uso": false
+      },
+      {
         "nome": "Grok 4.6 (high)",
-        "indice": 50.6,
+        "indice": 44.4,
         "prezzo_per_milione_token_usd": 3.0,
         "uso": false
       },
       {
         "nome": "Kimi K3 (max)",
-        "indice": 50.2,
+        "indice": 43.8,
         "prezzo_per_milione_token_usd": 6.0,
         "uso": true
       },
       {
-        "nome": "GLM-5.3 (max)",
-        "indice": 48.6,
-        "prezzo_per_milione_token_usd": 2.15,
-        "uso": false
-      },
-      {
         "nome": "GPT-5.6 Sol (high)",
-        "indice": 48.3,
+        "indice": 42.5,
         "prezzo_per_milione_token_usd": 8.0,
         "uso": true
       },
       {
         "nome": "Qwen3.8 2.4T A95B",
-        "indice": 46.7,
+        "indice": 40.0,
         "prezzo_per_milione_token_usd": 3.0,
         "uso": true
       },
       {
         "nome": "Gemini 3.7 Flash (high)",
-        "indice": 45.2,
+        "indice": 39.4,
         "prezzo_per_milione_token_usd": 1.5,
         "uso": true
       },
       {
         "nome": "GPT-5.6 Luna (max)",
-        "indice": 43.4,
+        "indice": 37.5,
         "prezzo_per_milione_token_usd": 0.45,
         "uso": false
       },
       {
         "nome": "DeepSeek V4 Pro (max)",
-        "indice": 34.5,
+        "indice": 30.9,
         "prezzo_per_milione_token_usd": 0.544,
         "uso": true
       },
       {
         "nome": "Qwen3.6 27B",
-        "indice": 29.0,
+        "indice": 21.9,
         "prezzo_per_milione_token_usd": 1.35,
         "uso": true
       },
       {
         "nome": "Mistral Medium 3.5",
-        "indice": 22.7,
+        "indice": 14.9,
         "prezzo_per_milione_token_usd": 3.0,
         "uso": false
       },
       {
         "nome": "gpt-oss-120b (high)",
-        "indice": 15.6,
+        "indice": 12.3,
         "prezzo_per_milione_token_usd": 0.261,
         "uso": true
       }
