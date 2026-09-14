@@ -2,11 +2,11 @@
   "fonte": "Artificial Analysis",
   "indirizzo": "https://artificialanalysis.ai",
   "api": "https://artificialanalysis.ai/api/v2/data/llms/models",
-  "letto": "2026-09-12T19:30:02+02:00",
+  "letto": "2026-09-14T07:30:06+02:00",
   "misura_costo": "prezzo miscelato 3:1 per milione di token, in dollari",
   "copertura": {
-    "censiti": 646,
-    "classifica": 637
+    "censiti": 650,
+    "classifica": 641
   },
   "indice_intelligenza": {
     "valutazioni": 6,
