@@ -2,21 +2,22 @@
   "fonte": "Artificial Analysis",
   "indirizzo": "https://artificialanalysis.ai",
   "api": "https://artificialanalysis.ai/api/v2/data/llms/models",
-  "letto": "2026-09-29T07:30:07+02:00",
+  "letto": "2026-09-30T07:30:30+02:00",
   "misura_costo": "prezzo miscelato 3:1 per milione di token, in dollari",
   "copertura": {
-    "censiti": 679,
-    "classifica": 670
+    "censiti": 686,
+    "classifica": 676
   },
   "indice_intelligenza": {
-    "valutazioni": 6,
+    "valutazioni": 7,
     "prove": [
       "GPQA Diamond",
       "Humanity's Last Exam",
       "AA-LCR",
       "SciCode",
       "τ-Bench Banking",
-      "Terminal-Bench v2.1"
+      "Terminal-Bench v2.1",
+      "terminalbench_v4_0"
     ],
     "valori": [
       {
