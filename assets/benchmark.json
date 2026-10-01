@@ -2,11 +2,11 @@
   "fonte": "Artificial Analysis",
   "indirizzo": "https://artificialanalysis.ai",
   "api": "https://artificialanalysis.ai/api/v2/data/llms/models",
-  "letto": "2026-09-30T07:30:30+02:00",
+  "letto": "2026-10-01T16:27:47+02:00",
   "misura_costo": "prezzo miscelato 3:1 per milione di token, in dollari",
   "copertura": {
-    "censiti": 686,
-    "classifica": 676
+    "censiti": 688,
+    "classifica": 678
   },
   "indice_intelligenza": {
     "valutazioni": 7,
@@ -45,31 +45,31 @@
         "uso": true
       },
       {
-        "nome": "GPT-5.6 Sol (max)",
+        "nome": "GPT-5.6 Sol (Max)",
         "indice": 47.0,
         "prezzo_per_milione_token_usd": 8.0,
         "uso": true
       },
       {
-        "nome": "GLM-5.3 (max)",
+        "nome": "GLM-5.3 (Max)",
         "indice": 44.8,
         "prezzo_per_milione_token_usd": 2.15,
         "uso": false
       },
       {
-        "nome": "Grok 4.6 (high)",
+        "nome": "Grok 4.6 (High)",
         "indice": 44.3,
         "prezzo_per_milione_token_usd": 3.0,
         "uso": false
       },
       {
-        "nome": "Kimi K3 (max)",
+        "nome": "Kimi K3 (Max)",
         "indice": 43.6,
         "prezzo_per_milione_token_usd": 6.0,
         "uso": true
       },
       {
-        "nome": "GPT-5.6 Sol (high)",
+        "nome": "GPT-5.6 Sol (High)",
         "indice": 42.3,
         "prezzo_per_milione_token_usd": 8.0,
         "uso": true
@@ -81,13 +81,13 @@
         "uso": true
       },
       {
-        "nome": "Gemini 3.7 Flash (high)",
+        "nome": "Gemini 3.7 Flash (High)",
         "indice": 39.1,
         "prezzo_per_milione_token_usd": 1.5,
         "uso": true
       },
       {
-        "nome": "GPT-5.6 Luna (max)",
+        "nome": "GPT-5.6 Luna (Max)",
         "indice": 37.3,
         "prezzo_per_milione_token_usd": 0.45,
         "uso": false
@@ -111,7 +111,7 @@
         "uso": false
       },
       {
-        "nome": "gpt-oss-120b (high)",
+        "nome": "gpt-oss-120b (High)",
         "indice": 11.6,
         "prezzo_per_milione_token_usd": 0.261,
         "uso": true
