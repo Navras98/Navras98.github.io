@@ -1,0 +1,188 @@
+# Pagina Strumenti. Nei titoli: *parola* = corsivo, **parola** = colore blu.
+seo:
+  titolo: Strumenti
+  descrizione: Gli agenti, le automazioni e i modelli che uso, e come li uso. Nessuna affiliazione.
+  immagine:
+    src: /media/condivisione.jpg
+    alt: Andrea Sforna, consulente informatico per gli agenti AI
+    punto_focale: centro
+    adatta: riempi
+apertura:
+  etichetta: Strumenti
+  titolo: Gli strumenti *che uso.*
+  testo: Agenti, automazioni e modelli, chiusi e aperti, anche sul mio computer. Li provo sul lavoro vero per capire quale conviene e come controllarne il risultato.
+  nota: Strumenti che uso, nessuna affiliazione. I marchi appartengono ai rispettivi proprietari.
+elenco:
+  etichetta: Tutti gli strumenti
+  didascalia: Quelli che uso
+  voci:
+    - nome: Claude Code
+      logo: { src: /media/strumenti/claude-code.svg, alt: "Logo di Claude Code", punto_focale: centro, adatta: intera }
+      gruppo: Agenti
+      in_home: true
+      terminale: true
+      link: https://www.anthropic.com/claude-code
+    - nome: Codex
+      logo: { src: /media/strumenti/codex.svg, alt: "Logo di Codex", punto_focale: centro, adatta: intera }
+      gruppo: Agenti
+      in_home: true
+      terminale: true
+      link: https://openai.com/codex/
+    - nome: OpenClaw
+      logo: { src: /media/strumenti/openclaw.svg, alt: "Logo di OpenClaw", punto_focale: centro, adatta: intera }
+      gruppo: Agenti
+      in_home: true
+      link: https://openclaw.ai
+    - nome: Hermes Agent
+      logo: { src: /media/strumenti/hermes-agent.svg, alt: "Logo di Hermes Agent", punto_focale: centro, adatta: intera }
+      gruppo: Agenti
+      in_home: true
+      terminale: true
+      link: https://github.com/NousResearch/hermes-agent
+    - nome: OpenCode
+      logo: { src: /media/strumenti/opencode.svg, alt: "Logo di OpenCode", punto_focale: centro, adatta: intera }
+      gruppo: Agenti
+      in_home: true
+      terminale: true
+      link: https://opencode.ai
+    - nome: Gemini CLI
+      logo: { src: /media/strumenti/gemini.svg, alt: "Logo di Gemini, il marchio di Gemini CLI", punto_focale: centro, adatta: intera }
+      gruppo: Agenti
+      in_home: false
+      terminale: true
+      link: https://github.com/google-gemini/gemini-cli
+    - nome: GitHub Copilot
+      logo: { src: /media/strumenti/github-copilot.svg, alt: "Logo di GitHub Copilot", punto_focale: centro, adatta: intera }
+      gruppo: Agenti
+      in_home: false
+      link: https://github.com/features/copilot
+    - nome: n8n
+      logo: { src: /media/strumenti/n8n.svg, alt: "Logo di n8n", punto_focale: centro, adatta: intera }
+      gruppo: Automazioni
+      in_home: true
+      link: https://n8n.io
+    - nome: Agno
+      logo: { src: /media/strumenti/agno.svg, alt: "Logo di Agno", punto_focale: centro, adatta: intera }
+      gruppo: Automazioni
+      in_home: false
+      link: https://www.agno.com
+    - nome: Docker
+      logo: { src: /media/strumenti/docker.svg, alt: "Logo di Docker", punto_focale: centro, adatta: intera }
+      gruppo: Automazioni
+      in_home: false
+      link: https://www.docker.com
+    - nome: Claude
+      logo: { src: /media/strumenti/claude.svg, alt: "Logo di Claude", punto_focale: centro, adatta: intera }
+      gruppo: Modelli
+      in_home: false
+      link: https://claude.ai
+    - nome: ChatGPT
+      logo: { src: /media/strumenti/openai.svg, alt: "Logo di ChatGPT", punto_focale: centro, adatta: intera }
+      gruppo: Modelli
+      in_home: false
+      link: https://chatgpt.com
+    - nome: Gemini
+      logo: { src: /media/strumenti/gemini.svg, alt: "Logo di Gemini", punto_focale: centro, adatta: intera }
+      gruppo: Modelli
+      in_home: true
+      link: https://gemini.google.com
+    - nome: DeepSeek
+      logo: { src: /media/strumenti/deepseek.svg, alt: "Logo di DeepSeek", punto_focale: centro, adatta: intera }
+      gruppo: Modelli
+      in_home: true
+      link: https://www.deepseek.com
+    - nome: Qwen
+      logo: { src: /media/strumenti/qwen.svg, alt: "Logo di Qwen", punto_focale: centro, adatta: intera }
+      gruppo: Modelli
+      in_home: true
+      link: https://qwen.ai
+    - nome: Kimi
+      logo: { src: /media/strumenti/kimi.svg, alt: "Logo di Kimi", punto_focale: centro, adatta: intera }
+      gruppo: Modelli
+      in_home: false
+      link: https://www.kimi.com
+    - nome: Mistral
+      logo: { src: /media/strumenti/mistral.svg, alt: "Logo di Mistral", punto_focale: centro, adatta: intera }
+      gruppo: Modelli
+      in_home: false
+      link: https://mistral.ai
+    - nome: Ollama
+      logo: { src: /media/strumenti/ollama.svg, alt: "Logo di Ollama", punto_focale: centro, adatta: intera }
+      gruppo: Modelli
+      in_home: true
+      link: https://ollama.com
+    - nome: GrapheneOS
+      logo: { src: /media/strumenti/grapheneos.svg, alt: "Logo di GrapheneOS", punto_focale: centro, adatta: intera }
+      gruppo: Privacy e sicurezza
+      in_home: false
+      link: https://grapheneos.org
+    - nome: Debian
+      logo: { src: /media/strumenti/debian.svg, alt: "Logo di Debian", punto_focale: centro, adatta: intera }
+      gruppo: Privacy e sicurezza
+      in_home: false
+      link: https://www.debian.org
+    - nome: Tor
+      logo: { src: /media/strumenti/tor.svg, alt: "Logo di Tor", punto_focale: centro, adatta: intera }
+      gruppo: Privacy e sicurezza
+      in_home: false
+      link: https://www.torproject.org
+    - nome: Mullvad
+      logo: { src: /media/strumenti/mullvad.svg, alt: "Logo di Mullvad", punto_focale: centro, adatta: intera }
+      gruppo: Privacy e sicurezza
+      in_home: false
+      link: https://mullvad.net
+    - nome: Bitwarden
+      logo: { src: /media/strumenti/bitwarden.svg, alt: "Logo di Bitwarden", punto_focale: centro, adatta: intera }
+      gruppo: Privacy e sicurezza
+      in_home: false
+      link: https://bitwarden.com
+schede:
+  etichetta: Come li uso
+  didascalia: Screenshot reali
+  titolo: Ogni strumento *ha il suo lavoro.*
+  voci:
+    - nome: Claude Code
+      titolo: Il mio strumento *principale.*
+      come_lo_uso: Ci lavoro ogni giorno. Con Claude Code ho costruito SfornaClaw, PrivacyBridge e questo sito. Lavoro per missioni scritte, un file con il metodo, i punti da fare e i criteri per dire che un punto è fatto. Claude Code legge la missione, propone ogni modifica e aspetta il mio sì.
+      immagine: { src: /media/strumenti/uso/claude-code.webp, alt: "Chiedo a Claude Code di leggere la missione di SfornaClaw e di scrivere i passi per la prova con il bot Telegram vero: legge i file, scrive il documento e spiega cosa ha fatto, in otto passi", punto_focale: centro, adatta: intera }
+      immagine_telefono: { src: /media/strumenti/uso/claude-code-telefono.webp, alt: "La stessa richiesta dal telefono: Claude Code legge la missione, scrive il documento con i passi della prova e spiega cosa ha fatto", punto_focale: centro, adatta: intera }
+      accanto:
+        immagine: { src: /media/strumenti/uso/missione.webp, alt: "Un estratto vero di una missione di SfornaClaw: il metodo (riprodurre ogni difetto, trovare la causa vera, aggiungere il test), quattro punti con il loro criterio e il loro stato, e i divieti", punto_focale: centro, adatta: intera }
+        immagine_telefono: { src: /media/strumenti/uso/missione-telefono.webp, alt: "Un estratto vero di una missione di SfornaClaw: due regole del metodo e il punto D6, la prova con il bot Telegram vero, che aspetta me", punto_focale: centro, adatta: intera }
+    - nome: OpenClaw
+      titolo: La base *dei miei agenti.*
+      come_lo_uso: Ci girano i miei agenti personali, su Telegram e WhatsApp. Dalla sua console scelgo l'agente e dove lavora, poi gli do il compito. Ogni agente ha permessi propri, e ogni notte un controllo mi manda un resoconto.
+      immagine: { src: /media/strumenti/uso/openclaw.webp, alt: "Il campo di OpenClaw «Su cosa deve lavorare questa sessione?» con quattro suggerimenti per iniziare", punto_focale: centro, adatta: intera }
+      accanto:
+        immagine: { src: /media/strumenti/uso/openclaw-regole.webp, alt: "Estratto delle regole dei miei agenti, «Paletti non negoziabili»: niente dati privati fuori di qui; cambiare stato si chiede; i segreti stanno nel Portachiavi; niente verde senza prova. Le stesse regole sono copiate in ogni agente che può eseguire comandi", punto_focale: centro, adatta: intera }
+        immagine_telefono: { src: /media/progetti/agenti-regole.webp, alt: "Estratto delle regole dei miei agenti, «Paletti non negoziabili»: niente dati privati fuori di qui; cambiare stato si chiede; i segreti stanno nel Portachiavi; niente verde senza prova", punto_focale: alto, adatta: intera }
+    - nome: Hermes Agent
+      titolo: Il secondo sistema, *separato.*
+      come_lo_uso: Ha configurazione e chiavi sue e nessuna porta aperta verso l'esterno. Lo uso per controllare OpenClaw e, se serve, per correggerne la configurazione.
+      immagine: { src: /media/strumenti/uso/hermes-agent.webp, alt: "Chiedo a Hermes Agent di controllare in sola lettura la configurazione di OpenClaw: lancia il controllo e risponde che la configurazione è valida", punto_focale: centro, adatta: intera }
+      immagine_telefono: { src: /media/strumenti/uso/hermes-agent-telefono.webp, alt: "Chiedo a Hermes Agent di controllare in sola lettura la configurazione di OpenClaw: lancia il controllo e risponde che la configurazione è valida", punto_focale: centro, adatta: intera }
+    - nome: OpenCode
+      titolo: Più controlli *in parallelo.*
+      come_lo_uso: Lancio più controlli insieme, ognuno con un sotto-agente che guarda una cosa sola, per esempio i testi, l'accessibilità, i casi che i test non coprono. Alla fine ho un riassunto per ciascuno.
+      immagine: { src: /media/strumenti/uso/opencode.webp, alt: "OpenCode controlla PrivacyBridge con tre sotto-agenti in parallelo, senza modificare nulla: README, accessibilità della pagina e casi di IBAN non coperti dai test, poi riassume l'esito di ciascuno", punto_focale: centro, adatta: intera }
+      immagine_telefono: { src: /media/strumenti/uso/opencode-telefono.webp, alt: "OpenCode controlla PrivacyBridge con tre sotto-agenti in parallelo, senza modificare nulla: README, accessibilità della pagina e casi di IBAN non coperti dai test, poi riassume l'esito di ciascuno", punto_focale: centro, adatta: intera }
+    - nome: Codex
+      titolo: Una seconda *opinione.*
+      come_lo_uso: Lo uso come seconda opinione, in sola lettura. Rilegge il codice e mi dice cosa resterebbe scoperto, prima che io tocchi qualcosa. Per ogni lavoro scelgo io se usare Claude Code o Codex.
+      immagine: { src: /media/strumenti/uso/codex.webp, alt: "Chiedo a Codex, in sola lettura, quali formati di IBAN il riconoscimento di PrivacyBridge lascerebbe scoperti: legge il file e risponde in tre punti, con un esempio ciascuno", punto_focale: centro, adatta: intera }
+      immagine_telefono: { src: /media/strumenti/uso/codex-telefono.webp, alt: "Chiedo a Codex, in sola lettura, quali formati di IBAN il riconoscimento di PrivacyBridge lascerebbe scoperti: legge il file e risponde in tre punti, con un esempio ciascuno", punto_focale: centro, adatta: intera }
+    - nome: n8n
+      titolo: I flussi *che aspettano il sì.*
+      come_lo_uso: Ci orchestro caroselli, storie, newsletter e posta. Ogni contenuto aspetta il mio sì su Telegram, e un flusso a parte controlla che gli altri siano in funzione.
+      video:
+        mp4: /media/video/n8n-flusso.mp4
+        webm: /media/video/n8n-flusso.webm
+        copertina: /media/video/n8n-flusso.jpg
+        descrizione: "Il flusso del carosello in n8n si accende passo per passo: sceglie la categoria, cerca le notizie, scrive i testi, impagina e manda tutto su Telegram, dove aspetta il mio sì"
+        punto_focale: centro
+        adatta: riempi
+    - nome: Ollama
+      titolo: Modelli *sul mio computer.*
+      come_lo_uso: Uso modelli sul mio computer per i testi che non devono uscire, per esempio la memoria dei miei agenti. Con i dati riservati di un cliente è la prima strada che valuto.
+      immagine: { src: /media/strumenti/uso/ollama.webp, alt: "Un modello di Ollama, sul mio computer, riassume in una riga un appunto di sei punti", punto_focale: centro, adatta: intera }
+      immagine_telefono: { src: /media/strumenti/uso/ollama-telefono.webp, alt: "Un modello di Ollama, sul mio computer, riassume in una riga un appunto di sei punti", punto_focale: centro, adatta: intera }

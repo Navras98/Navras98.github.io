@@ -1,0 +1,35 @@
+---
+// Scheda con video o immagine, come le «Crafting features» di ArtCraft.
+import Video from './Video.astro';
+import Immagine from './Immagine.astro';
+import Collegamento from './Collegamento.astro';
+import Icona from './Icona.astro';
+import { titolo, dueCifre } from '../lib/contenuti.js';
+const { s, numero, i = 0, livello = 3 } = Astro.props;
+const H = `h${livello}`;
+---
+<article class:list={['scheda-funzione', s.colore && `c-${s.colore}`]} data-rivela style={`--i:${i % 2}`}>
+  <div class="scheda-testa"><p class="hud muted">{s.etichetta}</p><p class="hud faint">{dueCifre(numero)}</p></div>
+  <div class="scheda-media palco">
+    {s.video ? <Video video={s.video} larghezzaCopertina={1080} /> : s.immagine && <Immagine img={s.immagine} sizes="(max-width: 767px) 100vw, 640px" />}
+  </div>
+  <div class="scheda-corpo">
+    <H class="titolo-scheda" set:html={titolo(s.titolo)} />
+    <p class="testo">{s.testo}</p>
+    {s.risultato && <p class="scheda-risultato"><Icona nome="spunta" />{s.risultato}</p>}
+    {s.link && <Collegamento href={s.link.link} class="freccia-link hud scheda-link">{s.link.etichetta}<Icona nome="freccia" /></Collegamento>}
+  </div>
+</article>
+<style is:global>
+  /* il video sta su un palco del colore del servizio, grande e incorniciato; al passaggio del mouse si avvicina appena */
+  .scheda-funzione { display: flex; flex-direction: column; }
+  .scheda-media { padding: var(--s-5); border-bottom: 1px solid var(--line); }
+  .scheda-media .video, .scheda-media .immagine { display: block; width: 100%; aspect-ratio: 16 / 9; height: auto; border-radius: 10px; overflow: hidden; box-shadow: var(--aberrazione), 0 24px 50px -16px var(--ombra-carta); transition: transform .6s cubic-bezier(0, 0, .2, 1); }
+  @media (min-width: 768px) { .scheda-media { padding: var(--s-7) var(--s-7) var(--s-6); } }
+  @media (hover: hover) { .scheda-funzione:hover .scheda-media :is(.video, .immagine) { transform: translateY(-4px) scale(1.01); } }
+  .scheda-funzione .scheda-corpo { display: flex; flex-direction: column; flex: 1; }
+  .scheda-funzione .titolo-scheda { font-size: 1.75rem; }
+  .scheda-risultato { display: flex; gap: 10px; align-items: flex-start; margin-top: auto; padding-top: var(--s-5); color: var(--ink); line-height: 1.5; }
+  .scheda-risultato svg { flex: none; width: 16px; height: 16px; margin-top: 3px; color: var(--app-ink, var(--accent-ink)); }
+  .scheda-link { margin-top: var(--s-5); }
+</style>

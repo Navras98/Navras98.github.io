@@ -1,0 +1,21 @@
+---
+import Base from '../../layouts/Base.astro';
+import TestaPagina from '../../components/TestaPagina.astro';
+import Sezione from '../../components/Sezione.astro';
+import CarteCanale from '../../components/CarteCanale.astro';
+import { pagina } from '../../lib/contenuti.js';
+const nl = await pagina('newsletterPagina');
+const c = nl.confermato;
+const seo = { titolo: c.titolo.replace(/\*/g, '').replace(/[.\s]+$/, ''), descrizione: c.testo };
+const indice = [{ id: 'hero', etichetta: c.etichetta }, { id: 'strade', etichetta: c.strade.etichetta }];
+---
+<Base seo={seo} noindex invito={false} indice={indice}>
+  <section class="sezione" id="hero" aria-labelledby="titolo-pagina">
+    <div class="contenitore">
+      <TestaPagina etichetta={c.etichetta} titoloPagina={c.titolo} testo={c.testo} />
+    </div>
+  </section>
+  <Sezione id="strade" numero={1} etichetta={c.strade.etichetta} didascalia={c.strade.didascalia}>
+    <CarteCanale voci={c.strade.voci} />
+  </Sezione>
+</Base>

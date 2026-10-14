@@ -1,0 +1,152 @@
+---
+import Base from '../layouts/Base.astro';
+import Sezione from '../components/Sezione.astro';
+import Immagine from '../components/Immagine.astro';
+import Collegamento from '../components/Collegamento.astro';
+import Icona from '../components/Icona.astro';
+import Obiettivi from '../components/Obiettivi.astro';
+import Video from '../components/Video.astro';
+import { pagina, progetti, titolo, dueCifre, spazio } from '../lib/contenuti.js';
+const c = await pagina('chiSono');
+const indice = [{ id: 'hero', etichetta: c.apertura.etichetta }, { id: 'percorso', etichetta: c.percorso.etichetta }, { id: 'obiettivi', etichetta: c.obiettivi.etichetta }];
+// una tappa può mostrare accanto una prova vera (dalla pagina Open source) o le icone dei progetti
+const os = await pagina('openSource');
+const imp = await pagina('impostazioni');
+const prove = Object.fromEntries(os.prove.voci.map((p) => [p.codice, p]));
+const perSlug = Object.fromEntries((await progetti()).map((p) => [p.slug, p]));
+---
+<Base seo={c.seo} indice={indice}>
+  <section id="hero" aria-labelledby="titolo-pagina">
+    <div class="contenitore">
+      <div class="chi-apertura">
+        <div class="chi-apertura-foto">
+          <figure class="chi-foto entra">
+            <span class="tacca-foto as" aria-hidden="true"></span><span class="tacca-foto ad" aria-hidden="true"></span>
+            <Immagine img={c.apertura.foto} sizes="(max-width: 639px) 100vw, (max-width: 1099px) 42vw, 540px" loading="eager" priorita="high" />
+            <span class="tacca-foto bs" aria-hidden="true"></span><span class="tacca-foto bd" aria-hidden="true"></span>
+          </figure>
+          <dl class="dettagli hud entra" style="--e:3">
+            {c.dettagli.map((d) => (
+              <div><dt class="faint">{d.etichetta}</dt><dd>{d.link ? <Collegamento href={d.link}>{d.valore}<Icona nome="freccia" /></Collegamento> : d.valore}</dd></div>
+            ))}
+          </dl>
+        </div>
+        <div class="chi-apertura-testo">
+          <p class="hud muted entra">{c.apertura.etichetta}</p>
+          <h1 class="titolo-pagina entra" id="titolo-pagina" style="--e:1" set:html={titolo(c.apertura.titolo)} />
+          <div class="articolo storia entra" style="--e:2" set:html={c.html} />
+        </div>
+      </div>
+    </div>
+  </section>
+  <Sezione id="percorso" numero={1} etichetta={c.percorso.etichetta} didascalia={c.percorso.didascalia}>
+    <div class="intro-sezione"><h2 class="titolo-sezione" data-rivela set:html={titolo(c.percorso.titolo)} /></div>
+    <ol class="percorso">
+      {c.percorso.voci.map((t, i) => (
+        <li class="tappa" data-rivela style={`--i:${i % 3}`}>
+          <span class="tappa-punto" aria-hidden="true"></span>
+          <p class="hud tappa-numero">{dueCifre(i + 1)}</p>
+          <h3 class="titolo-scheda tappa-nome">{t.tappa}</h3>
+          <div class="tappa-corpo">
+            <p class="testo">{t.testo}</p>
+          </div>
+          {t.loghi?.length > 0 && (
+            <ul class="tappa-loghi">
+              {t.loghi.map((l) => <li class:list={['tappa-logo', l.src.includes('/icone/') && 'tappa-logo-icona']} title={l.alt.replace(/^(Logo|Icona) di /, '')}><Immagine img={l} sizes="56px" /></li>)}
+            </ul>
+          )}
+          {t.prova && prove[t.prova] && (
+            <a class="tappa-prova palco" href={prove[t.prova].link} target="_blank" rel="noopener">
+              {t.video ? <Video video={t.video} class="tappa-prova-video" /> : (<>
+                <Immagine img={prove[t.prova].scuro} class="prova-scuro" sizes="(max-width: 1099px) 92vw, 380px" cornice="nessuna" nonOltre />
+                <Immagine img={prove[t.prova].chiaro} class="prova-chiaro" sizes="(max-width: 1099px) 92vw, 380px" cornice="nessuna" nonOltre />
+              </>)}
+              <span class="hud tappa-prova-nota"><Icona nome="github" />{prove[t.prova].titolo}<Icona nome="freccia" /><span class="sr-only"> ({imp.interfaccia.apre_nuova_scheda})</span></span>
+            </a>
+          )}
+          {t.progetti?.length > 0 && (
+            <ul class="tappa-progetti">
+              {t.progetti.filter((x) => perSlug[x]).map((x) => (
+                <li><a href={`/progetti/${x}/`} class={`c-${perSlug[x].colore}`}><Immagine img={perSlug[x].icona} decorativa class="tappa-progetto-icona" sizes="72px" /><span class="hud">{perSlug[x].nome}{spazio(perSlug[x].nome_colorato)}{perSlug[x].nome_colorato}</span></a></li>
+              ))}
+            </ul>
+          )}
+        </li>
+      ))}
+    </ol>
+  </Sezione>
+  <Sezione id="obiettivi" numero={2} etichetta={c.obiettivi.etichetta} didascalia={c.obiettivi.didascalia}>
+    <div class="intro-sezione"><h2 class="titolo-sezione" data-rivela set:html={titolo(c.obiettivi.titolo)} /></div>
+    <Obiettivi voci={c.obiettivi.voci} />
+  </Sezione>
+</Base>
+<style is:global>
+  /* telefono: foto, testo, dettagli; da 640 px foto e dettagli a sinistra, testo a destra */
+  .chi-apertura { display: grid; }
+  .chi-apertura-foto { display: contents; }
+  .chi-foto { position: relative; order: 1; margin: var(--s-6) var(--margine) 0; border: 1px solid var(--line); }
+  .chi-foto .immagine { display: block; width: 100%; }
+  .chi-apertura-testo { order: 2; }
+  .chi-apertura .dettagli { order: 3; margin: 0 var(--margine) var(--s-8); }
+  .chi-apertura-testo { padding: var(--s-8) var(--margine) var(--s-9); }
+  .chi-apertura-testo .titolo-pagina { margin-top: 20px; }
+  .storia { margin-top: var(--s-6); }
+  .storia p { color: var(--muted); font-size: 1.125rem; }
+  .chi-apertura .dettagli { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .chi-apertura .dettagli > div { display: flex; justify-content: space-between; gap: var(--s-4); padding: var(--s-3) var(--s-4); background: var(--bg); }
+  .chi-apertura .dettagli dd { text-align: right; color: var(--ink); }
+  .chi-apertura .dettagli a { display: inline-flex; align-items: center; gap: 6px; }
+  @media (hover: hover) { .chi-apertura .dettagli a:hover { color: var(--accent-ink); } }
+  .chi-apertura .dettagli svg { width: 12px; height: 12px; }
+  @media (min-width: 640px) {
+    .chi-apertura { grid-template-columns: 5fr 7fr; align-items: start; }
+    .chi-apertura-foto { display: flex; flex-direction: column; gap: var(--s-6); padding: var(--s-8) var(--margine) var(--s-9); border-right: 1px solid var(--line); align-self: stretch; }
+    .chi-foto, .chi-apertura .dettagli { margin: 0; }
+  }
+  @media (min-width: 640px) and (max-width: 1099px) {
+    .chi-apertura .titolo-pagina { font-size: clamp(2.25rem, 5.4vw, 3.75rem); }
+    /* foto e titolo affiancati, poi la storia e i fatti a tutta larghezza */
+    .chi-apertura { grid-template-columns: 2fr 3fr; }
+    .chi-apertura-foto, .chi-apertura-testo { display: contents; }
+    .chi-foto { grid-column: 1; grid-row: 1 / span 2; align-self: start; margin: var(--s-8) 0 0 var(--margine); }
+    .chi-apertura-testo > .hud { grid-column: 2; grid-row: 1; align-self: end; margin: var(--s-8) var(--margine) 0 var(--s-6); }
+    .chi-apertura-testo > .titolo-pagina { grid-column: 2; grid-row: 2; align-self: start; margin: 20px var(--margine) 0 var(--s-6); }
+    .chi-apertura-testo > .storia { grid-column: 1 / -1; grid-row: 3; margin: var(--s-7) var(--margine) 0; }
+    .chi-apertura .dettagli { grid-column: 1 / -1; grid-row: 4; margin: var(--s-7) var(--margine) var(--s-8); }
+  }
+  /* il percorso: una linea con sei tappe, ognuna con i loghi ufficiali degli strumenti di quel momento */
+  .percorso { position: relative; border-top: 1px solid var(--line); }
+  .percorso::before { content: ''; position: absolute; top: 0; bottom: 0; left: calc(var(--margine) + 5px); width: 2px; background: linear-gradient(var(--accent), color-mix(in srgb, #8b5cf6 80%, transparent), color-mix(in srgb, #2fd39c 70%, transparent)); opacity: .7; }
+  .tappa { position: relative; display: grid; grid-template-columns: 1fr; gap: var(--s-2); padding: var(--s-6) var(--margine) var(--s-6) calc(var(--margine) + 36px); }
+  .tappa + .tappa { border-top: 1px solid var(--line); }
+  .tappa-punto { position: absolute; left: var(--margine); top: calc(var(--s-6) + 4px); width: 12px; height: 12px; border-radius: 50%; background: var(--bg); box-shadow: 0 0 0 2px var(--accent-ink); }
+  .tappa-numero { color: var(--accent-ink); }
+  .tappa-nome { margin: 0; }
+  .tappa-corpo .testo { max-width: 40rem; }
+  /* la prova vera o le icone dei progetti: sotto il testo sul telefono, nel terzo destro sul computer */
+  .tappa-prova { display: grid; gap: var(--s-3); justify-items: center; margin-top: var(--s-4); padding: var(--s-4); border-radius: 12px; color: inherit; }
+  .tappa-prova .immagine { width: 100%; border-radius: 8px; }
+  .tappa-prova-nota { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); text-align: left; }
+  .tappa-prova-nota svg { width: 12px; height: 12px; flex: none; }
+  @media (hover: hover) { .tappa-prova:hover .tappa-prova-nota { color: var(--ink); } }
+  .tappa-progetti { display: flex; flex-wrap: wrap; gap: var(--s-5); margin-top: var(--s-4); list-style: none; }
+  .tappa-progetti a { display: grid; justify-items: center; gap: var(--s-2); color: var(--muted); }
+  .tappa-progetto-icona { width: 72px; height: 72px; border-radius: var(--raggio-icona); overflow: hidden; filter: var(--ombra-icona); transition: transform var(--medio) cubic-bezier(0, 0, .2, 1); }
+  @media (hover: hover) { .tappa-progetti a:hover { color: var(--app-ink); } .tappa-progetti a:hover .tappa-progetto-icona { transform: translateY(-4px); } }
+  .tappa-loghi { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-top: var(--s-4); }
+  .tappa-logo { display: grid; place-items: center; width: 56px; height: 56px; padding: 7px; border-radius: 14px; background: var(--tessera-bg); box-shadow: inset 0 0 0 1px var(--tessera-bordo); filter: var(--ombra-icona); }
+  .tappa-logo .immagine, .tappa-logo img { width: 100%; height: 100%; }
+  /* le icone dei miei progetti hanno già il loro fondo: niente riquadro bianco */
+  .tappa-logo-icona { padding: 0; background: none; box-shadow: none; border-radius: var(--raggio-icona); overflow: hidden; }
+  .tappa-prova-video { width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: 8px; }
+  @media (min-width: 900px) {
+    .tappa { grid-template-columns: 64px 240px 1fr; align-items: start; column-gap: var(--s-5); }
+    .tappa-loghi, .tappa-prova, .tappa-progetti { grid-column: 3; }
+  }
+  /* sopra i 1100 px ogni tappa ha a destra la sua prova: i loghi, la modifica integrata o le icone dei progetti */
+  @media (min-width: 1100px) {
+    .tappa { grid-template-columns: 64px 240px minmax(0, 1fr) 380px; }
+    .tappa-loghi, .tappa-prova, .tappa-progetti { grid-column: 4; grid-row: 1 / span 2; margin-top: 0; }
+    .tappa-loghi, .tappa-progetti { justify-content: flex-end; }
+  }
+</style>

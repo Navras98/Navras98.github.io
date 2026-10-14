@@ -1,0 +1,44 @@
+---
+// English page for the newsletter: it explains that the newsletter is written in Italian.
+import Base from '../../../layouts/Base.astro';
+import Sezione from '../../../components/Sezione.astro';
+import TestaPagina from '../../../components/TestaPagina.astro';
+import Bottone from '../../../components/Bottone.astro';
+import Icona from '../../../components/Icona.astro';
+import UltimoNumero from '../../../components/UltimoNumero.astro';
+import ModuloIscrizione from '../../../components/ModuloIscrizione.astro';
+import { pagina, titolo, numeri } from '../../../lib/contenuti.js';
+const en = await pagina('newsletterInglese');
+const [ultimo] = await numeri();
+const indice = [{ id: 'hero', etichetta: en.apertura.etichetta }, { id: 'what', etichetta: en.cosa_e.etichetta }, { id: 'rest', etichetta: en.resto.etichetta }];
+---
+<Base seo={en.seo} lingua="en" alternative={[{ lingua: 'it', link: '/newsletter/' }, { lingua: 'en', link: '/en/newsletter/' }, { lingua: 'x-default', link: '/newsletter/' }]} invito={false} indice={indice} etichettaIndice={en.indice}>
+  <section class="sezione" id="hero" aria-labelledby="titolo-pagina">
+    <div class="contenitore nl-apertura">
+      <TestaPagina etichetta={en.apertura.etichetta} titoloPagina={en.apertura.titolo} testo={en.apertura.testo}>
+        <div class="entra en-modulo" style="--e:3"><ModuloIscrizione id="subscribe" /></div>
+        <div class="bottoni entra" style="--e:4"><Bottone href={en.archivio_link.link} tipo="bordato" hreflang="it">{en.archivio_link.etichetta}<Icona nome="destra" /></Bottone></div>
+      </TestaPagina>
+      {ultimo && <UltimoNumero n={ultimo} etichetta={en.ultimo.etichetta} link={en.ultimo.link} lingua="en" class="entra" style="--e:4" />}
+    </div>
+  </section>
+  <Sezione id="what" numero={1} etichetta={en.cosa_e.etichetta} didascalia={en.cosa_e.didascalia}>
+    <div class="intro-sezione">
+      <h2 class="titolo-sezione" data-rivela set:html={titolo(en.cosa_e.titolo)} />
+      <p class="testo-grande" data-rivela style="--i:1">{en.cosa_e.testo}</p>
+    </div>
+  </Sezione>
+  <Sezione id="rest" numero={2} etichetta={en.resto.etichetta} didascalia={en.resto.didascalia}>
+    <div class="intro-sezione">
+      <h2 class="titolo-sezione" data-rivela set:html={titolo(en.resto.titolo)} />
+      <p class="testo-grande" data-rivela style="--i:1">{en.resto.testo}</p>
+      <div class="bottoni" data-rivela style="--i:2"><Bottone href={en.resto.link.link} tipo="bordato" hreflang="it">{en.resto.link.etichetta}<Icona nome="destra" /></Bottone></div>
+    </div>
+  </Sezione>
+</Base>
+<style is:global>
+  .en-modulo { margin-top: var(--s-6); }
+  .nl-apertura { display: grid; }
+  .nl-apertura .ultimo-numero { border-top: 1px solid var(--line); }
+  @media (min-width: 1100px) { .nl-apertura { grid-template-columns: 7fr 5fr; } .nl-apertura .ultimo-numero { border-top: 0; border-left: 1px solid var(--line); justify-content: center; padding-top: 120px; } }
+</style>

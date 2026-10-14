@@ -1,0 +1,7 @@
+---
+// Glifi del monogramma, disegnati a mano (tracciati in src/lib/glifi.json). «lettera»: "A", "S" oppure "AS".
+import glifi from '../lib/glifi.json';
+const { lettera = 'AS', class: classe, titolo, style } = Astro.props;
+const g = glifi[lettera];
+---
+<svg class={classe} style={style} viewBox={g.viewBox} role={titolo ? 'img' : undefined} aria-label={titolo} aria-hidden={titolo ? undefined : 'true'} focusable="false"><path fill="currentColor" fill-rule="evenodd" d={g.d} /></svg>

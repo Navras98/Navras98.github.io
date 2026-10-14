@@ -1,0 +1,168 @@
+---
+import Base from '../layouts/Base.astro';
+import Sezione from '../components/Sezione.astro';
+import TestaPagina from '../components/TestaPagina.astro';
+import Prova from '../components/Prova.astro';
+import Immagine from '../components/Immagine.astro';
+import Bottone from '../components/Bottone.astro';
+import Collegamento from '../components/Collegamento.astro';
+import Icona from '../components/Icona.astro';
+import Video from '../components/Video.astro';
+import { pagina, titolo, dataEstesa, statoClasse, dueCifre } from '../lib/contenuti.js';
+import { dimensioni } from '../lib/media.js';
+const os = await pagina('openSource');
+const { interfaccia: ui } = await pagina('impostazioni');
+const indice = [{ id: 'hero', etichetta: os.apertura.etichetta }, { id: 'prove', etichetta: os.prove.etichetta }, { id: 'contributi', etichetta: os.contributi.etichetta }, { id: 'progetto-mio', etichetta: os.progetto_mio.etichetta }];
+const progettiContributi = [...new Set(os.contributi.voci.map((c) => c.progetto))];
+// schede (commenti, proporzione da foto) in griglia grande; strisce (note di rilascio, intestazioni) in elenco
+const striscia = (p) => { const { w, h } = dimensioni(p.scuro.src); return w / h > 2.5; };
+const schede = os.prove.voci.filter((p) => !striscia(p));
+const strisce = os.prove.voci.filter(striscia);
+---
+<Base seo={os.seo} indice={indice}>
+  <section id="hero" aria-labelledby="titolo-pagina">
+    <div class="contenitore os-apertura">
+      <TestaPagina etichetta={os.apertura.etichetta} titoloPagina={os.apertura.titolo} testo={os.apertura.testo}>
+        <p class="hud faint verificato entra" style="--e:3"><Icona nome="spunta" />{os.apertura.verificato}</p>
+      </TestaPagina>
+      {os.apertura.video && <div class="os-apertura-palco palco entra" style="--e:4"><Video video={os.apertura.video} class="os-apertura-video" /></div>}
+    </div>
+  </section>
+  <Sezione id="prove" numero={1} etichetta={os.prove.etichetta} didascalia={os.prove.didascalia}>
+    <div class="intro-sezione">
+      <h2 class="titolo-sezione" data-rivela set:html={titolo(os.prove.titolo)} />
+      <p class="testo-grande" data-rivela style="--i:1">{os.prove.testo}</p>
+    </div>
+    <div class="griglia griglia-2">{schede.map((p, i) => <Prova p={p} ui={ui} i={i} />)}</div>
+    {strisce.length > 0 && (
+      <div class="strisce">
+        <p class="hud muted strisce-nome">{os.prove.altre}</p>
+        <ol>
+          {strisce.map((p, i) => (
+            <li class="striscia" id={`prova-${p.codice}`} data-rivela>
+              <div class="striscia-testo">
+                <p class="hud prova-meta"><span class="faint">{dueCifre(schede.length + i + 1)}</span><span class={statoClasse(p.stato)}>{p.stato}</span><span class="faint"><time datetime={p.data}>{dataEstesa(p.data)}</time></span></p>
+                <h3 class="striscia-titolo">{p.titolo}</h3>
+                <p class="testo">{p.testo}</p>
+              </div>
+              <a class="striscia-media" href={p.link} target="_blank" rel="noopener">
+                <Immagine img={p.scuro} class="prova-scuro" sizes="(max-width: 1099px) 100vw, 920px" cornice="nessuna" nonOltre />
+                <Immagine img={p.chiaro} class="prova-chiaro" sizes="(max-width: 1099px) 100vw, 920px" cornice="nessuna" nonOltre />
+                <span class="hud striscia-link"><Icona nome="github" />{ui.vedi_su_github}<Icona nome="freccia" /><span class="sr-only"> ({ui.apre_nuova_scheda})</span></span>
+              </a>
+            </li>
+          ))}
+        </ol>
+      </div>
+    )}
+  </Sezione>
+  <Sezione id="contributi" numero={2} etichetta={os.contributi.etichetta} didascalia={os.contributi.didascalia}>
+    <div class="intro-sezione">
+      <h2 class="titolo-sezione" data-rivela set:html={titolo(os.contributi.titolo)} />
+      <p class="testo-grande" data-rivela style="--i:1">{os.contributi.testo}</p>
+    </div>
+    {progettiContributi.map((nome) => {
+      const tutte = os.contributi.voci.filter((c) => c.progetto === nome);
+      const integrate = tutte.filter((c) => c.stato === 'integrata');
+      // se il progetto ha contributi integrati, le altre proposte stanno in un riquadro che si apre
+      const [visibili, altre] = integrate.length ? [integrate, tutte.filter((c) => c.stato !== 'integrata')] : [tutte, []];
+      const riga = (c) => (
+        <li>
+          <Collegamento href={c.link} class="contributo">
+            <span class="hud faint contributo-numero">#{c.numero}</span>
+            <span class="contributo-titolo">{c.titolo}</span>
+            <span class="hud contributo-stato"><span class={statoClasse(c.stato)}>{c.stato}</span></span>
+            <span class="hud faint contributo-data"><time datetime={c.data}>{dataEstesa(c.data)}</time></span>
+            <Icona nome="freccia" class="contributo-freccia" />
+          </Collegamento>
+        </li>
+      );
+      return (
+        <div class="tabella-contributi" data-rivela>
+          <p class="hud muted tabella-nome">{nome}</p>
+          <div>
+            <ul>{visibili.map(riga)}</ul>
+            {altre.length > 0 && (
+              <details class="altre-proposte">
+                <summary class="hud"><Icona nome="destra" />{os.contributi.altre} ({altre.length})</summary>
+                <ul>{altre.map(riga)}</ul>
+              </details>
+            )}
+          </div>
+        </div>
+      );
+    })}
+  </Sezione>
+  <Sezione id="progetto-mio" numero={3} etichetta={os.progetto_mio.etichetta} didascalia={os.progetto_mio.didascalia}>
+    <div class="progetto-mio">
+      <div class="intro-sezione">
+        <h2 class="titolo-sezione" data-rivela set:html={titolo(os.progetto_mio.titolo)} />
+        <p class="testo-grande" data-rivela style="--i:1">{os.progetto_mio.testo}</p>
+        <div class="bottoni" data-rivela style="--i:2"><Bottone href={os.progetto_mio.link.link} tipo="bordato" icona="github">{os.progetto_mio.link.etichetta}</Bottone></div>
+      </div>
+      <div class="progetto-mio-media palco c-blu" data-rivela><Immagine img={os.progetto_mio.immagine} sizes="(max-width: 1099px) 100vw, 640px" nonOltre /></div>
+    </div>
+  </Sezione>
+</Base>
+<style is:global>
+  .verificato { display: inline-flex; align-items: center; gap: var(--s-2); margin-top: var(--s-5); }
+  .strisce { display: grid; border-top: 1px solid var(--line); }
+  .strisce-nome { padding: var(--s-5) var(--margine) var(--s-3); }
+  .strisce ol { border-top: 1px solid var(--line); }
+  .striscia { display: grid; gap: var(--s-4); padding: var(--s-6) var(--margine); scroll-margin-top: calc(var(--testata) + 48px); }
+  .striscia + .striscia { border-top: 1px solid var(--line); }
+  .striscia-titolo { margin-top: var(--s-2); font-family: var(--font-display); font-weight: 620; font-stretch: 118%; font-size: 1.25rem; line-height: 1.25; letter-spacing: -.02em; color: var(--ink-strong); }
+  .striscia .testo { margin-top: 6px; }
+  .striscia-media { display: grid; gap: var(--s-3); justify-items: start; }
+  .striscia-media .immagine { max-width: min(100%, 920px); border-radius: 6px; overflow: hidden; box-shadow: var(--aberrazione); }
+  .striscia-link { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); transition: color .15s; }
+  .striscia-link svg { width: 13px; height: 13px; }
+  @media (max-width: 639px) { .striscia-media .immagine { display: none !important; } }
+  @media (hover: hover) { .striscia-media:hover .striscia-link { color: var(--ink); } }
+  @media (min-width: 900px) {
+    .strisce { grid-template-columns: 220px 1fr; }
+    .strisce-nome { padding: var(--s-5) var(--margine); border-right: 1px solid var(--line); }
+    .strisce ol { border-top: 0; }
+  }
+  /* sul computer le tre note di rilascio stanno in un solo riquadro compatto: testo a sinistra, la riga vera a destra */
+  @media (min-width: 1100px) {
+    .striscia { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: center; column-gap: var(--s-6); padding-block: var(--s-4); }
+    .striscia-titolo { font-size: 1.0625rem; }
+    .striscia .testo { font-size: .9375rem; }
+  }
+  .verificato svg { width: 14px; height: 14px; color: var(--verde); }
+  /* apertura: a destra del titolo la prova più forte, in movimento */
+  .os-apertura { display: grid; }
+  .os-apertura-palco { display: grid; place-items: center; padding: var(--s-6) var(--margine); border-top: 1px solid var(--line); }
+  .os-apertura-video { width: 100%; max-width: 640px; height: auto; aspect-ratio: 16 / 9; border-radius: 12px; box-shadow: var(--aberrazione), 0 28px 60px -18px var(--ombra-carta); }
+  @media (min-width: 1100px) { .os-apertura { grid-template-columns: 7fr 5fr; } .os-apertura-palco { border-top: 0; border-left: 1px solid var(--line); padding: var(--s-8) var(--s-7); } }
+  .tabella-contributi { display: grid; border-top: 1px solid var(--line); }
+  .tabella-nome { padding: var(--s-5) var(--margine) var(--s-3); }
+  .tabella-contributi ul { border-top: 1px solid var(--line); }
+  .tabella-contributi li + li { border-top: 1px solid var(--line); }
+  .altre-proposte { border-top: 1px solid var(--line); }
+  .altre-proposte summary { display: flex; align-items: center; gap: var(--s-2); min-height: 48px; padding: 0 var(--margine); color: var(--muted); cursor: pointer; list-style: none; transition: color .15s, background-color var(--rapido) linear; }
+  .altre-proposte summary::-webkit-details-marker { display: none; }
+  .altre-proposte summary svg { width: 14px; height: 14px; transition: transform var(--medio) var(--ease); }
+  .altre-proposte[open] summary svg { transform: rotate(90deg); }
+  @media (hover: hover) { .altre-proposte summary:hover { color: var(--ink); background: var(--bg-raised); } }
+  .altre-proposte ul { border-top: 1px solid var(--line); }
+  .contributo { display: grid; grid-template-columns: auto 1fr auto; gap: var(--s-2) var(--s-4); align-items: baseline; padding: var(--s-4) var(--margine); transition: background-color var(--rapido) linear; }
+  @media (hover: hover) { .contributo:hover { background: var(--bg-raised); } }
+  .contributo-titolo { grid-column: 2 / 3; color: var(--ink); line-height: 1.5; }
+  .contributo-stato { grid-column: 2 / 3; }
+  .contributo-data { grid-column: 2 / 3; }
+  .contributo-freccia { grid-column: 3; grid-row: 1; width: 14px; height: 14px; color: var(--muted); }
+  @media (min-width: 900px) {
+    .tabella-contributi { grid-template-columns: 220px 1fr; }
+    .tabella-nome { padding: var(--s-5) var(--margine); border-right: 1px solid var(--line); }
+    .tabella-contributi ul { border-top: 0; }
+    .contributo { grid-template-columns: 90px 1fr 140px 150px 20px; }
+    .contributo-titolo, .contributo-stato, .contributo-data { grid-column: auto; }
+    .contributo-freccia { grid-column: auto; grid-row: auto; }
+  }
+  .progetto-mio { display: grid; border-top: 1px solid var(--line); }
+  .progetto-mio-media { padding: var(--s-7) var(--margine); }
+  .progetto-mio-media .immagine { width: 100%; margin-inline: auto; }
+  @media (min-width: 1100px) { .progetto-mio { grid-template-columns: 5fr 7fr; align-items: center; } .progetto-mio-media { padding: var(--s-8) var(--margine); border-left: 1px solid var(--line); align-self: stretch; display: grid; place-items: center; } }
+</style>

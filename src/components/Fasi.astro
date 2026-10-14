@@ -1,0 +1,102 @@
+---
+// Le fasi del metodo, numerate. «compatto» per la home (numero, nome e titolo), completo per la pagina Metodo.
+// Nella pagina Metodo, sopra i 1100 px, a destra c'è un palco fisso: mentre si scorrono le fasi mostra quella in lettura
+// (lo guida src/scripts/fasi.js). Sotto i 1100 px ogni fase ha sotto il testo la sua immagine ferma, più grande e leggibile
+// del video in uno schermo stretto (il video solo se manca l'immagine).
+import Immagine from './Immagine.astro';
+import Video from './Video.astro';
+import Icona from './Icona.astro';
+import { titolo, dueCifre } from '../lib/contenuti.js';
+const { fasi, compatto = false, etichettaOttieni, colori = [] } = Astro.props;
+---
+<div class:list={[!compatto && 'fasi-con-palco']} data-fasi={compatto ? undefined : ''}>
+<ol class:list={['fasi', compatto ? 'fasi-compatte' : 'fasi-complete']}>
+  {fasi.map((f, i) => (
+    <li class:list={['fase', !compatto && colori.length && `c-${colori[i % colori.length]}`]} style={`--i:${i % 3}`} id={compatto ? undefined : `fase-${i + 1}`} data-fase={compatto ? undefined : i}>
+      <div class="fase-testa" data-rivela>
+        <span class="hud badge fase-numero">{dueCifre(i + 1)}</span>
+        <p class="hud muted">{f.nome}</p>
+      </div>
+      <div class="fase-corpo" data-rivela>
+        <h3 class="titolo-scheda" set:html={titolo(f.titolo)} />
+        {!compatto && <p class="testo">{f.testo}</p>}
+        {!compatto && (
+          <div class="fase-ottieni">
+            <p class="hud faint">{etichettaOttieni}</p>
+            <ul>{f.ottieni.map((o) => <li><Icona nome="spunta" />{o}</li>)}</ul>
+          </div>
+        )}
+      </div>
+      {!compatto && (f.video || f.immagine) && (
+        <div class="fase-media palco">{f.immagine ? <Immagine img={f.immagine} sizes="(max-width: 767px) 92vw, 640px" cornice="nessuna" /> : <Video video={f.video} larghezzaCopertina={1080} />}</div>
+      )}
+    </li>
+  ))}
+</ol>
+{!compatto && (
+  <div class="fasi-palco palco" aria-hidden="true" data-fasi-palco>
+    <div class="fasi-palco-dentro">
+      {fasi.map((f, i) => (
+        <div class:list={['fasi-palco-voce', colori.length && `c-${colori[i % colori.length]}`]} data-voce={i} data-attiva={i === 0 ? '' : undefined}>
+          <p class="hud fasi-palco-nome"><span class="badge hud">{dueCifre(i + 1)}</span>{f.nome}</p>
+          {f.video ? <Video video={f.video} larghezzaCopertina={1080} attesa decorativo /> : f.immagine && <Immagine img={f.immagine} sizes="640px" cornice="nessuna" decorativa />}
+        </div>
+      ))}
+    </div>
+  </div>
+)}
+</div>
+<style is:global>
+  .fasi { display: grid; gap: 1px; background: var(--line); border-top: 1px solid var(--line); counter-reset: fase; }
+  .fase { background: var(--bg); padding: var(--s-5) var(--margine) var(--s-6); min-width: 0; }
+  .fase-testa { display: flex; align-items: center; gap: var(--s-3); }
+  .fase-numero { --app: var(--accent); }
+  .fasi-complete .fase[class*='c-'] .fase-numero { --app: inherit; }
+  .fase-corpo .titolo-scheda { margin-top: var(--s-5); }
+  .fase-corpo .testo { margin-top: var(--s-2); }
+  .fasi-compatte { grid-template-columns: 1fr; }
+  @media (min-width: 768px) { .fasi-compatte { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1100px) { .fasi-compatte { grid-template-columns: repeat(3, 1fr); } }
+  .fase-ottieni { margin-top: var(--s-5); padding-top: var(--s-4); border-top: 1px solid var(--line); max-width: 36rem; }
+  .fase-ottieni ul { display: grid; gap: var(--s-2); margin-top: var(--s-3); }
+  .fase-ottieni li { display: flex; gap: 10px; align-items: flex-start; line-height: 1.5; color: var(--ink); }
+  .fase-ottieni svg { width: 16px; height: 16px; flex-shrink: 0; margin-top: 3px; color: var(--accent-ink); }
+  /* pagina Metodo, sotto i 1100 px: testo e, sotto, la sua immagine o il suo video su un palco */
+  .fasi-complete { gap: 0; background: var(--bg); }
+  .fasi-complete .fase { display: grid; padding: 0; }
+  .fasi-complete .fase + .fase { border-top: 1px solid var(--line); }
+  .fasi-complete .fase-testa { padding: var(--s-7) var(--margine) 0; }
+  .fasi-complete .fase-corpo { padding: 0 var(--margine) var(--s-7); }
+  .fase-media { display: grid; place-items: center; padding: var(--s-5) 12px; border-top: 1px solid var(--line); }
+  @media (min-width: 640px) { .fase-media { padding: var(--s-6) var(--margine); } }
+  .fase-media .video, .fase-media .immagine { width: 100%; max-width: 640px; border-radius: 12px; overflow: hidden; box-shadow: var(--aberrazione), 0 28px 60px -18px var(--ombra-carta); }
+  .fase-media .video { aspect-ratio: 16 / 9; height: auto; }
+  .fasi-palco { display: none; }
+  /* sopra i 1100 px: le fasi a sinistra, alte; a destra il palco fisso con la fase in lettura */
+  @media (min-width: 1100px) {
+    .fasi-con-palco { display: grid; grid-template-columns: 5fr 7fr; border-top: 1px solid var(--line); }
+    .fasi-con-palco .fasi { border-top: 0; }
+    .fasi-complete .fase { min-height: 74vh; align-content: center; padding-block: var(--s-8); }
+    .fasi-complete .fase-media { display: none; }
+    .fasi-complete .fase-corpo .titolo-scheda { font-size: 2rem; line-height: 1.1; }
+    /* la fase in lettura ha una barra blu a sinistra (le altre restano leggibili: niente testo attenuato) */
+    .fasi-complete .fase { box-shadow: inset 0 0 0 0 var(--accent); transition: box-shadow var(--medio) var(--ease); }
+    .fasi-complete .fase[data-attiva] { box-shadow: inset 3px 0 0 0 var(--app, var(--accent)); }
+    .fasi-palco { display: block; border-left: 1px solid var(--line); }
+    /* il palco prende il colore della fase in lettura (fasi.js copia --app): luce piena in scuro, pastello in chiaro */
+    .fasi-palco.palco { background:
+      radial-gradient(75% 55% at 50% 8%, color-mix(in srgb, var(--app, var(--accent)) 42%, transparent), transparent 72%),
+      radial-gradient(60% 45% at 100% 100%, color-mix(in srgb, var(--app, var(--accent)) 22%, transparent), transparent 70%),
+      var(--bg-raised); }
+    :root[data-theme='light'] .fasi-palco.palco { background:
+      radial-gradient(75% 55% at 50% 8%, color-mix(in srgb, var(--app, var(--accent)) 26%, transparent), transparent 72%),
+      radial-gradient(60% 45% at 100% 100%, color-mix(in srgb, var(--app, var(--accent)) 14%, transparent), transparent 70%),
+      color-mix(in srgb, var(--app, var(--accent)) 7%, var(--bg-raised)); }
+    .fasi-palco-dentro { position: sticky; top: var(--testata); height: calc(100vh - var(--testata)); display: grid; place-items: center; padding: var(--s-8) var(--s-8); }
+    .fasi-palco-voce { grid-area: 1 / 1; width: 100%; display: grid; gap: var(--s-4); opacity: 0; transform: translateY(14px) scale(.985); transition: opacity .22s var(--ease), transform .22s var(--ease); pointer-events: none; }
+    .fasi-palco-voce[data-attiva] { opacity: 1; transform: none; transition: opacity .35s var(--ease-out) .18s, transform .45s var(--ease-out) .18s; }
+    .fasi-palco-nome { display: flex; align-items: center; gap: var(--s-3); color: var(--muted); }
+    .fasi-palco-nome { color: var(--app-ink, var(--muted)); }
+    .fasi-palco-voce .video, .fasi-palco-voce .immagine { width: 100%; aspect-ratio: 16 / 9; height: auto; border-radius: 14px; overflow: hidden; box-shadow: var(--aberrazione), 0 30px 70px -20px var(--ombra-carta); }
+  }
+</style>

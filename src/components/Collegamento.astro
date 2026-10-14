@@ -1,0 +1,10 @@
+---
+// Link: se porta fuori dal sito si apre in una nuova scheda (e lo dice a chi usa un lettore di schermo).
+import { esterno, pagina, traduttore } from '../lib/contenuti.js';
+const { href, class: classe, ...resto } = Astro.props;
+const fuori = esterno(href);
+const ui = fuori ? (await pagina('impostazioni')).interfaccia : null;
+// sulle pagine in inglese (/en/) l'avviso per i lettori di schermo è in inglese
+const t = await traduttore(Astro.url.pathname.startsWith('/en/') ? 'en' : 'it');
+---
+<a href={href} class={classe} target={fuori ? '_blank' : undefined} rel={fuori ? 'noopener' : undefined} {...resto}><slot />{fuori && <span class="sr-only"> ({t(ui.apre_nuova_scheda)})</span>}</a>

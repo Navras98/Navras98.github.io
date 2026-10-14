@@ -1,0 +1,123 @@
+---
+// Strumenti, come la pagina «Craft Apps» di ArtCraft: titolo grande, griglia di icone, schede dettagliate.
+import Base from '../layouts/Base.astro';
+import Sezione from '../components/Sezione.astro';
+import TestaPagina from '../components/TestaPagina.astro';
+import TesseraStrumento from '../components/TesseraStrumento.astro';
+import Immagine from '../components/Immagine.astro';
+import Video from '../components/Video.astro';
+import Collegamento from '../components/Collegamento.astro';
+import Icona from '../components/Icona.astro';
+import { pagina, titolo, dueCifre } from '../lib/contenuti.js';
+const s = await pagina('strumenti');
+const gruppi = [...new Set(s.elenco.voci.map((v) => v.gruppo))];
+const perNome = Object.fromEntries(s.elenco.voci.map((v) => [v.nome, v]));
+for (const sc of s.schede.voci) if (!perNome[sc.nome]) throw new Error(`Nel file src/content/pagine/strumenti.yml la scheda «${sc.nome}» non corrisponde a nessuno strumento della griglia (controlla che il nome sia scritto uguale).`);
+const indice = [{ id: 'hero', etichetta: s.apertura.etichetta }, { id: 'tutti', etichetta: s.elenco.etichetta }, { id: 'come-li-uso', etichetta: s.schede.etichetta }];
+---
+<Base seo={s.seo} indice={indice}>
+  <section id="hero" aria-labelledby="titolo-pagina">
+    <div class="contenitore">
+      <div class="strumenti-apertura">
+        <TestaPagina etichetta={s.apertura.etichetta} titoloPagina={s.apertura.titolo} testo={s.apertura.testo}>
+          <p class="hud faint strumenti-nota entra" style="--e:3">{s.apertura.nota}</p>
+        </TestaPagina>
+        <div class="gruppo-strumenti gruppo-apertura entra" style="--e:3">
+          <p class="hud muted gruppo-nome">{gruppi[0]}</p>
+          <ul class="griglia-strumenti">
+            {s.elenco.voci.filter((v) => v.gruppo === gruppi[0]).map((v) => <li><TesseraStrumento s={v} /></li>)}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <Sezione id="tutti" numero={1} etichetta={s.elenco.etichetta} didascalia={s.elenco.didascalia}>
+    {gruppi.slice(1).map((g) => (
+      <div class="gruppo-strumenti">
+        <p class="hud muted gruppo-nome">{g}</p>
+        <ul class="griglia-strumenti" data-rivela>
+          {s.elenco.voci.filter((v) => v.gruppo === g).map((v) => <li><TesseraStrumento s={v} /></li>)}
+        </ul>
+      </div>
+    ))}
+  </Sezione>
+  <Sezione id="come-li-uso" numero={2} etichetta={s.schede.etichetta} didascalia={s.schede.didascalia}>
+    <div class="intro-sezione"><h2 class="titolo-sezione" data-rivela set:html={titolo(s.schede.titolo)} /></div>
+    <div class="schede-strumenti">
+      {s.schede.voci.map((sc, i) => (
+        <article class:list={['scheda-strumento', `c-${['blu', 'viola', 'acqua', 'arancio', 'indaco', 'rosa', 'verde'][i % 7]}`, sc.accanto && 'scheda-strumento-larga']} data-rivela id={`strumento-${perNome[sc.nome].nome.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}>
+          <div class="scheda-strumento-testo">
+            <div class="scheda-strumento-testa">
+              <TesseraStrumento s={perNome[sc.nome]} link={false} />
+              <span class="hud faint">{dueCifre(i + 1)} · {perNome[sc.nome].gruppo}</span>
+            </div>
+            <h3 class="titolo-scheda" set:html={titolo(sc.titolo)} />
+            <p class="testo">{sc.come_lo_uso}</p>
+            <Collegamento href={perNome[sc.nome].link} class="freccia-link hud">{perNome[sc.nome].nome}<Icona nome="freccia" /></Collegamento>
+          </div>
+          {sc.accanto ? (
+            <div class="scheda-strumento-media palco scheda-strumento-coppia">
+              <figure><Immagine img={sc.accanto.immagine} stretta={sc.accanto.immagine_telefono} sizes="(max-width: 1099px) 100vw, 600px" nonOltre /></figure>
+              <span class:list={['coppia-freccia', !sc.immagine_telefono && 'senza-telefono']} aria-hidden="true"><Icona nome="destra" /></span>
+              <figure class:list={[!sc.immagine_telefono && 'senza-telefono']}><Immagine img={sc.immagine} stretta={sc.immagine_telefono} sizes="(max-width: 1099px) 100vw, 600px" nonOltre /></figure>
+            </div>
+          ) : (
+            <div class="scheda-strumento-media palco">{sc.video ? <Video video={sc.video} class="scheda-strumento-video" /> : <Immagine img={sc.immagine} stretta={sc.immagine_telefono} sizes="(max-width: 1099px) 100vw, 720px" nonOltre />}</div>
+          )}
+        </article>
+      ))}
+    </div>
+  </Sezione>
+</Base>
+<style is:global>
+  .strumenti-nota { margin-top: var(--s-5); }
+  /* apertura: titolo a sinistra, gli agenti a destra (come la pagina delle app di ArtCraft) */
+  .strumenti-apertura { display: grid; }
+  .gruppo-apertura { border-top: 1px solid var(--line); }
+  @media (min-width: 1100px) {
+    .strumenti-apertura { grid-template-columns: 1fr 1fr; align-items: center; }
+    .strumenti-apertura .gruppo-apertura { display: block; border-top: 0; padding: var(--s-9) var(--margine) var(--s-9) 0; }
+    .gruppo-apertura .gruppo-nome { padding: 0 0 var(--s-5); border-right: 0; }
+    .gruppo-apertura .griglia-strumenti { grid-template-columns: repeat(4, 1fr); padding: 0; }
+  }
+  .gruppo-strumenti { display: grid; border-top: 1px solid var(--line); }
+  .gruppo-strumenti:first-of-type { border-top: 0; }
+  .gruppo-nome { padding: var(--s-5) var(--margine) 0; }
+  .griglia-strumenti { display: grid; grid-template-columns: repeat(auto-fill, minmax(76px, 1fr)); gap: var(--s-6) var(--s-3); padding: var(--s-6) var(--margine) var(--s-7); }
+  @media (min-width: 640px) { .griglia-strumenti { grid-template-columns: repeat(auto-fill, minmax(104px, 1fr)); } }
+  /* fra 640 e 1099 px sette icone per riga, come la griglia di ArtCraft: gli agenti stanno su una riga sola */
+  @media (min-width: 640px) and (max-width: 1099px) { .griglia-strumenti { grid-template-columns: repeat(7, 80px); column-gap: 20px; justify-content: start; } }
+  @media (min-width: 1100px) { .gruppo-strumenti { grid-template-columns: 220px 1fr; } .gruppo-nome { padding: var(--s-7) var(--margine); border-right: 1px solid var(--line); } .griglia-strumenti { padding-block: var(--s-7); } }
+  .schede-strumenti { display: grid; gap: 1px; background: var(--line); border-top: 1px solid var(--line); }
+  .scheda-strumento { display: grid; background: var(--bg); scroll-margin-top: calc(var(--testata) + 48px); }
+  .scheda-strumento-testo { display: flex; flex-direction: column; gap: var(--s-3); padding: var(--s-6) var(--margine); }
+  .scheda-strumento-testa { display: flex; align-items: center; justify-content: space-between; gap: var(--s-4); }
+  .scheda-strumento-testa .tessera { flex-direction: row; gap: var(--s-3); }
+  .scheda-strumento-testa .tessera-nome { font-size: 1rem; color: var(--ink-strong); font-weight: 600; }
+  .scheda-strumento .titolo-scheda { margin-top: var(--s-3); }
+  .scheda-strumento .freccia-link { margin-top: var(--s-3); }
+  .scheda-strumento-media { display: grid; align-content: center; padding: var(--s-6) var(--margine) var(--s-7); }
+  /* sul telefono, nella coppia, una schermata larga senza versione stretta non si leggerebbe: resta solo la prima */
+  @media (max-width: 639px) { .scheda-strumento-coppia .senza-telefono { display: none; } }
+  /* un video sta al massimo a metà dei suoi pixel (640 px): nitido anche sugli schermi a 2x */
+  .scheda-strumento-video { width: 100%; max-width: 640px; height: auto; margin-inline: auto; aspect-ratio: 16 / 9; border-radius: 12px; box-shadow: var(--aberrazione), 0 24px 60px -20px var(--ombra-carta); }
+  .scheda-strumento-media .immagine { width: 100%; margin-inline: auto; }
+  /* sopra i 1100 px le schede si alternano: schermata a destra, poi a sinistra; ogni palco ha il suo colore */
+  @media (min-width: 1100px) {
+    .scheda-strumento { grid-template-columns: 5fr 7fr; }
+    .scheda-strumento-media { padding: var(--s-8) var(--s-8); border-left: 1px solid var(--line); }
+    .scheda-strumento-testo { padding: var(--s-7) var(--margine); justify-content: center; }
+    .scheda-strumento:nth-child(even) { grid-template-columns: 7fr 5fr; }
+    .scheda-strumento:nth-child(even) .scheda-strumento-media { order: -1; border-left: 0; border-right: 1px solid var(--line); }
+    /* scheda larga: il testo sopra, poi la missione e la sessione affiancate */
+    .scheda-strumento-larga, .scheda-strumento-larga:nth-child(even) { grid-template-columns: 1fr; }
+    .scheda-strumento-larga .scheda-strumento-testo { max-width: 52rem; }
+    .scheda-strumento-larga .scheda-strumento-media { order: 0; border-left: 0; border-right: 0; border-top: 1px solid var(--line); padding: var(--s-8) var(--s-7); }
+    .scheda-strumento-coppia { grid-template-columns: 1fr 40px 1fr; align-items: center; gap: var(--s-4); }
+  }
+  .scheda-strumento-coppia { display: grid; gap: var(--s-5); }
+  .scheda-strumento-coppia figure .immagine { width: 100%; margin-inline: auto; }
+  .coppia-freccia { display: grid; place-items: center; color: var(--app-ink); }
+  .coppia-freccia svg { width: 28px; height: 28px; }
+  @media (max-width: 1099px) { .coppia-freccia { transform: rotate(90deg); } }
+</style>

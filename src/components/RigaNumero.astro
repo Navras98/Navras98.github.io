@@ -1,0 +1,35 @@
+---
+// Una riga dell'archivio della newsletter, come le «News» di ArtCraft: data a sinistra, titolo e sommario a destra.
+import Icona from './Icona.astro';
+import { dueCifre, dataEstesa } from '../lib/contenuti.js';
+// «breve» = solo numero, data e titolo, su una riga più bassa (per i numeri meno recenti)
+const { n, etichetta, breve = false } = Astro.props;
+---
+<li>
+  <a class:list={['riga-numero', breve && 'riga-breve']} href={`/newsletter/numeri/${n.slug}/`}>
+    <span class="hud faint riga-data"><span>{etichetta} {dueCifre(n.numero)}</span><time datetime={n.data}>{dataEstesa(n.data)}</time></span>
+    <span class="riga-testo">
+      <span class="riga-titolo">{n.titolo}</span>
+      {!breve && <span class="riga-sommario">{n.sommario}</span>}
+    </span>
+    <Icona nome="destra" class="riga-freccia" />
+  </a>
+</li>
+<style is:global>
+  /* data | titolo e sommario | freccia fissa a destra */
+  .riga-numero { display: grid; grid-template-columns: 1fr 24px; gap: var(--s-3) var(--s-4); padding: var(--s-5) var(--margine); }
+  .riga-data { grid-column: 1 / -1; }
+  @media (hover: hover) { .riga-numero:hover { background: var(--bg-raised); } .riga-numero:hover .riga-freccia { color: var(--ink); transform: translateX(4px); } }
+  .riga-data { display: flex; flex-direction: column; gap: 2px; }
+  .riga-testo { display: grid; gap: var(--s-2); }
+  .riga-titolo { max-width: 42rem; font-family: var(--font-display); font-weight: 620; font-stretch: 118%; font-size: 1.375rem; line-height: 1.3; letter-spacing: -.02em; color: var(--ink-strong); text-wrap: balance; }
+  .riga-freccia { align-self: start; justify-self: end; width: 16px; height: 16px; margin-top: 6px; color: var(--faint); transition: transform .15s var(--ease), color .15s; }
+  .riga-sommario { max-width: 42rem; line-height: 1.625; color: var(--muted); }
+  @media (min-width: 768px) { .riga-numero { grid-template-columns: 220px 1fr 24px; padding-block: var(--s-6); } .riga-data { grid-column: auto; } .riga-titolo { font-size: 1.5rem; } }
+  .riga-breve { padding-block: var(--s-4); }
+  .riga-breve .riga-titolo { font-size: 1.125rem; }
+  /* righe compatte: numero e data su una riga sola, cifre della stessa larghezza, mai a capo */
+  .riga-breve .riga-data { flex-direction: row; gap: var(--s-3); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .riga-breve .riga-data > span::after { content: '·'; margin-left: var(--s-3); }
+  @media (min-width: 768px) { .riga-breve { grid-template-columns: 220px 1fr 24px; padding-block: var(--s-4); align-items: baseline; } .riga-breve .riga-titolo { font-size: 1.125rem; } }
+</style>

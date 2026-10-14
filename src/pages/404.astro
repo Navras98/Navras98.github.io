@@ -1,0 +1,19 @@
+---
+import Base from '../layouts/Base.astro';
+import TestaPagina from '../components/TestaPagina.astro';
+import Sezione from '../components/Sezione.astro';
+import CarteCanale from '../components/CarteCanale.astro';
+import { pagina } from '../lib/contenuti.js';
+const e = await pagina('errore404');
+const indice = [{ id: 'hero', etichetta: e.etichetta }, { id: 'strade', etichetta: e.strade.etichetta }];
+---
+<Base seo={e.seo} noindex invito={false} indice={indice}>
+  <section class="sezione" id="hero" aria-labelledby="titolo-pagina">
+    <div class="contenitore">
+      <TestaPagina etichetta={e.etichetta} titoloPagina={e.titolo} testo={e.testo} />
+    </div>
+  </section>
+  <Sezione id="strade" numero={1} etichetta={e.strade.etichetta} didascalia={e.strade.didascalia}>
+    <CarteCanale voci={e.strade.voci} />
+  </Sezione>
+</Base>

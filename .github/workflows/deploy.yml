@@ -1,0 +1,51 @@
+# Costruisce il sito con Astro e lo pubblica su GitHub Pages a ogni push su main
+# (anche quando si salva da Pages CMS).
+name: Pubblica il sito
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      # le versioni ottimizzate delle immagini restano da una pubblicazione all'altra: si rifanno solo quelle cambiate
+      - uses: actions/cache@v4
+        with:
+          path: |
+            public/_img
+            src/generated
+          key: immagini-${{ hashFiles('public/media/**', 'public/newsletter/**', 'scripts/media.mjs') }}
+          restore-keys: immagini-
+      - run: npm run build
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

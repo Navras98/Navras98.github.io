@@ -1,0 +1,41 @@
+{
+ "motivo": "Parole vietate dal sito (criterio A5): sostituzioni minime nei testi d'archivio della newsletter, applicate il 14/10/2026. Il confronto C2 le considera uguali.",
+ "sostituzioni": [
+  {
+   "file": "src/content/newsletter/2026-08-08.md",
+   "prima": "e le leadership si muovono",
+   "dopo": "e i vertici si muovono",
+   "volte": 2
+  },
+  {
+   "file": "src/content/newsletter/2026-08-08.md",
+   "prima": "ha ridisegnato la leadership del suo team",
+   "dopo": "ha ridisegnato i vertici del suo team",
+   "volte": 1
+  },
+  {
+   "file": "src/content/newsletter/2026-08-08.md",
+   "prima": "non è riuscita a imporsi come leader",
+   "dopo": "non è riuscita a imporsi come prima della classe",
+   "volte": 1
+  },
+  {
+   "file": "src/content/newsletter/2026-09-11.md",
+   "prima": "Alcuni leader dell",
+   "dopo": "Alcuni dirigenti dell",
+   "volte": 1
+  },
+  {
+   "file": "src/content/newsletter/2026-08-22.md",
+   "prima": "Leader tech come",
+   "dopo": "Dirigenti tech come",
+   "volte": 1
+  },
+  {
+   "file": "src/content/newsletter/2026-08-26.md",
+   "prima": "efficienza energetica leader nel settore",
+   "dopo": "efficienza energetica ai vertici del settore",
+   "volte": 1
+  }
+ ]
+}

@@ -1,0 +1,100 @@
+# Pagina Newsletter (archivio, iscrizione) e testi delle pagine collegate.
+# Ogni numero è un file in src/content/newsletter/. Nei titoli: *parola* = corsivo, **parola** = blu.
+seo:
+  titolo: Newsletter
+  descrizione: Le notizie sull'AI che contano davvero, spiegate in modo che si capisca. Un'email solo quando ne vale la pena. Gratis, senza pubblicità.
+  immagine:
+    src: /media/condivisione.jpg
+    alt: Andrea Sforna, consulente informatico per gli agenti AI
+    punto_focale: centro
+    adatta: riempi
+apertura:
+  etichetta: Newsletter
+  titolo: Le notizie sull'AI *che contano davvero.*
+  testo: Quando nell'intelligenza artificiale succede qualcosa che cambia le cose, ti arriva un'email. Non ha un giorno fisso. Esce quando ci sono notizie che contano, spiegate in modo che si capisca. Cinque minuti, poi torni al tuo lavoro.
+modulo:
+  etichetta_email: La tua email
+  segnaposto: nome@azienda.it
+  invia: Iscriviti
+  attesa: Un momento…
+  fatto: "Fatto. Ti ho mandato un'email: apri il link dentro per confermare."
+  errore: L'iscrizione non è partita. Riprova fra poco, oppure scrivimi ad andrea.sforna@gmail.com.
+  non_valido: Serve un indirizzo valido.
+  nota: Gratis, per sempre. Nessuna pubblicità. Esci con un clic.
+  oggetto_email: Iscrizione alla newsletter
+cosa_ricevi:
+  etichetta: Cosa ricevi
+  didascalia: In breve
+  titolo: Un'email corta, *e nient'altro.*
+  testo: Non è un blog e non è un flusso di aggiornamenti. La leggi mentre torni a casa.
+  voci:
+    - titolo: Lo leggo io prima che parta
+      testo: Cinque notizie, scelte fra decine di fonti da un'automazione che ho costruito. Leggo ogni numero e lo approvo prima dell'invio.
+    - titolo: Spiegate, non elencate
+      testo: Per ogni notizia, cos'è successo, perché conta e cosa cambia in concreto. In italiano, senza titoli scritti per farti cliccare.
+    - titolo: Zero rumore
+      testo: Un invio solo quando c'è qualcosa che conta. Nessuna pubblicità, nessuno sponsor nascosto. Il tuo indirizzo serve solo per la newsletter.
+archivio:
+  etichetta: I numeri
+  didascalia: Ogni numero resta online
+  titolo: Guarda com'è *prima di iscriverti.*
+  testo: Ogni numero resta online al suo indirizzo.
+  ultimo: L'ultimo uscito lo trovi sempre qui.
+domande:
+  etichetta: Domande
+  didascalia: Domande frequenti
+  titolo: Quello che *di solito* mi chiedono.
+  voci:
+    - domanda: Quanto costa?
+      risposta: Niente, ed è gratis anche domani. Non c'è una versione a pagamento nascosta dietro l'angolo e non ti chiederò mai la carta.
+    - domanda: Quante email mi arrivano?
+      risposta: Poche. Non c'è un giorno fisso, ti scrivo quando succede qualcosa che vale la pena raccontare. Preferisco lasciarti la casella vuota piuttosto che riempirla di aria.
+    - domanda: Posso annullare l'iscrizione?
+      risposta: Quando vuoi. In fondo a ogni email c'è il collegamento per uscire. Un clic e sei fuori, senza domande e senza pagine che provano a farti cambiare idea.
+    - domanda: Che fine fa il mio indirizzo?
+      risposta: Lo conservo nella lista della newsletter su Brevo, il servizio che spedisce le email per mio conto. Serve solo a mandarti la newsletter. Non lo vendo e non lo uso per altro. Se vuoi che lo cancelli del tutto, scrivimi.
+    - domanda: Perché devo confermare l'iscrizione?
+      risposta: Perché chiunque potrebbe scrivere il tuo indirizzo al posto tuo. L'email di conferma serve a essere sicuri che sia davvero tuo. Se non clicchi, non ti arriva niente.
+    - domanda: In che lingua esce?
+      risposta: In italiano. Le fonti sono in più lingue, i testi escono in italiano.
+    - domanda: Chi la scrive?
+      risposta: La prepara un'automazione che ho costruito io, e prima che parta la leggo e la approvo. Seguo l'intelligenza artificiale ogni giorno. Se qualcosa non ti torna, rispondi all'email, leggo tutto.
+numero:
+  numero: Numero
+  fonte: Leggi su
+  punto: Il punto
+  firma: Andrea
+  archivio: Tutti i numeri
+  precedente: Numero precedente
+  successivo: Numero successivo
+  iscriviti: Il prossimo numero, appena c'è.
+  leggi: Leggi il numero
+  prossimo: Il prossimo numero
+ultimo:
+  titolo: L'ultimo numero
+  testo: Ti porto all'ultimo numero uscito.
+confermato:
+  etichetta: Newsletter
+  titolo: Sei *dentro.*
+  testo: Indirizzo confermato. Il prossimo numero ti arriva appena esce. Non scrivo numeri per riempire il calendario.
+  strade:
+    etichetta: Nel frattempo
+    didascalia: Due strade
+    voci:
+      - icona: progetti
+        titolo: I numeri già usciti
+        testo: Tutti i numeri della newsletter, dal più recente.
+        link:
+          etichetta: Leggi l'archivio
+          link: /newsletter/#archivio
+      - icona: newsletter
+        titolo: L'ultimo numero
+        testo: Leggi l'ultimo numero uscito, per vedere com'è fatto quello che ti arriverà.
+        link:
+          etichetta: Leggi l'ultimo numero
+          link: /newsletter/ultimo/
+link_non_valido:
+  etichetta: Newsletter
+  titolo: Questo collegamento *non vale più.*
+  testo: O l'hai già usato per confermare, o è scaduto. Rimetti l'indirizzo qui sotto e te ne mando un altro.
+  nota: Se anche questa volta non va, scrivimi ad andrea.sforna@gmail.com e ti iscrivo io.

@@ -1,0 +1,16 @@
+---
+// Video muto in loop. Non scarica nulla finché non serve: parte quando è visibile e si ferma fuori schermo
+// (lo gestisce src/scripts/video.js). Con «riduci movimento» resta la copertina.
+// «attesa» = parte solo dopo il primo gesto di chi visita (usato nell'apertura, per non pesare al caricamento).
+import { versione, posizione } from '../lib/media.js';
+const { video: v, class: classe, larghezzaCopertina = 1080, attesa = false, decorativo = false } = Astro.props;
+const copertina = versione(v.copertina, larghezzaCopertina);
+const stile = `object-fit:${v.adatta === 'intera' ? 'contain' : 'cover'};object-position:${posizione[v.punto_focale]}`;
+---
+<video class:list={['video', classe]} muted loop playsinline disablepictureinpicture preload="none" poster={copertina} width="1280" height="720" style={stile}
+  aria-label={decorativo ? undefined : v.descrizione} aria-hidden={decorativo ? 'true' : undefined} tabindex="-1" data-video data-attesa={attesa ? '' : undefined}>
+  {v.telefono && <source src={v.telefono.webm} type="video/webm" media="(max-width: 639px)" />}
+  {v.telefono && <source src={v.telefono.mp4} type="video/mp4" media="(max-width: 639px)" />}
+  <source src={v.webm} type="video/webm" />
+  <source src={v.mp4} type="video/mp4" />
+</video>

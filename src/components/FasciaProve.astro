@@ -1,0 +1,34 @@
+---
+// Fascia di prove sotto l'apertura: logo ufficiale, cosa e stato vero, con il link alla prova.
+import Immagine from './Immagine.astro';
+const { prove } = Astro.props;
+// colonne: tante quante le voci sopra i 1100 px; fra 768 e 1099 px tre o due, senza celle vuote
+const n = prove.voci.length;
+const medie = n % 3 === 0 ? 3 : n % 2 === 0 ? 2 : 3;
+---
+<section class="fascia-prove" aria-label={prove.etichetta}>
+  <ul style={`--colonne:${Math.min(n, 6)};--colonne-medie:${medie}`}>
+    {prove.voci.map((v, i) => (
+      <li class="entra" style={`--e:${5 + i * 0.5}`}>
+        <a href={v.link}>
+          <span class="fascia-logo"><Immagine img={v.logo} decorativa sizes="20px" /></span>
+          <span class="fascia-testo hud"><span>{v.testo}</span><span class="fascia-stato">{v.stato}</span></span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</section>
+<style is:global>
+  .fascia-prove { position: relative; z-index: 41; border-top: 1px solid var(--line); background: var(--bg); }
+  .fascia-prove ul { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); }
+  .fascia-prove li { background: var(--bg); min-width: 0; }
+  .fascia-prove a { display: flex; align-items: flex-start; gap: var(--s-3); height: 100%; padding: 14px var(--s-4); transition: background-color var(--rapido) linear; }
+  @media (hover: hover) { .fascia-prove a:hover { background: var(--bg-raised); } }
+  .fascia-logo { display: grid; place-items: center; flex-shrink: 0; width: 28px; height: 28px; margin-top: 1px; border-radius: 7px; background: var(--tessera-bg); box-shadow: inset 0 0 0 1px var(--tessera-bordo); color: #101014; }
+  .fascia-logo .immagine, .fascia-logo img { width: 20px; height: 20px; }
+  .fascia-testo { display: flex; flex-direction: column; gap: 2px; min-width: 0; color: var(--ink); font-size: .625rem; letter-spacing: .12em; }
+  .fascia-stato { color: var(--accent-ink); }
+  /* tante colonne quante voci: mai celle vuote */
+  @media (min-width: 768px) { .fascia-prove ul { grid-template-columns: repeat(var(--colonne-medie, 3), 1fr); } .fascia-prove a { padding-inline: var(--s-5); } }
+  @media (min-width: 1100px) { .fascia-prove ul { grid-template-columns: repeat(var(--colonne, 6), 1fr); } .fascia-prove a { padding: 14px 20px; } .fascia-testo { font-size: var(--hud-size); letter-spacing: .06em; } }
+</style>

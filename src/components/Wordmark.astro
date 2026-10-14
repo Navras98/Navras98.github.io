@@ -1,0 +1,36 @@
+---
+// Il nome in grande: le iniziali A e S sono i glifi del monogramma, le altre lettere sono Archivo.
+import Glifo from './Glifo.astro';
+import glifi from '../lib/glifi.json';
+const { nome, class: classe, ...resto } = Astro.props;
+const coppie = glifi.crenatura?.coppie ?? {};
+let n = 0;
+const parole = nome.toUpperCase().split(/\s+/).map((p) =>
+  [...p].map((c, i) => {
+    const glifo = i === 0 && (c === 'A' || c === 'S') ? c : null;
+    const k = coppie[c + (p[i + 1] ?? '')] ?? 0;
+    // per i glifi: margini laterali disegnati + crenatura della coppia
+    const sx = glifo ? glifi[glifo].ms ?? 0 : 0;
+    const dx = glifo ? (glifi[glifo].md ?? 0) + k : k;
+    return { c, glifo, l: n++, sx, dx };
+  })
+);
+---
+<p class:list={['wordmark', classe]} {...resto}>
+  <span class="sr-only">{nome}</span>
+  {parole.map((parola) => (
+    <span class="parola" aria-hidden="true">
+      {parola.map((x) => x.glifo
+        ? <Glifo lettera={x.glifo} class="glifo" style={`--l:${x.l};--sx:${x.sx}em;--dx:${x.dx}em`} />
+        : <span class="lettera" style={`--l:${x.l};--dx:${x.dx}em`}>{x.c}</span>)}
+    </span>
+  ))}
+</p>
+<style is:global>
+  .wordmark { display: flex; flex-wrap: wrap; justify-content: center; column-gap: .28em; font-family: var(--font-display); font-weight: 750; font-stretch: 125%; line-height: 1; color: var(--ink-strong); white-space: nowrap; }
+  .wordmark .parola { display: inline-flex; align-items: baseline; }
+  .wordmark .lettera { display: inline-block; margin-right: var(--dx, 0); }
+  .wordmark .glifo { height: .688em; width: auto; max-width: none; flex-shrink: 0; margin-left: var(--sx, 0); margin-right: var(--dx, 0); }
+  .wordmark .lettera, .wordmark .glifo { animation: lettera .8s var(--ease-out) both; animation-delay: calc(var(--l, 0) * 40ms + 80ms); }
+  @keyframes lettera { from { opacity: .02; transform: translateY(.2em); filter: blur(6px); } }
+</style>

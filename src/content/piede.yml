@@ -1,0 +1,51 @@
+# Piè di pagina e invito finale («scrivimi») in fondo a ogni pagina.
+frase: Consulente informatico. Agenti AI su misura, sui dati e sui computer della tua azienda.
+colonne:
+  - titolo: Sito
+    link:
+      - etichetta: Metodo
+        link: /metodo/
+      - etichetta: Strumenti
+        link: /strumenti/
+      - etichetta: Open source
+        link: /open-source/
+      - etichetta: Chi sono
+        link: /chi-sono/
+  - titolo: Progetti
+    link:
+      - etichetta: SfornaClaw
+        link: /progetti/sfornaclaw/
+      - etichetta: PrivacyBridge
+        link: /progetti/privacybridge/
+      - etichetta: Automazioni e newsletter
+        link: /progetti/automazioni/
+      - etichetta: Agenti personali
+        link: /progetti/agenti-personali/
+  - titolo: Contatti
+    link:
+      - etichetta: Scrivimi
+        link: /contatti/
+      - etichetta: Newsletter
+        link: /newsletter/
+      - etichetta: GitHub
+        link: https://github.com/Navras98
+      - etichetta: Instagram
+        link: https://www.instagram.com/andreasfornaai/
+      - etichetta: X
+        link: https://x.com/sforna_andrea
+  - titolo: Note legali
+    link:
+      - etichetta: Privacy
+        link: /privacy/
+motto: Codice aperto su GitHub
+invito:
+  etichetta: Scrivimi
+  sopratitolo: Basta una email
+  titolo: Parliamone *con calma.*
+  testo: Raccontami cosa fa la tua azienda e quale lavoro ripetitivo vorresti toglierti. Ti rispondo io.
+  bottone_principale:
+    etichetta: Scrivimi
+    link: /contatti/
+  bottone_secondario:
+    etichetta: Il mio metodo
+    link: /metodo/

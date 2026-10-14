@@ -1,0 +1,109 @@
+---
+// Un numero della newsletter, allo stesso indirizzo di sempre: /newsletter/numeri/<data>/.
+import { marked } from 'marked';
+import Base from '../../../layouts/Base.astro';
+import Immagine from '../../../components/Immagine.astro';
+import Collegamento from '../../../components/Collegamento.astro';
+import Icona from '../../../components/Icona.astro';
+import ModuloIscrizione from '../../../components/ModuloIscrizione.astro';
+import Sezione from '../../../components/Sezione.astro';
+import { pagina, numeri, dueCifre, dataEstesa } from '../../../lib/contenuti.js';
+
+export async function getStaticPaths() {
+  return (await numeri()).map((n) => ({ params: { slug: n.slug } }));
+}
+const elenco = await numeri();
+const i = elenco.findIndex((x) => x.slug === Astro.params.slug);
+const n = elenco[i];
+const piuNuovo = elenco[i - 1];
+const piuVecchio = elenco[i + 1];
+const nl = await pagina('newsletterPagina');
+const t = nl.numero;
+const seo = { titolo: `${n.titolo} · ${nl.seo.titolo}`, descrizione: n.sommario, immagine: n.copertina };
+const md = (s) => marked.parse(s ?? '');
+const nome = `${t.numero} ${dueCifre(n.numero)}`;
+const indice = [{ id: 'numero', etichetta: nome }, ...(n.punto ? [{ id: 'il-punto', etichetta: t.punto }] : []), { id: 'prossimo', etichetta: t.prossimo }];
+---
+<Base seo={seo} invito={false} indice={indice}>
+  <article class="numero" aria-labelledby="titolo-pagina">
+    <Sezione id="numero" numero={1} etichetta={nome} didascalia={dataEstesa(n.data)}>
+      <header class="numero-testa">
+        <p class="hud muted entra"><a href="/newsletter/#archivio" class="numero-torna"><Icona nome="sinistra" />{t.archivio}</a></p>
+        <h1 class="numero-titolo entra" id="titolo-pagina" style="--e:1">{n.titolo}</h1>
+        <p class="testo-grande entra" style="--e:2">{n.sommario}</p>
+      </header>
+      <div class="numero-copertina entra" style="--e:3"><Immagine img={n.copertina} sizes="(max-width: 1100px) 100vw, 1040px" loading="eager" priorita="high" /></div>
+      <ol class="numero-articoli">
+        {n.articoli.map((a, k) => (
+          <li class="numero-articolo" data-rivela>
+            <p class="hud numero-rubrica"><span class="badge">{dueCifre(k + 1)}</span>{a.rubrica}</p>
+            <h2 class="titolo-scheda numero-articolo-titolo">{a.titolo}</h2>
+            <div class="articolo" set:html={md(a.testo)} />
+            {a.immagine && <div class="numero-immagine"><Immagine img={a.immagine} sizes="(max-width: 900px) 100vw, 768px" /></div>}
+            {a.fonte && <Collegamento href={a.fonte.link} class="freccia-link hud numero-fonte">{`${t.fonte} ${a.fonte.nome}`}<Icona nome="freccia" /></Collegamento>}
+          </li>
+        ))}
+      </ol>
+    </Sezione>
+    {n.punto && (
+      <Sezione id="il-punto" numero={2} etichetta={t.punto} class="numero-punto">
+        <div class="numero-colonna" data-rivela>
+          <div class="articolo" set:html={md(n.punto)} />
+          {n.html && <div class="articolo numero-saluto" set:html={n.html} />}
+          <p class="numero-firma">{t.firma}</p>
+        </div>
+      </Sezione>
+    )}
+    <Sezione id="prossimo" numero={n.punto ? 3 : 2} etichetta={t.prossimo}>
+      <div class="numero-chiusura">
+        {!n.punto && n.html && <div class="articolo" set:html={n.html} />}
+        {!n.punto && <p class="numero-firma">{t.firma}</p>}
+        <div class="numero-iscriviti">
+          <p class="hud faint">{t.iscriviti}</p>
+          <ModuloIscrizione id="iscriviti-numero" />
+        </div>
+        <nav class="numero-nav hud" aria-label={t.archivio}>
+          {piuVecchio ? <a href={`/newsletter/numeri/${piuVecchio.slug}/`}><Icona nome="sinistra" />{t.precedente}</a> : <span></span>}
+          <a href="/newsletter/#archivio">{t.archivio}</a>
+          {piuNuovo ? <a href={`/newsletter/numeri/${piuNuovo.slug}/`}>{t.successivo}<Icona nome="destra" /></a> : <span></span>}
+        </nav>
+      </div>
+    </Sezione>
+  </article>
+</Base>
+<style is:global>
+  /* colonna di lettura centrata, come gli articoli di ArtCraft */
+  .numero-testa, .numero-articolo, .numero-colonna, .numero-chiusura { max-width: calc(768px + 2 * var(--margine)); margin-inline: auto; }
+  .numero-testa { padding: var(--s-9) var(--margine) var(--s-7); }
+  .numero-data { white-space: nowrap; }
+  .numero-torna { display: inline-flex; align-items: center; gap: 6px; transition: color .15s; }
+  @media (hover: hover) { .numero-torna:hover { color: var(--ink); } }
+  .numero-torna svg { width: 13px; height: 13px; }
+  .numero-titolo { margin-top: var(--s-4); font-family: var(--font-display); font-weight: 620; font-stretch: 118%; font-size: 2.25rem; line-height: 1.02; letter-spacing: -.035em; color: var(--ink-strong); text-wrap: balance; }
+  .numero-testa .testo-grande { margin-top: var(--s-5); max-width: none; }
+  .numero-copertina { max-width: calc(1040px + 2 * var(--margine)); margin-inline: auto; padding: 0 var(--margine) var(--s-8); }
+  .numero-copertina .immagine { width: 100%; border-radius: var(--raggio-carta); overflow: hidden; }
+  .numero-articoli { list-style: none; border-top: 1px solid var(--line); }
+  .numero-articolo { padding: var(--s-7) var(--margine); }
+  .numero-articolo .articolo { max-width: none; }
+  .numero-articoli > li + li { border-top: 1px solid var(--line); }
+  .numero-rubrica { display: flex; align-items: center; gap: var(--s-3); color: var(--muted); }
+  .numero-articolo-titolo { margin-top: var(--s-4); font-size: 1.75rem; line-height: 1.15; }
+  .numero-articolo .articolo { margin-top: var(--s-2); }
+  .numero-immagine { margin-top: var(--s-5); }
+  .numero-immagine .immagine { width: 100%; border-radius: 8px; overflow: hidden; }
+  .numero-fonte { margin-top: var(--s-5); }
+  .numero-punto { background: var(--bg-raised); }
+  .numero-colonna { padding: var(--s-7) var(--margine) var(--s-8); }
+  .numero-colonna .articolo { max-width: none; }
+  .numero-punto .articolo p { font-size: 1.1875rem; }
+  .numero-chiusura { padding: var(--s-7) var(--margine) var(--s-9); }
+  .numero-chiusura .articolo { max-width: none; }
+  .numero-firma { margin-top: var(--s-4); font-family: var(--font-serif); font-style: italic; font-size: 1.75rem; color: var(--ink-strong); }
+  .numero-iscriviti { display: grid; gap: var(--s-4); margin-top: var(--s-8); }
+  .numero-nav { display: flex; justify-content: space-between; gap: var(--s-4); margin-top: var(--s-8); padding-top: var(--s-5); border-top: 1px solid var(--line); }
+  .numero-nav a { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); transition: color .15s; }
+  @media (hover: hover) { .numero-nav a:hover { color: var(--ink); } }
+  .numero-nav svg { width: 13px; height: 13px; }
+  @media (min-width: 768px) { .numero-titolo { font-size: 3.75rem; } }
+</style>

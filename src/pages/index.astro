@@ -1,0 +1,190 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import FasciaProve from '../components/FasciaProve.astro';
+import Sezione from '../components/Sezione.astro';
+import SchedaFunzione from '../components/SchedaFunzione.astro';
+import Fasi from '../components/Fasi.astro';
+import SchedaProgetto from '../components/SchedaProgetto.astro';
+import Prova from '../components/Prova.astro';
+import TesseraStrumento from '../components/TesseraStrumento.astro';
+import Immagine from '../components/Immagine.astro';
+import Bottone from '../components/Bottone.astro';
+import Collegamento from '../components/Collegamento.astro';
+import Icona from '../components/Icona.astro';
+import ModuloIscrizione from '../components/ModuloIscrizione.astro';
+import UltimoNumero from '../components/UltimoNumero.astro';
+import { pagina, progetti, numeri, titolo, dataEstesa, dueCifre } from '../lib/contenuti.js';
+const imp = await pagina('impostazioni');
+const h = await pagina('home');
+const metodo = await pagina('metodo');
+const os = await pagina('openSource');
+const str = await pagina('strumenti');
+const elenco = await progetti();
+const [ultimo] = await numeri();
+const nl = await pagina('newsletterPagina');
+const prove = h.open_source.prove.map((codice) => {
+  const p = os.prove.voci.find((v) => v.codice === codice);
+  if (!p) throw new Error(`Nel file src/content/pagine/home.yml (open_source › prove) c'è la prova «${codice}», che non esiste in src/content/pagine/open-source.yml.`);
+  return p;
+});
+const indice = [
+  { id: 'hero', etichetta: imp.nome },
+  { id: 'cosa-faccio', etichetta: h.cosa_faccio.etichetta },
+  { id: 'metodo', etichetta: h.metodo.etichetta },
+  { id: 'progetti', etichetta: h.progetti.etichetta },
+  { id: 'open-source', etichetta: h.open_source.etichetta },
+  { id: 'strumenti', etichetta: h.strumenti.etichetta },
+  { id: 'principi', etichetta: h.principi.etichetta },
+  { id: 'chi-sono', etichetta: h.chi_sono.etichetta },
+  { id: 'newsletter', etichetta: h.newsletter.etichetta },
+];
+---
+<Base seo={h.seo} home indice={indice}>
+  <Hero apertura={h.apertura} nome={imp.nome} />
+  <FasciaProve prove={h.prove} />
+
+  <Sezione id="cosa-faccio" numero={1} etichetta={h.cosa_faccio.etichetta} didascalia={h.cosa_faccio.didascalia}>
+    <div class="intro-sezione">
+      <h2 class="titolo-sezione" data-rivela set:html={titolo(h.cosa_faccio.titolo)} />
+      <p class="testo-grande" data-rivela style="--i:1">{h.cosa_faccio.testo}</p>
+    </div>
+    <div class="griglia griglia-2">
+      {h.cosa_faccio.schede.map((s, i) => <SchedaFunzione s={s} numero={i + 1} i={i} />)}
+    </div>
+  </Sezione>
+
+  <Sezione id="metodo" numero={2} etichetta={h.metodo.etichetta} didascalia={h.metodo.didascalia}>
+    <div class="intro-sezione intro-doppia">
+      <div>
+        <h2 class="titolo-sezione" data-rivela set:html={titolo(h.metodo.titolo)} />
+        <p class="testo-grande" data-rivela style="--i:1">{h.metodo.testo}</p>
+      </div>
+      <div class="bottoni" data-rivela style="--i:2"><Bottone href={h.metodo.bottone.link} tipo="bordato">{h.metodo.bottone.etichetta}<Icona nome="destra" /></Bottone></div>
+    </div>
+    <Fasi fasi={metodo.fasi.voci} compatto />
+  </Sezione>
+
+  <Sezione id="progetti" numero={3} etichetta={h.progetti.etichetta} didascalia={h.progetti.didascalia}>
+    <div class="intro-sezione">
+      <h2 class="titolo-sezione" data-rivela set:html={titolo(h.progetti.titolo)} />
+      <p class="testo-grande" data-rivela style="--i:1">{h.progetti.testo}</p>
+    </div>
+    <div class="griglia griglia-4">
+      {elenco.map((p, i) => <SchedaProgetto p={p} i={i} breve sizes="(max-width: 639px) 100vw, (max-width: 1099px) 50vw, 330px" />)}
+    </div>
+  </Sezione>
+
+  <Sezione id="open-source" numero={4} etichetta={h.open_source.etichetta} didascalia={h.open_source.didascalia}>
+    <div class="intro-sezione intro-doppia">
+      <div>
+        <h2 class="titolo-sezione" data-rivela set:html={titolo(h.open_source.titolo)} />
+        <p class="testo-grande" data-rivela style="--i:1">{h.open_source.testo}</p>
+      </div>
+      <div class="bottoni" data-rivela style="--i:2"><Bottone href={h.open_source.bottone.link} tipo="bordato">{h.open_source.bottone.etichetta}<Icona nome="destra" /></Bottone></div>
+    </div>
+    <div class:list={['griglia', prove.length === 2 ? 'griglia-2' : 'griglia-3']}>
+      {prove.map((p, i) => <Prova p={p} ui={imp.interfaccia} i={i} />)}
+    </div>
+  </Sezione>
+
+  <Sezione id="strumenti" numero={5} etichetta={h.strumenti.etichetta} didascalia={h.strumenti.didascalia}>
+    <div class="home-strumenti">
+      <div class="intro-sezione">
+        <h2 class="titolo-sezione" data-rivela set:html={titolo(h.strumenti.titolo)} />
+        <p class="testo-grande" data-rivela style="--i:1">{h.strumenti.testo}</p>
+        <p class="hud faint home-nota" data-rivela style="--i:2">{h.strumenti.nota}</p>
+        <div class="bottoni" data-rivela style="--i:2"><Bottone href={h.strumenti.bottone.link} tipo="bordato">{h.strumenti.bottone.etichetta}<Icona nome="destra" /></Bottone></div>
+      </div>
+      <ul class="griglia-tessere" data-rivela style="--i:2">
+        {str.elenco.voci.filter((s) => s.in_home).map((s) => <li><TesseraStrumento s={s} /></li>)}
+      </ul>
+    </div>
+  </Sezione>
+
+  <Sezione id="principi" numero={6} etichetta={h.principi.etichetta} didascalia={h.principi.didascalia}>
+    <div class="principi">
+      <div class="intro-sezione">
+        <h2 class="titolo-sezione" data-rivela set:html={titolo(h.principi.titolo)} />
+      </div>
+      <ol class="principi-elenco">
+        {h.principi.principi.map((p, i) => (
+          <li class="principi-voce" data-rivela style={`--i:${i}`}>
+            <span class="principio-lettera" aria-hidden="true">{p.lettera}</span>
+            <div>
+              <h3 class="titolo-scheda" set:html={titolo(p.titolo)} />
+              <p class="testo">{p.testo}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </Sezione>
+
+  <Sezione id="chi-sono" numero={7} etichetta={h.chi_sono.etichetta} didascalia={h.chi_sono.didascalia}>
+    <div class="chi-sono">
+      <figure class="chi-foto" data-rivela>
+        <figcaption class="hud"><span class="faint">{imp.interfaccia.ritratto}</span><span class="faint">{imp.nome}</span></figcaption>
+        <div class="chi-foto-media">
+          <span class="tacca-foto" aria-hidden="true"></span><span class="tacca-foto" aria-hidden="true"></span><span class="tacca-foto" aria-hidden="true"></span><span class="tacca-foto" aria-hidden="true"></span>
+          <Immagine img={h.chi_sono.foto} sizes="(max-width: 767px) 100vw, 520px" />
+        </div>
+      </figure>
+      <div class="chi-testo">
+        <h2 class="titolo-sezione" data-rivela set:html={titolo(h.chi_sono.titolo)} />
+        <p class="testo-grande" data-rivela style="--i:1">{h.chi_sono.testo}</p>
+        <dl class="dettagli hud" data-rivela style="--i:2">
+          {h.chi_sono.dettagli.map((d) => (
+            <div><dt class="faint">{d.etichetta}</dt><dd>{d.link ? <Collegamento href={d.link}>{d.valore}<Icona nome="freccia" /></Collegamento> : d.valore}</dd></div>
+          ))}
+        </dl>
+        <div class="bottoni" data-rivela style="--i:3"><Bottone href={h.chi_sono.bottone.link} tipo="bordato">{h.chi_sono.bottone.etichetta}<Icona nome="destra" /></Bottone></div>
+      </div>
+    </div>
+  </Sezione>
+
+  <Sezione id="newsletter" etichetta={h.newsletter.etichetta} didascalia={ultimo ? `${nl.numero.numero} ${dueCifre(ultimo.numero)} · ${dataEstesa(ultimo.data)}` : undefined}>
+    <div class="riquadro-newsletter">
+      <div class="intro-sezione">
+        <h2 class="titolo-sezione" data-rivela set:html={titolo(h.newsletter.titolo)} />
+        <p class="testo-grande" data-rivela style="--i:1">{h.newsletter.testo}</p>
+        <div data-rivela style="--i:2" class="riquadro-modulo"><ModuloIscrizione id="iscriviti-home" /></div>
+      </div>
+      {ultimo && (
+        <UltimoNumero n={ultimo} etichetta={nl.numero.numero} link={h.newsletter.link.etichetta} data-rivela style="--i:2" />
+      )}
+    </div>
+  </Sezione>
+</Base>
+<style is:global>
+  .home-strumenti { display: grid; border-top: 1px solid var(--line); }
+  .home-strumenti .intro-sezione { padding-bottom: var(--s-6); }
+  .home-nota { margin-top: 28px; }
+  .griglia-tessere { display: grid; grid-template-columns: repeat(4, minmax(0, 72px)); justify-content: center; gap: var(--s-5) var(--s-3); padding: 0 var(--margine) var(--s-8); }
+  @media (min-width: 640px) { .griglia-tessere { grid-template-columns: repeat(5, 88px); gap: var(--s-5) 20px; } }
+  @media (min-width: 1100px) { .home-strumenti { grid-template-columns: 1fr auto; align-items: center; } .home-strumenti .intro-sezione { padding-bottom: 80px; } .griglia-tessere { padding: 80px var(--margine); } }
+  .chi-sono { display: grid; border-top: 1px solid var(--line); }
+  .chi-foto { position: relative; background: var(--bg-sunken); border-bottom: 1px solid var(--line); }
+  .chi-foto figcaption { display: flex; justify-content: space-between; gap: var(--s-4); padding: var(--s-2) var(--margine); border-bottom: 1px solid var(--line); }
+  .chi-foto-media { position: relative; padding: var(--s-6) var(--margine); }
+  .chi-foto-media .immagine { width: 100%; height: auto; }
+  .tacca-foto { position: absolute; width: 11px; height: 11px; opacity: .6; }
+  .tacca-foto::before, .tacca-foto::after { content: ''; position: absolute; background: var(--line-strong); }
+  .tacca-foto::before { width: 1px; top: 0; bottom: 0; left: 5px; }
+  .tacca-foto::after { height: 1px; left: 0; right: 0; top: 5px; }
+  .tacca-foto:nth-child(1) { top: 8px; left: 8px; } .tacca-foto:nth-child(2) { top: 8px; right: 8px; } .tacca-foto:nth-child(3) { bottom: 8px; left: 8px; } .tacca-foto:nth-child(4) { bottom: 8px; right: 8px; }
+  .chi-testo { padding: var(--s-6) var(--margine) var(--s-7); }
+  .chi-testo .testo-grande { margin-top: var(--s-5); }
+  .chi-testo .bottoni { margin-top: var(--s-6); }
+  .dettagli { display: grid; gap: 1px; margin-top: var(--s-6); background: var(--line); border: 1px solid var(--line); max-width: 36rem; }
+  .dettagli > div { display: flex; justify-content: space-between; gap: var(--s-4); padding: var(--s-3) var(--s-4); background: var(--bg); }
+  .dettagli dd { text-align: right; color: var(--ink); }
+  .dettagli a { display: inline-flex; align-items: center; gap: 6px; }
+  @media (hover: hover) { .dettagli a:hover { color: var(--accent-ink); } }
+  .dettagli svg { width: 12px; height: 12px; }
+  @media (min-width: 768px) { .chi-sono { grid-template-columns: 5fr 7fr; } .chi-foto { border-bottom: 0; border-right: 1px solid var(--line); } .chi-testo { padding: var(--s-8) var(--margine); } }
+  .riquadro-newsletter { display: grid; border-top: 1px solid var(--line); }
+  .riquadro-modulo { margin-top: var(--s-6); }
+    .riquadro-newsletter .ultimo-numero { border-top: 1px solid var(--line); }
+  @media (min-width: 1100px) { .riquadro-newsletter { grid-template-columns: 7fr 5fr; } .riquadro-newsletter .ultimo-numero { border-top: 0; border-left: 1px solid var(--line); } }
+</style>

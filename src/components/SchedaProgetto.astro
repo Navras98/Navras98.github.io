@@ -1,0 +1,46 @@
+---
+// Scheda di un progetto nella «lineup»: badge numerato, immagine, icona, nome in due colori, etichette e link.
+import Immagine from './Immagine.astro';
+import Icona from './Icona.astro';
+import { spazio, dueCifre } from '../lib/contenuti.js';
+// «breve» (home) = senza le etichette di stato e di luogo: le trova nella pagina Progetti
+const { p, i = 0, livello = 3, sizes = '(max-width: 639px) 100vw, (max-width: 1099px) 50vw, 330px', breve = false } = Astro.props;
+const H = `h${livello}`;
+---
+<article class:list={['progetto', `c-${p.colore}`]} data-rivela style={`--i:${i}`}>
+  <div class="scheda-testa progetto-testa">
+    <span class="hud badge">{dueCifre(p.ordine)}</span>
+    <p class="hud faint categoria">{p.categoria}</p>
+  </div>
+  <div class="media-pieno progetto-media"><Immagine img={p.scheda.immagine} sizes={sizes} /></div>
+  <div class="progetto-corpo">
+    <Immagine img={p.icona} decorativa class="progetto-icona" sizes="72px" />
+    <H class="progetto-nome">{p.nome}{spazio(p.nome_colorato)}<span class="colore">{p.nome_colorato}</span></H>
+    <p class="testo">{p.scheda.testo}</p>
+    {!breve && <div class="etichette">{p.scheda.stato.map((e) => <span class="etichetta app">{e}</span>)}</div>}
+    {!breve && <div class="etichette">{p.scheda.dove.map((e) => <span class="etichetta">{e}</span>)}</div>}
+    <a href={`/progetti/${p.slug}/`} class="esplora hud">{p.scheda.link_etichetta}<Icona nome="freccia" /></a>
+  </div>
+</article>
+<style is:global>
+  .progetto { position: relative; display: flex; flex-direction: column; height: 100%; }
+  .progetto::before { content: ''; position: absolute; inset: 0 0 auto; z-index: 10; height: 2px; background: var(--app); transform: scaleX(0); transform-origin: left; transition: transform var(--medio) var(--ease); }
+  @media (hover: hover) { .progetto:hover::before, .progetto:focus-within::before { transform: scaleX(1); } }
+  .categoria { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  /* la schermata riempie il riquadro (base.css → .media-pieno); l'icona sale sul bordo in basso */
+  .progetto-media { aspect-ratio: 16 / 10; }
+  @media (hover: hover) { .progetto:hover .progetto-media img { transform: scale(1.03); } }
+  .progetto-corpo { display: flex; flex: 1; flex-direction: column; padding: 0 var(--margine) var(--margine); }
+  .progetto-corpo .etichette { margin-top: 6px; }
+  .progetto-corpo .etichette:first-of-type { margin-top: var(--s-5); }
+  .progetto-icona { position: relative; z-index: 2; width: 72px; height: 72px; margin-top: -36px; border-radius: var(--raggio-icona); overflow: hidden; filter: var(--ombra-icona); transition: transform var(--medio) cubic-bezier(0, 0, .2, 1); }
+  @media (hover: hover) { .progetto:hover .progetto-icona { transform: translateY(-4px); } }
+  .progetto-nome { margin-top: var(--s-4); font-family: var(--font-display); font-weight: 620; font-stretch: 118%; font-size: 1.875rem; line-height: 1.2; letter-spacing: -.03em; color: var(--ink-strong); }
+  .progetto-nome .colore { color: var(--app-ink); }
+  .progetto-corpo > .testo { margin-top: var(--s-3); }
+  .esplora { display: flex; align-items: center; gap: 6px; margin-top: auto; padding-top: var(--s-5); color: var(--muted); transition: color .15s; }
+  .esplora::after { content: ''; position: absolute; inset: 0; z-index: 5; }
+  .esplora svg { width: 14px; height: 14px; transition: transform .15s var(--ease); }
+  @media (hover: hover) { .progetto:hover .esplora { color: var(--ink); } }
+  @media (hover: hover) { .progetto:hover .esplora svg { transform: translate(2px, -2px); } }
+</style>

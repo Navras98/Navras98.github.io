@@ -1,0 +1,28 @@
+---
+// Un'icona della griglia degli strumenti: stesso riquadro, stesso raggio e stesso margine per tutti.
+import Immagine from './Immagine.astro';
+import Collegamento from './Collegamento.astro';
+const { s, link = true } = Astro.props;
+---
+{link ? (
+  <Collegamento href={s.link} class="tessera" title={s.nome}>
+    <span class="tessera-riquadro"><Immagine img={s.logo} decorativa sizes="80px" />{s.terminale && <span class="tessera-terminale" aria-hidden="true">&gt;_</span>}</span>
+    <span class="tessera-nome">{s.nome}</span>
+  </Collegamento>
+) : (
+  <span class="tessera">
+    <span class="tessera-riquadro"><Immagine img={s.logo} decorativa sizes="80px" />{s.terminale && <span class="tessera-terminale" aria-hidden="true">&gt;_</span>}</span>
+    <span class="tessera-nome">{s.nome}</span>
+  </span>
+)}
+<style is:global>
+  .tessera { display: flex; flex-direction: column; align-items: center; gap: var(--s-2); text-align: center; }
+  .tessera-riquadro { position: relative; display: grid; place-items: center; width: 56px; height: 56px; padding: 4px; border-radius: 13px; background: var(--tessera-bg); box-shadow: inset 0 0 0 1px var(--tessera-bordo); color: #101014; filter: var(--ombra-icona); transition: transform var(--medio) cubic-bezier(0, 0, .2, 1); }
+  .tessera-riquadro .immagine, .tessera-riquadro img { width: 100%; height: 100%; }
+  @media (hover: hover) { a.tessera:hover .tessera-riquadro { transform: translateY(-4px); } }
+  .tessera-nome { font-size: .75rem; font-weight: 500; line-height: 1.3; color: var(--muted); transition: color .15s; }
+  @media (hover: hover) { a.tessera:hover .tessera-nome { color: var(--ink); } }
+  /* il segno >_ distingue i programmi da terminale (Claude Code) dal modello con lo stesso marchio (Claude) */
+  .tessera-terminale { position: absolute; right: 3px; bottom: 3px; padding: 1px 4px; border-radius: 4px; background: #101014; box-shadow: 0 0 0 1.5px var(--tessera-bg); color: #f2f1ee; font: 600 9px/1.4 var(--font-mono); letter-spacing: 0; }
+  @media (min-width: 640px) { .tessera-riquadro { width: 80px; height: 80px; padding: 6px; border-radius: var(--raggio-tessera); } .tessera-terminale { font-size: 10px; padding: 1px 5px; } }
+</style>

@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+import TestaPagina from '../components/TestaPagina.astro';
+import Sezione from '../components/Sezione.astro';
+import { pagina } from '../lib/contenuti.js';
+const p = await pagina('privacy');
+const indice = [{ id: 'hero', etichetta: p.titolo }, { id: 'informativa', etichetta: p.sezione }];
+---
+<Base seo={p.seo} indice={indice}>
+  <section class="sezione" id="hero" aria-labelledby="titolo-pagina">
+    <div class="contenitore">
+      <TestaPagina etichetta={p.aggiornata} titoloPagina={p.titolo} class="testa-lettura" />
+    </div>
+  </section>
+  <Sezione id="informativa" numero={1} etichetta={p.sezione}>
+    <div class="privacy-testo" data-rivela><div class="articolo articolo-lungo" set:html={p.html} /></div>
+  </Sezione>
+</Base>
+<style is:global>
+  .privacy-testo { max-width: calc(768px + 2 * var(--margine)); margin-inline: auto; padding: var(--s-8) var(--margine) var(--s-10); }
+</style>

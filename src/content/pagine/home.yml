@@ -1,0 +1,263 @@
+# Home. Nei titoli: *parola* = corsivo, **parola** = colore blu.
+seo:
+  titolo: Andrea Sforna · agenti AI per le aziende
+  descrizione: Consulente informatico. Progetto, costruisco e metto in sicurezza agenti AI per le aziende, sui loro dati e sui loro computer.
+  immagine:
+    src: /media/condivisione.jpg
+    alt: Andrea Sforna, consulente informatico per gli agenti AI
+    punto_focale: centro
+    adatta: riempi
+
+apertura:
+  titolo: Agenti AI che *restano tuoi.*
+  testo: Progetto, costruisco e metto in sicurezza agenti AI per le aziende. Lavorano sui tuoi dati, sui tuoi computer, e chiedono il permesso prima di agire.
+  bottone_principale:
+    etichetta: Scrivimi
+    link: /contatti/
+  bottone_secondario:
+    etichetta: Il mio metodo
+    link: /metodo/
+  riga:
+    - etichetta: Contributore di OpenClaw
+      link: /open-source/
+    - etichetta: Consulente con partita IVA
+      link: /chi-sono/
+  # Sette video brevi e muti che girano attorno al nome. Le prime carte della lista stanno davanti.
+  carte:
+    - mp4: /media/video/telegram-approvazione.mp4
+      webm: /media/video/telegram-approvazione.webm
+      copertina: /media/video/telegram-approvazione.jpg
+      descrizione: Un messaggio su Telegram chiede «Che ne facciamo?» con due tasti, Accetta e pubblica oppure Elimina.
+      punto_focale: centro
+      adatta: riempi
+    - mp4: /media/video/terminale-agente.mp4
+      webm: /media/video/terminale-agente.webm
+      copertina: /media/video/terminale-agente.jpg
+      descrizione: "Chiedo a Claude Code di scrivere i passi di un punto della missione di SfornaClaw: legge i file, scrive il documento e mi dice cosa contiene."
+      punto_focale: centro
+      adatta: riempi
+  # Le icone dei quattro progetti, che girano insieme ai video.
+    - mp4: /media/video/github-grazie.mp4
+      webm: /media/video/github-grazie.webm
+      copertina: /media/video/github-grazie.jpg
+      descrizione: Una modifica integrata in OpenClaw su GitHub, con il ringraziamento a Navras98.
+      punto_focale: centro
+      adatta: riempi
+    - mp4: /media/video/sfornaclaw-fonte.mp4
+      webm: /media/video/sfornaclaw-fonte.webm
+      copertina: /media/video/sfornaclaw-fonte.jpg
+      descrizione: "Alla domanda «Quanti clienti abbiamo a Torino?» SfornaClaw interroga l'anagrafica e risponde 12, con i primi cinque per cognome e la fonte di ogni dato."
+      punto_focale: centro
+      adatta: riempi
+    - mp4: /media/video/privacybridge-oscura.mp4
+      webm: /media/video/privacybridge-oscura.webm
+      copertina: /media/video/privacybridge-oscura.jpg
+      descrizione: PrivacyBridge sostituisce nomi e recapiti con segnaposto e poi li rimette al loro posto.
+      punto_focale: centro
+      adatta: riempi
+    - mp4: /media/video/n8n-flusso.mp4
+      webm: /media/video/n8n-flusso.webm
+      copertina: /media/video/n8n-flusso.jpg
+      descrizione: Un flusso automatico che si accende un passo alla volta, dalle notizie al messaggio su Telegram e, dopo il sì, alla pubblicazione.
+      punto_focale: centro
+      adatta: riempi
+    - mp4: /media/video/carosello-telefono.mp4
+      webm: /media/video/carosello-telefono.webm
+      copertina: /media/video/carosello-telefono.jpg
+      descrizione: Un carosello preparato dal flusso, sfogliato dentro un telefono.
+      punto_focale: centro
+      adatta: riempi
+  immagini:
+    - src: /media/icone/sfornaclaw.png
+      alt: Icona di SfornaClaw
+      punto_focale: centro
+      adatta: intera
+    - src: /media/icone/privacybridge.png
+      alt: Icona di PrivacyBridge
+      punto_focale: centro
+      adatta: intera
+    - src: /media/icone/automazioni.svg
+      alt: Icona delle automazioni
+      punto_focale: centro
+      adatta: intera
+    - src: /media/icone/agenti.svg
+      alt: Icona degli agenti personali
+      punto_focale: centro
+      adatta: intera
+
+# Fascia di prove subito sotto l'apertura. Lo stato va verificato su GitHub.
+prove:
+  etichetta: Prove verificate su GitHub
+  voci:
+    - logo:
+        src: /media/strumenti/openclaw.svg
+        alt: OpenClaw
+        punto_focale: centro
+        adatta: intera
+      testo: Contributi a OpenClaw
+      stato: 4 integrati
+      link: /open-source/#contributi
+    - logo:
+        src: /media/strumenti/openclaw.svg
+        alt: OpenClaw
+        punto_focale: centro
+        adatta: intera
+      testo: Fondatore di OpenClaw
+      stato: Mi ringrazia
+      link: /open-source/#prova-pr-148592-grazie
+    - logo:
+        src: /media/strumenti/openclaw.svg
+        alt: OpenClaw
+        punto_focale: centro
+        adatta: intera
+      testo: Citato da OpenClaw
+      stato: 3 aggiornamenti
+      link: /open-source/#prova-rilascio-2026-9-5
+    - logo:
+        src: /media/strumenti/github.svg
+        alt: GitHub
+        punto_focale: centro
+        adatta: intera
+      testo: PrivacyBridge
+      stato: Codice aperto
+      link: /progetti/privacybridge/
+
+cosa_faccio:
+  etichetta: Cosa faccio
+  didascalia: In parole semplici
+  titolo: Un agente serve *solo* se ti toglie lavoro.
+  testo: Un agente AI è un assistente che fa al posto tuo un lavoro preciso, sui tuoi dati e con le tue regole. Parto dal lavoro di ogni giorno, non dalla tecnologia. Se un agente ti fa risparmiare tempo senza rischi, lo costruisco. Se non serve, te lo dico.
+  schede:
+    - etichetta: Consulenza
+      titolo: Capire dove serve
+      testo: Guardiamo insieme come lavora la tua azienda, compito per compito. Posta, documenti, gestionale, chi fa cosa.
+      risultato: Un quadro scritto di cosa affidare a un agente e cosa resta a una persona.
+      colore: blu
+      video:
+        mp4: /media/video/mappa-lavoro.mp4
+        webm: /media/video/mappa-lavoro.webm
+        copertina: /media/video/mappa-lavoro.jpg
+        descrizione: "Esempio di quadro scritto per un ufficio: i compiti dati all'agente, quelli che approvi tu e quelli che restano a una persona."
+        punto_focale: centro
+        adatta: riempi
+    - etichetta: Su misura
+      titolo: Agenti sui tuoi dati
+      testo: Fai una domanda in italiano. L'agente cerca nel gestionale, nei documenti e nella posta, prepara grafici, PDF ed email, e ti dice da dove prende ogni dato.
+      risultato: Un assistente che lavora sui tuoi computer, e che seguo anche dopo la consegna.
+      colore: viola
+      video:
+        mp4: /media/video/sfornaclaw-email.mp4
+        webm: /media/video/sfornaclaw-email.webm
+        copertina: /media/video/sfornaclaw-email.jpg
+        descrizione: "Chiedo un sollecito per le fatture scadute: l'agente prepara l'email con importi e scadenze dal gestionale e la manda solo dopo la mia approvazione."
+        punto_focale: centro
+        adatta: riempi
+    - etichetta: Sicurezza
+      titolo: Chiudere le porte aperte
+      testo: Hai già degli agenti in funzione? Controllo cosa possono leggere, scrivere e inviare, e tolgo i permessi che non servono.
+      risultato: Ogni azione che cambia un dato o manda qualcosa aspetta il tuo sì.
+      colore: verde
+      video:
+        mp4: /media/video/servizi-permessi.mp4
+        webm: /media/video/servizi-permessi.webm
+        copertina: /media/video/servizi-permessi.jpg
+        descrizione: "Esempio di controllo dei permessi di un agente già in funzione. Prima invia email da solo, cancella messaggi e apre le cartelle di tutti. Dopo il controllo legge la posta, invia solo con il tuo sì e resta nella sua cartella; cancellare e aprire le cartelle di tutti sono tolti."
+        punto_focale: centro
+        adatta: riempi
+    - etichetta: Formazione
+      titolo: Imparare sul tuo caso
+      testo: Insegno a te e al tuo team a usare e costruire agenti, partendo da un problema vero della tua azienda.
+      risultato: Una guida scritta in italiano semplice, da riprendere quando serve.
+      colore: arancio
+      video:
+        mp4: /media/video/servizi-percorso.mp4
+        webm: /media/video/servizi-percorso.webm
+        copertina: /media/video/servizi-percorso.jpg
+        descrizione: "Esempio di percorso di formazione: partiamo da un tuo caso vero, lo costruiamo insieme, lo usi tu con me accanto e ti resta una guida scritta"
+        punto_focale: centro
+        adatta: riempi
+
+metodo:
+  etichetta: Metodo
+  didascalia: Dall'ascolto alla manutenzione
+  titolo: Sei fasi, *sempre le stesse.*
+  testo: Ogni progetto segue lo stesso percorso. Sai sempre a che punto siamo e cosa hai in mano.
+  bottone:
+    etichetta: Il metodo per intero
+    link: /metodo/
+
+progetti:
+  etichetta: Cosa sviluppo
+  didascalia: Progetti in corso
+  titolo: Quattro progetti. Un solo **mestiere.**
+  testo: Due li uso io ogni giorno. PrivacyBridge è aperto a tutti. SfornaClaw è pensato per le aziende ed è in sviluppo.
+
+open_source:
+  etichetta: Open source
+  didascalia: Verificato su GitHub
+  titolo: Contribuisco al software *che uso.*
+  testo: I miei agenti funzionano con OpenClaw, un programma open source, cioè con il codice pubblico. Chiunque può proporre correzioni e chi guida il progetto decide cosa accettare. Alcune mie correzioni sono state accettate e il fondatore mi ha ringraziato in pubblico.
+  prove:
+    - pr-148592-grazie
+    - pr-148879-commento
+  bottone:
+    etichetta: Prove e proposte
+    link: /open-source/
+
+strumenti:
+  etichetta: Strumenti
+  didascalia: Quelli che uso
+  titolo: Lo strumento *giusto,* non quello di moda.
+  testo: Uso agenti e AI di fornitori diversi, alcune anche sul mio computer, senza internet. So quale conviene per ogni lavoro e come controllarne il risultato.
+  nota: Strumenti che uso, nessuna affiliazione. I marchi appartengono ai rispettivi proprietari.
+  bottone:
+    etichetta: Come li uso
+    link: /strumenti/
+
+principi:
+  etichetta: Principi
+  didascalia: Valgono sempre
+  titolo: I tuoi dati *restano* in azienda.
+  principi:
+    - lettera: A
+      titolo: Ogni risultato si può verificare
+      testo: Le risposte citano la fonte e ogni passaggio resta in un registro. Puoi sempre controllare cosa è successo.
+    - lettera: B
+      titolo: I dati restano dove devono stare
+      testo: Ogni sistema serve una sola azienda e gira sui suoi computer. Se serve un'AI esterna, riceve il testo senza nomi, recapiti e codici.
+    - lettera: C
+      titolo: L'AI non tocca i tuoi dati
+      testo: L'AI capisce la domanda e scrive la risposta. I dati li legge e li modifica solo il programma che costruisco, e solo dove gli è permesso.
+    - lettera: D
+      titolo: Le azioni importanti le approvi tu
+      testo: Prima di cambiare un dato o mandare un'email, l'agente si ferma e aspetta il tuo sì.
+
+chi_sono:
+  etichetta: Chi sono
+  didascalia: La mia storia
+  titolo: Ho imparato *smontando* i computer.
+  testo: Fin dalla giovane età monto e modifico computer. Da lì sono arrivati Linux, la sicurezza e la privacy. L'intelligenza artificiale la seguo fin dai suoi esordi. Oggi lavoro come consulente informatico.
+  foto:
+    src: /media/foto/andrea-ritratto.jpg
+    alt: Ritratto in bianco e nero di Andrea Sforna
+    punto_focale: centro
+    adatta: riempi
+  bottone:
+    etichetta: La mia storia
+    link: /chi-sono/
+  dettagli:
+    - etichetta: Lavoro
+      valore: Consulente informatico
+    - etichetta: Dove
+      valore: Italia, anche a distanza
+    - etichetta: Open source
+      valore: Contributore di OpenClaw
+      link: /open-source/
+
+newsletter:
+  etichetta: Newsletter
+  titolo: Cinque notizie sull'AI, *quando vale la pena.*
+  testo: La prepara un'automazione che ho costruito io. Prima che parta la leggo e la approvo. Niente pubblicità.
+  link:
+    etichetta: L'archivio dei numeri
+    link: /newsletter/

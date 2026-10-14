@@ -1,0 +1,25 @@
+# Voci del menu in alto. «separatore: true» mette una linea verticale prima della voce.
+# «tendina: true» apre l'elenco dei progetti con le icone.
+voci:
+  - etichetta: Home
+    link: /
+  - etichetta: Metodo
+    link: /metodo/
+  - etichetta: Progetti
+    link: /progetti/
+    tendina: true
+  - etichetta: Strumenti
+    link: /strumenti/
+  - etichetta: Open source
+    link: /open-source/
+  - etichetta: Newsletter
+    link: /newsletter/
+  - etichetta: Contatti
+    link: /contatti/
+    separatore: true
+link_icona:
+  etichetta: GitHub
+  link: https://github.com/Navras98
+bottone:
+  etichetta: Scrivimi
+  link: /contatti/

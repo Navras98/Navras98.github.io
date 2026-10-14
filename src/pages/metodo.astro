@@ -1,0 +1,73 @@
+---
+import Base from '../layouts/Base.astro';
+import Sezione from '../components/Sezione.astro';
+import TestaPagina from '../components/TestaPagina.astro';
+import Fasi from '../components/Fasi.astro';
+import Obiettivi from '../components/Obiettivi.astro';
+import { pagina, titolo, griglia } from '../lib/contenuti.js';
+const m = await pagina('metodo');
+// un colore per fase: lo stesso nel sommario e sul palco che segue la lettura
+const COLORI_FASI = ['blu', 'viola', 'acqua', 'arancio', 'rosa', 'verde'];
+const { interfaccia: ui } = await pagina('impostazioni');
+const indice = [
+  { id: 'hero', etichetta: m.apertura.etichetta },
+  { id: 'fasi', etichetta: m.fasi.etichetta },
+  { id: 'non-faccio', etichetta: m.non_faccio.etichetta },
+  { id: 'obiettivi', etichetta: m.obiettivi.etichetta },
+];
+---
+<Base seo={m.seo} indice={indice}>
+  <section id="hero" aria-labelledby="titolo-pagina">
+    <div class="contenitore metodo-apertura">
+      <TestaPagina etichetta={m.apertura.etichetta} titoloPagina={m.apertura.titolo} testo={m.apertura.testo} />
+      <div class="metodo-palco palco entra" style="--e:3">
+        <ol class="metodo-sommario">
+          {m.fasi.voci.map((f, i) => (
+            <li class={`c-${COLORI_FASI[i % COLORI_FASI.length]}`}>
+              <a href={`#fase-${i + 1}`}><span class="hud badge">{String(i + 1).padStart(2, '0')}</span><span class="metodo-sommario-nome">{f.nome}</span><span class="metodo-sommario-titolo">{f.titolo}</span></a>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </div>
+  </section>
+  <Sezione id="fasi" numero={1} etichetta={m.fasi.etichetta} didascalia={m.fasi.didascalia}>
+    <div class="intro-sezione">
+      <h2 class="titolo-sezione" data-rivela set:html={titolo(m.fasi.titolo)} />
+      <p class="testo-grande" data-rivela style="--i:1">{m.fasi.testo}</p>
+    </div>
+    <Fasi fasi={m.fasi.voci} etichettaOttieni={ui.cosa_ottieni} colori={COLORI_FASI} />
+  </Sezione>
+  <Sezione id="non-faccio" numero={2} etichetta={m.non_faccio.etichetta} didascalia={m.non_faccio.didascalia}>
+    <div class="intro-sezione"><h2 class="titolo-sezione" data-rivela set:html={titolo(m.non_faccio.titolo)} /></div>
+    <ol class="principi-elenco principi-pieno">
+      {m.non_faccio.voci.map((v, i) => (
+        <li class="principi-voce" data-rivela style={`--i:${i % 2}`}>
+          <span class="principio-lettera" aria-hidden="true">{String.fromCharCode(65 + i)}</span>
+          <div>
+            <h3 class="titolo-scheda">{v.titolo}</h3>
+            <p class="testo">{v.testo}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </Sezione>
+  <Sezione id="obiettivi" numero={3} etichetta={m.obiettivi.etichetta} didascalia={m.obiettivi.didascalia}>
+    <div class="intro-sezione"><h2 class="titolo-sezione" data-rivela set:html={titolo(m.obiettivi.titolo)} /></div>
+    <Obiettivi voci={m.obiettivi.voci} />
+  </Sezione>
+</Base>
+<style is:global>
+  /* apertura: titolo a sinistra, le sei fasi come una linea a tappe su un palco a destra */
+  .metodo-apertura { display: grid; }
+  .metodo-palco { display: grid; align-content: center; padding: var(--s-6) var(--margine) var(--s-7); border-top: 1px solid var(--line); }
+  @media (min-width: 1100px) { .metodo-apertura { grid-template-columns: 6fr 6fr; } .metodo-palco { border-top: 0; border-left: 1px solid var(--line); padding: var(--s-8) var(--s-8); } }
+  .metodo-sommario { position: relative; display: grid; gap: 6px; }
+  .metodo-sommario::before { content: ''; position: absolute; left: 15px; top: 16px; bottom: 16px; width: 2px; background: linear-gradient(#2f7bf5, #8b5cf6, #12a58a, #f26b1d, #e0368f, #1f9d55); opacity: .55; }
+  .metodo-sommario a { position: relative; display: grid; grid-template-columns: 32px 1fr; column-gap: var(--s-4); align-items: baseline; padding: 10px 14px 10px 0; border-radius: 10px; transition: background-color var(--rapido) linear; }
+  .metodo-sommario .badge { justify-self: center; }
+  .metodo-sommario-nome { font-family: var(--font-mono); font-size: var(--hud-size); letter-spacing: var(--hud-tracking); text-transform: uppercase; color: var(--app-ink); }
+  .metodo-sommario-titolo { grid-column: 2; margin-top: 2px; font-family: var(--font-display); font-weight: 620; font-stretch: 112%; font-size: 1.125rem; letter-spacing: -.02em; color: var(--ink-strong); }
+  @media (hover: hover) { .metodo-sommario a:hover { background: color-mix(in srgb, var(--app) 14%, transparent); } }
+  .fase { scroll-margin-top: calc(var(--testata) + 48px); }
+</style>

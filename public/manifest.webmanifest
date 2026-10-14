@@ -1,0 +1,16 @@
+{
+  "name": "Andrea Sforna",
+  "short_name": "Andrea Sforna",
+  "description": "Consulente informatico: agenti AI per le aziende.",
+  "lang": "it",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#121316",
+  "theme_color": "#121316",
+  "icons": [
+    { "src": "/icona-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icona-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/icona-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

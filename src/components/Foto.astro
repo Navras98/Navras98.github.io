@@ -1,0 +1,17 @@
+---
+// Immagine responsive: usa le versioni AVIF/WebP create da scripts/media.mjs.
+import { media } from '../lib/media.js';
+const { src, alt = '', sizes = '100vw', class: classe, loading = 'lazy', priorita, ...resto } = Astro.props;
+const info = media(src);
+const srcset = (formato) => info?.varianti[formato].map((v) => `${v.url} ${v.w}w`).join(', ');
+const ultima = info?.varianti.webp.at(-1)?.url ?? src;
+---
+{info ? (
+  <picture class={classe}>
+    <source type="image/avif" srcset={srcset('avif')} sizes={sizes} />
+    <source type="image/webp" srcset={srcset('webp')} sizes={sizes} />
+    <img src={ultima} alt={alt} width={info.width} height={info.height} loading={loading} decoding="async" fetchpriority={priorita} {...resto} />
+  </picture>
+) : (
+  <img class={classe} src={src} alt={alt} loading={loading} decoding="async" {...resto} />
+)}

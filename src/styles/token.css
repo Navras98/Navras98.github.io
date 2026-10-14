@@ -1,0 +1,130 @@
+/* Token di design: l'unico posto dove stanno colori, caratteri, spaziature, raggi, ombre e tempi.
+   Valori ricavati da getartcraft.com (riferimento/DESIGN.md). */
+
+/* ——— Caratteri (SIL OFL 1.1, ospitati in locale) ——— */
+@font-face { font-family: 'Archivo'; src: url('/fonts/archivo.woff2') format('woff2'); font-weight: 600 760; font-stretch: 110% 125%; font-display: swap; }
+@font-face { font-family: 'Inter'; src: url('/fonts/inter.woff2') format('woff2'); font-weight: 400 600; font-display: swap; }
+@font-face { font-family: 'Geist Mono'; src: url('/fonts/geist-mono.woff2') format('woff2'); font-weight: 400 700; font-display: swap; }
+@font-face { font-family: 'Instrument Serif'; src: url('/fonts/instrument-serif-italic.woff2') format('woff2'); font-weight: 400; font-style: italic; font-display: swap; }
+/* Ripieghi con metriche allineate: il testo non si sposta quando arrivano i caratteri veri */
+@font-face { font-family: 'Archivo Ripiego'; src: local('Arial'), local('Liberation Sans'), local('Helvetica'); size-adjust: 124%; ascent-override: 70.81%; descent-override: 16.94%; line-gap-override: 0%; }
+@font-face { font-family: 'Instrument Ripiego'; src: local('Times New Roman Italic'), local('TimesNewRomanPS-ItalicMT'), local('Liberation Serif Italic'), local('Times New Roman'); font-style: italic; size-adjust: 87.8%; }
+@font-face { font-family: 'Inter Ripiego'; src: local('Arial'), local('Liberation Sans'), local('Helvetica'); size-adjust: 106.72%; ascent-override: 90.77%; descent-override: 22.6%; line-gap-override: 0%; }
+
+@property --bg { syntax: '<color>'; inherits: true; initial-value: #121316; }
+@property --ink { syntax: '<color>'; inherits: true; initial-value: #f2f1ee; }
+@property --muted { syntax: '<color>'; inherits: true; initial-value: #f2f1ee99; }
+@property --faint { syntax: '<color>'; inherits: true; initial-value: #f2f1ee85; }
+@property --line { syntax: '<color>'; inherits: true; initial-value: #f2f1ee26; }
+
+:root {
+  /* caratteri */
+  --font-display: 'Archivo', 'Archivo Ripiego', system-ui, sans-serif;
+  --font-body: 'Inter', 'Inter Ripiego', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-serif: 'Instrument Serif', 'Instrument Ripiego', Georgia, serif;
+  --hud-size: .6875rem;
+  --hud-tracking: .15em;
+  --bottone-tracking: .12em;
+
+  /* scala unica delle spaziature */
+  --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px; --s-5: 24px; --s-6: 32px;
+  --s-7: 40px; --s-8: 56px; --s-9: 72px; --s-10: 96px; --s-11: 128px;
+  --margine: var(--s-5);          /* margine interno di sezioni e schede */
+
+  /* misure fisse */
+  --testata: 48px;
+  --righello: 0px;
+  --contenitore: 1280px;
+  --raggio-carta: 10px;           /* carte dell'apertura e media incorniciati */
+  --raggio-icona: 22.4%;          /* icone tipo app */
+  --raggio-tessera: 18px;         /* riquadro degli strumenti a 80 px */
+  --raggio-telefono: 44px;
+
+  /* tempi e curve */
+  --ease: cubic-bezier(.4, 0, .2, 1);
+  --ease-out: cubic-bezier(.25, 1, .5, 1);      /* power3.out */
+  --ease-riga: cubic-bezier(.33, 1, .68, 1);    /* power2.out */
+  --ease-hover: cubic-bezier(0, 0, .2, 1);
+  --rapido: .12s;
+  --medio: .3s;
+  --lento: .9s;
+
+  /* colori: tema scuro */
+  --bg: #121316;
+  --bg-raised: #17181c;
+  --bg-sunken: #060607;
+  --ink: #f2f1ee;
+  --ink-strong: #ffffff;
+  --muted: #f2f1ee99;
+  --faint: #f2f1ee85;
+  --line: #f2f1ee26;
+  --line-strong: #f2f1ee66;
+  --accent: #2d81ff;
+  --accent-ink: #74aaff;
+  --invert-bg: #ffffff;
+  --invert-fg: #0b0b0c;
+  --ombra-carta: rgba(0, 0, 0, .55);
+  --ombra-icona: drop-shadow(0 6px 14px rgba(0, 0, 0, .28));
+  --tessera-bg: #f4f3f0;
+  --tessera-bordo: rgba(0, 0, 0, .08);
+  --verde: #3fe6ae;
+  --giallo: #ffc14d;
+  --telefono: #1d1e22;
+  /* aberrazione cromatica dei bordi, uguale per carte, video e prove */
+  --aberrazione: -1.5px 0 0 rgba(255, 60, 90, .55), 1.5px 0 0 rgba(40, 200, 255, .55), 0 0 0 1px rgba(255, 255, 255, .06);
+  /* le schermate vere hanno solo un filo: l'aberrazione resta per video e carte */
+  --filo-schermata: 0 0 0 1px rgba(255, 255, 255, .12);
+  color-scheme: dark;
+}
+:root[data-theme='light'] {
+  --bg: #f2f1ee;
+  --bg-raised: #faf9f7;
+  --bg-sunken: #e9e8e4;
+  --ink: #101014;
+  --ink-strong: #000000;
+  --muted: #101014b3;
+  --faint: #101014a6;
+  --line: #10101429;
+  --line-strong: #10101466;
+  --accent-ink: #1659c4;
+  --invert-bg: #101014;
+  --invert-fg: #f2f1ee;
+  --ombra-carta: rgba(40, 30, 20, .28);
+  --ombra-icona: drop-shadow(0 6px 14px rgba(40, 30, 20, .18));
+  --tessera-bg: #ffffff;
+  --tessera-bordo: rgba(16, 16, 20, .1);
+  --verde: #017a54;
+  --giallo: #8a5800;
+  --telefono: #2a2b30;
+  --aberrazione: -1.5px 0 0 rgba(255, 60, 90, .4), 1.5px 0 0 rgba(40, 200, 255, .4), 0 0 0 1px rgba(16, 16, 20, .1);
+  --filo-schermata: 0 0 0 1px rgba(16, 16, 20, .14);
+  color-scheme: light;
+}
+
+/* Colori delle schede (badge, nome, barra) */
+.c-blu { --app: #2f7bf5; --app-ink: #7fb0ff; }
+.c-rosso { --app: #e8573f; --app-ink: #ff8a70; }
+.c-viola { --app: #8b5cf6; --app-ink: #b69cff; }
+.c-giallo { --app: #f2a516; --app-ink: #ffc14d; }
+.c-acqua { --app: #12a58a; --app-ink: #3fd6b8; }
+.c-rosa { --app: #e0368f; --app-ink: #ff7ab8; }
+.c-lime { --app: #7bb51c; --app-ink: #a6e04a; }
+.c-verde { --app: #1f9d55; --app-ink: #5ee089; }
+.c-indaco { --app: #4c6ef5; --app-ink: #8da2fb; }
+.c-ciano { --app: #14a3c7; --app-ink: #52d1ea; }
+.c-arancio { --app: #f26b1d; --app-ink: #ff9657; }
+:root[data-theme='light'] .c-blu { --app-ink: #1a5bc4; }
+:root[data-theme='light'] .c-rosso { --app-ink: #b83a24; }
+:root[data-theme='light'] .c-viola { --app-ink: #6a3fd6; }
+:root[data-theme='light'] .c-giallo { --app-ink: #8a5800; }
+:root[data-theme='light'] .c-acqua { --app-ink: #0a7563; }
+:root[data-theme='light'] .c-rosa { --app-ink: #b0206c; }
+:root[data-theme='light'] .c-lime { --app-ink: #457008; }
+:root[data-theme='light'] .c-verde { --app-ink: #136938; }
+:root[data-theme='light'] .c-indaco { --app-ink: #253e99; }
+:root[data-theme='light'] .c-ciano { --app-ink: #09596d; }
+:root[data-theme='light'] .c-arancio { --app-ink: #ad4306; }
+
+@media (min-width: 768px) { :root { --margine: var(--s-7); } }
+@media (min-width: 1100px) and (min-height: 620px) { :root { --righello: 60px; } }

@@ -1,0 +1,39 @@
+---
+// Sezione numerata: riga di costruzione, crocette agli incroci e barra fissa «01 / NOME».
+import { dueCifre } from '../lib/contenuti.js';
+const { id, numero, etichetta, didascalia, class: classe, senzaBarra = false } = Astro.props;
+---
+<section id={id} class:list={['sezione', classe]} aria-labelledby={senzaBarra ? undefined : `${id}-barra`} aria-label={senzaBarra ? etichetta : undefined}>
+  <span class="regola" aria-hidden="true"></span>
+  <div class="contenitore">
+    <span class="tacca sx" aria-hidden="true"></span>
+    <span class="tacca dx" aria-hidden="true"></span>
+    {!senzaBarra && (
+      <div class="barra-sezione">
+        <p class="hud muted" id={`${id}-barra`}>{numero != null && <><span class="faint">{dueCifre(numero)}</span><span class="faint barra-sep" aria-hidden="true">/</span></>}{etichetta}</p>
+        {didascalia && <p class="hud faint didascalia">{didascalia}</p>}
+      </div>
+    )}
+    <slot />
+  </div>
+</section>
+<style is:global>
+  .sezione { position: relative; scroll-margin-top: var(--testata); }
+  .regola { position: absolute; inset-inline: 0; top: 0; height: 1px; background: var(--line); transform-origin: left; }
+  .tacca { position: absolute; width: 11px; height: 11px; pointer-events: none; z-index: 31; top: -5px; }
+  .tacca::before, .tacca::after { content: ''; position: absolute; background: var(--line-strong); }
+  .tacca::before { width: 1px; top: 0; bottom: 0; left: 5px; }
+  .tacca::after { height: 1px; top: 5px; left: 0; right: 0; }
+  .tacca.sx { left: -6px; }
+  .tacca.dx { right: -6px; }
+  .barra-sezione { position: sticky; top: var(--testata); z-index: 30; display: flex; align-items: center; justify-content: space-between; gap: var(--s-4); padding: var(--s-3) var(--margine); border-block: 1px solid var(--line); background: color-mix(in srgb, var(--bg) 60%, transparent); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+  .barra-sep { margin: 0 .6em; }
+  .barra-sezione .didascalia { display: none; text-align: right; }
+  @media (min-width: 640px) { .barra-sezione .didascalia { display: block; } }
+  html.js .sezione .regola { transform: scaleX(0); transition: transform .7s var(--ease-riga); }
+  html.js .sezione.disegnata .regola { transform: scaleX(1); }
+  html.js .sezione .tacca { transform: scale(0); opacity: 0; transition: transform .35s var(--ease-out) .35s, opacity .35s .35s; }
+  html.js .sezione .tacca.dx { transition-delay: .41s; }
+  html.js .sezione.disegnata .tacca { transform: none; opacity: 1; }
+  @media (prefers-reduced-motion: reduce) { html.js .sezione .regola, html.js .sezione .tacca { transform: none; opacity: 1; } }
+</style>

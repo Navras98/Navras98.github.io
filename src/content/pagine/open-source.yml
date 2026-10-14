@@ -1,0 +1,337 @@
+# Pagina Open source. Stati verificati con gh il 2026-10-14: integrata = accettata nel progetto,
+# in revisione = ancora aperta, proposta = chiusa senza integrazione. La data è quella dell'integrazione,
+# dell'apertura (in revisione) o della chiusura (proposta). Ricontrolla con: node scripts/controlla-github.mjs
+seo:
+  titolo: Open source
+  descrizione: I miei contributi a OpenClaw e i ringraziamenti del fondatore. Ogni mia proposta con il suo stato, e PrivacyBridge, il mio progetto aperto.
+  immagine:
+    src: /media/condivisione.jpg
+    alt: Andrea Sforna, consulente informatico per gli agenti AI
+    punto_focale: centro
+    adatta: riempi
+apertura:
+  etichetta: Open source
+  titolo: Contribuisco al software *che uso.*
+  testo: >-
+    Open source vuol dire che il codice è pubblico e chiunque può proporre miglioramenti. Chi guida il progetto li controlla e decide cosa accettare. Su GitHub
+    mi chiamo Navras98. Qui trovi ogni mia proposta con il link, la data e lo stato, anche quelle non accettate.
+  verificato: Stato verificato su GitHub il 14 ottobre 2026
+  video:
+    mp4: /media/video/github-grazie.mp4
+    webm: /media/video/github-grazie.webm
+    copertina: /media/video/github-grazie.jpg
+    descrizione: Una mia modifica integrata in OpenClaw su GitHub, con il ringraziamento a Navras98.
+    punto_focale: centro
+    adatta: riempi
+prove:
+  etichetta: Le prove
+  didascalia: Screenshot da GitHub
+  titolo: Ringraziato *in pubblico.*
+  testo: >-
+    Peter Steinberger ha fondato OpenClaw. Qui trovi le sue parole sulle mie modifiche e le righe delle note di rilascio che mi citano. Ogni riquadro
+    porta alla pagina originale.
+  altre: Modifiche integrate e note di rilascio
+  voci:
+    - codice: pr-148592-grazie
+      titolo: «La tua correzione era quella giusta»
+      testo: >-
+        Peter Steinberger, fondatore di OpenClaw, mi ringrazia: la mia correzione era quella giusta. L’ha integrata con una sua modifica, indicandomi come
+        coautore.
+      progetto: OpenClaw
+      data: '2026-10-13'
+      stato: integrata
+      link: https://github.com/openclaw/openclaw/pull/148592#issuecomment-6143973074
+      chiaro:
+        src: /media/prove/pr-148592-grazie-chiaro.png
+        alt: >-
+          Commento di steipete del 13 ottobre 2026 sulla pull request 148592. Ringrazia @Navras98 e scrive: «Your fix for hot reload escalating a scheduled
+          cron retry into a full restart was the right one. We landed it as #170951, with you credited as co-author.»
+        punto_focale: centro
+        adatta: intera
+      scuro:
+        src: /media/prove/pr-148592-grazie-scuro.png
+        alt: >-
+          Commento di steipete del 13 ottobre 2026 sulla pull request 148592. Ringrazia @Navras98 e scrive: «Your fix for hot reload escalating a scheduled
+          cron retry into a full restart was the right one. We landed it as #170951, with you credited as co-author.»
+        punto_focale: centro
+        adatta: intera
+    - codice: pr-170951-grazie
+      titolo: «thanks @Navras98» nella modifica integrata
+      testo: La modifica integrata il 13 ottobre 2026 riprende la mia proposta e mi ringrazia per nome.
+      progetto: OpenClaw
+      data: '2026-10-13'
+      stato: integrata
+      link: https://github.com/openclaw/openclaw/pull/170951
+      chiaro:
+        src: /media/prove/pr-170951-grazie-chiaro.png
+        alt: >-
+          Pull request 170951 di OpenClaw, «fix(gateway): keep hot reload running while cron retries», con il badge viola Merged del 13 ottobre 2026. Nella
+          descrizione di steipete si legge «Fixes #170644. Supersedes #148592, thanks @Navras98.»
+        punto_focale: centro
+        adatta: intera
+      scuro:
+        src: /media/prove/pr-170951-grazie-scuro.png
+        alt: >-
+          Pull request 170951 di OpenClaw, «fix(gateway): keep hot reload running while cron retries», con il badge viola Merged del 13 ottobre 2026. Nella
+          descrizione di steipete si legge «Fixes #170644. Supersedes #148592, thanks @Navras98.»
+        punto_focale: centro
+        adatta: intera
+    - codice: pr-170951-coautore
+      titolo: Coautore della modifica finale
+      testo: Nella modifica entrata in OpenClaw, GitHub mi indica come coautore accanto al fondatore.
+      progetto: OpenClaw
+      data: '2026-10-13'
+      stato: integrata
+      link: https://github.com/openclaw/openclaw/pull/170951/commits
+      chiaro:
+        src: /media/prove/pr-170951-coautore-chiaro.png
+        alt: >-
+          Riquadro del commit «fix(gateway): keep hot reload running while cron retries», con il badge Verified, nella scheda Commits della pull request
+          170951. Il messaggio termina con «thanks @Navras98.» e «Co-authored-by: Andrea Sforna»; sotto, «steipete and Navras98 committed on Oct 13, 2026».
+        punto_focale: centro
+        adatta: intera
+      scuro:
+        src: /media/prove/pr-170951-coautore-scuro.png
+        alt: >-
+          Riquadro del commit «fix(gateway): keep hot reload running while cron retries», con il badge Verified, nella scheda Commits della pull request
+          170951. Il messaggio termina con «thanks @Navras98.» e «Co-authored-by: Andrea Sforna»; sotto, «steipete and Navras98 committed on Oct 13, 2026».
+        punto_focale: centro
+        adatta: intera
+    - codice: pr-148879-commento
+      titolo: Il fondatore commenta la mia modifica
+      testo: >-
+        Il 15 settembre mi ringrazia per il rapporto di controllo che avevo allegato: mostrava cosa era successo davvero. La modifica è stata integrata il 19
+        settembre.
+      progetto: OpenClaw
+      data: '2026-09-19'
+      stato: integrata
+      link: https://github.com/openclaw/openclaw/pull/148879#issuecomment-5676590246
+      chiaro:
+        src: /media/prove/pr-148879-commento-chiaro.png
+        alt: >-
+          Commento di steipete, Peter Steinberger, del 15 settembre 2026 sulla pull request 148879 di OpenClaw: intestazione e primo paragrafo, che inizia con
+          «Thanks — this is more valuable than the headline fix, because your doctor --lint --json output shows what actually happened».
+        punto_focale: centro
+        adatta: intera
+      scuro:
+        src: /media/prove/pr-148879-commento-scuro.png
+        alt: >-
+          Commento di steipete, Peter Steinberger, del 15 settembre 2026 sulla pull request 148879 di OpenClaw: intestazione e primo paragrafo, che inizia con
+          «Thanks — this is more valuable than the headline fix, because your doctor --lint --json output shows what actually happened».
+        punto_focale: centro
+        adatta: intera
+    - codice: pr-148879-integrata
+      titolo: Integrata in OpenClaw
+      testo: Quando un aggiornamento non si completa, OpenClaw ora indica il passaggio preciso da controllare.
+      progetto: OpenClaw
+      data: '2026-09-19'
+      stato: integrata
+      link: https://github.com/openclaw/openclaw/pull/148879
+      chiaro:
+        src: /media/prove/pr-148879-integrata-chiaro.png
+        alt: >-
+          Intestazione della pull request 148879 di OpenClaw, «fix(update): show failed finalize step instead of unknown reason», con il badge viola Merged:
+          integrata il 19 settembre 2026 dal ramo di Navras98.
+        punto_focale: centro
+        adatta: intera
+      scuro:
+        src: /media/prove/pr-148879-integrata-scuro.png
+        alt: >-
+          Intestazione della pull request 148879 di OpenClaw, «fix(update): show failed finalize step instead of unknown reason», con il badge viola Merged:
+          integrata il 19 settembre 2026 dal ramo di Navras98.
+        punto_focale: centro
+        adatta: intera
+    - codice: pr-147229-integrata
+      titolo: Integrata nella guida di OpenClaw per Telegram
+      testo: Nella guida spiego quale strumento invia i messaggi con i pulsanti.
+      progetto: OpenClaw
+      data: '2026-09-13'
+      stato: integrata
+      link: https://github.com/openclaw/openclaw/pull/147229
+      chiaro:
+        src: /media/prove/pr-147229-integrata-chiaro.png
+        alt: >-
+          Intestazione della pull request 147229 di OpenClaw, «docs(telegram): name the message tool behind the button-send example», con il badge viola Merged:
+          integrata il 13 settembre 2026 dal ramo di Navras98.
+        punto_focale: centro
+        adatta: intera
+      scuro:
+        src: /media/prove/pr-147229-integrata-scuro.png
+        alt: >-
+          Intestazione della pull request 147229 di OpenClaw, «docs(telegram): name the message tool behind the button-send example», con il badge viola Merged:
+          integrata il 13 settembre 2026 dal ramo di Navras98.
+        punto_focale: centro
+        adatta: intera
+    - codice: rilascio-2026-9-5
+      titolo: Citato nelle note del 19 settembre
+      testo: Le note di rilascio del 19 settembre 2026 mi ringraziano per le due modifiche alla guida di OpenClaw per Telegram.
+      progetto: OpenClaw
+      data: '2026-09-19'
+      stato: integrata
+      link: https://github.com/openclaw/openclaw/blob/6f729f127c054e18c89e4a084c543b4a5f872f8b/CHANGELOG/2026.9.5.md?plain=1#L3353-L3356
+      chiaro:
+        src: /media/prove/rilascio-2026-9-5-chiaro.png
+        alt: Due voci delle note di rilascio di OpenClaw del 19 settembre 2026 sulla guida per Telegram, entrambe con un ringraziamento a @navras98.
+        punto_focale: centro
+        adatta: intera
+      scuro:
+        src: /media/prove/rilascio-2026-9-5-scuro.png
+        alt: Due voci delle note di rilascio di OpenClaw del 19 settembre 2026 sulla guida per Telegram, entrambe con un ringraziamento a @navras98.
+        punto_focale: centro
+        adatta: intera
+    - codice: rilascio-2026-9-6
+      titolo: Citato nelle note del 23 settembre
+      testo: Le note di rilascio del 23 settembre 2026 citano la mia modifica con il mio nome.
+      progetto: OpenClaw
+      data: '2026-09-23'
+      stato: integrata
+      link: https://github.com/openclaw/openclaw/blob/40c70a80fa9026b87ad01a5791578fe2b72ee818/CHANGELOG/2026.9.6.md?plain=1#L2670
+      chiaro:
+        src: /media/prove/rilascio-2026-9-6-chiaro.png
+        alt: >-
+          Voce delle note di rilascio di OpenClaw del 23 settembre 2026: «Name the recorded failed update phase instead of an unknown reason #148879», con
+          @navras98 tra i contributori.
+        punto_focale: centro
+        adatta: intera
+      scuro:
+        src: /media/prove/rilascio-2026-9-6-scuro.png
+        alt: >-
+          Voce delle note di rilascio di OpenClaw del 23 settembre 2026: «Name the recorded failed update phase instead of an unknown reason #148879», con
+          @navras98 tra i contributori.
+        punto_focale: centro
+        adatta: intera
+    - codice: rilascio-2026-9-7
+      titolo: Una correzione nata da una mia segnalazione
+      testo: Il fondatore ha scritto questa correzione partendo da una mia segnalazione, e le note del 30 settembre 2026 mi ringraziano.
+      progetto: OpenClaw
+      data: '2026-09-30'
+      stato: integrata
+      link: https://github.com/openclaw/openclaw/blob/7dc4a94490cd5319adee8a3a413fc809887a0fa0/CHANGELOG/2026.9.7.md?plain=1#L1755
+      chiaro:
+        src: /media/prove/rilascio-2026-9-7-chiaro.png
+        alt: Voce delle note di rilascio di OpenClaw del 30 settembre 2026, con @navras98 tra i ringraziati.
+        punto_focale: centro
+        adatta: intera
+      scuro:
+        src: /media/prove/rilascio-2026-9-7-scuro.png
+        alt: Voce delle note di rilascio di OpenClaw del 30 settembre 2026, con @navras98 tra i ringraziati.
+        punto_focale: centro
+        adatta: intera
+contributi:
+  etichetta: Tutte le proposte
+  didascalia: Link, data e stato
+  titolo: Ogni proposta, *con il suo stato.*
+  testo: >-
+    Integrata vuol dire accettata nel progetto. In revisione vuol dire ancora aperta. Proposta vuol dire chiusa senza integrazione, spesso perché la stessa
+    correzione è entrata in un altro modo.
+  altre: Le altre proposte, in revisione o chiuse
+  voci:
+    - progetto: OpenClaw
+      numero: 170951
+      titolo: >-
+        Modifica del fondatore, con me coautore: se cambia la configurazione mentre un’attività pianificata sta riprovando, OpenClaw non si riavvia più del
+        tutto e gli agenti continuano a lavorare.
+      stato: integrata
+      data: '2026-10-13'
+      link: https://github.com/openclaw/openclaw/pull/170951
+    - progetto: OpenClaw
+      numero: 148879
+      titolo: Quando un aggiornamento di OpenClaw non si completa, il riepilogo indica il passaggio preciso da controllare invece di un motivo sconosciuto.
+      stato: integrata
+      data: '2026-09-19'
+      link: https://github.com/openclaw/openclaw/pull/148879
+    - progetto: OpenClaw
+      numero: 147229
+      titolo: Nella guida di OpenClaw per Telegram spiego quale strumento invia i messaggi con i pulsanti.
+      stato: integrata
+      data: '2026-09-13'
+      link: https://github.com/openclaw/openclaw/pull/147229
+    - progetto: OpenClaw
+      numero: 147222
+      titolo: Nella guida di OpenClaw per Telegram spiego come vengono custoditi i messaggi in arrivo e cosa succede se il programma si riavvia.
+      stato: integrata
+      data: '2026-09-13'
+      link: https://github.com/openclaw/openclaw/pull/147222
+    - progetto: OpenClaw
+      numero: 149335
+      titolo: Propongo che, dopo un riavvio, una risposta formattata rimasta in sospeso arrivi come testo semplice invece di andare persa.
+      stato: in revisione
+      data: '2026-09-15'
+      link: https://github.com/openclaw/openclaw/pull/149335
+    - progetto: OpenClaw
+      numero: 148275
+      titolo: Propongo che, quando un fornitore segnala il credito esaurito, OpenClaw passi al modello di riserva come per un limite di richieste.
+      stato: in revisione
+      data: '2026-09-14'
+      link: https://github.com/openclaw/openclaw/pull/148275
+    - progetto: OpenClaw
+      numero: 147490
+      titolo: Propongo che la verifica della configurazione avvisi quando una lista di permessi vuota finisce per consentire tutto.
+      stato: in revisione
+      data: '2026-09-14'
+      link: https://github.com/openclaw/openclaw/pull/147490
+    - progetto: OpenClaw
+      numero: 147466
+      titolo: Propongo che il controllo delle credenziali dica «non misurato» quando ne salta una parte, invece di dare tutto per buono.
+      stato: in revisione
+      data: '2026-09-13'
+      link: https://github.com/openclaw/openclaw/pull/147466
+    - progetto: OpenClaw
+      numero: 147455
+      titolo: Propongo che un’abilità accetti credenziali alternative, così resta attiva anche se la chiave è salvata con un altro nome.
+      stato: in revisione
+      data: '2026-09-13'
+      link: https://github.com/openclaw/openclaw/pull/147455
+    - progetto: OpenClaw
+      numero: 148592
+      titolo: >-
+        Ho proposto che un aggiornamento della configurazione non riavvii tutto mentre un’attività pianificata sta ancora riprovando. La correzione è entrata
+        con la #170951.
+      stato: proposta
+      data: '2026-10-13'
+      link: https://github.com/openclaw/openclaw/pull/148592
+    - progetto: OpenClaw
+      numero: 148226
+      titolo: Ho proposto che le richieste di approvazione continuino a essere inoltrate finché il canale nativo non è davvero attivo.
+      stato: proposta
+      data: '2026-09-14'
+      link: https://github.com/openclaw/openclaw/pull/148226
+    - progetto: OpenClaw
+      numero: 148203
+      titolo: Ho proposto di allineare un test automatico al nuovo nome di un dato di prova.
+      stato: proposta
+      data: '2026-09-14'
+      link: https://github.com/openclaw/openclaw/pull/148203
+    - progetto: OpenClaw
+      numero: 148156
+      titolo: Ho proposto che il rapporto diagnostico di un riavvio includa la causa dell'errore di chiusura.
+      stato: proposta
+      data: '2026-09-14'
+      link: https://github.com/openclaw/openclaw/pull/148156
+    - progetto: Hermes Agent
+      numero: 110877
+      titolo: >-
+        Propongo che le abilità scaricate da due cataloghi esterni passino dallo stesso controllo di sicurezza degli altri download, che blocca le richieste
+        verso indirizzi interni.
+      stato: in revisione
+      data: '2026-09-14'
+      link: https://github.com/NousResearch/hermes-agent/pull/110877
+    - progetto: GrapheneOS
+      numero: 1275
+      titolo: Ho proposto di proteggere il selettore di file del browser Vanadium da tocchi ingannevoli di app sovrapposte.
+      stato: proposta
+      data: '2026-09-25'
+      link: https://github.com/GrapheneOS/Vanadium/pull/1275
+progetto_mio:
+  etichetta: Il mio progetto
+  didascalia: Codice aperto, licenza MIT
+  titolo: PrivacyBridge, *aperto a tutti.*
+  testo: Toglie i dati personali da un testo prima di darlo a un'AI e poi li rimette al loro posto. Il codice è pubblico, chiunque può leggerlo e verificarlo.
+  immagine:
+    src: /media/progetti/privacybridge-prima-dopo.webp
+    alt: "Sopra il messaggio originale con nome, luogo e data di nascita, IBAN, email e targa evidenziati, sotto lo stesso messaggio con i segnaposto al loro posto"
+    punto_focale: centro
+    adatta: intera
+  link:
+    etichetta: Codice su GitHub
+    link: https://github.com/Navras98/PrivacyBridge

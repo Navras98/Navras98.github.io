@@ -1,0 +1,161 @@
+# Pagina Metodo. Nei titoli: *parola* = corsivo, **parola** = colore blu.
+seo:
+  titolo: Metodo
+  descrizione: Come lavoro dall'inizio alla fine. Ascolto, perimetro scritto, costruzione, messa in sicurezza, consegna e manutenzione.
+  immagine:
+    src: /media/condivisione.jpg
+    alt: Andrea Sforna, consulente informatico per gli agenti AI
+    punto_focale: centro
+    adatta: riempi
+
+apertura:
+  etichetta: Metodo
+  titolo: Sei fasi, *sempre le stesse.*
+  testo: Ogni progetto segue lo stesso percorso, dall'ascolto alla manutenzione. Sai sempre a che punto siamo, cosa hai in mano e cosa viene dopo.
+
+fasi:
+  etichetta: Le fasi
+  didascalia: Su ogni progetto
+  titolo: Niente arriva a te *senza essere controllato.*
+  testo: Dal progetto più piccolo al più complesso, ogni fase finisce con qualcosa di concreto che resta a te.
+  voci:
+    - nome: Ascolto
+      titolo: Prima capisco il lavoro.
+      testo: Parliamo del problema, dei dati e dei processi. Guardo i programmi che usi già e chi fa cosa. Parto dal lavoro di ogni giorno, non dalla tecnologia.
+      ottieni:
+        - Un quadro chiaro di dove un agente può aiutarti
+        - Un parere onesto, anche quando la risposta è no
+      immagine:
+        src: /media/metodo/metodo-1-primo-incontro.webp
+        alt: "Esempio di appunti del primo incontro: i programmi che usi (gestionale, posta, fogli condivisi), chi fa cosa (fatture e solleciti in amministrazione), dove perdi tempo (dati copiati a mano dalla posta), i dati sensibili (anagrafiche e coordinate bancarie). Da qui scrivo il perimetro"
+        punto_focale: centro
+        adatta: intera
+      video:
+        mp4: /media/video/metodo-1-primo-incontro.mp4
+        webm: /media/video/metodo-1-primo-incontro.webm
+        copertina: /media/video/metodo-1-primo-incontro.jpg
+        descrizione: "Esempio di appunti del primo incontro: i programmi che usi (gestionale, posta, fogli condivisi), chi fa cosa (fatture e solleciti in amministrazione), dove perdi tempo (dati copiati a mano dalla posta), i dati sensibili (anagrafiche e coordinate bancarie). Da qui scrivo il perimetro"
+        punto_focale: centro
+        adatta: intera
+    - nome: Perimetro scritto
+      titolo: Guardo, scelgo, metto tutto per iscritto.
+      testo: Guardo i programmi e i limiti che ci sono, poi scelgo l'AI e la struttura adatte. Scrivo cosa farà l'agente, su quali dati, con quali permessi e cosa resta a una persona.
+      ottieni:
+        - Un documento con compiti, dati e limiti
+        - I punti in cui l'agente si ferma e chiede
+      immagine:
+        src: /media/metodo/perimetro.webp
+        alt: "Esempio di perimetro scritto di un agente: posta e bozze dei solleciti; il gestionale lo legge ma non lo cambia; le bozze partono solo con il tuo sì; inviare da solo è tolto; sconti e reclami restano a una persona"
+        punto_focale: centro
+        adatta: intera
+      video:
+        mp4: /media/video/metodo-2-perimetro.mp4
+        webm: /media/video/metodo-2-perimetro.webm
+        copertina: /media/video/metodo-2-perimetro.jpg
+        descrizione: "Esempio di perimetro scritto di un agente: posta e bozze dei solleciti; il gestionale lo legge ma non lo cambia; le bozze partono solo con il tuo sì; inviare da solo è tolto; sconti e reclami restano a una persona"
+        punto_focale: centro
+        adatta: intera
+    - nome: Costruzione
+      titolo: A piccoli passi verificabili.
+      testo: Costruisco un passo alla volta, e ogni passo si può controllare. L'AI capisce le domande e scrive le risposte. I dati li tocca solo il programma, dentro limiti che l'AI non può superare.
+      ottieni:
+        - Un agente che lavora sui tuoi dati, in casa tua
+        - Prove fatte insieme su casi reali
+      immagine:
+        src: /media/metodo/passo-per-passo.webp
+        alt: "Esempio di risposta passo per passo: l'AI capisce la domanda, il programma cerca nel gestionale in sola lettura, l'AI scrive la risposta con la fonte. Ogni passo è verificato e i dati li tocca solo il programma"
+        punto_focale: centro
+        adatta: intera
+      video:
+        mp4: /media/video/metodo-3-passo-per-passo.mp4
+        webm: /media/video/metodo-3-passo-per-passo.webm
+        copertina: /media/video/metodo-3-passo-per-passo.jpg
+        descrizione: "Esempio di risposta passo per passo: l'AI capisce la domanda, il programma cerca nel gestionale in sola lettura, l'AI scrive la risposta con la fonte. Ogni passo è verificato e i dati li tocca solo il programma"
+        punto_focale: centro
+        adatta: intera
+    - nome: Messa in sicurezza
+      titolo: Verifico e proteggo, dal primo giorno.
+      testo: Chi costruisce una parte non è chi la controlla. Ogni parte passa da una verifica separata. Dati e permessi sono protetti fin dall'inizio, e ogni azione che cambia qualcosa aspetta il tuo sì.
+      ottieni:
+        - Permessi ridotti al necessario
+        - Un registro di tutto quello che fa l'agente
+      immagine:
+        src: /media/metodo/serve-il-tuo-si.webp
+        alt: "Esempio di richiesta di approvazione: l'agente vuole cambiare il fido di un cliente da 1.000 a 500 euro; niente parte finché non premi Approva o Rifiuta, e la scelta viene registrata"
+        punto_focale: centro
+        adatta: intera
+      video:
+        mp4: /media/video/metodo-4-serve-il-tuo-si.mp4
+        webm: /media/video/metodo-4-serve-il-tuo-si.webm
+        copertina: /media/video/metodo-4-serve-il-tuo-si.jpg
+        descrizione: "Esempio di richiesta di approvazione: l'agente vuole cambiare il fido di un cliente da 1.000 a 500 euro; niente parte finché non premi Approva o Rifiuta, e la scelta viene registrata"
+        punto_focale: centro
+        adatta: intera
+    - nome: Consegna e affiancamento
+      titolo: Lo integro senza rompere ciò che funziona.
+      testo: Collego il sistema ai programmi che usi già. Poi lavoro accanto a te e al tuo team finché lo usate da soli.
+      ottieni:
+        - Istruzioni scritte in italiano semplice
+        - Formazione sul tuo caso
+      immagine:
+        src: /media/metodo/prime-settimane.webp
+        alt: "Esempio delle prime settimane dopo la consegna: la prima lo usiamo insieme, la seconda lo usi tu e io controllo, poi lo usate da soli; la guida scritta in italiano semplice resta a te"
+        punto_focale: centro
+        adatta: intera
+      video:
+        mp4: /media/video/metodo-5-prime-settimane.mp4
+        webm: /media/video/metodo-5-prime-settimane.webm
+        copertina: /media/video/metodo-5-prime-settimane.jpg
+        descrizione: "Esempio delle prime settimane dopo la consegna: la prima lo usiamo insieme, la seconda lo usi tu e io controllo, poi lo usate da soli; la guida scritta in italiano semplice resta a te"
+        punto_focale: centro
+        adatta: intera
+    - nome: Manutenzione
+      titolo: Lo seguo nel tempo.
+      testo: Un sistema vale se funziona nel tempo, non solo il giorno della prova. Lo controllo con regolarità, a partire dal registro di ciò che ha fatto, e lo adatto quando cambia il lavoro della tua azienda.
+      ottieni:
+        - Controlli regolari
+        - Un riferimento diretto, rispondo io
+      immagine:
+        src: /media/metodo/controllo-del-mese.webp
+        alt: "Esempio di controllo del mese: le risposte citano ancora la fonte, i permessi sono ancora giusti, il registro delle azioni è riletto, una procedura nuova è da adattare, il prossimo controllo è fra un mese"
+        punto_focale: centro
+        adatta: intera
+      video:
+        mp4: /media/video/metodo-6-controllo-del-mese.mp4
+        webm: /media/video/metodo-6-controllo-del-mese.webm
+        copertina: /media/video/metodo-6-controllo-del-mese.jpg
+        descrizione: "Esempio di controllo del mese: le risposte citano ancora la fonte, i permessi sono ancora giusti, il registro delle azioni è riletto, una procedura nuova è da adattare, il prossimo controllo è fra un mese"
+        punto_focale: centro
+        adatta: intera
+
+non_faccio:
+  etichetta: Cosa non faccio
+  didascalia: Per essere chiari
+  titolo: Quattro cose *che non faccio.*
+  voci:
+    - titolo: Niente che non si possa verificare
+      testo: Ogni risultato si può controllare prima di essere usato. Se una cosa non la posso dimostrare, non la prometto.
+    - titolo: Niente dati portati fuori
+      testo: I dati restano in azienda. Se serve un'AI esterna, le arriva il testo senza nomi, recapiti e codici, che restano da te.
+    - titolo: Niente decisioni lasciate alla macchina
+      testo: L'agente prepara la bozza e chiede il permesso. Niente parte finché una persona non decide.
+    - titolo: Niente limiti scritti solo a parole
+      testo: Non basta dire all'AI cosa non fare. I limiti li metto nel programma, dove l'AI non può aggirarli.
+
+obiettivi:
+  etichetta: Obiettivi
+  didascalia: I miei obiettivi
+  titolo: Dove *voglio arrivare.*
+  voci:
+    - titolo: Agenti affidabili nelle aziende
+      testo: Portare nelle aziende agenti AI affidabili, con dati e permessi sotto controllo.
+      progetto: agenti-personali
+    - titolo: SfornaClaw pronto per le aziende
+      testo: Portare SfornaClaw da progetto in sviluppo a strumento pronto per le aziende che lo scelgono.
+      progetto: sfornaclaw
+    - titolo: PrivacyBridge per i dati veri
+      testo: Rendere PrivacyBridge uno strumento sicuro per chi usa l'AI con dati reali.
+      progetto: privacybridge
+    - titolo: Open source, con prove pubbliche
+      testo: Continuare a contribuire al software aperto, con prove che chiunque può controllare.
+      progetto: open-source

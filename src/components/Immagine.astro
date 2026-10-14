@@ -1,0 +1,47 @@
+---
+// Immagine responsive (AVIF/WebP) con punto focale e modo di adattarsi.
+// Le immagini verticali sono sempre mostrate intere: in una cornice di telefono o in una cornice verticale.
+// «nonOltre» = mai più larga di metà dei suoi pixel: resta nitida anche sugli schermi ad alta densità (2x).
+// «stretta» = un'altra immagine per gli schermi sotto i 640 px (per esempio un terminale rifatto in una finestra stretta).
+import { media, dimensioni, posizione } from '../lib/media.js';
+const { img, sizes = '100vw', class: classe, loading = 'lazy', priorita, cornice = 'auto', decorativa = false, stretta, nonOltre = false, ...resto } = Astro.props;
+const info = media(img.src);
+const { w, h } = dimensioni(img.src);
+const verticale = h > w * 1.02;
+const telefono = cornice !== 'nessuna' && verticale && h / w >= 1.7;
+const intera = verticale || img.adatta === 'intera';
+const stile = `object-fit:${intera ? 'contain' : 'cover'};object-position:${posizione[img.punto_focale]}`;
+const srcset = (formato) => info?.varianti[formato].map((v) => `${v.url} ${v.w}w`).join(', ');
+const ultima = info?.varianti.webp.at(-1)?.url ?? img.src;
+const alt = decorativa ? '' : img.alt;
+const infoStretta = stretta ? media(stretta.src) : null;
+const dimStretta = stretta ? dimensioni(stretta.src) : null;
+const srcsetStretta = (formato) => infoStretta?.varianti[formato].map((v) => `${v.url} ${v.w}w`).join(', ');
+---
+{telefono ? (
+  <div class:list={['telefono', classe]} style={`--rapporto:${w}/${h}`} {...resto}>
+    <div class="telefono-schermo">
+      <picture>
+        {info && <source type="image/avif" srcset={srcset('avif')} sizes="(max-width: 767px) min(300px, 100vw - 18px), 300px" />}
+        {info && <source type="image/webp" srcset={srcset('webp')} sizes="(max-width: 767px) min(300px, 100vw - 18px), 300px" />}
+        <img src={ultima} alt={alt} width={w} height={h} loading={loading} decoding="async" fetchpriority={priorita} data-verticale />
+      </picture>
+    </div>
+  </div>
+) : (
+  <picture class:list={['immagine', verticale && 'immagine-verticale', classe]} style={[verticale && `--rapporto:${w}/${h}`, nonOltre && `max-width:${Math.round(w / 2)}px`].filter(Boolean).join(';') || undefined} {...resto}>
+    {infoStretta && <source media="(max-width: 639px)" type="image/avif" srcset={srcsetStretta('avif')} sizes="calc(100vw - 48px)" width={dimStretta.w} height={dimStretta.h} />}
+    {infoStretta && <source media="(max-width: 639px)" type="image/webp" srcset={srcsetStretta('webp')} sizes="calc(100vw - 48px)" width={dimStretta.w} height={dimStretta.h} />}
+    {info && <source type="image/avif" srcset={srcset('avif')} sizes={sizes} />}
+    {info && <source type="image/webp" srcset={srcset('webp')} sizes={sizes} />}
+    <img src={ultima} alt={alt} width={w} height={h} loading={loading} decoding="async" fetchpriority={priorita} style={stile} data-verticale={verticale ? '' : undefined} />
+  </picture>
+)}
+<style is:global>
+  .immagine { display: block; }
+  .immagine img { width: 100%; height: 100%; }
+  .immagine-verticale { aspect-ratio: var(--rapporto); max-height: 100%; width: auto; margin-inline: auto; }
+  .telefono { position: relative; width: min(calc(100% - 18px), var(--larghezza-telefono, 300px)); aspect-ratio: var(--rapporto); margin-inline: auto; padding: 9px; border-radius: var(--raggio-telefono); background: var(--telefono); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .12), 0 0 0 1px rgba(0, 0, 0, .35), 0 24px 50px var(--ombra-carta); box-sizing: content-box; }
+  .telefono-schermo { width: 100%; height: 100%; overflow: hidden; border-radius: calc(var(--raggio-telefono) - 9px); background: #000; }
+  .telefono-schermo picture, .telefono-schermo img { display: block; width: 100%; height: 100%; object-fit: contain; }
+</style>

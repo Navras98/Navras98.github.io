@@ -1,0 +1,27 @@
+---
+// L'ultimo numero della newsletter: data e le cinque notizie vere, su un palco blu. Porta alla pagina del numero.
+import Icona from './Icona.astro';
+import { dataEstesa, dueCifre } from '../lib/contenuti.js';
+const { n, etichetta, link, lingua = 'it', class: classe, ...resto } = Astro.props;
+const data = lingua === 'en' ? new Date(`${n.data}T12:00:00Z`).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) : dataEstesa(n.data);
+---
+<a class:list={['ultimo-numero', classe]} href={`/newsletter/numeri/${n.slug}/`} hreflang={lingua === 'en' ? 'it' : undefined} {...resto}>
+  <p class="hud faint ultimo-testa"><span>{etichetta} {dueCifre(n.numero)}</span><time datetime={n.data}>{data}</time></p>
+  <p class="ultimo-nome">{n.titolo}</p>
+  <ol class="ultimo-notizie">
+    {n.articoli.map((a, i) => <li><span class="hud ultimo-indice">{dueCifre(i + 1)}</span><span class="ultimo-rubrica hud">{a.rubrica}</span><span class="ultimo-titolo">{a.titolo}</span></li>)}
+  </ol>
+  <span class="freccia-link hud ultimo-link">{link}<Icona nome="freccia" /></span>
+</a>
+<style is:global>
+  .ultimo-numero { --app: var(--accent); display: flex; flex-direction: column; gap: var(--s-4); padding: var(--s-6) var(--margine); background: radial-gradient(90% 70% at 100% 0%, color-mix(in srgb, var(--accent) 26%, transparent), transparent 70%), var(--bg-raised); }
+  .ultimo-testa { display: flex; justify-content: space-between; gap: var(--s-4); }
+  .ultimo-nome { font-family: var(--font-display); font-weight: 620; font-stretch: 112%; font-size: 1.25rem; line-height: 1.25; letter-spacing: -.02em; color: var(--ink-strong); text-wrap: balance; }
+  .ultimo-notizie { display: grid; border-top: 1px solid var(--line); }
+  .ultimo-notizie li { display: grid; grid-template-columns: auto 1fr; column-gap: var(--s-3); row-gap: 2px; padding: var(--s-3) 0; border-bottom: 1px solid var(--line); }
+  .ultimo-indice { grid-row: span 2; color: var(--accent-ink); padding-top: 2px; }
+  .ultimo-rubrica { color: var(--faint); }
+  .ultimo-titolo { font-weight: 500; line-height: 1.35; color: var(--ink); text-wrap: pretty; }
+  .ultimo-link { margin-top: auto; }
+  @media (hover: hover) { .ultimo-numero:hover .ultimo-titolo { color: var(--ink-strong); } .ultimo-numero:hover .ultimo-link { color: var(--ink); } }
+</style>

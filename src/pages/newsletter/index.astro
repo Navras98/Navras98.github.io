@@ -1,0 +1,82 @@
+---
+import Base from '../../layouts/Base.astro';
+import Icona from '../../components/Icona.astro';
+import Sezione from '../../components/Sezione.astro';
+import TestaPagina from '../../components/TestaPagina.astro';
+import ModuloIscrizione from '../../components/ModuloIscrizione.astro';
+import RigaNumero from '../../components/RigaNumero.astro';
+import UltimoNumero from '../../components/UltimoNumero.astro';
+import { pagina, numeri, titolo, griglia } from '../../lib/contenuti.js';
+const nl = await pagina('newsletterPagina');
+const elenco = await numeri();
+const indice = [{ id: 'hero', etichetta: nl.apertura.etichetta }, { id: 'cosa-ricevi', etichetta: nl.cosa_ricevi.etichetta }, { id: 'archivio', etichetta: nl.archivio.etichetta }, { id: 'domande', etichetta: nl.domande.etichetta }];
+---
+<Base seo={nl.seo} indice={indice} alternative={[{ lingua: 'it', link: '/newsletter/' }, { lingua: 'en', link: '/en/newsletter/' }, { lingua: 'x-default', link: '/newsletter/' }]}>
+  <section id="hero" aria-labelledby="titolo-pagina">
+    <div class="contenitore nl-apertura">
+      <TestaPagina etichetta={nl.apertura.etichetta} titoloPagina={nl.apertura.titolo} testo={nl.apertura.testo}>
+        <div class="entra" style="--e:3"><ModuloIscrizione id="iscriviti" class="nl-modulo" /></div>
+      </TestaPagina>
+      {elenco[0] && <UltimoNumero n={elenco[0]} etichetta={nl.numero.numero} link={nl.numero.leggi} class="entra" style="--e:4" />}
+    </div>
+  </section>
+  <Sezione id="cosa-ricevi" numero={1} etichetta={nl.cosa_ricevi.etichetta} didascalia={nl.cosa_ricevi.didascalia}>
+    <div class="intro-sezione">
+      <h2 class="titolo-sezione" data-rivela set:html={titolo(nl.cosa_ricevi.titolo)} />
+      <p class="testo-grande" data-rivela style="--i:1">{nl.cosa_ricevi.testo}</p>
+    </div>
+    <div class:list={['griglia', griglia(nl.cosa_ricevi.voci.length)]}>
+      {nl.cosa_ricevi.voci.map((v, i) => (
+        <article class="principio" data-rivela style={`--i:${i}`}>
+          <p class="hud faint">{String.fromCharCode(65 + i)}</p>
+          <h3 class="titolo-scheda">{v.titolo}</h3>
+          <p class="testo">{v.testo}</p>
+        </article>
+      ))}
+    </div>
+  </Sezione>
+  <Sezione id="archivio" numero={2} etichetta={nl.archivio.etichetta} didascalia={nl.archivio.didascalia}>
+    <div class="intro-sezione">
+      <h2 class="titolo-sezione" data-rivela set:html={titolo(nl.archivio.titolo)} />
+      <p class="testo-grande" data-rivela style="--i:1">{nl.archivio.testo} <a class="link-testo" href="/newsletter/ultimo/">{nl.archivio.ultimo}</a></p>
+    </div>
+    <ol class="archivio" reversed>{elenco.map((n, i) => <RigaNumero n={n} etichetta={nl.numero.numero} breve={i >= 3} />)}</ol>
+  </Sezione>
+  <Sezione id="domande" numero={3} etichetta={nl.domande.etichetta} didascalia={nl.domande.didascalia}>
+    <div class="intro-sezione"><h2 class="titolo-sezione" data-rivela set:html={titolo(nl.domande.titolo)} /></div>
+    <div class="domande">
+      {nl.domande.voci.map((d) => (
+        <details class="domanda">
+          <summary><span>{d.domanda}</span><span class="domanda-segno" aria-hidden="true"><Icona nome="piu" /></span></summary>
+          <p class="testo">{d.risposta}</p>
+        </details>
+      ))}
+    </div>
+    <div class="nl-fondo">
+      <p class="hud faint">{nl.numero.iscriviti}</p>
+      <ModuloIscrizione id="iscriviti-fondo" />
+    </div>
+  </Sezione>
+</Base>
+<style is:global>
+  .nl-modulo { margin-top: var(--s-6); }
+  /* apertura: a destra l'ultimo numero vero, così si vede com'è prima di iscriversi */
+  .nl-apertura { display: grid; }
+  .nl-apertura .ultimo-numero { border-top: 1px solid var(--line); }
+  @media (min-width: 1100px) { .nl-apertura { grid-template-columns: 7fr 5fr; } .nl-apertura .ultimo-numero { border-top: 0; border-left: 1px solid var(--line); justify-content: center; padding-top: 120px; } }
+  .archivio { border-top: 1px solid var(--line); }
+  .link-testo { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 3px; }
+  .archivio li + li { border-top: 1px solid var(--line); }
+  .domande { border-top: 1px solid var(--line); }
+  .domanda + .domanda { border-top: 1px solid var(--line); }
+  .domanda summary { display: flex; justify-content: space-between; gap: var(--s-5); align-items: center; padding: var(--s-5) var(--margine); cursor: pointer; list-style: none; font-family: var(--font-display); font-weight: 620; font-stretch: 112%; font-size: 1.125rem; letter-spacing: -.02em; color: var(--ink-strong); transition: background-color var(--rapido) linear; }
+  .domanda summary::-webkit-details-marker { display: none; }
+  @media (hover: hover) { .domanda summary:hover { background: var(--bg-raised); } }
+  .domanda-segno { display: grid; place-items: center; flex: none; width: 24px; height: 24px; border: 1px solid var(--line-strong); color: var(--ink); transition: background-color var(--rapido), color var(--rapido); }
+  .domanda-segno svg { width: 12px; height: 12px; }
+  @media (hover: hover) { .domanda summary:hover .domanda-segno { background: var(--invert-bg); color: var(--invert-fg); } }
+  .domanda-segno svg { transition: transform .15s var(--ease); }
+  .domanda[open] .domanda-segno svg { transform: rotate(45deg); }
+  .domanda .testo { padding: 0 var(--margine) var(--s-5); max-width: 46rem; }
+  .nl-fondo { display: grid; gap: var(--s-4); padding: var(--s-8) var(--margine); border-top: 1px solid var(--line); }
+</style>

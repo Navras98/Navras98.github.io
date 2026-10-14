@@ -1,0 +1,39 @@
+---
+// Una prova da GitHub, come i «Made with ArtCraft»: testata, screenshot ritagliato (chiaro o scuro secondo il tema)
+// con l'etichetta «Vedi su GitHub ↗», poi data, stato, titolo e testo. Tutto il riquadro porta all'originale.
+import Immagine from './Immagine.astro';
+import Icona from './Icona.astro';
+import { dataEstesa, statoClasse, dueCifre } from '../lib/contenuti.js';
+const { p, ui, i = 0, livello = 3 } = Astro.props;
+const H = `h${livello}`;
+---
+<article class="prova" data-rivela id={`prova-${p.codice}`}>
+  <div class="scheda-testa"><p class="hud muted">{p.progetto}</p><p class="hud faint">{dueCifre(i + 1)}</p></div>
+  <a class="prova-media palco" href={p.link} target="_blank" rel="noopener">
+    <Immagine img={p.scuro} class="prova-scuro" sizes="(max-width: 639px) 100vw, 600px" cornice="nessuna" nonOltre />
+    <Immagine img={p.chiaro} class="prova-chiaro" sizes="(max-width: 639px) 100vw, 600px" cornice="nessuna" nonOltre />
+    <span class="prova-etichetta hud"><Icona nome="github" />{ui.vedi_su_github}<Icona nome="freccia" /><span class="sr-only"> ({ui.apre_nuova_scheda})</span></span>
+  </a>
+  <div class="scheda-corpo">
+    <p class="hud prova-meta"><span class={statoClasse(p.stato)}>{p.stato}</span><span class="faint"><time datetime={p.data}>{dataEstesa(p.data)}</time></span></p>
+    <H class="titolo-scheda prova-titolo">{p.titolo}</H>
+    <p class="testo">{p.testo}</p>
+  </div>
+</article>
+<style is:global>
+  /* testata, prova e testo allineati con le carte accanto */
+  .prova { display: grid; grid-row: span 3; grid-template-rows: subgrid; row-gap: 0; }
+  /* la prova intera, alla sua proporzione: niente tagli */
+  /* su un palco illuminato; la versione di GitHub dello stesso tema della pagina */
+  .prova-media { --app: #8b5cf6; display: grid; align-content: center; padding: var(--s-6) var(--s-6) 72px; border-bottom: 1px solid var(--line); }
+  .prova-media .immagine { width: 100%; margin-inline: auto; }
+  .prova-media img { object-fit: contain !important; transition: transform .6s cubic-bezier(0, 0, .2, 1); }
+  @media (hover: hover) { .prova-media:hover img { transform: scale(1.02); } }
+  .prova-etichetta { position: absolute; left: 12px; bottom: 12px; display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: var(--invert-bg); color: var(--invert-fg); transition: opacity .15s var(--ease); }
+  .prova-etichetta svg { width: 14px; height: 14px; }
+  @media (hover: hover) { .prova-media:hover .prova-etichetta { opacity: .8; } }
+  .prova .scheda-corpo { display: flex; flex-direction: column; }
+  .prova-meta { display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-4); }
+  .prova-titolo { margin-top: var(--s-3); }
+  .prova .testo { margin-top: var(--s-2); }
+</style>

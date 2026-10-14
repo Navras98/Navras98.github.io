@@ -1,0 +1,9 @@
+---
+import Collegamento from './Collegamento.astro';
+import Icona from './Icona.astro';
+const { href, tipo = 'pieno', icona, piccolo = false, class: classe, ...resto } = Astro.props;
+---
+<Collegamento href={href} class:list={['btn', `btn-${tipo}`, piccolo && 'btn-piccolo', classe]} {...resto}>
+  {icona && <Icona nome={icona} />}
+  <slot />
+</Collegamento>

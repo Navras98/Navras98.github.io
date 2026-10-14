@@ -1,0 +1,117 @@
+# English page for the newsletter (/en/newsletter/). The newsletter itself is written in Italian.
+seo:
+  titolo: Newsletter (in Italian)
+  descrizione: The newsletter on artificial intelligence by Andrea Sforna is written in Italian. You can subscribe here; past issues are on the Italian page.
+  immagine:
+    src: /media/condivisione.jpg
+    alt: Andrea Sforna, consultant for AI agents
+    punto_focale: centro
+    adatta: riempi
+apertura:
+  etichetta: Newsletter
+  titolo: This newsletter is written *in Italian.*
+  testo: The sources are in several languages. Each story links to the original article.
+archivio_link:
+  etichetta: Read it in Italian
+  link: /newsletter/
+ultimo:
+  etichetta: Latest issue
+  link: Read it, in Italian
+indice: Sections of this page
+cosa_e:
+  etichetta: What it is
+  didascalia: One short email
+  titolo: An email, *only when something matters.*
+  testo: Five stories, picked from dozens of sources by an automation I built. Each one says what happened, why it matters and what actually changes. I approve every issue before it is sent. No advertising, no hidden sponsors. Your address is used only for the newsletter.
+resto:
+  etichetta: The rest of the site
+  didascalia: In Italian
+  titolo: Who I am and *how I work.*
+  testo: I am a technology consultant based in Italy. I design, build and secure AI agents for companies, on their own data and computers. Every action that changes something waits for a person's approval.
+  link:
+    etichetta: Home page, in Italian
+    link: /
+# Menu, footer and interface on this page: each Italian text and its English version.
+traduzioni:
+  - it: "Home"
+    en: "Home"
+  - it: "Metodo"
+    en: "Method"
+  - it: "Progetti"
+    en: "Projects"
+  - it: "Strumenti"
+    en: "Tools"
+  - it: "Open source"
+    en: "Open source"
+  - it: "Newsletter"
+    en: "Newsletter"
+  - it: "Contatti"
+    en: "Contact"
+  - it: "Scrivimi"
+    en: "Get in touch"
+  - it: "Vai al contenuto"
+    en: "Skip to content"
+  - it: "Menu principale"
+    en: "Main menu"
+  - it: "Apri il menu"
+    en: "Open the menu"
+  - it: "Chiudi il menu"
+    en: "Close the menu"
+  - it: "Cambia tema, chiaro o scuro"
+    en: "Switch between light and dark theme"
+  - it: "Andrea Sforna, torna alla home"
+    en: "Andrea Sforna, back to the home page"
+  - it: "Tutti i progetti"
+    en: "All projects"
+  - it: "Assistente aziendale"
+    en: "Business assistant"
+  - it: "Protezione dei dati"
+    en: "Data protection"
+  - it: "Contenuti e invii"
+    en: "Content and newsletters"
+  - it: "Il mio sistema"
+    en: "My own system"
+  - it: "Consulente informatico. Agenti AI su misura, sui dati e sui computer della tua azienda."
+    en: "Technology consultant. Custom AI agents that work on your company's data and computers."
+  - it: "Sito"
+    en: "Site"
+  - it: "Chi sono"
+    en: "About me"
+  - it: "Automazioni e newsletter"
+    en: "Automations and newsletter"
+  - it: "Agenti personali"
+    en: "Personal agents"
+  - it: "Note legali"
+    en: "Legal"
+  - it: "Privacy"
+    en: "Privacy"
+  - it: "Codice aperto su GitHub"
+    en: "Source code on GitHub"
+  - it: "P.IVA"
+    en: "VAT no."
+  - it: "Automazioni"
+    en: "Automations"
+  - it: "e newsletter"
+    en: "and newsletter"
+  - it: "Agenti"
+    en: "Personal"
+  - it: "personali"
+    en: "agents"
+  - it: "si apre in una nuova scheda"
+    en: "opens in a new tab"
+  - it: "La tua email"
+    en: "Your email"
+  - it: "nome@azienda.it"
+    en: "name@company.com"
+  - it: "Iscriviti"
+    en: "Subscribe"
+  - it: "Un momento…"
+    en: "One moment…"
+  - it: "Fatto. Ti ho mandato un'email: apri il link dentro per confermare."
+    en: "Done. I sent you an email: open the link inside to confirm."
+  - it: "L'iscrizione non è partita. Riprova fra poco, oppure scrivimi ad andrea.sforna@gmail.com."
+    en: "The subscription did not go through. Try again in a moment, or write to me at andrea.sforna@gmail.com."
+  - it: "Serve un indirizzo valido."
+    en: "Please enter a valid address."
+  - it: "Gratis, per sempre. Nessuna pubblicità. Esci con un clic."
+    en: "Free, always. The newsletter is in Italian. No ads. Unsubscribe with one click."

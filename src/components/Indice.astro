@@ -1,0 +1,45 @@
+---
+// Indice fisso a destra (la sezione corrente è grande, le altre piccole) e righello con la percentuale di lettura.
+const { voci = [], etichetta } = Astro.props;
+---
+<nav class="indice" aria-label={etichetta} data-indice transition:animate="none">
+  <ol>
+    {voci.map((v, i) => (
+      <li data-voce={v.id} class:list={[i === 0 && 'corrente nascosto']}><a href={`#${v.id}`} tabindex={i === 0 ? -1 : undefined}>{v.etichetta}</a></li>
+    ))}
+  </ol>
+</nav>
+<div class="righello" aria-hidden="true" data-righello transition:animate="none">
+  <div class="righello-scala"></div>
+  <div class="righello-segno"><b>000%</b></div>
+</div>
+<style is:global>
+  .indice, .righello { display: none; }
+  @media (min-width: 1100px) and (min-height: 620px) {
+    .indice { display: block; position: fixed; inset: var(--testata) var(--righello) 0 auto; z-index: 40; pointer-events: none; width: 320px; }
+    .indice { transition: opacity .1s linear; }
+    html.cambio-pagina .indice, .indice.sul-piede { opacity: 0; }
+    .indice.sul-piede a { pointer-events: none; }
+    /* la voce corrente sta sotto la barra fissa della sezione */
+    .indice ol { position: absolute; inset: 58px 0 44px; display: flex; flex-direction: column; align-items: flex-end; list-style: none; }
+    .indice li { display: block; }
+    .indice li.primo-futuro { margin-top: auto; }
+    .indice a { display: block; pointer-events: auto; font-family: var(--font-display); font-weight: 620; font-stretch: 118%; text-transform: uppercase; font-size: 16px; line-height: 24px; min-height: 24px; letter-spacing: 0; white-space: nowrap; color: var(--muted); transform-origin: 100% 0; transition: color .4s var(--ease), opacity .25s var(--ease), visibility 0s; }
+    /* si vedono solo la voce corrente e le tre successive; nell'apertura della home solo il nome; una voce sopra un testo o un'immagine si nasconde */
+    .indice li.lontana { display: none; }
+    .indice.in-apertura li:not(.corrente) a, .indice li.coperta:not(.corrente) a { opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .12s linear, visibility 0s .12s; }
+    .indice li.corrente a { font-size: 34px; line-height: 1; color: var(--ink-strong); opacity: 1; margin: 0 0 8px; }
+    .indice li.corrente.sopra-testo a { opacity: 0; visibility: hidden; transition: opacity .12s linear, visibility 0s .12s; }
+    .indice li.nascosto a { opacity: 0; visibility: hidden; pointer-events: none; }
+    @media (hover: hover) { .indice a:hover { color: var(--ink); } }
+    .indice a:focus-visible { outline-offset: 4px; }
+    .righello { display: block; position: fixed; top: 0; bottom: 0; right: 0; z-index: 40; width: var(--righello); overflow: hidden; pointer-events: none; }
+    .righello-scala { position: absolute; inset: 0 0 auto; will-change: transform; }
+    .righello-scala span { position: absolute; right: 0; height: 1px; width: 10px; background: var(--ink); opacity: .35; }
+    .righello-scala span.lunga { width: 20px; opacity: .6; }
+    .righello-scala b { position: absolute; right: 24px; transform: translateY(-50%); font: 400 9px/1.5 var(--font-mono); letter-spacing: .08em; color: var(--ink); opacity: .6; }
+    :root[data-theme='light'] .righello-scala b { opacity: .75; }
+    .righello-segno { position: absolute; right: 0; left: 0; top: 0; height: 1px; background: var(--accent); will-change: transform; }
+    .righello-segno b { position: absolute; right: 4px; bottom: 2px; font: 500 9px/1 var(--font-mono); letter-spacing: .08em; color: var(--accent-ink); }
+  }
+</style>

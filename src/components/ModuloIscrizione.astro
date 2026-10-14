@@ -1,0 +1,33 @@
+---
+// Modulo di iscrizione alla newsletter. Se manca l'indirizzo pubblico, prepara un'email di iscrizione.
+import Icona from './Icona.astro';
+import { pagina, traduttore } from '../lib/contenuti.js';
+const { id = 'iscriviti', class: classe } = Astro.props;
+const { modulo: mIt } = await pagina('newsletterPagina');
+// sulle pagine in inglese (/en/) i testi del modulo vengono dalla tabella delle traduzioni
+const t = await traduttore(Astro.url.pathname.startsWith('/en/') ? 'en' : 'it');
+const m = Object.fromEntries(Object.entries(mIt).map(([k, v]) => [k, k === 'oggetto_email' ? v : t(v)]));
+const imp = await pagina('impostazioni');
+---
+<form class:list={['iscrizione', classe]} id={id} novalidate data-iscrizione data-indirizzo={imp.indirizzo_iscrizione || undefined} data-email={imp.email} data-oggetto={m.oggetto_email}
+  data-attesa={m.attesa} data-fatto={m.fatto} data-errore={m.errore} data-non-valido={m.non_valido}>
+  <label for={`${id}-email`} class="hud muted">{m.etichetta_email}</label>
+  <div class="iscrizione-riga">
+    <input id={`${id}-email`} name="email" type="email" autocomplete="email" inputmode="email" placeholder={m.segnaposto} required aria-describedby={`${id}-esito ${id}-nota`} />
+    <button class="btn btn-pieno" type="submit"><Icona nome="posta" />{m.invia}</button>
+  </div>
+  <p class="iscrizione-esito" id={`${id}-esito`} role="status" aria-live="polite" data-esito></p>
+  <p class="hud faint" id={`${id}-nota`}>{m.nota}</p>
+</form>
+<style is:global>
+  .iscrizione { display: grid; gap: 10px; width: 100%; max-width: 34rem; }
+  .iscrizione-riga { display: flex; flex-wrap: wrap; gap: 1px; background: var(--line-strong); border: 1px solid var(--line-strong); }
+  .iscrizione input { flex: 1 1 14rem; min-width: 0; min-height: 48px; padding: 0 14px; border: 0; border-radius: 0; background: var(--bg-sunken); color: var(--ink); font: inherit; }
+  .iscrizione input::placeholder { color: var(--faint); }
+  .iscrizione input:focus-visible { outline: 2px solid var(--accent-ink); outline-offset: -2px; }
+  .iscrizione .btn { flex: 0 0 auto; }
+  .iscrizione-esito { min-height: 1.5em; color: var(--muted); }
+  .iscrizione[data-stato='fatto'] .iscrizione-esito { color: var(--ink); }
+  .iscrizione[data-stato='errore'] .iscrizione-esito { color: var(--accent-ink); }
+  @media (max-width: 479px) { .iscrizione .btn { flex: 1 1 100%; } }
+</style>

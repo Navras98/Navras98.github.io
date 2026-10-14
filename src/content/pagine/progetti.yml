@@ -1,0 +1,16 @@
+# Pagina con l'elenco dei progetti (/progetti/). Le schede arrivano dai file in src/content/progetti/.
+seo:
+  titolo: Progetti
+  descrizione: SfornaClaw, PrivacyBridge, le automazioni e i miei agenti personali. Cosa costruisco e a che punto è.
+  immagine:
+    src: /media/condivisione.jpg
+    alt: Andrea Sforna, consulente informatico per gli agenti AI
+    punto_focale: centro
+    adatta: riempi
+apertura:
+  etichetta: Progetti
+  titolo: Quattro progetti. Un solo **mestiere.**
+  testo: Due li uso io ogni giorno. PrivacyBridge è aperto a tutti. SfornaClaw è pensato per le aziende ed è in sviluppo.
+elenco:
+  etichetta: Tutti i progetti
+  didascalia: In sviluppo e in uso

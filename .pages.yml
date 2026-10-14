@@ -1,0 +1,4613 @@
+# Configurazione di Pages CMS (https://pagescms.org): una sezione per pagina, in italiano.
+# NON modificare a mano: si rigenera dagli schemi con «node scripts/pages-cms.mjs» e si controlla con
+# «node scripts/valida-pages.mjs». Nei titoli: *parola* = corsivo, **parola** = colore blu.
+media:
+  - name: media
+    label: Immagini e video del sito
+    input: public/media
+    output: /media
+    extensions:
+      - jpg
+      - jpeg
+      - png
+      - webp
+      - avif
+      - svg
+      - mp4
+      - webm
+  - name: newsletter
+    label: Immagini della newsletter
+    input: public/newsletter
+    output: /newsletter
+    extensions:
+      - jpg
+      - jpeg
+      - png
+      - webp
+content:
+  - name: home
+    label: Home
+    type: file
+    path: src/content/pagine/home.yml
+    format: yaml
+    fields:
+      - name: seo
+        label: Ricerca e condivisione
+        type: object
+        fields:
+          - name: titolo
+            label: Titolo nella scheda del browser
+            type: string
+            required: true
+          - name: descrizione
+            label: Descrizione per Google e per le anteprime
+            description: Una o due frasi, al massimo 160 caratteri.
+            type: text
+            required: true
+          - name: immagine
+            label: Immagine di condivisione
+            description: Anteprima quando la pagina viene condivisa (1200×630).
+            type: object
+            fields:
+              - name: src
+                label: File
+                description: Un file in public/media (foto/, progetti/, icone/, strumenti/, prove/).
+                type: image
+                required: true
+              - name: alt
+                label: Testo alternativo
+                description: Cosa si vede, in una frase. Vuoto solo se l'immagine è decorativa.
+                type: string
+                required: true
+              - name: punto_focale
+                label: Punto focale
+                description: La parte da tenere sempre visibile quando l'immagine viene ritagliata.
+                type: select
+                options:
+                  values:
+                    - centro
+                    - alto
+                    - basso
+                    - sinistra
+                    - destra
+                required: true
+              - name: adatta
+                label: Adatta
+                description: riempi = riempie il riquadro e può tagliare i bordi; intera = mostra tutta l'immagine (per gli screenshot verticali).
+                type: select
+                options:
+                  values:
+                    - riempi
+                    - intera
+                required: true
+            required: true
+        required: true
+      - name: apertura
+        label: Apertura
+        type: object
+        fields:
+          - name: titolo
+            label: Titolo sotto il nome
+            description: '*parola* = corsivo, **parola** = blu'
+            type: string
+            required: true
+          - name: testo
+            label: Testo
+            type: text
+            required: true
+          - name: bottone_principale
+            label: Bottone principale
+            type: object
+            fields:
+              - name: etichetta
+                label: Testo
+                type: string
+                required: true
+              - name: link
+                label: Link
+                type: string
+                required: true
+            required: true
+          - name: bottone_secondario
+            label: Bottone secondario
+            type: object
+            fields:
+              - name: etichetta
+                label: Testo
+                type: string
+                required: true
+              - name: link
+                label: Link
+                type: string
+                required: true
+            required: true
+          - name: riga
+            label: Riga piccola sotto i bottoni
+            type: object
+            fields:
+              - name: etichetta
+                label: Testo
+                type: string
+                required: true
+              - name: link
+                label: Link
+                type: string
+                required: true
+            list: true
+            required: true
+          - name: carte
+            label: Carte video in orbita
+            description: Sette video brevi e muti che girano attorno al nome.
+            type: object
+            fields:
+              - name: mp4
+                label: Video MP4
+                description: File .mp4 in public/media/video.
+                type: file
+                required: true
+              - name: webm
+                label: Video WebM
+                description: Lo stesso video in formato .webm.
+                type: file
+                required: true
+              - name: copertina
+                label: Copertina
+                description: Immagine mostrata prima che il video parta e a chi ha chiesto meno movimento.
+                type: image
+                required: true
+              - name: descrizione
+                label: Descrizione
+                description: Cosa mostra il video, in una frase (per chi non lo vede).
+                type: string
+                required: true
+              - name: didascalia
+                label: Didascalia breve
+                description: Riga sopra il video nelle pagine progetto, al massimo 60 caratteri. Se è vuota si usa la descrizione.
+                type: string
+              - name: telefono
+                label: Versione per il telefono
+                description: 'Facoltativa: se c’è, sotto i 640 px si vede questa al posto del video orizzontale.'
+                type: object
+                fields:
+                  - name: mp4
+                    label: Video MP4 per il telefono
+                    description: Versione verticale 4:5 (720×900) per gli schermi sotto i 640 px.
+                    type: file
+                    required: true
+                  - name: webm
+                    label: Video WebM per il telefono
+                    description: La stessa versione verticale in .webm.
+                    type: file
+                    required: true
+              - name: punto_focale
+                label: Punto focale
+                description: La parte da tenere sempre visibile.
+                type: select
+                options:
+                  values:
+                    - centro
+                    - alto
+                    - basso
+                    - sinistra
+                    - destra
+                required: true
+              - name: adatta
+                label: Adatta
+                description: riempi = riempie il riquadro; intera = mostra tutto il video.
+                type: select
+                options:
+                  values:
+                    - riempi
+                    - intera
+                required: true
+            list: true
+            required: true
+          - name: immagini
+            label: Icone in orbita
+            description: Icone quadrate (in public/media/icone/) che girano insieme ai video.
+            type: object
+            fields:
+              - name: src
+                label: File
+                description: Un file in public/media (foto/, progetti/, icone/, strumenti/, prove/).
+                type: image
+                required: true
+              - name: alt
+                label: Testo alternativo
+                description: Cosa si vede, in una frase. Vuoto solo se l'immagine è decorativa.
+                type: string
+                required: true
+              - name: punto_focale
+                label: Punto focale
+                description: La parte da tenere sempre visibile quando l'immagine viene ritagliata.
+                type: select
+                options:
+                  values:
+                    - centro
+                    - alto
+                    - basso
+                    - sinistra
+                    - destra
+                required: true
+              - name: adatta
+                label: Adatta
+                description: riempi = riempie il riquadro e può tagliare i bordi; intera = mostra tutta l'immagine (per gli screenshot verticali).
+                type: select
+                options:
+                  values:
+                    - riempi
+                    - intera
+                required: true
+            list: true
+        required: true
+      - name: prove
+        label: Fascia delle prove
+        type: object
+        fields:
+          - name: etichetta
+            label: Nome della fascia
+            description: Per chi usa un lettore di schermo.
+            type: string
+            required: true
+          - name: voci
+            label: Prove
+            type: object
+            fields:
+              - name: logo
+                label: Logo
+                type: object
+                fields:
+                  - name: src
+                    label: File
+                    description: Un file in public/media (foto/, progetti/, icone/, strumenti/, prove/).
+                    type: image
+                    required: true
+                  - name: alt
+                    label: Testo alternativo
+                    description: Cosa si vede, in una frase. Vuoto solo se l'immagine è decorativa.
+                    type: string
+                    required: true
+                  - name: punto_focale
+                    label: Punto focale
+                    description: La parte da tenere sempre visibile quando l'immagine viene ritagliata.
+                    type: select
+                    options:
+                      values:
+                        - centro
+                        - alto
+                        - basso
+                        - sinistra
+                        - destra
+                    required: true
+                  - name: adatta
+                    label: Adatta
+                    description: riempi = riempie il riquadro e può tagliare i bordi; intera = mostra tutta l'immagine (per gli screenshot verticali).
+                    type: select
+                    options:
+                      values:
+                        - riempi
+                        - intera
+                    required: true
+                required: true
+              - name: testo
+                label: Testo
+                type: string
+                required: true
+              - name: stato
+                label: Stato
+                description: Lo stato vero, verificato su GitHub.
+                type: string
+                required: true
+              - name: link
+                label: Link alla prova
+                type: string
+                required: true
+            list: true
+            required: true
+        required: true
+      - name: cosa_faccio
+        label: Sezione
+        type: object
+        fields:
+          - name: etichetta
+            label: Nome della sezione
+            description: Compare nella barra «01 / NOME» e nell’indice a destra.
+            type: string
+            required: true
+          - name: didascalia
+            label: Didascalia
+            description: Testo piccolo a destra della barra.
+            type: string
+            required: true
+          - name: titolo
+            label: Titolo
+            description: '*parola* = corsivo, **parola** = blu'
+            type: string
+            required: true
+          - name: testo
+            label: Testo
+            type: text
+            required: true
+          - name: schede
+            label: Schede
+            type: object
+            fields:
+              - name: etichetta
+                label: Etichetta
+                type: string
+                required: true
+              - name: titolo
+                label: Titolo
+                description: '*parola* = corsivo, **parola** = blu'
+                type: string
+                required: true
+              - name: testo
+                label: Testo
+                type: text
+                required: true
+              - name: risultato
+                label: Cosa ti resta
+                description: Il risultato concreto, in una frase. Compare in fondo alla scheda con la spunta.
+                type: string
+              - name: colore
+                label: Colore del palco
+                description: Il colore della luce dietro al video.
+                type: select
+                options:
+                  values:
+                    - blu
+                    - rosso
+                    - viola
+                    - giallo
+                    - acqua
+                    - rosa
+                    - lime
+                    - verde
+                    - indaco
+                    - ciano
+                    - arancio
+              - name: video
+                label: Video
+                type: object
+                fields:
+                  - name: mp4
+                    label: Video MP4
+                    description: File .mp4 in public/media/video.
+                    type: file
+                    required: true
+                  - name: webm
+                    label: Video WebM
+                    description: Lo stesso video in formato .webm.
+                    type: file
+                    required: true
+                  - name: copertina
+                    label: Copertina
+                    description: Immagine mostrata prima che il video parta e a chi ha chiesto meno movimento.
+                    type: image
+                    required: true
+                  - name: descrizione
+                    label: Descrizione
+                    description: Cosa mostra il video, in una frase (per chi non lo vede).
+                    type: string
+                    required: true
+                  - name: didascalia
+                    label: Didascalia breve
+                    description: Riga sopra il video nelle pagine progetto, al massimo 60 caratteri. Se è vuota si usa la descrizione.
+                    type: string
+                  - name: telefono
+                    label: Versione per il telefono
+                    description: 'Facoltativa: se c’è, sotto i 640 px si vede questa al posto del video orizzontale.'
+                    type: object
+                    fields:
+                      - name: mp4
+                        label: Video MP4 per il telefono
+                        description: Versione verticale 4:5 (720×900) per gli schermi sotto i 640 px.
+                        type: file
+                        required: true
+                      - name: webm
+                        label: Video WebM per il telefono
+                        description: La stessa versione verticale in .webm.
+                        type: file
+                        required: true
+                  - name: punto_focale
+                    label: Punto focale
+                    description: La parte da tenere sempre visibile.
+                    type: select
+                    options:
+                      values:
+                        - centro
+                        - alto
+                        - basso
+                        - sinistra
+                        - destra
+                    required: true
+                  - name: adatta
+                    label: Adatta
+                    description: riempi = riempie il riquadro; intera = mostra tutto il video.
+                    type: select
+                    options:
+                      values:
+                        - riempi
+                        - intera
+                    required: true
+              - name: immagine
+                label: Immagine
+                description: Usata se non c’è un video.
+                type: object
+                fields:
+                  - name: src
+                    label: File
+                    description: Un file in public/media (foto/, progetti/, icone/, strumenti/, prove/).
+                    type: image
+                    required: true
+                  - name: alt
+                    label: Testo alternativo
+                    description: Cosa si vede, in una frase. Vuoto solo se l'immagine è decorativa.
+                    type: string
+                    required: true
+                  - name: punto_focale
+                    label: Punto focale
+                    description: La parte da tenere sempre visibile quando l'immagine viene ritagliata.
+                    type: select
+                    options:
+                      values:
+                        - centro
+                        - alto
+                        - basso
+                        - sinistra
+                        - destra
+                    required: true
+                  - name: adatta
+                    label: Adatta
+                    description: riempi = riempie il riquadro e può tagliare i bordi; intera = mostra tutta l'immagine (per gli screenshot verticali).
+                    type: select
+                    options:
+                      values:
+                        - riempi
+                        - intera
+                    required: true
+              - name: link
+                label: Link
+                type: object
+                fields:
+                  - name: etichetta
+                    label: Testo
+                    type: string
+                    required: true
+                  - name: link
+                    label: Link
+                    type: string
+                    required: true
+            list: true
+            required: true
+        required: true
+      - name: metodo
+        label: Sezione
+        type: object
+        fields:
+          - name: etichetta
+            label: Nome della sezione
+            description: Compare nella barra «01 / NOME» e nell’indice a destra.
+            type: string
+            required: true
+          - name: didascalia
+            label: Didascalia
+            description: Testo piccolo a destra della barra.
+            type: string
+            required: true
+          - name: titolo
+            label: Titolo
+            description: '*parola* = corsivo, **parola** = blu'
+            type: string
+            required: true
+          - name: testo
+            label: Testo
+            type: text
+            required: true
+          - name: bottone
+            label: Bottone
+            type: object
+            fields:
+              - name: etichetta
+                label: Testo
+                type: string
+                required: true
+              - name: link
+                label: Link
+                type: string
+                required: true
+            required: true
+        required: true
+      - name: progetti
+        label: Sezione
+        type: object
+        fields:
+          - name: etichetta
+            label: Nome della sezione
+            description: Compare nella barra «01 / NOME» e nell’indice a destra.
+            type: string
+            required: true
+          - name: didascalia
+            label: Didascalia
+            description: Testo piccolo a destra della barra.
+            type: string
+            required: true
+          - name: titolo
+            label: Titolo
+            description: '*parola* = corsivo, **parola** = blu'
+            type: string
+            required: true
+          - name: testo
+            label: Testo
+            type: text
+            required: true
+        required: true
+      - name: open_source
+        label: Sezione
+        type: object
+        fields:
+          - name: etichetta
+            label: Nome della sezione
+            description: Compare nella barra «01 / NOME» e nell’indice a destra.
+            type: string
+            required: true
+          - name: didascalia
+            label: Didascalia
+            description: Testo piccolo a destra della barra.
+            type: string
+            required: true
+          - name: titolo
+            label: Titolo
+            description: '*parola* = corsivo, **parola** = blu'
+            type: string
+            required: true
+          - name: testo
+            label: Testo
+            type: text
+            required: true
+          - name: prove
+            label: Prove da mostrare
+            type: string
+            list: true
+            required: true
+          - name: bottone
+            label: Bottone
+            type: object
+            fields:
+              - name: etichetta
+                label: Testo
+                type: string
+                required: true
+              - name: link
+                label: Link
+                type: string
+                required: true
+            required: true
+        required: true
+      - name: strumenti
+        label: Sezione
+        type: object
+        fields:
+          - name: etichetta
+            label: Nome della sezione
+            description: Compare nella barra «01 / NOME» e nell’indice a destra.
+            type: string
+            required: true
+          - name: didascalia
+            label: Didascalia
+            description: Testo piccolo a destra della barra.
+            type: string
+            required: true
+          - name: titolo
+            label: Titolo
+            description: '*parola* = corsivo, **parola** = blu'
+            type: string
+            required: true
+          - name: testo
+            label: Testo
+            type: text
+            required: true
+          - name: nota
+            label: Nota
+            type: string
+            required: true
+          - name: bottone
+            label: Bottone
+            type: object
+            fields:
+              - name: etichetta
+                label: Testo
+                type: string
+                required: true
+              - name: link
+                label: Link
+                type: string
+                required: true
+            required: true
+        required: true
+      - name: principi
+        label: Sezione
+        type: object
+        fields:
+          - name: etichetta
+            label: Nome della sezione
+            description: Compare nella barra «01 / NOME» e nell’indice a destra.
+            type: string
+            required: true
+          - name: didascalia
+            label: Didascalia
+            description: Testo piccolo a destra della barra.
+            type: string
+            required: true
+          - name: titolo
+            label: Titolo
+            description: '*parola* = corsivo, **parola** = blu'
+            type: string
+            required: true
+          - name: testo
+            label: Testo
+            description: 'Facoltativo: in home i principi stanno senza paragrafo, per tenere la pagina corta.'
+            type: text
+          - name: principi
+            label: Principi
+            type: object
+            fields:
+              - name: lettera
+                label: Lettera
+                type: string
+                required: true
+              - name: titolo
+                label: Titolo
+                description: '*parola* = corsivo, **parola** = blu'
+                type: string
+                required: true
+              - name: testo
+                label: Testo
+                type: text
+                required: true
+              - name: bottone
+                label: Bottone
+                type: object
+                fields:
+                  - name: etichetta
+                    label: Testo
+                    type: string
+                    required: true
+                  - name: link
+                    label: Link
+                    type: string
+                    required: true
+            list: true
+            required: true
+        required: true
+      - name: chi_sono
+        label: Sezione
+        type: object
+        fields:
+          - name: etichetta
+            label: Nome della sezione
+            description: Compare nella barra «01 / NOME» e nell’indice a destra.
+            type: string
+            required: true
+          - name: didascalia
+            label: Didascalia
+            description: Testo piccolo a destra della barra.
+            type: string
+            required: true
+          - name: titolo
+            label: Titolo
+            description: '*parola* = corsivo, **parola** = blu'
+            type: string
+            required: true
+          - name: testo
+            label: Testo
+            type: text
+            required: true
+          - name: foto
+            label: Foto
+            type: object
+            fields:
+              - name: src
+                label: File
+                description: Un file in public/media (foto/, progetti/, icone/, strumenti/, prove/).
+                type: image
+                required: true
+              - name: alt
+                label: Testo alternativo
+                description: Cosa si vede, in una frase. Vuoto solo se l'immagine è decorativa.
+                type: string
+                required: true
+              - name: punto_focale
+                label: Punto focale
+                description: La parte da tenere sempre visibile quando l'immagine viene ritagliata.
+                type: select
+                options:
+                  values:
+                    - centro
+                    - alto
+                    - basso
+                    - sinistra
+                    - destra
+                required: true
+              - name: adatta
+                label: Adatta
+                description: riempi = riempie il riquadro e può tagliare i bordi; intera = mostra tutta l'immagine (per gli screenshot verticali).
+                type: select
+                options:
+                  values:
+                    - riempi
+                    - intera
+                required: true
+            required: true
+          - name: bottone
+            label: Bottone
+            type: object
+            fields:
+              - name: etichetta
+                label: Testo
+                type: string
+                required: true
+              - name: link
+                label: Link
+                type: string
+                required: true
+            required: true
+          - name: dettagli
+            label: Dettagli
+            type: object
+            fields:
+              - name: etichetta
+                label: Etichetta
+                type: string
+                required: true
+              - name: valore
+                label: Valore
+                type: string
+                required: true
+              - name: link
+                label: Link
+                type: string
+            list: true
+            required: true
+        required: true
+      - name: newsletter
+        label: Riquadro newsletter
+        type: object
+        fields:
+          - name: etichetta
+            label: Nome della sezione
+            type: string
+            required: true
+          - name: titolo
+            label: Titolo
+            description: '*parola* = corsivo, **parola** = blu'
+            type: string
+            required: true
+          - name: testo
+            label: Testo
+            type: text
+            required: true
+          - name: link
+            label: Link all’archivio
+            type: object
+            fields:
+              - name: etichetta
+                label: Testo
+                type: string
+                required: true
+              - name: link
+                label: Link
+                type: string
+                required: true
+            required: true
+        required: true
+  - name: metodo
+    label: Metodo
+    type: file
+    path: src/content/pagine/metodo.yml
+    format: yaml
+    fields:
+      - name: seo
+        label: Ricerca e condivisione
+        type: object
+        fields:
+          - name: titolo
+            label: Titolo nella scheda del browser
+            type: string
+            required: true
+          - name: descrizione
+            label: Descrizione per Google e per le anteprime
+            description: Una o due frasi, al massimo 160 caratteri.
+            type: text
+            required: true
+          - name: immagine
+            label: Immagine di condivisione
+            description: Anteprima quando la pagina viene condivisa (1200×630).
+            type: object
+            fields:
+              - name: src
+                label: File
+                description: Un file in public/media (foto/, progetti/, icone/, strumenti/, prove/).
+                type: image
+                required: true
+              - name: alt
+                label: Testo alternativo
+                description: Cosa si vede, in una frase. Vuoto solo se l'immagine è decorativa.
+                type: string
+                required: true
+              - name: punto_focale
+                label: Punto focale
+                description: La parte da tenere sempre visibile quando l'immagine viene ritagliata.
+                type: select
+                options:
+                  values:
+                    - centro
+                    - alto
+                    - basso
+                    - sinistra
+                    - destra
+                required: true
+              - name: adatta
+                label: Adatta
+                description: riempi = riempie il riquadro e può tagliare i bordi; intera = mostra tutta l'immagine (per gli screenshot verticali).
+                type: select
+                options:
+                  values:
+                    - riempi
+                    - intera
+                required: true
+            required: true
+        required: true
+      - name: apertura
+        label: Apertura
+        type: object
+        fields:
+          - name: etichetta
+            label: Etichetta piccola
+            description: Riga in maiuscoletto sopra il titolo.
+            type: string
+            required: true
+          - name: titolo
+            label: Titolo
+            description: '*parola* = corsivo, **parola** = blu'
+            type: string
+            required: true
+          - name: testo
+            label: Testo
+            type: text
+            required: true
+        required: true
+      - name: fasi
+        label: Le fasi
+        type: object
+        fields:
+          - name: etichetta
+            label: Nome della sezione
+            type: string
+            required: true
+          - name: didascalia
+            label: Didascalia
+            type: string
+            required: true
+          - name: titolo
+            label: Titolo
+            description: '*parola* = corsivo, **parola** = blu'
+            type: string
+            required: true
+          - name: testo
+            label: Testo
+            type: text
+            required: true
+          - name: voci
+            label: Fasi
+            type: object
+            fields:
+              - name: nome
+                label: Nome della fase
+                description: Una o due parole, per esempio «Ascolto».
+                type: string
+                required: true
+              - name: titolo
+                label: Titolo
+                description: '*parola* = corsivo, **parola** = blu'
+                type: string
+                required: true
+              - name: testo
+                label: Cosa faccio
+                type: text
+                required: true
+              - name: ottieni
+                label: Cosa ottieni
+                description: Cosa ha in mano il cliente alla fine della fase.
+                type: string
+                list: true
+                required: true
+              - name: immagine
+                label: Immagine
+                description: Un dettaglio reale o uno schema che mostra la fase.
+                type: object
+                fields:
+                  - name: src
+                    label: File
+                    description: Un file in public/media (foto/, progetti/, icone/, strumenti/, prove/).
+                    type: image
+                    required: true
+                  - name: alt
+                    label: Testo alternativo
+                    description: Cosa si vede, in una frase. Vuoto solo se l'immagine è decorativa.
+                    type: string
+                    required: true
+                  - name: punto_focale
+                    label: Punto focale
+                    description: La parte da tenere sempre visibile quando l'immagine viene ritagliata.
+                    type: select
+                    options:
+                      values:
+                        - centro
+                        - alto
+                        - basso
+                        - sinistra
+                        - destra
+                    required: true
+                  - name: adatta
+                    label: Adatta
+                    description: riempi = riempie il riquadro e può tagliare i bordi; intera = mostra tutta l'immagine (per gli screenshot verticali).
+                    type: select
+                    options:
+                      values:
+                        - riempi
+                        - intera
+                    required: true
+              - name: video
+                label: Video
+                description: Animazione della fase, 6 secondi. Se c’è, si vede al posto dell’immagine (l’immagine resta per chi chiede meno movimento).
+                type: object
+                fields:
+                  - name: mp4
+                    label: Video MP4
+                    description: File .mp4 in public/media/video.
+                    type: file
+                    required: true
+                  - name: webm
+                    label: Video WebM
+                    description: Lo stesso video in formato .webm.
+                    type: file
+                    required: true
+                  - name: copertina
+                    label: Copertina
+                    description: Immagine mostrata prima che il video parta e a chi ha chiesto meno movimento.
+                    type: image
+                    required: true
+                  - name: descrizione
+                    label: Descrizione
+                    description: Cosa mostra il video, in una frase (per chi non lo vede).
+                    type: string
+                    required: true
+                  - name: didascalia
+                    label: Didascalia breve
+                    description: Riga sopra il video nelle pagine progetto, al massimo 60 caratteri. Se è vuota si usa la descrizione.
+                    type: string
+                  - name: telefono
+                    label: Versione per il telefono
+                    description: 'Facoltativa: se c’è, sotto i 640 px si vede questa al posto del video orizzontale.'
+                    type: object
+                    fields:
+                      - name: mp4
+                        label: Video MP4 per il telefono
+                        description: Versione verticale 4:5 (720×900) per gli schermi sotto i 640 px.
+                        type: file
+                        required: true
+                      - name: webm
+                        label: Video WebM per il telefono
+                        description: La stessa versione verticale in .webm.
+                        type: file
+                        required: true
+                  - name: punto_focale
+                    label: Punto focale
+                    description: La parte da tenere sempre visibile.
+                    type: select
+                    options:
+                      values:
+                        - centro
+                        - alto
+                        - basso
+                        - sinistra
+                        - destra
+                    required: true
+                  - name: adatta
+                    label: Adatta
+                    description: riempi = riempie il riquadro; intera = mostra tutto il video.
+                    type: select
+                    options:
+                      values:
+                        - riempi
+                        - intera
+                    required: true
+            list: true
+            required: true
+        required: true
+      - name: non_faccio
+        label: Cosa non faccio
+        type: object
+        fields:
+          - name: etichetta
+            label: Nome della sezione
+            type: string
+            required: true
+          - name: didascalia
+            label: Didascalia
+            type: string
+            required: true
+          - name: titolo
+            label: Titolo
+            description: '*parola* = corsivo, **parola** = blu'
+            type: string
+            required: true
+          - name: voci
+            label: Voci
+            type: object
+            fields:
+              - name: titolo
+                label: Titolo
+                type: string
+                required: true
+              - name: testo
+                label: Testo
+                type: text
+                required: true
+            list: true
+            required: true
+        required: true
+      - name: obiettivi
+        label: I miei obiettivi
+        type: object
+        fields:
+          - name: etichetta
+            label: Nome della sezione
+            type: string
+            required: true
+          - name: didascalia
+            label: Didascalia
+            type: string
+            required: true
+          - name: titolo
+            label: Titolo
+            description: '*parola* = corsivo, **parola** = blu'
+            type: string
+            required: true
+          - name: voci
+            label: Voci
+            type: object
+            fields:
+              - name: titolo
+                label: Titolo
+                type: string
+                required: true
+              - name: testo
+                label: Testo
+                type: text
+                required: true
+              - name: progetto
+                label: Progetto
+                description: 'Facoltativo: mostra l’icona del progetto e porta alla sua pagina.'
+                type: select
+                options:
+                  values:
+                    - agenti-personali
+                    - sfornaclaw
+                    - privacybridge
+                    - automazioni
+                    - open-source
+            list: true
+            required: true
+        required: true
+  - name: progetti-pagina
+    label: 'Progetti: pagina con l’elenco'
+    type: file
+    path: src/content/pagine/progetti.yml
+    format: yaml
+    fields:
+      - name: seo
+        label: Ricerca e condivisione
+        type: object
+        fields:
+          - name: titolo
+            label: Titolo nella scheda del browser
+            type: string
+            required: true
+          - name: descrizione
+            label: Descrizione per Google e per le anteprime
+            description: Una o due frasi, al massimo 160 caratteri.
+            type: text
+            required: true
+          - name: immagine
+            label: Immagine di condivisione
+            description: Anteprima quando la pagina viene condivisa (1200×630).
+            type: object
+            fields:
+              - name: src
+                label: File
+                description: Un file in public/media (foto/, progetti/, icone/, strumenti/, prove/).
+                type: image
+                required: true
+              - name: alt
+                label: Testo alternativo
+                description: Cosa si vede, in una frase. Vuoto solo se l'immagine è decorativa.
+                type: string
+                required: true
+              - name: punto_focale
+                label: Punto focale
+                description: La parte da tenere sempre visibile quando l'immagine viene ritagliata.
+                type: select
+                options:
+                  values:
+                    - centro
+                    - alto
+                    - basso
+                    - sinistra
+                    - destra
+                required: true
+              - name: adatta
+                label: Adatta
+                description: riempi = riempie il riquadro e può tagliare i bordi; intera = mostra tutta l'immagine (per gli screenshot verticali).
+                type: select
+                options:
+                  values:
+                    - riempi
+                    - intera
+                required: true
+            required: true
+        required: true
+      - name: apertura
+        label: Apertura
+        type: object
+        fields:
+          - name: etichetta
+            label: Etichetta piccola
+            description: Riga in maiuscoletto sopra il titolo.
+            type: string
+            required: true
+          - name: titolo
+            label: Titolo
+            description: '*parola* = corsivo, **parola** = blu'
+            type: string
+            required: true
+          - name: testo
+            label: Testo
+            type: text
+            required: true
+        required: true
+      - name: elenco
+        label: Elenco
+        type: object
+        fields:
+          - name: etichetta
+            label: Nome della sezione
+            type: string
+            required: true
+          - name: didascalia
+            label: Didascalia
+            type: string
+            required: true
+        required: true
+  - name: progetti
+    label: Progetti
+    type: collection
+    path: src/content/progetti
+    format: yaml-frontmatter
+    description: 'Una pagina per progetto: il nome del file è l’indirizzo (/progetti/<nome>/).'
+    filename: '{primary}.md'
+    view:
+      fields:
+        - nome
+    fields:
+      - name: ordine
+        label: Ordine
+        description: Posizione nell’elenco dei progetti (1 = primo).
+        type: number
+        required: true
+      - name: nome
+        label: Nome
+        description: Prima parte del nome, per esempio «Sforna».
+        type: string
+        required: true
+      - name: nome_colorato
+        label: Seconda parte colorata
+        description: Per esempio «Claw». Se inizia in minuscolo viene staccata da uno spazio.
+        type: string
+        required: true
+      - name: categoria
+        label: Categoria
+        type: string
+        required: true
+      - name: colore
+        label: Colore
+        type: select
+        options:
+          values:
+            - blu
+            - rosso
+            - viola
+            - giallo
+            - acqua
+            - rosa
+            - lime
+            - verde
+            - indaco
+            - ciano
+            - arancio
+        required: true
+      - name: icona
+        label: Icona
+        type: object
+        fields:
+          - name: src
+            label: File
+            description: Un file in public/media (foto/, progetti/, icone/, strumenti/, prove/).
+            type: image
+            required: true
+          - name: alt
+            label: Testo alternativo
+            description: Cosa si vede, in una frase. Vuoto solo se l'immagine è decorativa.
+            type: string
+            required: true
+          - name: punto_focale
+            label: Punto focale
+            description: La parte da tenere sempre visibile quando l'immagine viene ritagliata.
+            type: select
+            options:
+              values:
+                - centro
+                - alto
+                - basso
+                - sinistra
+                - destra
+            required: true
+          - name: adatta
+            label: Adatta
+            description: riempi = riempie il riquadro e può tagliare i bordi; intera = mostra tutta l'immagine (per gli screenshot verticali).
+            type: select
+            options:
+              values:
+                - riempi
+                - intera
+            required: true
+        required: true
+      - name: seo
+        label: Ricerca e condivisione
+        type: object
+        fields:
+          - name: titolo
+            label: Titolo nella scheda del browser
+            type: string
+            required: true
+          - name: descrizione
+            label: Descrizione per Google e per le anteprime
+            description: Una o due frasi, al massimo 160 caratteri.
+            type: text
+            required: true
+          - name: immagine
+            label: Immagine di condivisione
+            description: Anteprima quando la pagina viene condivisa (1200×630).
+            type: object
+            fields:
+              - name: src
+                label: File
+                description: Un file in public/media (foto/, progetti/, icone/, strumenti/, prove/).
+                type: image
+                required: true
+              - name: alt
+                label: Testo alternativo
+                description: Cosa si vede, in una frase. Vuoto solo se l'immagine è decorativa.
+                type: string
+                required: true
+              - name: punto_focale
+                label: Punto focale
+                description: La parte da tenere sempre visibile quando l'immagine viene ritagliata.
+                type: select
+                options:
+                  values:
+                    - centro
+                    - alto
+                    - basso
+                    - sinistra
+                    - destra
+                required: true
+              - name: adatta
+                label: Adatta
+                description: riempi = riempie il riquadro e può tagliare i bordi; intera = mostra tutta l'immagine (per gli screenshot verticali).
+                type: select
+                options:
+                  values:
+                    - riempi
+                    - intera
+                required: true
+            required: true
+        required: true
+      - name: scheda
+        label: Scheda nell’elenco dei progetti
+        type: object
+        fields:
+          - name: testo
+            label: Testo breve
+            type: text
+            required: true
+          - name: immagine
+            label: Immagine della scheda
+            type: object
+            fields:
+              - name: src
+                label: File
+                description: Un file in public/media (foto/, progetti/, icone/, strumenti/, prove/).
+                type: image
+                required: true
+              - name: alt
+                label: Testo alternativo
+                description: Cosa si vede, in una frase. Vuoto solo se l'immagine è decorativa.
+                type: string
+                required: true
+              - name: punto_focale
+                label: Punto focale
+                description: La parte da tenere sempre visibile quando l'immagine viene ritagliata.
+                type: select
+                options:
+                  values:
+                    - centro
+                    - alto
+                    - basso
+                    - sinistra
+                    - destra
+                required: true
+              - name: adatta
+                label: Adatta
+                description: riempi = riempie il riquadro e può tagliare i bordi; intera = mostra tutta l'immagine (per gli screenshot verticali).
+                type: select
+                options:
+                  values:
+                    - riempi
+                    - intera
+                required: true
+            required: true
+          - name: stato
+            label: Stato
+            type: string
+            list: true
+            required: true
+          - name: dove
+            label: Dove funziona
+            type: string
+            list: true
+            required: true
+          - name: link_etichetta
+            label: Testo del link
+            type: string
+            required: true
+        required: true
+      - name: apertura
+        label: Apertura
+        type: object
+        fields:
+          - name: sottotitolo
+            label: Sottotitolo
+            description: '*parola* = corsivo, **parola** = blu'
+            type: string
+            required: true
+          - name: testo
+            label: Testo
+            type: text
+            required: true
+          - name: video
+            label: Video
+            type: object
+            fields:
+              - name: mp4
+                label: Video MP4
+                description: File .mp4 in public/media/video.
+                type: file
+                required: true
+              - name: webm
+                label: Video WebM
+                description: Lo stesso video in formato .webm.
+                type: file
+                required: true
+              - name: copertina
+                label: Copertina
+                description: Immagine mostrata prima che il video parta e a chi ha chiesto meno movimento.
+                type: image
+                required: true
+              - name: descrizione
+                label: Descrizione
+                description: Cosa mostra il video, in una frase (per chi non lo vede).
+                type: string
+                required: true
+              - name: didascalia
+                label: Didascalia breve
+                description: Riga sopra il video nelle pagine progetto, al massimo 60 caratteri. Se è vuota si usa la descrizione.
+                type: string
+              - name: telefono
+                label: Versione per il telefono
+                description: 'Facoltativa: se c’è, sotto i 640 px si vede questa al posto del video orizzontale.'
+                type: object
+                fields:
+                  - name: mp4
+                    label: Video MP4 per il telefono
+                    description: Versione verticale 4:5 (720×900) per gli schermi sotto i 640 px.
+                    type: file
+                    required: true
+                  - name: webm
+                    label: Video WebM per il telefono
+                    description: La stessa versione verticale in .webm.
+                    type: file
+                    required: true
+              - name: punto_focale
+                label: Punto focale
+                description: La parte da tenere sempre visibile.
+                type: select
+                options:
+                  values:
+                    - centro
+                    - alto
+                    - basso
+                    - sinistra
+                    - destra
+                required: true
+              - name: adatta
+                label: Adatta
+                description: riempi = riempie il riquadro; intera = mostra tutto il video.
+                type: select
+                options:
+                  values:
+                    - riempi
+                    - intera
+                required: true
+            required: true
+          - name: link_esterni
+            label: Link esterni
+            type: object
+            fields:
+              - name: etichetta
+                label: Testo
+                type: string
+                required: true
+              - name: link
+                label: Link
+                type: string
+                required: true
+            list: true
+            required: true
+        required: true
+      - name: cosa_ottieni
+        label: Cosa ottieni
+        type: object
+        fields:
+          - name: etichetta
+            label: Nome della sezione
+            description: 'Se è vuoto: «Cosa ottieni».'
+            type: string
+          - name: didascalia
+            label: Didascalia della barra
+            description: Descrive la sezione, senza ripetere il nome del progetto.
+            type: string
+            required: true
+          - name: titolo
+            label: Titolo
+            description: '*parola* = corsivo, **parola** = blu'
+            type: string
+            required: true
+          - name: punti
+            label: Punti
+            type: object
+            fields:
+              - name: titolo
+                label: Titolo
+                type: string
+                required: true
+              - name: testo
+                label: Testo
+                type: text
+                required: true
+            list: true
+            required: true
+        required: true
+      - name: capacita
+        label: Cosa sa fare
+        description: 'Facoltativa: schede con video, come «Cosa faccio» della home.'
+        type: object
+        fields:
+          - name: etichetta
+            label: Nome della sezione
+            type: string
+            required: true
+          - name: didascalia
+            label: Didascalia della barra
+            type: string
+            required: true
+          - name: titolo
+            label: Titolo
+            description: '*parola* = corsivo, **parola** = blu'
+            type: string
+            required: true
+          - name: testo
+            label: Testo
+            type: text
+          - name: voci
+            label: Schede
+            description: Una scheda per ogni cosa che sa fare, ognuna con il suo video vero.
+            type: object
+            fields:
+              - name: etichetta
+                label: Etichetta
+                type: string
+                required: true
+              - name: titolo
+                label: Titolo
+                description: '*parola* = corsivo, **parola** = blu'
+                type: string
+                required: true
+              - name: testo
+                label: Testo
+                type: text
+                required: true
+              - name: risultato
+                label: Cosa ti resta
+                description: Il risultato concreto, in una frase. Compare in fondo alla scheda con la spunta.
+                type: string
+              - name: colore
+                label: Colore del palco
+                description: Il colore della luce dietro al video.
+                type: select
+                options:
+                  values:
+                    - blu
+                    - rosso
+                    - viola
+                    - giallo
+                    - acqua
+                    - rosa
+                    - lime
+                    - verde
+                    - indaco
+                    - ciano
+                    - arancio
+              - name: video
+                label: Video
+                type: object
+                fields:
+                  - name: mp4
+                    label: Video MP4
+                    description: File .mp4 in public/media/video.
+                    type: file
+                    required: true
+                  - name: webm
+                    label: Video WebM
+                    description: Lo stesso video in formato .webm.
+                    type: file
+                    required: true
+                  - name: copertina
+                    label: Copertina
+                    description: Immagine mostrata prima che il video parta e a chi ha chiesto meno movimento.
+                    type: image
+                    required: true
+                  - name: descrizione
+                    label: Descrizione
+                    description: Cosa mostra il video, in una frase (per chi non lo vede).
+                    type: string
+                    required: true
+                  - name: didascalia
+                    label: Didascalia breve
+                    description: Riga sopra il video nelle pagine progetto, al massimo 60 caratteri. Se è vuota si usa la descrizione.
+                    type: string
+                  - name: telefono
+                    label: Versione per il telefono
+                    description: 'Facoltativa: se c’è, sotto i 640 px si vede questa al posto del video orizzontale.'
+                    type: object
+                    fields:
+                      - name: mp4
+                        label: Video MP4 per il telefono
+                        description: Versione verticale 4:5 (720×900) per gli schermi sotto i 640 px.
+                        type: file
+                        required: true
+                      - name: webm
+                        label: Video WebM per il telefono
+                        description: La stessa versione verticale in .webm.
+                        type: file
+                        required: true
+                  - name: punto_focale
+                    label: Punto focale
+                    description: La parte da tenere sempre visibile.
+                    type: select
+                    options:
+                      values:
+                        - centro
+                        - alto
+                        - basso
+                        - sinistra
+                        - destra
+                    required: true
+                  - name: adatta
+                    label: Adatta
+                    description: riempi = riempie il riquadro; intera = mostra tutto il video.
+                    type: select
+                    options:
+                      values:
+                        - riempi
+                        - intera
+                    required: true
+              - name: immagine
+                label: Immagine
+                description: Usata se non c’è un video.
+                type: object
+                fields:
+                  - name: src
+                    label: File
+                    description: Un file in public/media (foto/, progetti/, icone/, strumenti/, prove/).
+                    type: image
+                    required: true
+                  - name: alt
+                    label: Testo alternativo
+                    description: Cosa si vede, in una frase. Vuoto solo se l'immagine è decorativa.
+                    type: string
+                    required: true
+                  - name: punto_focale
+                    label: Punto focale
+                    description: La parte da tenere sempre visibile quando l'immagine viene ritagliata.
+                    type: select
+                    options:
+                      values:
+                        - centro
+                        - alto
+                        - basso
+                        - sinistra
+                        - destra
+                    required: true
+                  - name: adatta
+                    label: Adatta
+                    description: riempi = riempie il riquadro e può tagliare i bordi; intera = mostra tutta l'immagine (per gli screenshot verticali).
+                    type: select
+                    options:
+                      values:
+                        - riempi
+                        - intera
+                    required: true
+              - name: link
+                label: Link
+                type: object
+                fields:
+                  - name: etichetta
+                    label: Testo
+                    type: string
+                    required: true
+                  - name: link
+                    label: Link
+                    type: string
+                    required: true
+            list: true
+            required: true
+      - name: processo
+        label: Come funziona
+        description: Schema animato dei passi.
+        type: object
+        fields:
+          - name: etichetta
+            label: Nome della sezione
+            type: string
+            required: true
+          - name: didascalia
+            label: Didascalia della barra
+            type: string
+            required: true
+          - name: titolo
+            label: Titolo
+            description: '*parola* = corsivo, **parola** = blu'
+            type: string
+            required: true
+          - name: testo
+            label: Testo
+            type: text
+            required: true
+          - name: passi
+            label: Passi
+            type: object
+            fields:
+              - name: nome
+                label: Nome del passo
+                type: string
+                required: true
+              - name: icona
+                label: Icona
+                type: select
+                options:
+                  values:
+                    - notizie
+                    - testo
+                    - immagine
+                    - telegram
+                    - invia
+                    - archivio
+                    - mano
+                    - posta
+                required: true
+              - name: testo
+                label: Cosa succede
+                type: text
+                required: true
+              - name: umano
+                label: Serve una persona
+                description: Evidenzia il passo in cui decide una persona.
+                type: boolean
+            list: true
+            required: true
+      - name: caroselli
+        label: Esempi veri
+        type: object
+        fields:
+          - name: etichetta
+            label: Nome della sezione
+            type: string
+            required: true
+          - name: didascalia
+            label: Didascalia della barra
+            type: string
+            required: true
+          - name: titolo
+            label: Titolo
+            description: '*parola* = corsivo, **parola** = blu'
+            type: string
+            required: true
+          - name: testo
+            label: Testo
+            type: text
+            required: true
+          - name: serie
+            label: Caroselli
+            type: object
+            fields:
+              - name: nome
+                label: Nome della serie
+                type: string
+                required: true
+              - name: slide
+                label: Slide
+                type: object
+                fields:
+                  - name: src
+                    label: File
+                    description: Un file in public/media (foto/, progetti/, icone/, strumenti/, prove/).
+                    type: image
+                    required: true
+                  - name: alt
+                    label: Testo alternativo
+                    description: Cosa si vede, in una frase. Vuoto solo se l'immagine è decorativa.
+                    type: string
+                    required: true
+                  - name: punto_focale
+                    label: Punto focale
+                    description: La parte da tenere sempre visibile quando l'immagine viene ritagliata.
+                    type: select
+                    options:
+                      values:
+                        - centro
+                        - alto
+                        - basso
+                        - sinistra
+                        - destra
+                    required: true
+                  - name: adatta
+                    label: Adatta
+                    description: riempi = riempie il riquadro e può tagliare i bordi; intera = mostra tutta l'immagine (per gli screenshot verticali).
+                    type: select
+                    options:
+                      values:
+                        - riempi
+                        - intera
+                    required: true
+                list: true
+                required: true
+              - name: crediti
+                label: Crediti delle foto
+                description: Autore e licenza di ogni foto usata nelle slide.
+                type: object
+                fields:
+                  - name: nota
+                    label: Nota
+                    type: string
+                    required: true
+                  - name: voci
+                    label: Crediti
+                    type: object
+                    fields:
+                      - name: etichetta
+                        label: Testo
+                        type: string
+                        required: true
+                      - name: link
+                        label: Link
+                        type: string
+                        required: true
+                    list: true
+                    required: true
+            list: true
+            required: true
+          - name: storie
+            label: Storie
+            type: object
+            fields:
+              - name: src
+                label: File
+                description: Un file in public/media (foto/, progetti/, icone/, strumenti/, prove/).
+                type: image
+                required: true
+              - name: alt
+                label: Testo alternativo
+                description: Cosa si vede, in una frase. Vuoto solo se l'immagine è decorativa.
+                type: string
+                required: true
+              - name: punto_focale
+                label: Punto focale
+                description: La parte da tenere sempre visibile quando l'immagine viene ritagliata.
+                type: select
+                options:
+                  values:
+                    - centro
+                    - alto
+                    - basso
+                    - sinistra
+                    - destra
+                required: true
+              - name: adatta
+                label: Adatta
+                description: riempi = riempie il riquadro e può tagliare i bordi; intera = mostra tutta l'immagine (per gli screenshot verticali).
+                type: select
+                options:
+                  values:
+                    - riempi
+                    - intera
+                required: true
+            list: true
+            required: true
+      - name: galleria
+        label: Galleria di dettagli
+        type: object
+        fields:
+          - name: didascalia
+            label: Didascalia della barra
+            type: string
+            required: true
+          - name: titolo
+            label: Titolo
+            description: '*parola* = corsivo, **parola** = blu'
+            type: string
+            required: true
+          - name: voci
+            label: Immagini
+            type: object
+            fields:
+              - name: immagine
+                label: Immagine
+                type: object
+                fields:
+                  - name: src
+                    label: File
+                    description: Un file in public/media (foto/, progetti/, icone/, strumenti/, prove/).
+                    type: image
+                    required: true
+                  - name: alt
+                    label: Testo alternativo
+                    description: Cosa si vede, in una frase. Vuoto solo se l'immagine è decorativa.
+                    type: string
+                    required: true
+                  - name: punto_focale
+                    label: Punto focale
+                    description: La parte da tenere sempre visibile quando l'immagine viene ritagliata.
+                    type: select
+                    options:
+                      values:
+                        - centro
+                        - alto
+                        - basso
+                        - sinistra
+                        - destra
+                    required: true
+                  - name: adatta
+                    label: Adatta
+                    description: riempi = riempie il riquadro e può tagliare i bordi; intera = mostra tutta l'immagine (per gli screenshot verticali).
+                    type: select
+                    options:
+                      values:
+                        - riempi
+                        - intera
+                    required: true
+                required: true
+              - name: immagine_telefono
+                label: Per telefono
+                description: 'Facoltativa: la stessa schermata in una finestra stretta, mostrata sotto i 640 px (per esempio un terminale).'
+                type: object
+                fields:
+                  - name: src
+                    label: File
+                    description: Un file in public/media (foto/, progetti/, icone/, strumenti/, prove/).
+                    type: image
+                    required: true
+                  - name: alt
+                    label: Testo alternativo
+                    description: Cosa si vede, in una frase. Vuoto solo se l'immagine è decorativa.
+                    type: string
+                    required: true
+                  - name: punto_focale
+                    label: Punto focale
+                    description: La parte da tenere sempre visibile quando l'immagine viene ritagliata.
+                    type: select
+                    options:
+                      values:
+                        - centro
+                        - alto
+                        - basso
+                        - sinistra
+                        - destra
+                    required: true
+                  - name: adatta
+                    label: Adatta
+                    description: riempi = riempie il riquadro e può tagliare i bordi; intera = mostra tutta l'immagine (per gli screenshot verticali).
+                    type: select
+                    options:
+                      values:
+                        - riempi
+                        - intera
+                    required: true
+              - name: didascalia
+                label: Didascalia
+                type: string
+                required: true
+            list: true
+            required: true
+        required: true
+      - name: body
+        label: Testo
+        type: rich-text
+  - name: strumenti
+    label: Strumenti
+    type: file
+    path: src/content/pagine/strumenti.yml
+    format: yaml
+    fields:
+      - name: seo
+        label: Ricerca e condivisione
+        type: object
+        fields:
+          - name: titolo
+            label: Titolo nella scheda del browser
+            type: string
+            required: true
+          - name: descrizione
+            label: Descrizione per Google e per le anteprime
+            description: Una o due frasi, al massimo 160 caratteri.
+            type: text
+            required: true
+          - name: immagine
+            label: Immagine di condivisione
+            description: Anteprima quando la pagina viene condivisa (1200×630).
+            type: object
+            fields:
+              - name: src
+                label: File
+                description: Un file in public/media (foto/, progetti/, icone/, strumenti/, prove/).
+                type: image
+                required: true
+              - name: alt
+                label: Testo alternativo
+                description: Cosa si vede, in una frase. Vuoto solo se l'immagine è decorativa.
+                type: string
+                required: true
+              - name: punto_focale
+                label: Punto focale
+                description: La parte da tenere sempre visibile quando l'immagine viene ritagliata.
+                type: select
+                options:
+                  values:
+                    - centro
+                    - alto
+                    - basso
+                    - sinistra
+                    - destra
+                required: true
+              - name: adatta
+                label: Adatta
+                description: riempi = riempie il riquadro e può tagliare i bordi; intera = mostra tutta l'immagine (per gli screenshot verticali).
+                type: select
+                options:
+                  values:
+                    - riempi
+                    - intera
+                required: true
+            required: true
+        required: true
+      - name: apertura
+        label: Apertura
+        type: object
+        fields:
+          - name: etichetta
+            label: Etichetta piccola
+            description: Riga in maiuscoletto sopra il titolo.
+            type: string
+            required: true
+          - name: titolo
+            label: Titolo
+            description: '*parola* = corsivo, **parola** = blu'
+            type: string
+            required: true
+          - name: testo
+            label: Testo
+            type: text
+            required: true
+          - name: nota
+            label: Nota
+            description: 'Per esempio: strumenti che uso, nessuna affiliazione.'
+            type: string
+            required: true
+        required: true
+      - name: elenco
+        label: Griglia delle icone
+        type: object
+        fields:
+          - name: etichetta
+            label: Nome della sezione
+            type: string
+            required: true
+          - name: didascalia
+            label: Didascalia
+            type: string
+            required: true
+          - name: voci
+            label: Strumenti
+            type: object
+            fields:
+              - name: nome
+                label: Nome
+                type: string
+                required: true
+              - name: logo
+                label: Logo
+                type: object
+                fields:
+                  - name: src
+                    label: File
+                    description: Un file in public/media (foto/, progetti/, icone/, strumenti/, prove/).
+                    type: image
+                    required: true
+                  - name: alt
+                    label: Testo alternativo
+                    description: Cosa si vede, in una frase. Vuoto solo se l'immagine è decorativa.
+                    type: string
+                    required: true
+                  - name: punto_focale
+                    label: Punto focale
+                    description: La parte da tenere sempre visibile quando l'immagine viene ritagliata.
+                    type: select
+                    options:
+                      values:
+                        - centro
+                        - alto
+                        - basso
+                        - sinistra
+                        - destra
+                    required: true
+                  - name: adatta
+                    label: Adatta
+                    description: riempi = riempie il riquadro e può tagliare i bordi; intera = mostra tutta l'immagine (per gli screenshot verticali).
+                    type: select
+                    options:
+                      values:
+                        - riempi
+                        - intera
+                    required: true
+                required: true
+              - name: gruppo
+                label: Gruppo
+                type: select
+                options:
+                  values:
+                    - Agenti
+                    - Automazioni
+                    - Modelli
+                    - Privacy e sicurezza
+                required: true
+              - name: in_home
+                label: Anche in home
+                type: boolean
+                required: true
+              - name: terminale
+                label: Programma da terminale
+                description: 'Aggiunge il segno >_ sul riquadro: distingue il programma dal modello che ha lo stesso marchio.'
+                type: boolean
+              - name: link
+                label: Sito ufficiale
+                type: string
+                required: true
+            list: true
+            required: true
+        required: true
+      - name: schede
+        label: Schede dettagliate
+        type: object
+        fields:
+          - name: etichetta
+            label: Nome della sezione
+            type: string
+            required: true
+          - name: didascalia
+            label: Didascalia
+            type: string
+            required: true
+          - name: titolo
+            label: Titolo
+            description: '*parola* = corsivo, **parola** = blu'
+            type: string
+            required: true
+          - name: voci
+            label: Schede
+            type: object
+            fields:
+              - name: nome
+                label: Strumento
+                description: Lo stesso nome usato nella griglia.
+                type: string
+                required: true
+              - name: titolo
+                label: Titolo
+                description: '*parola* = corsivo, **parola** = blu'
+                type: string
+                required: true
+              - name: come_lo_uso
+                label: Come lo uso
+                type: text
+                required: true
+              - name: immagine
+                label: Screenshot
+                description: Serve se non c’è il video.
+                type: object
+                fields:
+                  - name: src
+                    label: File
+                    description: Un file in public/media (foto/, progetti/, icone/, strumenti/, prove/).
+                    type: image
+                    required: true
+                  - name: alt
+                    label: Testo alternativo
+                    description: Cosa si vede, in una frase. Vuoto solo se l'immagine è decorativa.
+                    type: string
+                    required: true
+                  - name: punto_focale
+                    label: Punto focale
+                    description: La parte da tenere sempre visibile quando l'immagine viene ritagliata.
+                    type: select
+                    options:
+                      values:
+                        - centro
+                        - alto
+                        - basso
+                        - sinistra
+                        - destra
+                    required: true
+                  - name: adatta
+                    label: Adatta
+                    description: riempi = riempie il riquadro e può tagliare i bordi; intera = mostra tutta l'immagine (per gli screenshot verticali).
+                    type: select
+                    options:
+                      values:
+                        - riempi
+                        - intera
+                    required: true
+              - name: video
+                label: Video
+                description: 'Facoltativo: un video al posto dello screenshot (per esempio un flusso che si accende).'
+                type: object
+                fields:
+                  - name: mp4
+                    label: Video MP4
+                    description: File .mp4 in public/media/video.
+                    type: file
+                    required: true
+                  - name: webm
+                    label: Video WebM
+                    description: Lo stesso video in formato .webm.
+                    type: file
+                    required: true
+                  - name: copertina
+                    label: Copertina
+                    description: Immagine mostrata prima che il video parta e a chi ha chiesto meno movimento.
+                    type: image
+                    required: true
+                  - name: descrizione
+                    label: Descrizione
+                    description: Cosa mostra il video, in una frase (per chi non lo vede).
+                    type: string
+                    required: true
+                  - name: didascalia
+                    label: Didascalia breve
+                    description: Riga sopra il video nelle pagine progetto, al massimo 60 caratteri. Se è vuota si usa la descrizione.
+                    type: string
+                  - name: telefono
+                    label: Versione per il telefono
+                    description: 'Facoltativa: se c’è, sotto i 640 px si vede questa al posto del video orizzontale.'
+                    type: object
+                    fields:
+                      - name: mp4
+                        label: Video MP4 per il telefono
+                        description: Versione verticale 4:5 (720×900) per gli schermi sotto i 640 px.
+                        type: file
+                        required: true
+                      - name: webm
+                        label: Video WebM per il telefono
+                        description: La stessa versione verticale in .webm.
+                        type: file
+                        required: true
+                  - name: punto_focale
+                    label: Punto focale
+                    description: La parte da tenere sempre visibile.
+                    type: select
+                    options:
+                      values:
+                        - centro
+                        - alto
+                        - basso
+                        - sinistra
+                        - destra
+                    required: true
+                  - name: adatta
+                    label: Adatta
+                    description: riempi = riempie il riquadro; intera = mostra tutto il video.
+                    type: select
+                    options:
+                      values:
+                        - riempi
+                        - intera
+                    required: true
+              - name: immagine_telefono
+                label: Screenshot per telefono
+                description: 'Facoltativo: la stessa schermata in una finestra stretta, mostrata sotto i 640 px.'
+                type: object
+                fields:
+                  - name: src
+                    label: File
+                    description: Un file in public/media (foto/, progetti/, icone/, strumenti/, prove/).
+                    type: image
+                    required: true
+                  - name: alt
+                    label: Testo alternativo
+                    description: Cosa si vede, in una frase. Vuoto solo se l'immagine è decorativa.
+                    type: string
+                    required: true
+                  - name: punto_focale
+                    label: Punto focale
+                    description: La parte da tenere sempre visibile quando l'immagine viene ritagliata.
+                    type: select
+                    options:
+                      values:
+                        - centro
+                        - alto
+                        - basso
+                        - sinistra
+                        - destra
+                    required: true
+                  - name: adatta
+                    label: Adatta
+                    description: riempi = riempie il riquadro e può tagliare i bordi; intera = mostra tutta l'immagine (per gli screenshot verticali).
+                    type: select
+                    options:
+                      values:
+                        - riempi
+                        - intera
+                    required: true
+              - name: accanto
+                label: Immagine accanto
+                description: >-
+                  Facoltativa: un secondo documento mostrato prima dello screenshot (per esempio la missione che lo strumento esegue). La
+                  scheda diventa larga.
+                type: object
+                fields:
+                  - name: immagine
+                    label: Immagine
+                    type: object
+                    fields:
+                      - name: src
+                        label: File
+                        description: Un file in public/media (foto/, progetti/, icone/, strumenti/, prove/).
+                        type: image
+                        required: true
+                      - name: alt
+                        label: Testo alternativo
+                        description: Cosa si vede, in una frase. Vuoto solo se l'immagine è decorativa.
+                        type: string
+                        required: true
+                      - name: punto_focale
+                        label: Punto focale
+                        description: La parte da tenere sempre visibile quando l'immagine viene ritagliata.
+                        type: select
+                        options:
+                          values:
+                            - centro
+                            - alto
+                            - basso
+                            - sinistra
+                            - destra
+                        required: true
+                      - name: adatta
+                        label: Adatta
+                        description: >-
+                          riempi = riempie il riquadro e può tagliare i bordi; intera = mostra tutta l'immagine (per gli screenshot
+                          verticali).
+                        type: select
+                        options:
+                          values:
+                            - riempi
+                            - intera
+                        required: true
+                    required: true
+                  - name: immagine_telefono
+                    label: Per telefono
+                    type: object
+                    fields:
+                      - name: src
+                        label: File
+                        description: Un file in public/media (foto/, progetti/, icone/, strumenti/, prove/).
+                        type: image
+                        required: true
+                      - name: alt
+                        label: Testo alternativo
+                        description: Cosa si vede, in una frase. Vuoto solo se l'immagine è decorativa.
+                        type: string
+                        required: true
+                      - name: punto_focale
+                        label: Punto focale
+                        description: La parte da tenere sempre visibile quando l'immagine viene ritagliata.
+                        type: select
+                        options:
+                          values:
+                            - centro
+                            - alto
+                            - basso
+                            - sinistra
+                            - destra
+                        required: true
+                      - name: adatta
+                        label: Adatta
+                        description: >-
+                          riempi = riempie il riquadro e può tagliare i bordi; intera = mostra tutta l'immagine (per gli screenshot
+                          verticali).
+                        type: select
+                        options:
+                          values:
+                            - riempi
+                            - intera
+                        required: true
+            list: true
+            required: true
+        required: true
+  - name: open-source
+    label: Open source
+    type: file
+    path: src/content/pagine/open-source.yml
+    format: yaml
+    fields:
+      - name: seo
+        label: Ricerca e condivisione
+        type: object
+        fields:
+          - name: titolo
+            label: Titolo nella scheda del browser
+            type: string
+            required: true
+          - name: descrizione
+            label: Descrizione per Google e per le anteprime
+            description: Una o due frasi, al massimo 160 caratteri.
+            type: text
+            required: true
+          - name: immagine
+            label: Immagine di condivisione
+            description: Anteprima quando la pagina viene condivisa (1200×630).
+            type: object
+            fields:
+              - name: src
+                label: File
+                description: Un file in public/media (foto/, progetti/, icone/, strumenti/, prove/).
+                type: image
+                required: true
+              - name: alt
+                label: Testo alternativo
+                description: Cosa si vede, in una frase. Vuoto solo se l'immagine è decorativa.
+                type: string
+                required: true
+              - name: punto_focale
+                label: Punto focale
+                description: La parte da tenere sempre visibile quando l'immagine viene ritagliata.
+                type: select
+                options:
+                  values:
+                    - centro
+                    - alto
+                    - basso
+                    - sinistra
+                    - destra
+                required: true
+              - name: adatta
+                label: Adatta
+                description: riempi = riempie il riquadro e può tagliare i bordi; intera = mostra tutta l'immagine (per gli screenshot verticali).
+                type: select
+                options:
+                  values:
+                    - riempi
+                    - intera
+                required: true
+            required: true
+        required: true
+      - name: apertura
+        label: Apertura
+        type: object
+        fields:
+          - name: etichetta
+            label: Etichetta piccola
+            description: Riga in maiuscoletto sopra il titolo.
+            type: string
+            required: true
+          - name: titolo
+            label: Titolo
+            description: '*parola* = corsivo, **parola** = blu'
+            type: string
+            required: true
+          - name: testo
+            label: Testo
+            type: text
+            required: true
+          - name: verificato
+            label: Riga di verifica
+            description: 'Per esempio: stato verificato su GitHub il …'
+            type: string
+            required: true
+          - name: video
+            label: Video
+            description: 'Facoltativo: la prova più forte, in movimento, accanto al titolo.'
+            type: object
+            fields:
+              - name: mp4
+                label: Video MP4
+                description: File .mp4 in public/media/video.
+                type: file
+                required: true
+              - name: webm
+                label: Video WebM
+                description: Lo stesso video in formato .webm.
+                type: file
+                required: true
+              - name: copertina
+                label: Copertina
+                description: Immagine mostrata prima che il video parta e a chi ha chiesto meno movimento.
+                type: image
+                required: true
+              - name: descrizione
+                label: Descrizione
+                description: Cosa mostra il video, in una frase (per chi non lo vede).
+                type: string
+                required: true
+              - name: didascalia
+                label: Didascalia breve
+                description: Riga sopra il video nelle pagine progetto, al massimo 60 caratteri. Se è vuota si usa la descrizione.
+                type: string
+              - name: telefono
+                label: Versione per il telefono
+                description: 'Facoltativa: se c’è, sotto i 640 px si vede questa al posto del video orizzontale.'
+                type: object
+                fields:
+                  - name: mp4
+                    label: Video MP4 per il telefono
+                    description: Versione verticale 4:5 (720×900) per gli schermi sotto i 640 px.
+                    type: file
+                    required: true
+                  - name: webm
+                    label: Video WebM per il telefono
+                    description: La stessa versione verticale in .webm.
+                    type: file
+                    required: true
+              - name: punto_focale
+                label: Punto focale
+                description: La parte da tenere sempre visibile.
+                type: select
+                options:
+                  values:
+                    - centro
+                    - alto
+                    - basso
+                    - sinistra
+                    - destra
+                required: true
+              - name: adatta
+                label: Adatta
+                description: riempi = riempie il riquadro; intera = mostra tutto il video.
+                type: select
+                options:
+                  values:
+                    - riempi
+                    - intera
+                required: true
+        required: true
+      - name: prove
+        label: Prove da GitHub
+        type: object
+        fields:
+          - name: etichetta
+            label: Nome della sezione
+            type: string
+            required: true
+          - name: didascalia
+            label: Didascalia
+            type: string
+            required: true
+          - name: titolo
+            label: Titolo
+            description: '*parola* = corsivo, **parola** = blu'
+            type: string
+            required: true
+          - name: testo
+            label: Testo
+            type: text
+            required: true
+          - name: altre
+            label: Titolo delle prove in striscia
+            description: Le prove larghe e basse (note di rilascio, intestazioni) vanno in un elenco sotto le schede grandi.
+            type: string
+            required: true
+          - name: voci
+            label: Prove
+            type: object
+            fields:
+              - name: codice
+                label: Codice
+                description: Un nome breve e unico, usato dalla home per scegliere quali prove mostrare.
+                type: string
+                required: true
+              - name: titolo
+                label: Titolo
+                type: string
+                required: true
+              - name: testo
+                label: Testo
+                type: text
+                required: true
+              - name: progetto
+                label: Progetto
+                type: string
+                required: true
+              - name: data
+                label: Data
+                type: date
+                options:
+                  format: yyyy-MM-dd
+                required: true
+              - name: stato
+                label: Stato
+                description: integrata = accettata nel progetto; in revisione = ancora aperta; proposta = chiusa senza integrazione.
+                type: select
+                options:
+                  values:
+                    - integrata
+                    - in revisione
+                    - proposta
+                required: true
+              - name: link
+                label: Link all’originale
+                type: string
+                required: true
+              - name: chiaro
+                label: Screenshot in tema chiaro
+                type: object
+                fields:
+                  - name: src
+                    label: File
+                    description: Un file in public/media (foto/, progetti/, icone/, strumenti/, prove/).
+                    type: image
+                    required: true
+                  - name: alt
+                    label: Testo alternativo
+                    description: Cosa si vede, in una frase. Vuoto solo se l'immagine è decorativa.
+                    type: string
+                    required: true
+                  - name: punto_focale
+                    label: Punto focale
+                    description: La parte da tenere sempre visibile quando l'immagine viene ritagliata.
+                    type: select
+                    options:
+                      values:
+                        - centro
+                        - alto
+                        - basso
+                        - sinistra
+                        - destra
+                    required: true
+                  - name: adatta
+                    label: Adatta
+                    description: riempi = riempie il riquadro e può tagliare i bordi; intera = mostra tutta l'immagine (per gli screenshot verticali).
+                    type: select
+                    options:
+                      values:
+                        - riempi
+                        - intera
+                    required: true
+                required: true
+              - name: scuro
+                label: Screenshot in tema scuro
+                type: object
+                fields:
+                  - name: src
+                    label: File
+                    description: Un file in public/media (foto/, progetti/, icone/, strumenti/, prove/).
+                    type: image
+                    required: true
+                  - name: alt
+                    label: Testo alternativo
+                    description: Cosa si vede, in una frase. Vuoto solo se l'immagine è decorativa.
+                    type: string
+                    required: true
+                  - name: punto_focale
+                    label: Punto focale
+                    description: La parte da tenere sempre visibile quando l'immagine viene ritagliata.
+                    type: select
+                    options:
+                      values:
+                        - centro
+                        - alto
+                        - basso
+                        - sinistra
+                        - destra
+                    required: true
+                  - name: adatta
+                    label: Adatta
+                    description: riempi = riempie il riquadro e può tagliare i bordi; intera = mostra tutta l'immagine (per gli screenshot verticali).
+                    type: select
+                    options:
+                      values:
+                        - riempi
+                        - intera
+                    required: true
+                required: true
+            list: true
+            required: true
+        required: true
+      - name: contributi
+        label: Tutti i contributi
+        type: object
+        fields:
+          - name: etichetta
+            label: Nome della sezione
+            type: string
+            required: true
+          - name: didascalia
+            label: Didascalia
+            type: string
+            required: true
+          - name: titolo
+            label: Titolo
+            description: '*parola* = corsivo, **parola** = blu'
+            type: string
+            required: true
+          - name: testo
+            label: Testo
+            type: text
+            required: true
+          - name: altre
+            label: Le altre proposte
+            description: >-
+              Testo del riquadro che si apre con le proposte non ancora integrate di un progetto che ne ha già di integrate. Il numero si
+              aggiunge da solo.
+            type: string
+            required: true
+          - name: voci
+            label: Contributi
+            type: object
+            fields:
+              - name: progetto
+                label: Progetto
+                type: string
+                required: true
+              - name: numero
+                label: Numero
+                type: number
+                required: true
+              - name: titolo
+                label: Cosa cambia
+                type: string
+                required: true
+              - name: stato
+                label: Stato
+                type: select
+                options:
+                  values:
+                    - integrata
+                    - in revisione
+                    - proposta
+                required: true
+              - name: data
+                label: Data
+                type: date
+                options:
+                  format: yyyy-MM-dd
+                required: true
+              - name: link
+                label: Link
+                type: string
+                required: true
+            list: true
+            required: true
+        required: true
+      - name: progetto_mio
+        label: Il mio progetto aperto
+        type: object
+        fields:
+          - name: etichetta
+            label: Nome della sezione
+            type: string
+            required: true
+          - name: didascalia
+            label: Didascalia
+            type: string
+            required: true
+          - name: titolo
+            label: Titolo
+            description: '*parola* = corsivo, **parola** = blu'
+            type: string
+            required: true
+          - name: testo
+            label: Testo
+            type: text
+            required: true
+          - name: immagine
+            label: Immagine
+            type: object
+            fields:
+              - name: src
+                label: File
+                description: Un file in public/media (foto/, progetti/, icone/, strumenti/, prove/).
+                type: image
+                required: true
+              - name: alt
+                label: Testo alternativo
+                description: Cosa si vede, in una frase. Vuoto solo se l'immagine è decorativa.
+                type: string
+                required: true
+              - name: punto_focale
+                label: Punto focale
+                description: La parte da tenere sempre visibile quando l'immagine viene ritagliata.
+                type: select
+                options:
+                  values:
+                    - centro
+                    - alto
+                    - basso
+                    - sinistra
+                    - destra
+                required: true
+              - name: adatta
+                label: Adatta
+                description: riempi = riempie il riquadro e può tagliare i bordi; intera = mostra tutta l'immagine (per gli screenshot verticali).
+                type: select
+                options:
+                  values:
+                    - riempi
+                    - intera
+                required: true
+            required: true
+          - name: link
+            label: Link
+            type: object
+            fields:
+              - name: etichetta
+                label: Testo
+                type: string
+                required: true
+              - name: link
+                label: Link
+                type: string
+                required: true
+            required: true
+        required: true
+  - name: chi-sono
+    label: Chi sono
+    type: file
+    path: src/content/pagine/chi-sono.md
+    format: yaml-frontmatter
+    fields:
+      - name: seo
+        label: Ricerca e condivisione
+        type: object
+        fields:
+          - name: titolo
+            label: Titolo nella scheda del browser
+            type: string
+            required: true
+          - name: descrizione
+            label: Descrizione per Google e per le anteprime
+            description: Una o due frasi, al massimo 160 caratteri.
+            type: text
+            required: true
+          - name: immagine
+            label: Immagine di condivisione
+            description: Anteprima quando la pagina viene condivisa (1200×630).
+            type: object
+            fields:
+              - name: src
+                label: File
+                description: Un file in public/media (foto/, progetti/, icone/, strumenti/, prove/).
+                type: image
+                required: true
+              - name: alt
+                label: Testo alternativo
+                description: Cosa si vede, in una frase. Vuoto solo se l'immagine è decorativa.
+                type: string
+                required: true
+              - name: punto_focale
+                label: Punto focale
+                description: La parte da tenere sempre visibile quando l'immagine viene ritagliata.
+                type: select
+                options:
+                  values:
+                    - centro
+                    - alto
+                    - basso
+                    - sinistra
+                    - destra
+                required: true
+              - name: adatta
+                label: Adatta
+                description: riempi = riempie il riquadro e può tagliare i bordi; intera = mostra tutta l'immagine (per gli screenshot verticali).
+                type: select
+                options:
+                  values:
+                    - riempi
+                    - intera
+                required: true
+            required: true
+        required: true
+      - name: apertura
+        label: Apertura
+        type: object
+        fields:
+          - name: etichetta
+            label: Etichetta piccola
+            description: Riga in maiuscoletto sopra il titolo.
+            type: string
+            required: true
+          - name: titolo
+            label: Titolo
+            description: '*parola* = corsivo, **parola** = blu'
+            type: string
+            required: true
+          - name: foto
+            label: Foto principale
+            type: object
+            fields:
+              - name: src
+                label: File
+                description: Un file in public/media (foto/, progetti/, icone/, strumenti/, prove/).
+                type: image
+                required: true
+              - name: alt
+                label: Testo alternativo
+                description: Cosa si vede, in una frase. Vuoto solo se l'immagine è decorativa.
+                type: string
+                required: true
+              - name: punto_focale
+                label: Punto focale
+                description: La parte da tenere sempre visibile quando l'immagine viene ritagliata.
+                type: select
+                options:
+                  values:
+                    - centro
+                    - alto
+                    - basso
+                    - sinistra
+                    - destra
+                required: true
+              - name: adatta
+                label: Adatta
+                description: riempi = riempie il riquadro e può tagliare i bordi; intera = mostra tutta l'immagine (per gli screenshot verticali).
+                type: select
+                options:
+                  values:
+                    - riempi
+                    - intera
+                required: true
+            required: true
+        required: true
+      - name: dettagli
+        label: Dettagli
+        type: object
+        fields:
+          - name: etichetta
+            label: Etichetta
+            type: string
+            required: true
+          - name: valore
+            label: Valore
+            type: string
+            required: true
+          - name: link
+            label: Link
+            type: string
+        list: true
+        required: true
+      - name: percorso
+        label: Il percorso
+        type: object
+        fields:
+          - name: etichetta
+            label: Nome della sezione
+            type: string
+            required: true
+          - name: didascalia
+            label: Didascalia
+            type: string
+            required: true
+          - name: titolo
+            label: Titolo
+            description: '*parola* = corsivo, **parola** = blu'
+            type: string
+            required: true
+          - name: voci
+            label: Tappe
+            type: object
+            fields:
+              - name: tappa
+                label: Tappa
+                type: string
+                required: true
+              - name: testo
+                label: Testo
+                type: text
+                required: true
+              - name: loghi
+                label: Loghi
+                description: Loghi ufficiali degli strumenti di questa tappa (in public/media/strumenti/ o icone/).
+                type: object
+                fields:
+                  - name: src
+                    label: File
+                    description: Un file in public/media (foto/, progetti/, icone/, strumenti/, prove/).
+                    type: image
+                    required: true
+                  - name: alt
+                    label: Testo alternativo
+                    description: Cosa si vede, in una frase. Vuoto solo se l'immagine è decorativa.
+                    type: string
+                    required: true
+                  - name: punto_focale
+                    label: Punto focale
+                    description: La parte da tenere sempre visibile quando l'immagine viene ritagliata.
+                    type: select
+                    options:
+                      values:
+                        - centro
+                        - alto
+                        - basso
+                        - sinistra
+                        - destra
+                    required: true
+                  - name: adatta
+                    label: Adatta
+                    description: riempi = riempie il riquadro e può tagliare i bordi; intera = mostra tutta l'immagine (per gli screenshot verticali).
+                    type: select
+                    options:
+                      values:
+                        - riempi
+                        - intera
+                    required: true
+                list: true
+              - name: prova
+                label: Prova
+                description: >-
+                  Facoltativa: il codice di una prova della pagina Open source (per esempio pr-170951-grazie). La sua schermata vera si vede
+                  accanto alla tappa.
+                type: string
+              - name: video
+                label: Video della prova
+                description: 'Facoltativo: al posto della schermata, il video della stessa prova (si legge meglio in piccolo).'
+                type: object
+                fields:
+                  - name: mp4
+                    label: Video MP4
+                    description: File .mp4 in public/media/video.
+                    type: file
+                    required: true
+                  - name: webm
+                    label: Video WebM
+                    description: Lo stesso video in formato .webm.
+                    type: file
+                    required: true
+                  - name: copertina
+                    label: Copertina
+                    description: Immagine mostrata prima che il video parta e a chi ha chiesto meno movimento.
+                    type: image
+                    required: true
+                  - name: descrizione
+                    label: Descrizione
+                    description: Cosa mostra il video, in una frase (per chi non lo vede).
+                    type: string
+                    required: true
+                  - name: didascalia
+                    label: Didascalia breve
+                    description: Riga sopra il video nelle pagine progetto, al massimo 60 caratteri. Se è vuota si usa la descrizione.
+                    type: string
+                  - name: telefono
+                    label: Versione per il telefono
+                    description: 'Facoltativa: se c’è, sotto i 640 px si vede questa al posto del video orizzontale.'
+                    type: object
+                    fields:
+                      - name: mp4
+                        label: Video MP4 per il telefono
+                        description: Versione verticale 4:5 (720×900) per gli schermi sotto i 640 px.
+                        type: file
+                        required: true
+                      - name: webm
+                        label: Video WebM per il telefono
+                        description: La stessa versione verticale in .webm.
+                        type: file
+                        required: true
+                  - name: punto_focale
+                    label: Punto focale
+                    description: La parte da tenere sempre visibile.
+                    type: select
+                    options:
+                      values:
+                        - centro
+                        - alto
+                        - basso
+                        - sinistra
+                        - destra
+                    required: true
+                  - name: adatta
+                    label: Adatta
+                    description: riempi = riempie il riquadro; intera = mostra tutto il video.
+                    type: select
+                    options:
+                      values:
+                        - riempi
+                        - intera
+                    required: true
+              - name: progetti
+                label: Progetti
+                description: 'Facoltativo: le icone dei progetti di questa tappa, che portano alle loro pagine.'
+                type: select
+                options:
+                  values:
+                    - agenti-personali
+                    - sfornaclaw
+                    - privacybridge
+                    - automazioni
+                    - open-source
+                list: true
+            list: true
+            required: true
+        required: true
+      - name: obiettivi
+        label: Obiettivi
+        type: object
+        fields:
+          - name: etichetta
+            label: Nome della sezione
+            type: string
+            required: true
+          - name: didascalia
+            label: Didascalia
+            type: string
+            required: true
+          - name: titolo
+            label: Titolo
+            description: '*parola* = corsivo, **parola** = blu'
+            type: string
+            required: true
+          - name: voci
+            label: Voci
+            type: object
+            fields:
+              - name: titolo
+                label: Titolo
+                type: string
+                required: true
+              - name: testo
+                label: Testo
+                type: text
+                required: true
+              - name: progetto
+                label: Progetto
+                description: 'Facoltativo: mostra l’icona del progetto e porta alla sua pagina.'
+                type: select
+                options:
+                  values:
+                    - agenti-personali
+                    - sfornaclaw
+                    - privacybridge
+                    - automazioni
+                    - open-source
+            list: true
+            required: true
+        required: true
+      - name: body
+        label: Testo
+        type: rich-text
+  - name: newsletter-pagina
+    label: 'Newsletter: pagina e testi'
+    type: file
+    path: src/content/pagine/newsletter.yml
+    format: yaml
+    fields:
+      - name: seo
+        label: Ricerca e condivisione
+        type: object
+        fields:
+          - name: titolo
+            label: Titolo nella scheda del browser
+            type: string
+            required: true
+          - name: descrizione
+            label: Descrizione per Google e per le anteprime
+            description: Una o due frasi, al massimo 160 caratteri.
+            type: text
+            required: true
+          - name: immagine
+            label: Immagine di condivisione
+            description: Anteprima quando la pagina viene condivisa (1200×630).
+            type: object
+            fields:
+              - name: src
+                label: File
+                description: Un file in public/media (foto/, progetti/, icone/, strumenti/, prove/).
+                type: image
+                required: true
+              - name: alt
+                label: Testo alternativo
+                description: Cosa si vede, in una frase. Vuoto solo se l'immagine è decorativa.
+                type: string
+                required: true
+              - name: punto_focale
+                label: Punto focale
+                description: La parte da tenere sempre visibile quando l'immagine viene ritagliata.
+                type: select
+                options:
+                  values:
+                    - centro
+                    - alto
+                    - basso
+                    - sinistra
+                    - destra
+                required: true
+              - name: adatta
+                label: Adatta
+                description: riempi = riempie il riquadro e può tagliare i bordi; intera = mostra tutta l'immagine (per gli screenshot verticali).
+                type: select
+                options:
+                  values:
+                    - riempi
+                    - intera
+                required: true
+            required: true
+        required: true
+      - name: apertura
+        label: Apertura
+        type: object
+        fields:
+          - name: etichetta
+            label: Etichetta piccola
+            description: Riga in maiuscoletto sopra il titolo.
+            type: string
+            required: true
+          - name: titolo
+            label: Titolo
+            description: '*parola* = corsivo, **parola** = blu'
+            type: string
+            required: true
+          - name: testo
+            label: Testo
+            type: text
+            required: true
+        required: true
+      - name: modulo
+        label: Modulo di iscrizione
+        type: object
+        fields:
+          - name: etichetta_email
+            label: Etichetta del campo email
+            type: string
+            required: true
+          - name: segnaposto
+            label: Testo di esempio nel campo
+            type: string
+            required: true
+          - name: invia
+            label: Bottone
+            type: string
+            required: true
+          - name: attesa
+            label: Mentre invia
+            type: string
+            required: true
+          - name: fatto
+            label: Iscrizione riuscita
+            type: string
+            required: true
+          - name: errore
+            label: Errore
+            type: string
+            required: true
+          - name: non_valido
+            label: Email non valida
+            type: string
+            required: true
+          - name: nota
+            label: Nota sotto il modulo
+            type: string
+            required: true
+          - name: oggetto_email
+            label: Oggetto dell’email di ripiego
+            type: string
+            required: true
+        required: true
+      - name: cosa_ricevi
+        label: Cosa ricevi
+        type: object
+        fields:
+          - name: etichetta
+            label: Nome della sezione
+            type: string
+            required: true
+          - name: didascalia
+            label: Didascalia
+            type: string
+            required: true
+          - name: titolo
+            label: Titolo
+            description: '*parola* = corsivo, **parola** = blu'
+            type: string
+            required: true
+          - name: testo
+            label: Testo
+            type: text
+            required: true
+          - name: voci
+            label: Voci
+            type: object
+            fields:
+              - name: titolo
+                label: Titolo
+                type: string
+                required: true
+              - name: testo
+                label: Testo
+                type: text
+                required: true
+            list: true
+            required: true
+        required: true
+      - name: archivio
+        label: Archivio
+        type: object
+        fields:
+          - name: etichetta
+            label: Nome della sezione
+            type: string
+            required: true
+          - name: didascalia
+            label: Didascalia
+            type: string
+            required: true
+          - name: titolo
+            label: Titolo
+            description: '*parola* = corsivo, **parola** = blu'
+            type: string
+            required: true
+          - name: testo
+            label: Testo
+            type: text
+            required: true
+          - name: ultimo
+            label: Link all’ultimo numero
+            description: Porta a /newsletter/ultimo/.
+            type: string
+            required: true
+        required: true
+      - name: domande
+        label: Domande frequenti
+        type: object
+        fields:
+          - name: etichetta
+            label: Nome della sezione
+            type: string
+            required: true
+          - name: didascalia
+            label: Didascalia
+            type: string
+            required: true
+          - name: titolo
+            label: Titolo
+            description: '*parola* = corsivo, **parola** = blu'
+            type: string
+            required: true
+          - name: voci
+            label: Domande
+            type: object
+            fields:
+              - name: domanda
+                label: Domanda
+                type: string
+                required: true
+              - name: risposta
+                label: Risposta
+                type: text
+                required: true
+            list: true
+            required: true
+        required: true
+      - name: numero
+        label: Testi della pagina di un numero
+        type: object
+        fields:
+          - name: numero
+            label: Numero
+            type: string
+            required: true
+          - name: fonte
+            label: Leggi su
+            type: string
+            required: true
+          - name: punto
+            label: Titolo «il punto»
+            type: string
+            required: true
+          - name: firma
+            label: Firma
+            type: string
+            required: true
+          - name: archivio
+            label: Torna all’archivio
+            type: string
+            required: true
+          - name: precedente
+            label: Numero precedente
+            type: string
+            required: true
+          - name: successivo
+            label: Numero successivo
+            type: string
+            required: true
+          - name: iscriviti
+            label: Invito a iscriversi
+            type: string
+            required: true
+          - name: leggi
+            label: Link «leggi il numero» (anteprima dell’ultimo numero)
+            type: string
+            required: true
+          - name: prossimo
+            label: Nome dell’ultima sezione (iscrizione e numeri vicini)
+            type: string
+            required: true
+        required: true
+      - name: ultimo
+        label: Pagina «ultimo numero»
+        type: object
+        fields:
+          - name: titolo
+            label: Titolo
+            type: string
+            required: true
+          - name: testo
+            label: Testo
+            type: text
+            required: true
+        required: true
+      - name: confermato
+        label: Pagina «iscrizione confermata»
+        type: object
+        fields:
+          - name: etichetta
+            label: Etichetta
+            type: string
+            required: true
+          - name: titolo
+            label: Titolo
+            description: '*parola* = corsivo, **parola** = blu'
+            type: string
+            required: true
+          - name: testo
+            label: Testo
+            type: text
+            required: true
+          - name: strade
+            label: Dove andare
+            type: object
+            fields:
+              - name: etichetta
+                label: Nome della sezione
+                type: string
+                required: true
+              - name: didascalia
+                label: Didascalia
+                type: string
+                required: true
+              - name: voci
+                label: Strade
+                type: object
+                fields:
+                  - name: icona
+                    label: Icona
+                    type: select
+                    options:
+                      values:
+                        - posta
+                        - github
+                        - instagram
+                        - x
+                        - casa
+                        - progetti
+                        - newsletter
+                    required: true
+                  - name: titolo
+                    label: Titolo
+                    type: string
+                    required: true
+                  - name: testo
+                    label: Testo
+                    type: text
+                    required: true
+                  - name: link
+                    label: Link
+                    type: object
+                    fields:
+                      - name: etichetta
+                        label: Testo
+                        type: string
+                        required: true
+                      - name: link
+                        label: Link
+                        type: string
+                        required: true
+                    required: true
+                list: true
+                required: true
+            required: true
+        required: true
+      - name: link_non_valido
+        label: Pagina «link non valido»
+        type: object
+        fields:
+          - name: etichetta
+            label: Etichetta
+            type: string
+            required: true
+          - name: titolo
+            label: Titolo
+            description: '*parola* = corsivo, **parola** = blu'
+            type: string
+            required: true
+          - name: testo
+            label: Testo
+            type: text
+            required: true
+          - name: nota
+            label: Nota sotto il modulo
+            type: text
+            required: true
+        required: true
+  - name: newsletter
+    label: 'Newsletter: numeri'
+    type: collection
+    path: src/content/newsletter
+    format: yaml-frontmatter
+    description: >-
+      Un numero = un file. Il nome del file è la data (per esempio 2026-10-20.md) e diventa l’indirizzo /newsletter/numeri/<data>/. Le
+      immagini vanno in public/newsletter/numeri/<data>/.
+    filename: '{year}-{month}-{day}.md'
+    view:
+      fields:
+        - titolo
+        - data
+        - numero
+    fields:
+      - name: numero
+        label: Numero
+        type: number
+        required: true
+      - name: data
+        label: Data di uscita
+        type: date
+        options:
+          format: yyyy-MM-dd
+        required: true
+      - name: titolo
+        label: Titolo
+        type: string
+        required: true
+      - name: sommario
+        label: Sommario
+        type: text
+        required: true
+      - name: lancio
+        label: Codice di lancio
+        description: Lo scrive l’automazione. Non serve toccarlo.
+        type: string
+      - name: oggetto
+        label: Oggetto dell’email
+        description: Lo scrive l’automazione.
+        type: string
+      - name: riga_anteprima
+        label: Riga di anteprima dell’email
+        description: Il testo che le app di posta mostrano accanto all’oggetto.
+        type: string
+      - name: copertina
+        label: Copertina
+        type: object
+        fields:
+          - name: src
+            label: File
+            description: Un file in public/media (foto/, progetti/, icone/, strumenti/, prove/).
+            type: image
+            options:
+              media: newsletter
+            required: true
+          - name: alt
+            label: Testo alternativo
+            description: Cosa si vede, in una frase. Vuoto solo se l'immagine è decorativa.
+            type: string
+            required: true
+          - name: punto_focale
+            label: Punto focale
+            description: La parte da tenere sempre visibile quando l'immagine viene ritagliata.
+            type: select
+            options:
+              values:
+                - centro
+                - alto
+                - basso
+                - sinistra
+                - destra
+            required: true
+          - name: adatta
+            label: Adatta
+            description: riempi = riempie il riquadro e può tagliare i bordi; intera = mostra tutta l'immagine (per gli screenshot verticali).
+            type: select
+            options:
+              values:
+                - riempi
+                - intera
+            required: true
+        required: true
+      - name: articoli
+        label: Articoli
+        type: object
+        fields:
+          - name: rubrica
+            label: Rubrica
+            description: Per esempio «Mercati».
+            type: string
+            required: true
+          - name: titolo
+            label: Titolo
+            type: string
+            required: true
+          - name: testo
+            label: Testo
+            description: Paragrafi separati da una riga vuota.
+            type: text
+            required: true
+          - name: immagine
+            label: Immagine
+            type: object
+            fields:
+              - name: src
+                label: File
+                description: Un file in public/media (foto/, progetti/, icone/, strumenti/, prove/).
+                type: image
+                options:
+                  media: newsletter
+                required: true
+              - name: alt
+                label: Testo alternativo
+                description: Cosa si vede, in una frase. Vuoto solo se l'immagine è decorativa.
+                type: string
+                required: true
+              - name: punto_focale
+                label: Punto focale
+                description: La parte da tenere sempre visibile quando l'immagine viene ritagliata.
+                type: select
+                options:
+                  values:
+                    - centro
+                    - alto
+                    - basso
+                    - sinistra
+                    - destra
+                required: true
+              - name: adatta
+                label: Adatta
+                description: riempi = riempie il riquadro e può tagliare i bordi; intera = mostra tutta l'immagine (per gli screenshot verticali).
+                type: select
+                options:
+                  values:
+                    - riempi
+                    - intera
+                required: true
+          - name: fonte
+            label: Fonte
+            type: object
+            fields:
+              - name: nome
+                label: Nome della fonte
+                type: string
+                required: true
+              - name: link
+                label: Link all’articolo
+                type: string
+                required: true
+        list: true
+        required: true
+      - name: punto
+        label: Il punto
+        description: Il commento che tiene insieme le notizie.
+        type: text
+      - name: body
+        label: Testo
+        type: rich-text
+  - name: newsletter-en
+    label: 'Newsletter: pagina inglese'
+    type: file
+    path: src/content/pagine/newsletter-en.yml
+    format: yaml
+    fields:
+      - name: seo
+        label: Ricerca e condivisione
+        type: object
+        fields:
+          - name: titolo
+            label: Titolo nella scheda del browser
+            type: string
+            required: true
+          - name: descrizione
+            label: Descrizione per Google e per le anteprime
+            description: Una o due frasi, al massimo 160 caratteri.
+            type: text
+            required: true
+          - name: immagine
+            label: Immagine di condivisione
+            description: Anteprima quando la pagina viene condivisa (1200×630).
+            type: object
+            fields:
+              - name: src
+                label: File
+                description: Un file in public/media (foto/, progetti/, icone/, strumenti/, prove/).
+                type: image
+                required: true
+              - name: alt
+                label: Testo alternativo
+                description: Cosa si vede, in una frase. Vuoto solo se l'immagine è decorativa.
+                type: string
+                required: true
+              - name: punto_focale
+                label: Punto focale
+                description: La parte da tenere sempre visibile quando l'immagine viene ritagliata.
+                type: select
+                options:
+                  values:
+                    - centro
+                    - alto
+                    - basso
+                    - sinistra
+                    - destra
+                required: true
+              - name: adatta
+                label: Adatta
+                description: riempi = riempie il riquadro e può tagliare i bordi; intera = mostra tutta l'immagine (per gli screenshot verticali).
+                type: select
+                options:
+                  values:
+                    - riempi
+                    - intera
+                required: true
+            required: true
+        required: true
+      - name: apertura
+        label: Apertura
+        type: object
+        fields:
+          - name: etichetta
+            label: Etichetta piccola
+            description: Riga in maiuscoletto sopra il titolo.
+            type: string
+            required: true
+          - name: titolo
+            label: Titolo
+            description: '*parola* = corsivo, **parola** = blu'
+            type: string
+            required: true
+          - name: testo
+            label: Testo
+            type: text
+            required: true
+        required: true
+      - name: archivio_link
+        label: Link alla newsletter in italiano
+        type: object
+        fields:
+          - name: etichetta
+            label: Testo
+            type: string
+            required: true
+          - name: link
+            label: Link
+            type: string
+            required: true
+        required: true
+      - name: ultimo
+        label: Riquadro dell’ultimo numero
+        type: object
+        fields:
+          - name: etichetta
+            label: Etichetta del numero
+            description: 'Per esempio: Issue.'
+            type: string
+            required: true
+          - name: link
+            label: Link al numero
+            description: 'Per esempio: Read it, in Italian.'
+            type: string
+            required: true
+        required: true
+      - name: indice
+        label: Nome dell’indice delle sezioni
+        description: Lo leggono i lettori di schermo.
+        type: string
+        required: true
+      - name: cosa_e
+        label: Che cos’è
+        type: object
+        fields:
+          - name: etichetta
+            label: Nome della sezione
+            type: string
+            required: true
+          - name: didascalia
+            label: Didascalia
+            type: string
+            required: true
+          - name: titolo
+            label: Titolo
+            description: '*parola* = corsivo, **parola** = blu'
+            type: string
+            required: true
+          - name: testo
+            label: Testo
+            type: text
+            required: true
+        required: true
+      - name: resto
+        label: Il resto del sito
+        type: object
+        fields:
+          - name: etichetta
+            label: Nome della sezione
+            type: string
+            required: true
+          - name: didascalia
+            label: Didascalia
+            type: string
+            required: true
+          - name: titolo
+            label: Titolo
+            description: '*parola* = corsivo, **parola** = blu'
+            type: string
+            required: true
+          - name: testo
+            label: Testo
+            type: text
+            required: true
+          - name: link
+            label: Link
+            type: object
+            fields:
+              - name: etichetta
+                label: Testo
+                type: string
+                required: true
+              - name: link
+                label: Link
+                type: string
+                required: true
+            required: true
+        required: true
+      - name: traduzioni
+        label: Menu e piè di pagina in inglese
+        description: Su questa pagina menu, piè di pagina e testi dell’interfaccia usano queste traduzioni. Un testo che non è qui resta in italiano.
+        type: object
+        fields:
+          - name: it
+            label: In italiano
+            description: Il testo esatto come compare nel menu, nel piè di pagina o nell’interfaccia.
+            type: string
+            required: true
+          - name: en
+            label: In inglese
+            type: string
+            required: true
+        list: true
+        required: true
+  - name: contatti
+    label: Contatti
+    type: file
+    path: src/content/pagine/contatti.yml
+    format: yaml
+    fields:
+      - name: seo
+        label: Ricerca e condivisione
+        type: object
+        fields:
+          - name: titolo
+            label: Titolo nella scheda del browser
+            type: string
+            required: true
+          - name: descrizione
+            label: Descrizione per Google e per le anteprime
+            description: Una o due frasi, al massimo 160 caratteri.
+            type: text
+            required: true
+          - name: immagine
+            label: Immagine di condivisione
+            description: Anteprima quando la pagina viene condivisa (1200×630).
+            type: object
+            fields:
+              - name: src
+                label: File
+                description: Un file in public/media (foto/, progetti/, icone/, strumenti/, prove/).
+                type: image
+                required: true
+              - name: alt
+                label: Testo alternativo
+                description: Cosa si vede, in una frase. Vuoto solo se l'immagine è decorativa.
+                type: string
+                required: true
+              - name: punto_focale
+                label: Punto focale
+                description: La parte da tenere sempre visibile quando l'immagine viene ritagliata.
+                type: select
+                options:
+                  values:
+                    - centro
+                    - alto
+                    - basso
+                    - sinistra
+                    - destra
+                required: true
+              - name: adatta
+                label: Adatta
+                description: riempi = riempie il riquadro e può tagliare i bordi; intera = mostra tutta l'immagine (per gli screenshot verticali).
+                type: select
+                options:
+                  values:
+                    - riempi
+                    - intera
+                required: true
+            required: true
+        required: true
+      - name: apertura
+        label: Apertura
+        type: object
+        fields:
+          - name: etichetta
+            label: Etichetta piccola
+            description: Riga in maiuscoletto sopra il titolo.
+            type: string
+            required: true
+          - name: titolo
+            label: Titolo
+            description: '*parola* = corsivo, **parola** = blu'
+            type: string
+            required: true
+          - name: testo
+            label: Testo
+            type: text
+            required: true
+          - name: foto
+            label: Foto
+            type: object
+            fields:
+              - name: src
+                label: File
+                description: Un file in public/media (foto/, progetti/, icone/, strumenti/, prove/).
+                type: image
+                required: true
+              - name: alt
+                label: Testo alternativo
+                description: Cosa si vede, in una frase. Vuoto solo se l'immagine è decorativa.
+                type: string
+                required: true
+              - name: punto_focale
+                label: Punto focale
+                description: La parte da tenere sempre visibile quando l'immagine viene ritagliata.
+                type: select
+                options:
+                  values:
+                    - centro
+                    - alto
+                    - basso
+                    - sinistra
+                    - destra
+                required: true
+              - name: adatta
+                label: Adatta
+                description: riempi = riempie il riquadro e può tagliare i bordi; intera = mostra tutta l'immagine (per gli screenshot verticali).
+                type: select
+                options:
+                  values:
+                    - riempi
+                    - intera
+                required: true
+            required: true
+        required: true
+      - name: scrivimi
+        label: Sezione «scrivimi»
+        type: object
+        fields:
+          - name: etichetta
+            label: Nome della sezione
+            type: string
+            required: true
+          - name: didascalia
+            label: Didascalia
+            type: string
+            required: true
+          - name: nota
+            label: Nota sotto il bottone
+            type: text
+            required: true
+        required: true
+      - name: altri_canali
+        label: Altri canali
+        type: object
+        fields:
+          - name: etichetta
+            label: Nome della sezione
+            type: string
+            required: true
+          - name: didascalia
+            label: Didascalia
+            type: string
+            required: true
+          - name: voci
+            label: Canali
+            type: object
+            fields:
+              - name: icona
+                label: Icona
+                type: select
+                options:
+                  values:
+                    - posta
+                    - github
+                    - instagram
+                    - x
+                    - casa
+                    - progetti
+                    - newsletter
+                required: true
+              - name: titolo
+                label: Titolo
+                type: string
+                required: true
+              - name: testo
+                label: Testo
+                type: text
+                required: true
+              - name: link
+                label: Link
+                type: object
+                fields:
+                  - name: etichetta
+                    label: Testo
+                    type: string
+                    required: true
+                  - name: link
+                    label: Link
+                    type: string
+                    required: true
+                required: true
+            list: true
+            required: true
+        required: true
+      - name: modulo
+        label: Modulo
+        type: object
+        fields:
+          - name: titolo
+            label: Titolo
+            type: string
+            required: true
+          - name: oggetto
+            label: Oggetto dell’email
+            type: string
+            required: true
+          - name: nome
+            label: Etichetta nome
+            type: string
+            required: true
+          - name: email
+            label: Etichetta email
+            type: string
+            required: true
+          - name: messaggio
+            label: Etichetta messaggio
+            type: string
+            required: true
+          - name: invia
+            label: Bottone invia
+            type: string
+            required: true
+          - name: inviato
+            label: Messaggio inviato
+            type: string
+            required: true
+          - name: errore
+            label: Errore
+            type: string
+            required: true
+          - name: senza_chiave
+            label: Testo senza modulo
+            type: string
+            required: true
+          - name: bottone_email
+            label: Bottone email
+            type: string
+            required: true
+        required: true
+  - name: privacy
+    label: Privacy
+    type: file
+    path: src/content/pagine/privacy.md
+    format: yaml-frontmatter
+    fields:
+      - name: seo
+        label: Ricerca e condivisione
+        type: object
+        fields:
+          - name: titolo
+            label: Titolo nella scheda del browser
+            type: string
+            required: true
+          - name: descrizione
+            label: Descrizione per Google e per le anteprime
+            description: Una o due frasi, al massimo 160 caratteri.
+            type: text
+            required: true
+          - name: immagine
+            label: Immagine di condivisione
+            description: Anteprima quando la pagina viene condivisa (1200×630).
+            type: object
+            fields:
+              - name: src
+                label: File
+                description: Un file in public/media (foto/, progetti/, icone/, strumenti/, prove/).
+                type: image
+                required: true
+              - name: alt
+                label: Testo alternativo
+                description: Cosa si vede, in una frase. Vuoto solo se l'immagine è decorativa.
+                type: string
+                required: true
+              - name: punto_focale
+                label: Punto focale
+                description: La parte da tenere sempre visibile quando l'immagine viene ritagliata.
+                type: select
+                options:
+                  values:
+                    - centro
+                    - alto
+                    - basso
+                    - sinistra
+                    - destra
+                required: true
+              - name: adatta
+                label: Adatta
+                description: riempi = riempie il riquadro e può tagliare i bordi; intera = mostra tutta l'immagine (per gli screenshot verticali).
+                type: select
+                options:
+                  values:
+                    - riempi
+                    - intera
+                required: true
+            required: true
+        required: true
+      - name: titolo
+        label: Titolo
+        type: string
+        required: true
+      - name: aggiornata
+        label: Aggiornata il
+        type: string
+        required: true
+      - name: sezione
+        label: Nome della sezione
+        type: string
+        required: true
+      - name: body
+        label: Testo
+        type: rich-text
+  - name: errore-404
+    label: Pagina 404
+    type: file
+    path: src/content/pagine/errore-404.yml
+    format: yaml
+    fields:
+      - name: seo
+        label: Ricerca e condivisione
+        type: object
+        fields:
+          - name: titolo
+            label: Titolo nella scheda del browser
+            type: string
+            required: true
+          - name: descrizione
+            label: Descrizione per Google e per le anteprime
+            description: Una o due frasi, al massimo 160 caratteri.
+            type: text
+            required: true
+          - name: immagine
+            label: Immagine di condivisione
+            description: Anteprima quando la pagina viene condivisa (1200×630).
+            type: object
+            fields:
+              - name: src
+                label: File
+                description: Un file in public/media (foto/, progetti/, icone/, strumenti/, prove/).
+                type: image
+                required: true
+              - name: alt
+                label: Testo alternativo
+                description: Cosa si vede, in una frase. Vuoto solo se l'immagine è decorativa.
+                type: string
+                required: true
+              - name: punto_focale
+                label: Punto focale
+                description: La parte da tenere sempre visibile quando l'immagine viene ritagliata.
+                type: select
+                options:
+                  values:
+                    - centro
+                    - alto
+                    - basso
+                    - sinistra
+                    - destra
+                required: true
+              - name: adatta
+                label: Adatta
+                description: riempi = riempie il riquadro e può tagliare i bordi; intera = mostra tutta l'immagine (per gli screenshot verticali).
+                type: select
+                options:
+                  values:
+                    - riempi
+                    - intera
+                required: true
+            required: true
+        required: true
+      - name: etichetta
+        label: Etichetta piccola
+        type: string
+        required: true
+      - name: titolo
+        label: Titolo
+        description: '*parola* = corsivo, **parola** = blu'
+        type: string
+        required: true
+      - name: testo
+        label: Testo
+        type: text
+        required: true
+      - name: strade
+        label: Dove andare
+        type: object
+        fields:
+          - name: etichetta
+            label: Nome della sezione
+            type: string
+            required: true
+          - name: didascalia
+            label: Didascalia
+            type: string
+            required: true
+          - name: voci
+            label: Strade
+            type: object
+            fields:
+              - name: icona
+                label: Icona
+                type: select
+                options:
+                  values:
+                    - posta
+                    - github
+                    - instagram
+                    - x
+                    - casa
+                    - progetti
+                    - newsletter
+                required: true
+              - name: titolo
+                label: Titolo
+                type: string
+                required: true
+              - name: testo
+                label: Testo
+                type: text
+                required: true
+              - name: link
+                label: Link
+                type: object
+                fields:
+                  - name: etichetta
+                    label: Testo
+                    type: string
+                    required: true
+                  - name: link
+                    label: Link
+                    type: string
+                    required: true
+                required: true
+            list: true
+            required: true
+        required: true
+  - name: menu
+    label: Menu
+    type: file
+    path: src/content/menu.yml
+    format: yaml
+    fields:
+      - name: voci
+        label: Voci del menu
+        type: object
+        fields:
+          - name: etichetta
+            label: Testo
+            type: string
+            required: true
+          - name: link
+            label: Link
+            type: string
+            required: true
+          - name: separatore
+            label: Linea prima della voce
+            type: boolean
+          - name: tendina
+            label: Tendina dei progetti
+            description: Se è sì, la voce apre l’elenco dei progetti con le icone.
+            type: boolean
+        list: true
+        required: true
+      - name: link_icona
+        label: Link con icona (GitHub)
+        type: object
+        fields:
+          - name: etichetta
+            label: Testo
+            type: string
+            required: true
+          - name: link
+            label: Link
+            type: string
+            required: true
+        required: true
+      - name: bottone
+        label: Bottone in alto a destra
+        type: object
+        fields:
+          - name: etichetta
+            label: Testo
+            type: string
+            required: true
+          - name: link
+            label: Link
+            type: string
+            required: true
+        required: true
+  - name: piede
+    label: Piè di pagina e invito finale
+    type: file
+    path: src/content/piede.yml
+    format: yaml
+    fields:
+      - name: frase
+        label: Frase sotto il logo
+        type: text
+        required: true
+      - name: colonne
+        label: Colonne di link
+        type: object
+        fields:
+          - name: titolo
+            label: Titolo
+            type: string
+            required: true
+          - name: link
+            label: Link
+            type: object
+            fields:
+              - name: etichetta
+                label: Testo
+                type: string
+                required: true
+              - name: link
+                label: Link
+                type: string
+                required: true
+            list: true
+            required: true
+        list: true
+        required: true
+      - name: motto
+        label: Riga in fondo a destra
+        type: string
+        required: true
+      - name: invito
+        label: Invito finale
+        description: Il blocco «scrivimi» in fondo a ogni pagina.
+        type: object
+        fields:
+          - name: etichetta
+            label: Nome della sezione
+            type: string
+            required: true
+          - name: sopratitolo
+            label: Sopratitolo
+            type: string
+            required: true
+          - name: titolo
+            label: Titolo
+            description: '*parola* = corsivo, **parola** = blu'
+            type: string
+            required: true
+          - name: testo
+            label: Testo
+            type: text
+            required: true
+          - name: bottone_principale
+            label: Bottone principale
+            type: object
+            fields:
+              - name: etichetta
+                label: Testo
+                type: string
+                required: true
+              - name: link
+                label: Link
+                type: string
+                required: true
+            required: true
+          - name: bottone_secondario
+            label: Bottone secondario
+            type: object
+            fields:
+              - name: etichetta
+                label: Testo
+                type: string
+                required: true
+              - name: link
+                label: Link
+                type: string
+                required: true
+            required: true
+        required: true
+  - name: impostazioni
+    label: Impostazioni
+    type: file
+    path: src/content/impostazioni.yml
+    format: yaml
+    fields:
+      - name: nome
+        label: Nome
+        type: string
+        required: true
+      - name: titolo_sito
+        label: Titolo del sito
+        description: Titolo della home nella scheda del browser.
+        type: string
+        required: true
+      - name: descrizione
+        label: Descrizione del sito
+        type: text
+        required: true
+      - name: indirizzo_sito
+        label: Indirizzo del sito
+        type: string
+        required: true
+      - name: email
+        label: Email
+        type: string
+        required: true
+      - name: partita_iva
+        label: Partita IVA
+        type: string
+        required: true
+      - name: lavoro
+        label: Lavoro
+        type: string
+        required: true
+      - name: immagine_condivisione
+        label: Immagine di condivisione predefinita
+        type: object
+        fields:
+          - name: src
+            label: File
+            description: Un file in public/media (foto/, progetti/, icone/, strumenti/, prove/).
+            type: image
+            required: true
+          - name: alt
+            label: Testo alternativo
+            description: Cosa si vede, in una frase. Vuoto solo se l'immagine è decorativa.
+            type: string
+            required: true
+          - name: punto_focale
+            label: Punto focale
+            description: La parte da tenere sempre visibile quando l'immagine viene ritagliata.
+            type: select
+            options:
+              values:
+                - centro
+                - alto
+                - basso
+                - sinistra
+                - destra
+            required: true
+          - name: adatta
+            label: Adatta
+            description: riempi = riempie il riquadro e può tagliare i bordi; intera = mostra tutta l'immagine (per gli screenshot verticali).
+            type: select
+            options:
+              values:
+                - riempi
+                - intera
+            required: true
+        required: true
+      - name: chiave_modulo
+        label: Chiave Web3Forms
+        description: Chiave pubblica del modulo contatti. Se è vuota, al posto del modulo compare un pulsante email.
+        type: string
+        required: true
+      - name: indirizzo_iscrizione
+        label: Indirizzo di iscrizione alla newsletter
+        description: Se è vuoto, il modulo prepara un’email di iscrizione.
+        type: string
+        required: true
+      - name: social
+        label: Profili social
+        type: object
+        fields:
+          - name: nome
+            label: Rete
+            type: select
+            options:
+              values:
+                - GitHub
+                - Instagram
+                - X
+                - LinkedIn
+            required: true
+          - name: indirizzo
+            label: Indirizzo del profilo
+            type: string
+            required: true
+        list: true
+        required: true
+      - name: interfaccia
+        label: Piccoli testi dell’interfaccia
+        type: object
+        fields:
+          - name: salta_al_contenuto
+            label: Link «vai al contenuto»
+            type: string
+            required: true
+          - name: menu_principale
+            label: Nome del menu
+            type: string
+            required: true
+          - name: apri_menu
+            label: Apri il menu
+            type: string
+            required: true
+          - name: chiudi_menu
+            label: Chiudi il menu
+            type: string
+            required: true
+          - name: cambia_tema
+            label: Cambia tema
+            type: string
+            required: true
+          - name: indice_sezioni
+            label: Nome dell’indice
+            type: string
+            required: true
+          - name: torna_alla_home
+            label: 'Logo: torna alla home'
+            type: string
+            required: true
+          - name: tutti_i_progetti
+            label: Voce «tutti i progetti»
+            type: string
+            required: true
+          - name: condividi
+            label: Condividi
+            type: string
+            required: true
+          - name: copia_link
+            label: Copia link
+            type: string
+            required: true
+          - name: link_copiato
+            label: Link copiato
+            type: string
+            required: true
+          - name: progetto
+            label: Progetto
+            type: string
+            required: true
+          - name: cosa_ottieni
+            label: Cosa ottieni
+            type: string
+            required: true
+          - name: dettagli
+            label: Dettagli
+            type: string
+            required: true
+          - name: altri_progetti
+            label: Altri progetti
+            type: string
+            required: true
+          - name: altri_progetti_didascalia
+            label: Didascalia «altri progetti»
+            type: string
+            required: true
+          - name: partita_iva
+            label: P.IVA
+            type: string
+            required: true
+          - name: email
+            label: Email
+            type: string
+            required: true
+          - name: vedi_su_github
+            label: Vedi su GitHub
+            type: string
+            required: true
+          - name: esplora
+            label: Esplora
+            type: string
+            required: true
+          - name: video
+            label: Etichetta dei video
+            type: string
+            required: true
+          - name: immagine_intera
+            label: Immagine intera
+            type: string
+            required: true
+          - name: ritratto
+            label: Etichetta del ritratto
+            type: string
+            required: true
+          - name: scorri
+            label: Scorri
+            type: string
+            required: true
+          - name: precedente
+            label: Precedente
+            type: string
+            required: true
+          - name: successiva
+            label: Successiva
+            type: string
+            required: true
+          - name: apre_nuova_scheda
+            label: Si apre in una nuova scheda
+            type: string
+            required: true
+        required: true

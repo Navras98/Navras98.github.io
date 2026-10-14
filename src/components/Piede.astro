@@ -1,0 +1,47 @@
+---
+import Glifo from './Glifo.astro';
+import Collegamento from './Collegamento.astro';
+import { pagina, traduttore } from '../lib/contenuti.js';
+const { lingua = 'it' } = Astro.props;
+const t = await traduttore(lingua);
+const piede = await pagina('piede');
+const imp = await pagina('impostazioni');
+const anno = new Date().getFullYear();
+---
+<footer class="piede">
+  <div class="contenitore">
+    <div class="piede-griglia">
+      <div class="piede-marchio">
+        <Glifo lettera="AS" titolo={imp.nome} />
+        <p>{t(piede.frase)}</p>
+        <a class="hud" href={`mailto:${imp.email}`}>{imp.email}</a>
+      </div>
+      {piede.colonne.map((c) => (
+        <nav aria-label={t(c.titolo)}>
+          <p class="hud faint">{t(c.titolo)}</p>
+          <ul>{c.link.map((l) => <li><Collegamento href={l.link}>{t(l.etichetta)}</Collegamento></li>)}</ul>
+        </nav>
+      ))}
+    </div>
+    <div class="piede-fondo">
+      <p class="hud faint">© {anno} {imp.nome} · {t(imp.interfaccia.partita_iva)} {imp.partita_iva}</p>
+      <p class="hud faint">{t(piede.motto)}</p>
+    </div>
+  </div>
+</footer>
+<style is:global>
+  .piede { border-top: 1px solid var(--line); }
+  .piede-griglia { display: grid; gap: 1px; background: var(--line); }
+  .piede-griglia > * { background: var(--bg); padding: var(--s-5); }
+  .piede-marchio svg { height: 28px; width: auto; color: var(--ink-strong); }
+  .piede-marchio p { margin-top: var(--s-4); max-width: 20rem; line-height: 1.625; color: var(--muted); }
+  .piede-marchio .hud { display: inline-block; margin-top: var(--s-5); color: var(--faint); transition: color .15s; }
+  @media (hover: hover) { .piede-marchio a.hud:hover { color: var(--ink); } }
+  .piede ul { display: flex; flex-direction: column; gap: 10px; margin-top: var(--s-4); }
+  .piede nav a { color: var(--muted); transition: color .15s; }
+  @media (hover: hover) { .piede nav a:hover { color: var(--ink); } }
+  .piede-fondo { display: flex; flex-direction: column; gap: var(--s-2); padding: var(--s-4) var(--margine); border-top: 1px solid var(--line); }
+  @media (min-width: 640px) { .piede-griglia { grid-template-columns: repeat(2, 1fr); } .piede-marchio { grid-column: 1 / -1; } }
+  @media (min-width: 768px) { .piede-griglia { grid-template-columns: repeat(4, 1fr); } .piede-griglia > * { padding: var(--s-6); } .piede-marchio { padding: var(--s-7) !important; } .piede-fondo { flex-direction: row; justify-content: space-between; } }
+  @media (min-width: 1100px) { .piede-griglia { grid-template-columns: 2fr 1fr 1fr 1fr 1fr; } .piede-marchio { grid-column: auto; } }
+</style>

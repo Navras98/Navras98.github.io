@@ -1,0 +1,31 @@
+---
+import Base from '../../layouts/Base.astro';
+import TestaPagina from '../../components/TestaPagina.astro';
+import ModuloIscrizione from '../../components/ModuloIscrizione.astro';
+import UltimoNumero from '../../components/UltimoNumero.astro';
+import { pagina, numeri } from '../../lib/contenuti.js';
+const [ultimo] = await numeri();
+const nl = await pagina('newsletterPagina');
+const { email } = await pagina('impostazioni');
+const l = nl.link_non_valido;
+const seo = { titolo: l.titolo.replace(/\*/g, '').replace(/[.\s]+$/, ''), descrizione: l.testo };
+---
+<Base seo={seo} noindex invito={false} indice={[{ id: 'hero', etichetta: l.etichetta }]}>
+  <section class="sezione" id="hero" aria-labelledby="titolo-pagina">
+    <div class="contenitore esito-apertura">
+      <TestaPagina etichetta={l.etichetta} titoloPagina={l.titolo} testo={l.testo} class="esito-pagina">
+        <div class="entra" style="--e:3"><ModuloIscrizione id="riprova" /></div>
+        <p class="esito-ripiego entra" style="--e:4">{l.nota.split(email).map((pezzo, i) => i === 0 ? pezzo : <><a href={`mailto:${email}`}>{email}</a>{pezzo}</>)}</p>
+      </TestaPagina>
+      {ultimo && <UltimoNumero n={ultimo} etichetta={nl.numero.numero} link={nl.numero.leggi} class="entra" style="--e:4" />}
+    </div>
+  </section>
+</Base>
+<style is:global>
+  .esito-apertura { display: grid; }
+  .esito-apertura .ultimo-numero { border-top: 1px solid var(--line); }
+  @media (min-width: 1100px) { .esito-apertura { grid-template-columns: 7fr 5fr; } .esito-apertura .ultimo-numero { border-top: 0; border-left: 1px solid var(--line); justify-content: center; padding-top: 120px; } }
+  .esito-pagina .iscrizione { margin-top: var(--s-6); }
+  .esito-ripiego a { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 3px; }
+  .esito-ripiego { margin-top: var(--s-6); padding-top: var(--s-5); border-top: 1px solid var(--line); max-width: 34rem; font-size: 1rem; line-height: 1.625; color: var(--ink); }
+</style>

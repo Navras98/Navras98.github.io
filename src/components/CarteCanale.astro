@@ -1,0 +1,39 @@
+---
+// Carte «canale» (come le carte di supporto di ArtCraft): icona colorata e titolo sulla stessa riga, testo e «Apri →».
+// Ogni carta ha il suo colore, a turno fra blu, viola e acqua (come le icone dei progetti).
+import Collegamento from './Collegamento.astro';
+import Icona from './Icona.astro';
+const { voci = [], livello = 'h2' } = Astro.props;
+const Titolo = livello;
+const COLORI = ['blu', 'viola', 'acqua'];
+---
+<ul class:list={['griglia', voci.length === 2 ? 'griglia-2' : 'griglia-3', 'carte-canale']}>
+  {voci.map((v, i) => (
+    <li data-rivela style={`--i:${i}`} class={`c-${COLORI[i % COLORI.length]}`}>
+      <Collegamento class="carta-canale" href={v.link.link}>
+        <span class="scheda-corpo">
+          <span class="carta-canale-testa"><span class="carta-canale-icona"><Icona nome={v.icona} /></span><Titolo class="titolo-scheda">{v.titolo}</Titolo></span>
+          <span class="testo">{v.testo}</span>
+          <span class="hud carta-canale-apri">{v.link.etichetta}<Icona nome="destra" /></span>
+        </span>
+      </Collegamento>
+    </li>
+  ))}
+</ul>
+<style is:global>
+  .carte-canale { list-style: none; }
+  @media (min-width: 640px) { .carte-canale.griglia-3 { grid-template-columns: repeat(3, 1fr); } }
+  .carta-canale { display: flex; flex-direction: column; height: 100%; color: inherit; transition: background-color var(--rapido); }
+  .carta-canale .scheda-corpo { display: flex; flex-direction: column; flex: 1; }
+  .carta-canale .testo { display: block; }
+  .carta-canale-icona { display: grid; place-items: center; flex: none; width: 32px; height: 32px; border-radius: 8px; background: color-mix(in srgb, var(--app) 20%, transparent); color: var(--app-ink); }
+  .carta-canale-icona svg { width: 16px; height: 16px; }
+  .carta-canale-testa { display: flex; align-items: center; gap: var(--s-3); margin-bottom: var(--s-3); }
+  .carta-canale .titolo-scheda { margin-top: 0; font-size: 1.25rem; }
+  .carta-canale-apri { display: inline-flex; align-items: center; gap: 8px; margin-top: auto; padding-top: var(--s-5); color: var(--ink); }
+  .carta-canale-apri svg { width: 12px; height: 12px; transition: transform var(--rapido); }
+  @media (hover: hover) {
+    .carta-canale:hover { background: var(--bg-sunken); }
+    .carta-canale:hover .carta-canale-apri svg { transform: translateX(4px); }
+  }
+</style>

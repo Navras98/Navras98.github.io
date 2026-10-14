@@ -1,0 +1,39 @@
+---
+// L'invito finale «scrivimi», uguale in fondo a ogni pagina (testi in src/content/piede.yml).
+import Sezione from './Sezione.astro';
+import Bottone from './Bottone.astro';
+import { pagina, titolo, esterno } from '../lib/contenuti.js';
+const { invito: i } = await pagina('piede');
+---
+<Sezione id="scrivimi" etichetta={i.etichetta} senzaBarra class="invito">
+  <div class="invito-archi" aria-hidden="true">
+    <svg viewBox="0 0 1200 600" fill="none" preserveAspectRatio="xMidYMid slice">
+      <circle cx="600" cy="640" r="560" stroke="#2fd39c" stroke-opacity=".5" stroke-width="1.5" stroke-dasharray="620 3600" transform="rotate(-120 600 640)" />
+      <circle cx="600" cy="640" r="470" stroke="#ff6259" stroke-opacity=".45" stroke-width="1.5" stroke-dasharray="460 3200" transform="rotate(-60 600 640)" />
+      <circle cx="600" cy="640" r="390" stroke="#9d4cff" stroke-opacity=".5" stroke-width="1.5" stroke-dasharray="420 3000" transform="rotate(-150 600 640)" />
+      <circle cx="600" cy="640" r="315" stroke="#2d81ff" stroke-opacity=".55" stroke-width="1.5" stroke-dasharray="380 2600" transform="rotate(-40 600 640)" />
+      <circle cx="600" cy="640" r="520" stroke="currentColor" stroke-opacity=".08" stroke-width="12" stroke-dasharray="1.2 22" />
+    </svg>
+  </div>
+  <div class="invito-corpo">
+    <p class="hud faint">{i.sopratitolo}</p>
+    <h2 class="invito-titolo" data-rivela set:html={titolo(i.titolo)} />
+    <p class="testo-grande" data-rivela style="--i:1">{i.testo}</p>
+    <div class="bottoni" data-rivela style="--i:2">
+      <Bottone href={i.bottone_principale.link} tipo="pieno" icona="posta">{i.bottone_principale.etichetta}</Bottone>
+      {/* il secondo bottone non porta alla pagina stessa (sulla pagina Metodo non si vede) */}
+      {Astro.url.pathname.replace(/index\.html$/, '') !== i.bottone_secondario.link && <Bottone href={i.bottone_secondario.link} tipo="bordato" icona={esterno(i.bottone_secondario.link) && i.bottone_secondario.link.includes('github.com') ? 'github' : undefined}>{i.bottone_secondario.etichetta}</Bottone>}
+    </div>
+  </div>
+</Sezione>
+<style is:global>
+  .invito { overflow: hidden; }
+  .invito-archi { position: absolute; inset: 0; color: var(--ink); pointer-events: none; }
+  .invito-archi svg { width: 100%; height: 100%; }
+  .invito-corpo { position: relative; display: flex; flex-direction: column; align-items: center; padding: var(--s-10) var(--margine); text-align: center; }
+  .invito-titolo { margin-top: var(--s-5); font-family: var(--font-display); font-weight: 620; font-stretch: 118%; font-size: 3rem; line-height: .98; letter-spacing: -.04em; color: var(--ink-strong); }
+  .invito-titolo .corsivo { color: var(--ink-strong); }
+  .invito .testo-grande { margin-top: var(--s-5); max-width: 28rem; }
+  .invito .bottoni { justify-content: center; margin-top: var(--s-7); }
+  @media (min-width: 768px) { .invito-titolo { font-size: 4.5rem; } .invito-corpo { padding-block: var(--s-11); } }
+</style>

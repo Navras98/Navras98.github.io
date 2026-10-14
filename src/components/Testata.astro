@@ -1,0 +1,152 @@
+---
+// Testata fissa: logo, menu (con la tendina dei progetti), GitHub, tema e bottone. Sotto i 1100 px il menu diventa un pannello.
+import Glifo from './Glifo.astro';
+import Icona from './Icona.astro';
+import Immagine from './Immagine.astro';
+import Collegamento from './Collegamento.astro';
+import { pagina, progetti, spazio, traduttore } from '../lib/contenuti.js';
+const { lingua = 'it' } = Astro.props;
+const t = await traduttore(lingua);
+const menu = await pagina('menu');
+const { interfaccia: uiIt, social } = await pagina('impostazioni');
+const ui = Object.fromEntries(Object.entries(uiIt).map(([k, v]) => [k, typeof v === 'string' ? t(v) : v]));
+const elenco = await progetti();
+const percorso = Astro.url.pathname.replace(/index\.html$/, '').replace(/\/?$/, '/');
+const attiva = (link) => (link === '/' ? percorso === '/' : percorso.startsWith(link));
+const instagram = social.find((s) => s.nome === 'Instagram');
+---
+<header class="testata" id="testata" data-testata transition:animate="none">
+  <div class="testata-riga">
+    <div class="testata-sx">
+      <a class="logo" href="/" aria-label={ui.torna_alla_home}><Glifo lettera="AS" /></a>
+      <nav class="nav" aria-label={ui.menu_principale}>
+        <ul>
+          {menu.voci.map((v) => (
+            <li class:list={[v.separatore && 'separatore', v.tendina && 'con-tendina']} data-tendina={v.tendina ? '' : undefined}>
+              {v.tendina ? (
+                <>
+                  <button class:list={['voce', 'hud', attiva(v.link) && 'attiva']} type="button" aria-expanded="false" aria-controls="tendina-progetti" data-tendina-bottone>
+                    <span>{t(v.etichetta)}<Icona nome="giu" class="freccia-giu" /></span>
+                  </button>
+                  <div class="tendina" id="tendina-progetti">
+                    <ul>
+                      {elenco.map((p) => (
+                        <li class={`c-${p.colore}`}>
+                          <a href={`/progetti/${p.slug}/`} aria-current={percorso === `/progetti/${p.slug}/` ? 'page' : undefined}>
+                            <Immagine img={p.icona} decorativa class="tendina-icona" sizes="32px" />
+                            <span class="tendina-testo">
+                              <span class="tendina-nome">{t(p.nome)}{spazio(t(p.nome_colorato))}<span class="colore">{t(p.nome_colorato)}</span></span>
+                              <span class="faint">{t(p.categoria)}</span>
+                            </span>
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                    <a class="tendina-tutti hud" href={v.link} aria-current={percorso === v.link ? 'page' : undefined}>{ui.tutti_i_progetti}<Icona nome="destra" /></a>
+                  </div>
+                </>
+              ) : (
+                <a class="voce hud" href={v.link} aria-current={attiva(v.link) ? 'page' : undefined}><span>{t(v.etichetta)}</span></a>
+              )}
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+    <div class="testata-dx">
+      <Collegamento class="cella solo-desktop" href={menu.link_icona.link} aria-label={menu.link_icona.etichetta}><Icona nome="github" /></Collegamento>
+      <button class="cella" type="button" data-tema aria-label={ui.cambia_tema}><Icona nome="sole" class="icona-sole" /><Icona nome="luna" class="icona-luna" /></button>
+      <button class="cella apri-menu" type="button" data-menu aria-expanded="false" aria-controls="menu-mobile" data-apri={ui.apri_menu} data-chiudi={ui.chiudi_menu} aria-label={ui.apri_menu}><Icona nome="menu" class="icona-menu" /><Icona nome="chiudi" class="icona-chiudi" /></button>
+      <a class="btn btn-pieno cta-testata" href={menu.bottone.link}>{t(menu.bottone.etichetta)}</a>
+    </div>
+  </div>
+</header>
+<div class="menu-mobile" id="menu-mobile" inert data-menu-mobile>
+  <nav aria-label={ui.menu_principale}>
+    <ul>
+      {menu.voci.map((v) => (
+        <li class:list={[v.separatore && 'separatore']}>
+          <a class="voce hud" href={v.link} aria-current={percorso === v.link || (v.link !== '/' && !v.tendina && attiva(v.link)) ? 'page' : undefined}><span>{t(v.etichetta)}</span></a>
+          {v.tendina && (
+            <ul class="sottovoci">
+              {elenco.map((p) => (
+                <li class={`c-${p.colore}`}>
+                  <a href={`/progetti/${p.slug}/`} aria-current={percorso === `/progetti/${p.slug}/` ? 'page' : undefined}>
+                    <Immagine img={p.icona} decorativa class="tendina-icona" sizes="32px" />
+                    <span class="tendina-nome">{t(p.nome)}{spazio(t(p.nome_colorato))}<span class="colore">{t(p.nome_colorato)}</span></span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
+        </li>
+      ))}
+    </ul>
+  </nav>
+  <a class="btn btn-pieno" href={menu.bottone.link}>{t(menu.bottone.etichetta)}</a>
+  <div class="celle hud">
+    <Collegamento href={menu.link_icona.link}>{menu.link_icona.etichetta}</Collegamento>
+    {instagram && <Collegamento href={instagram.indirizzo}>{instagram.nome}</Collegamento>}
+  </div>
+</div>
+<style is:global>
+  .testata { position: sticky; top: 0; z-index: 50; width: 100%; height: calc(var(--testata) + 1px); border-bottom: 1px solid var(--line); background: color-mix(in srgb, var(--bg) 95%, transparent); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+  .testata-riga { display: flex; height: var(--testata); align-items: stretch; justify-content: space-between; }
+  .testata-sx, .testata-dx { display: flex; align-items: stretch; min-width: 0; }
+  .logo { display: flex; align-items: center; padding: 0 20px; border-right: 1px solid var(--line); color: var(--ink-strong); transition: opacity .15s; }
+  @media (hover: hover) { .logo:hover { opacity: .7; } }
+  .logo svg { height: 20px; width: auto; }
+  .nav { display: none; align-items: stretch; }
+  .nav > ul { display: flex; align-items: stretch; height: 100%; }
+  .nav > ul > li { position: relative; display: flex; align-items: stretch; }
+  .nav li.separatore { margin-left: 6px; padding-left: 6px; border-left: 1px solid var(--line); }
+  .voce { display: flex; align-items: center; height: 100%; padding: 0 10px; color: var(--muted); }
+  .voce span { display: inline-flex; align-items: center; gap: 4px; padding: 2px 6px; transition: background-color var(--rapido) linear, color var(--rapido) linear; }
+  .voce[aria-current='page'] span, .voce.attiva span, .voce[aria-expanded='true'] span { background: var(--invert-bg); color: var(--invert-fg); }
+  @media (hover: hover) { .voce:hover span { background: var(--invert-bg); color: var(--invert-fg); } }
+  .freccia-giu { width: 11px; height: 11px; transition: transform .2s var(--ease); }
+  .voce[aria-expanded='true'] .freccia-giu { transform: rotate(180deg); }
+  .tendina { position: absolute; top: calc(100% + 1px); left: 0; z-index: 60; width: 320px; border: 1px solid var(--line); border-top: 0; background: var(--bg); visibility: hidden; }
+  .con-tendina.aperta .tendina { visibility: visible; }
+  @media (hover: hover) { .con-tendina:hover .tendina { visibility: visible; } .con-tendina:hover .voce span { background: var(--invert-bg); color: var(--invert-fg); } }
+  .tendina a { display: flex; align-items: center; gap: 12px; min-height: 56px; padding: 10px 12px; }
+  .tendina a[aria-current='page'] .tendina-nome { text-decoration: underline; text-underline-offset: 4px; }
+  @media (hover: hover) { .tendina a:hover .tendina-nome { background: var(--invert-bg); color: var(--invert-fg); } .tendina a:hover .tendina-nome .colore { color: inherit; } }
+  .tendina-icona { width: 32px; height: 32px; flex-shrink: 0; border-radius: var(--raggio-icona); overflow: hidden; filter: var(--ombra-icona); }
+  .tendina-testo { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+  .tendina-testo .tendina-nome { align-self: flex-start; }
+  .tendina-nome { padding: 2px 6px; margin-left: -6px; font-family: var(--font-mono); font-size: var(--hud-size); font-weight: 500; letter-spacing: var(--hud-tracking); text-transform: uppercase; line-height: 1.5; color: var(--ink); }
+  .tendina-nome .colore { color: var(--app-ink); }
+  .tendina-testo .faint { font-family: var(--font-body); font-size: .75rem; letter-spacing: 0; text-transform: none; }
+  .tendina-tutti { display: flex !important; justify-content: space-between; min-height: 41px !important; padding: 10px 12px !important; border-top: 1px solid var(--line); color: var(--muted); }
+  .tendina-tutti svg { width: 13px; height: 13px; }
+  @media (hover: hover) { .tendina-tutti:hover { color: var(--ink); } }
+  .cella { display: flex; align-items: center; justify-content: center; width: 48px; border-left: 1px solid var(--line); color: var(--muted); transition: background-color var(--rapido) linear, color var(--rapido) linear; }
+  @media (hover: hover) { .cella:hover { background: var(--invert-bg); color: var(--invert-fg); } }
+  .cella svg { width: 16px; height: 16px; }
+  .cta-testata { display: none !important; height: 100%; min-height: 0; padding: 8px 20px; }
+  .icona-luna { display: none; }
+  :root[data-theme='light'] .icona-sole { display: none; }
+  :root[data-theme='light'] .icona-luna { display: block; }
+  .solo-desktop { display: none; }
+  @media (min-width: 768px) { .cta-testata { display: inline-flex !important; } .solo-desktop { display: flex; } }
+  @media (min-width: 1100px) { .nav { display: flex; } .apri-menu { display: none; } }
+  .icona-chiudi { display: none; }
+  .testata.aperta .icona-menu { display: none; }
+  .testata.aperta .icona-chiudi { display: block; }
+  .menu-mobile { position: fixed; inset: calc(var(--testata) + 1px) 0 0 0; z-index: 49; display: flex; flex-direction: column; background: var(--bg); overflow-y: auto; overscroll-behavior: contain; opacity: 0; visibility: hidden; transform: translateY(-8px); transition: opacity .2s var(--ease), transform .2s var(--ease), visibility 0s .2s; }
+  .testata.aperta + .menu-mobile { opacity: 1; visibility: visible; transform: none; transition: opacity .2s var(--ease), transform .2s var(--ease); }
+  .menu-mobile > nav > ul { padding: var(--s-3) 0; }
+  .menu-mobile li.separatore { margin-top: var(--s-2); padding-top: var(--s-2); border-top: 1px solid var(--line); }
+  .menu-mobile .voce { padding: 0 10px; height: 44px; }
+  .menu-mobile .voce span { padding: 4px 6px; }
+  .sottovoci { padding: 0 0 var(--s-2) 22px; }
+  .sottovoci a { display: flex; align-items: center; gap: 12px; height: 48px; padding: 0 10px; }
+  .sottovoci .tendina-icona { width: 32px; height: 32px; }
+  .sottovoci a[aria-current='page'] .tendina-nome { text-decoration: underline; text-underline-offset: 4px; }
+  .menu-mobile > .btn { width: 100%; }
+  .menu-mobile .celle { display: grid; grid-template-columns: 1fr 1fr; border-block: 1px solid var(--line); }
+  .menu-mobile .celle a { display: flex; align-items: center; justify-content: center; height: 48px; color: var(--muted); }
+  .menu-mobile .celle a + a { border-left: 1px solid var(--line); }
+  @media (min-width: 1100px) { .menu-mobile { display: none; } }
+</style>

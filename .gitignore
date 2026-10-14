@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.astro/
+# generati a ogni build da scripts/media.mjs
+public/_img/
+src/generated/
+# materiale di lavoro locale (screenshot di riferimento e di verifica, appunti)
+riferimento/*
+!riferimento/DESIGN.md
+verifica/
+MISSIONE.md
+CRITERI.md
+.DS_Store
+.env
+.env.*
+# copie temporanee delle prove automatiche
+.prove/

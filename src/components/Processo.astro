@@ -1,0 +1,47 @@
+---
+// Schema animato dei passi di un flusso: si accendono uno dopo l'altro, il passo umano è evidenziato.
+import Icona from './Icona.astro';
+import { dueCifre } from '../lib/contenuti.js';
+const { passi } = Astro.props;
+---
+<ol class="processo" data-rivela style={`--passi:${passi.length}`}>
+  {passi.map((p, i) => (
+    <li class:list={['passo', p.umano && 'passo-umano']} style={`--n:${i}`}>
+      <div class="passo-nodo">
+        <Icona nome={p.umano ? 'mano' : p.icona} class="passo-icona" />
+        <span class="hud passo-numero">{dueCifre(i + 1)}</span>
+      </div>
+      <p class="passo-nome">{p.nome}</p>
+      <p class="passo-testo">{p.testo}</p>
+    </li>
+  ))}
+</ol>
+<style is:global>
+  .processo { position: relative; display: grid; gap: 1px; background: var(--line); border-top: 1px solid var(--line); --durata: calc(var(--passi) * .9s + 2s); }
+  .passo { position: relative; background: var(--bg); padding: var(--s-5) var(--margine); }
+  .passo-nodo { position: relative; display: flex; align-items: center; justify-content: space-between; height: 44px; padding: 0 14px; border: 1px solid var(--line-strong); border-radius: 10px; background: var(--bg-raised); }
+  .passo-numero { color: var(--muted); }
+  .passo-icona { width: 16px; height: 16px; color: var(--muted); transition: color .3s var(--ease); }
+  .passo-umano .passo-icona { color: var(--giallo); }
+  .passo-nome { margin-top: var(--s-4); font-family: var(--font-display); font-weight: 620; font-stretch: 118%; font-size: 1.25rem; letter-spacing: -.02em; color: var(--ink-strong); }
+  .passo-testo { margin-top: 6px; font-size: .9375rem; line-height: 1.6; color: var(--muted); text-wrap: pretty; }
+  .passo-umano .passo-nodo { border-color: var(--giallo); }
+  /* accensione in sequenza, in loop, quando lo schema è visibile */
+  .processo.visibile .passo-nodo { animation: accendi var(--durata) var(--ease) infinite; animation-delay: calc(var(--n) * .9s); }
+  .processo.visibile .passo-nodo::after { content: ''; position: absolute; inset: -1px; border-radius: inherit; box-shadow: 0 0 0 1px var(--accent), 0 0 24px color-mix(in srgb, var(--accent) 45%, transparent); opacity: 0; animation: alone var(--durata) var(--ease) infinite; animation-delay: calc(var(--n) * .9s); }
+  .processo.visibile .passo-umano .passo-nodo::after { box-shadow: 0 0 0 1px var(--giallo), 0 0 24px color-mix(in srgb, var(--giallo) 45%, transparent); }
+  .processo.visibile .passo:not(.passo-umano) .passo-icona { animation: icona-accesa var(--durata) var(--ease) infinite; animation-delay: calc(var(--n) * .9s); }
+  @keyframes icona-accesa { 0%, 100%, 34% { color: var(--muted); } 6%, 22% { color: var(--accent-ink); } }
+  @keyframes accendi { 0%, 100% { background: var(--bg-raised); } 6%, 22% { background: color-mix(in srgb, var(--accent) 16%, var(--bg-raised)); } 34% { background: var(--bg-raised); } }
+  @keyframes alone { 0%, 100% { opacity: 0; } 6%, 22% { opacity: 1; } 34% { opacity: 0; } }
+  @media (min-width: 768px) { .processo { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 1100px) {
+    .processo { grid-template-columns: repeat(var(--passi), 1fr); }
+    .passo { padding: var(--s-5) 20px; }
+    /* il filo fra due nodi: metà in una cella, metà nella successiva (niente esce dalla cella) */
+    .passo:not(:last-child)::after, .passo:not(:first-child)::before { content: ''; position: absolute; top: calc(var(--s-5) + 22px); width: 20px; height: 1px; background: var(--line-strong); }
+    .passo:not(:last-child)::after { right: 0; }
+    .passo:not(:first-child)::before { left: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) { .processo.visibile .passo-nodo, .processo.visibile .passo-nodo::after, .processo.visibile .passo-icona { animation: none; } }
+</style>

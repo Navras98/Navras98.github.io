@@ -1,0 +1,19 @@
+---
+// Apertura delle pagine interne: etichetta, titolo grande, testo e uno spazio per bottoni o altro.
+import { titolo } from '../lib/contenuti.js';
+const { etichetta, testo, titoloPagina, class: classe } = Astro.props;
+---
+<header class:list={['testa-pagina', classe]}>
+  <slot name="sopra" />
+  <p class="hud muted entra">{etichetta}</p>
+  <h1 class="titolo-pagina entra" id="titolo-pagina" style="--e:1" set:html={titolo(titoloPagina)} />
+  {testo && <p class="testo-grande entra" style="--e:2">{testo}</p>}
+  <slot />
+</header>
+<style is:global>
+  .testa-pagina { padding: var(--s-9) var(--margine) var(--s-8); }
+  .testa-pagina .titolo-pagina { margin-top: 20px; max-width: 60rem; }
+  .testa-pagina .testo-grande { margin-top: var(--s-5); }
+  .testa-pagina .bottoni { margin-top: var(--s-6); }
+  @media (min-width: 768px) { .testa-pagina { padding-block: var(--s-10) var(--s-9); } }
+</style>

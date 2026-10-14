@@ -1,0 +1,42 @@
+---
+// Obiettivi (Metodo e Chi sono): ogni carta porta l'icona del progetto a cui si riferisce e rimanda alla sua pagina.
+// Senza progetto resta una carta di testo con la lettera.
+import Immagine from './Immagine.astro';
+import Icona from './Icona.astro';
+import { progetti, griglia } from '../lib/contenuti.js';
+const { voci = [] } = Astro.props;
+const elenco = await progetti();
+const perSlug = Object.fromEntries(elenco.map((p) => [p.slug, p]));
+const COLORI = { 'open-source': 'blu' };
+---
+<div class:list={['griglia', griglia(voci.length), 'obiettivi']}>
+  {voci.map((v, i) => {
+    const p = v.progetto && perSlug[v.progetto];
+    const link = v.progetto === 'open-source' ? '/open-source/' : p ? `/progetti/${p.slug}/` : null;
+    const Tag = link ? 'a' : 'article';
+    return (
+      <Tag class:list={['principio', 'obiettivo', `c-${p?.colore ?? COLORI[v.progetto] ?? 'blu'}`]} href={link ?? undefined} data-rivela style={`--i:${i}`}>
+        <div class="obiettivo-testa">
+          {p ? <Immagine img={p.icona} decorativa class="obiettivo-icona" sizes="56px" />
+            : v.progetto === 'open-source' ? <span class="obiettivo-icona obiettivo-icona-github"><Icona nome="github" /></span>
+            : <p class="hud faint">{String.fromCharCode(65 + i)}</p>}
+          {link && <Icona nome="freccia" class="obiettivo-freccia" />}
+        </div>
+        <h3 class="titolo-scheda">{v.titolo}</h3>
+        <p class="testo">{v.testo}</p>
+      </Tag>
+    );
+  })}
+</div>
+<style is:global>
+  .obiettivo { display: block; color: inherit; transition: background-color var(--rapido) linear; }
+  .obiettivo-testa { display: flex; align-items: flex-start; justify-content: space-between; }
+  .obiettivo-icona { display: block; width: 56px; height: 56px; border-radius: var(--raggio-icona); overflow: hidden; filter: var(--ombra-icona); }
+  .obiettivo-icona-github { display: grid; place-items: center; background: color-mix(in srgb, var(--app) 22%, var(--bg-raised)); color: var(--app-ink); }
+  .obiettivo-icona-github svg { width: 26px; height: 26px; }
+  .obiettivo-freccia { width: 14px; height: 14px; color: var(--faint); transition: transform var(--rapido), color var(--rapido); }
+  @media (hover: hover) {
+    a.obiettivo:hover { background: color-mix(in srgb, var(--app) 8%, transparent); }
+    a.obiettivo:hover .obiettivo-freccia { color: var(--app-ink); transform: translate(2px, -2px); }
+  }
+</style>

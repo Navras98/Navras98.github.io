@@ -1,0 +1,93 @@
+---
+import '../styles/token.css';
+import '../styles/base.css';
+import { ClientRouter } from 'astro:transitions';
+import Testata from '../components/Testata.astro';
+import Piede from '../components/Piede.astro';
+import Indice from '../components/Indice.astro';
+import Invito from '../components/Invito.astro';
+import { pagina, traduttore } from '../lib/contenuti.js';
+import { versione } from '../lib/media.js';
+const imp = await pagina('impostazioni');
+const { seo, home = false, indice = [], etichettaIndice, classe, invito = true, lingua = 'it', alternative = [], noindex = false } = Astro.props;
+const t = await traduttore(lingua);
+const titoloCompleto = home ? imp.titolo_sito : `${seo.titolo} · ${imp.nome}`;
+const base = imp.indirizzo_sito.replace(/\/$/, '');
+const canonico = base + Astro.url.pathname.replace(/index\.html$/, '');
+const immagine = base + (seo.immagine?.src ?? imp.immagine_condivisione.src);
+const persona = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: imp.nome,
+  url: base + '/',
+  email: `mailto:${imp.email}`,
+  jobTitle: imp.lavoro,
+  image: base + versione('/media/foto/andrea-ritratto.jpg', 720),
+  vatID: `IT${imp.partita_iva}`,
+  address: { '@type': 'PostalAddress', addressCountry: 'IT' },
+  knowsAbout: ['Agenti AI', 'Sicurezza informatica', 'Privacy', 'Linux', 'Open source', 'Automazioni'],
+  sameAs: imp.social.map((s) => s.indirizzo),
+};
+const { invito: chiusura } = await pagina('piede');
+const tutteVoci = indice.length ? [...indice, ...(invito ? [{ id: 'scrivimi', etichetta: chiusura.etichetta }] : [])] : [];
+---
+<!doctype html>
+<html lang={lingua} data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{titoloCompleto}</title>
+    <meta name="description" content={seo.descrizione} />
+    {!noindex && <link rel="canonical" href={canonico} />}
+    {alternative.map((a) => <link rel="alternate" hreflang={a.lingua} href={base + a.link} />)}
+    {noindex && <meta name="robots" content="noindex" />}
+    <meta name="theme-color" content="#121316" />
+    <meta name="color-scheme" content="dark light" />
+    <script is:inline>
+      (function () {
+        var d = document.documentElement, t = null;
+        d.classList.add('js');
+        try { t = localStorage.getItem('tema'); } catch (e) {}
+        if (t !== 'light' && t !== 'dark') t = window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        d.dataset.theme = t;
+      })();
+    </script>
+    <link rel="preload" href="/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/geist-mono.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/instrument-serif-italic.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content={lingua === 'it' ? 'it_IT' : 'en_GB'} />
+    <meta property="og:site_name" content={imp.nome} />
+    <meta property="og:title" content={titoloCompleto} />
+    <meta property="og:description" content={seo.descrizione} />
+    {!noindex && <meta property="og:url" content={canonico} />}
+    <meta property="og:image" content={immagine} />
+    <meta property="og:image:alt" content={seo.immagine?.alt ?? imp.immagine_condivisione.alt} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={titoloCompleto} />
+    <meta name="twitter:description" content={seo.descrizione} />
+    <meta name="twitter:image" content={immagine} />
+    <script type="application/ld+json" set:html={JSON.stringify(persona)} />
+    <ClientRouter />
+  </head>
+  <body class={classe}>
+    <a class="salta" href="#contenuto">{t(imp.interfaccia.salta_al_contenuto)}</a>
+    <Testata lingua={lingua} />
+    <main id="contenuto" tabindex="-1">
+      <slot />
+      {invito && <Invito />}
+    </main>
+    <Piede lingua={lingua} />
+    {tutteVoci.length > 0 && <Indice voci={tutteVoci} etichetta={etichettaIndice ?? imp.interfaccia.indice_sezioni} />}
+    <script>
+      import '../scripts/sito.js';
+    </script>
+  </body>
+</html>

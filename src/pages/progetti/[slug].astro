@@ -1,0 +1,217 @@
+---
+import Base from '../../layouts/Base.astro';
+import Sezione from '../../components/Sezione.astro';
+import Immagine from '../../components/Immagine.astro';
+import Video from '../../components/Video.astro';
+import Bottone from '../../components/Bottone.astro';
+import Icona from '../../components/Icona.astro';
+import SchedaFunzione from '../../components/SchedaFunzione.astro';
+import SchedaProgetto from '../../components/SchedaProgetto.astro';
+import Processo from '../../components/Processo.astro';
+import Carosello from '../../components/Carosello.astro';
+import Condividi from '../../components/Condividi.astro';
+import { pagina, progetti, titolo, spazio, dueCifre, griglia } from '../../lib/contenuti.js';
+import { versione, dimensioni } from '../../lib/media.js';
+
+export async function getStaticPaths() {
+  return (await progetti()).map((p) => ({ params: { slug: p.slug } }));
+}
+const elenco = await progetti();
+const p = elenco.find((x) => x.slug === Astro.params.slug);
+const imp = await pagina('impostazioni');
+const ui = imp.interfaccia;
+const menu = await pagina('menu');
+const altri = elenco.filter((x) => x.slug !== p.slug);
+// galleria sul tablet: le immagini verticali stanno a coppie; una verticale senza compagna prende la riga intera
+const verticale = (g) => { const { w, h } = dimensioni(g.immagine.src); return h > w * 1.02; };
+const coppie = new Set();
+p.galleria.voci.forEach((g, i, v) => {
+  if (!coppie.has(i) && verticale(g) && v[i + 1] && verticale(v[i + 1])) { coppie.add(i); coppie.add(i + 1); }
+});
+const sezioni = [
+  { id: 'cosa-ottieni', etichetta: p.cosa_ottieni.etichetta ?? ui.cosa_ottieni },
+  ...(p.capacita ? [{ id: 'cosa-sa-fare', etichetta: p.capacita.etichetta }] : []),
+  ...(p.processo ? [{ id: 'come-funziona', etichetta: p.processo.etichetta }] : []),
+  ...(p.caroselli ? [{ id: 'esempi', etichetta: p.caroselli.etichetta }] : []),
+  ...(p.galleria.voci.length ? [{ id: 'dettagli', etichetta: ui.dettagli }] : []),
+  { id: 'altri', etichetta: ui.altri_progetti },
+];
+// nell'indice la voce dell'apertura resta corta: un nome lungo toccherebbe l'icona
+const indice = [{ id: 'hero', etichetta: p.seo.titolo.length > 16 ? p.nome : p.seo.titolo }, ...sezioni];
+const num = (id) => sezioni.findIndex((s) => s.id === id) + 1;
+---
+<Base seo={p.seo} indice={indice}>
+  <section id="hero" class:list={['pagina-progetto', `c-${p.colore}`]} aria-labelledby="progetto-nome">
+    <div class="contenitore">
+      <div class="progetto-intro">
+        <Immagine img={p.icona} decorativa class="pagina-icona entra" sizes="112px" loading="eager" />
+        <h1 id="progetto-nome" class="progetto-h1">
+          <span class="riga-progetto entra" style="--e:1"><span class="hud badge">{dueCifre(p.ordine)}</span><span class="riga-nome">{p.nome}{spazio(p.nome_colorato)}<span class="colore">{p.nome_colorato}</span></span></span>
+          <span class="progetto-titolo entra" style="--e:2" set:html={titolo(p.apertura.sottotitolo)} />
+        </h1>
+        <p class="testo-grande entra" style="--e:3">{p.apertura.testo}</p>
+        <div class="bottoni entra" style="--e:4">
+          <Bottone href={menu.bottone.link} tipo="pieno" icona="posta">{menu.bottone.etichetta}</Bottone>
+          {p.apertura.link_esterni.map((l) => <Bottone href={l.link} tipo="bordato" icona={l.link.includes('github.com') ? 'github' : undefined}>{l.etichetta}</Bottone>)}
+        </div>
+        <p class="hud faint progetto-riga entra" style="--e:5">{[ui.progetto, p.categoria, ...p.scheda.stato, ...p.scheda.dove].join(' · ')}</p>
+        <Condividi titolo={`${p.seo.titolo}: ${p.apertura.sottotitolo.replace(/\*/g, '')}`} percorso={`/progetti/${p.slug}/`} ui={ui} base={imp.indirizzo_sito} />
+      </div>
+      <figure class:list={['progetto-figura', 'entra', p.apertura.video.telefono && 'con-telefono']} style="--e:4">
+        <figcaption class="hud"><span class="faint">{p.apertura.video.didascalia ?? p.apertura.video.descrizione}</span><span class="faint">{ui.video}</span></figcaption>
+        <div class="progetto-vassoio palco"><Video video={p.apertura.video} larghezzaCopertina={1600} /></div>
+      </figure>
+    </div>
+  </section>
+
+  <Sezione id="cosa-ottieni" numero={num('cosa-ottieni')} etichetta={p.cosa_ottieni.etichetta ?? ui.cosa_ottieni} didascalia={p.cosa_ottieni.didascalia}>
+    <div class="intro-sezione">
+      <h2 class="titolo-sezione" data-rivela set:html={titolo(p.cosa_ottieni.titolo)} />
+    </div>
+    <div class:list={['griglia', griglia(p.cosa_ottieni.punti.length)]}>
+      {p.cosa_ottieni.punti.map((x, i) => (
+        <article class="principio" data-rivela style={`--i:${i % 3}`}>
+          <p class="hud faint">{String.fromCharCode(65 + i)}</p>
+          <h3 class="titolo-scheda">{x.titolo}</h3>
+          <p class="testo">{x.testo}</p>
+        </article>
+      ))}
+    </div>
+    {p.html && <div class="progetto-articolo"><div class="articolo" data-rivela set:html={p.html} /></div>}
+  </Sezione>
+
+  {p.capacita && (
+    <Sezione id="cosa-sa-fare" numero={num('cosa-sa-fare')} etichetta={p.capacita.etichetta} didascalia={p.capacita.didascalia}>
+      <div class="intro-sezione">
+        <h2 class="titolo-sezione" data-rivela set:html={titolo(p.capacita.titolo)} />
+        {p.capacita.testo && <p class="testo-grande" data-rivela style="--i:1">{p.capacita.testo}</p>}
+      </div>
+      <div class="griglia griglia-2">
+        {p.capacita.voci.map((s, i) => <SchedaFunzione s={s} numero={i + 1} i={i} />)}
+      </div>
+    </Sezione>
+  )}
+
+  {p.processo && (
+    <Sezione id="come-funziona" numero={num('come-funziona')} etichetta={p.processo.etichetta} didascalia={p.processo.didascalia}>
+      <div class="intro-sezione">
+        <h2 class="titolo-sezione" data-rivela set:html={titolo(p.processo.titolo)} />
+        <p class="testo-grande" data-rivela style="--i:1">{p.processo.testo}</p>
+      </div>
+      <Processo passi={p.processo.passi} />
+    </Sezione>
+  )}
+
+  {p.caroselli && (
+    <Sezione id="esempi" numero={num('esempi')} etichetta={p.caroselli.etichetta} didascalia={p.caroselli.didascalia}>
+      <div class="intro-sezione">
+        <h2 class="titolo-sezione" data-rivela set:html={titolo(p.caroselli.titolo)} />
+        <p class="testo-grande" data-rivela style="--i:1">{p.caroselli.testo}</p>
+      </div>
+      <div class:list={['griglia', 'caroselli', `c-${p.colore}`, p.caroselli.serie.length > 1 && 'griglia-3']}>
+        {p.caroselli.serie.map((s, i) => <div class="caroselli-cella palco" data-rivela style={`--i:${i}`}><Carosello serie={s} ui={ui} id={`carosello-${i + 1}`} /></div>)}
+      </div>
+      {p.caroselli.storie.length > 0 && (
+        <ul class="storie">
+          {p.caroselli.storie.map((s, i) => <li data-rivela style={`--i:${i % 4}`}><Immagine img={s} sizes="(max-width: 767px) 60vw, 240px" /></li>)}
+        </ul>
+      )}
+    </Sezione>
+  )}
+
+  {p.galleria.voci.length > 0 && (
+    <Sezione id="dettagli" numero={num('dettagli')} etichetta={ui.dettagli} didascalia={p.galleria.didascalia}>
+      <div class="intro-sezione">
+        <h2 class="titolo-sezione" data-rivela set:html={titolo(p.galleria.titolo)} />
+      </div>
+      <div class:list={['griglia', 'galleria', `c-${p.colore}`, p.galleria.voci.length > 1 && 'griglia-2', p.galleria.voci.length % 2 === 1 && p.galleria.voci.length > 1 && 'galleria-prima-larga']}>
+        {p.galleria.voci.map((g, i) => (
+          <figure data-rivela class:list={[verticale(g) && !coppie.has(i) && 'galleria-sola']}>
+            <a class="galleria-media palco" href={versione(g.immagine.src, 4000)} target="_blank" rel="noopener">
+              <Immagine img={g.immagine} stretta={g.immagine_telefono} nonOltre sizes={p.galleria.voci.length === 1 || (i === 0 && p.galleria.voci.length % 2 === 1) ? '(max-width: 767px) 100vw, 1200px' : '(max-width: 1099px) 100vw, 600px'} />
+              <span class="galleria-intera hud">{ui.immagine_intera}<Icona nome="freccia" /><span class="sr-only"> ({ui.apre_nuova_scheda})</span></span>
+            </a>
+            <figcaption class="galleria-didascalia"><span class="hud faint">{dueCifre(i + 1)}</span><span class="hud muted">{g.didascalia}</span></figcaption>
+          </figure>
+        ))}
+      </div>
+    </Sezione>
+  )}
+
+  <Sezione id="altri" numero={num('altri')} etichetta={ui.altri_progetti} didascalia={ui.altri_progetti_didascalia}>
+    <div class="griglia griglia-3 altri">
+      {altri.map((x, i) => <SchedaProgetto p={x} i={i} livello={2} sizes="(max-width: 639px) 100vw, (max-width: 1099px) 50vw, 430px" />)}
+    </div>
+  </Sezione>
+</Base>
+<style is:global>
+  .pagina-progetto { position: relative; }
+  .progetto-intro { display: flex; flex-direction: column; align-items: center; padding: var(--s-10) var(--margine) var(--s-8); text-align: center; }
+  .pagina-icona { width: 96px; height: 96px; border-radius: var(--raggio-icona); overflow: hidden; filter: var(--ombra-icona); }
+  .progetto-h1 { display: flex; flex-direction: column; align-items: center; margin-top: var(--s-6); }
+  .riga-progetto { display: inline-flex; align-items: center; gap: var(--s-3); }
+  @media (max-width: 479px) { .riga-progetto { flex-direction: column; gap: var(--s-2); } }
+  .riga-nome { font-family: var(--font-display); font-weight: 620; font-stretch: 118%; font-size: 1.5rem; line-height: 1.33; letter-spacing: -.03em; color: var(--ink-strong); }
+  .riga-nome .colore, .progetto-titolo .accento { color: var(--app-ink); }
+  .progetto-titolo { display: block; max-width: 56rem; margin-top: var(--s-4); font-family: var(--font-display); font-weight: 620; font-stretch: 118%; font-size: 2.25rem; line-height: 1.02; letter-spacing: -.035em; color: var(--ink-strong); text-wrap: balance; }
+  .progetto-titolo .corsivo { color: var(--ink-strong); }
+  .progetto-intro .testo-grande { margin-top: var(--s-5); }
+  .progetto-intro .bottoni { justify-content: center; margin-top: var(--s-6); }
+  .progetto-riga { margin-top: var(--s-5); }
+  .progetto-intro .condividi { margin-inline: auto; }
+  .progetto-figura { border-top: 1px solid var(--line); }
+  .progetto-figura figcaption { display: flex; justify-content: space-between; gap: var(--s-4); padding: var(--s-2) var(--margine); border-bottom: 1px solid var(--line); }
+  .progetto-figura figcaption span:first-child { min-width: 0; text-wrap: balance; }
+  .progetto-figura figcaption span:last-child { flex: none; }
+  /* il video sta su un palco illuminato dal colore del progetto, come le schermate della galleria */
+  .progetto-vassoio { padding: var(--s-4); }
+  .progetto-figura .video { display: block; width: 100%; max-width: 960px; margin-inline: auto; aspect-ratio: 16 / 9; height: auto; border-radius: 10px; background: var(--bg-raised); box-shadow: var(--aberrazione), 0 28px 60px -18px var(--ombra-carta); }
+  @media (min-width: 768px) { .progetto-vassoio { padding: var(--s-8) var(--s-9); } }
+  /* sul telefono il video sta in un riquadro 4:5, inquadrato sul punto focale scelto nel contenuto: il testo resta leggibile */
+  @media (max-width: 639px) { .con-telefono .video { aspect-ratio: 4 / 5; } .progetto-vassoio { padding: var(--s-3); } }
+  @media (min-width: 768px) { .pagina-icona { width: 112px; height: 112px; } .progetto-titolo { font-size: 3.75rem; } }
+  @media (min-width: 1100px) { .progetto-titolo { font-size: 4.5rem; } }
+  .progetto-articolo { border-top: 1px solid var(--line); padding: var(--s-6) var(--margine) var(--s-8); }
+  @media (min-width: 768px) { .progetto-articolo { padding-block: var(--s-8) var(--s-9); } }
+  .progetto-articolo .articolo p, .progetto-articolo .articolo li { color: var(--muted); }
+  .altri .progetto-nome { font-size: 1.5rem; line-height: 1.25; }
+  /* a due colonne il terzo progetto prende la riga intera: immagine a sinistra, testo a destra */
+  @media (min-width: 640px) and (max-width: 1099px) {
+    .altri > .progetto:last-child:nth-child(odd) { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto 1fr; }
+    .altri > .progetto:last-child:nth-child(odd) > .scheda-testa { grid-column: 1 / -1; }
+    .altri > .progetto:last-child:nth-child(odd) > .progetto-media { grid-column: 1; display: grid; align-content: center; border-bottom: 0; border-right: 1px solid var(--line); }
+    .altri > .progetto:last-child:nth-child(odd) > .progetto-corpo { grid-column: 2; padding-top: var(--s-6); }
+    .altri > .progetto:last-child:nth-child(odd) .progetto-icona { margin-top: 0; }
+  }
+  @media (min-width: 1100px) { .altri .progetto-nome { font-size: 1.875rem; } }
+  .galleria figure { display: flex; flex-direction: column; height: 100%; }
+  /* sulla stessa riga le didascalie partono alla stessa altezza */
+  @media (min-width: 640px) { .galleria.griglia-2 figure { display: grid; grid-row: span 2; grid-template-rows: subgrid; row-gap: 0; } }
+  .galleria-prima-larga figure:first-child { grid-column: 1 / -1; }
+  @media (min-width: 640px) and (max-width: 1099px) {
+    .galleria.griglia-2 { grid-template-columns: repeat(6, 1fr); }
+    .galleria.griglia-2 figure { grid-column: span 3; }
+    .galleria.griglia-2 figure:not(:has(.telefono, .immagine-verticale)) { grid-column: 1 / -1; }
+    .galleria.griglia-2 figure:has(.telefono) { grid-column: span 3; }
+    .galleria.griglia-2 figure.galleria-sola { grid-column: 1 / -1; }
+    .galleria-media { padding: var(--s-5) var(--s-5) 56px; }
+    .galleria-media:has(.telefono, .immagine-verticale) { padding: var(--s-5) 12px 48px; }
+  }
+  .galleria-media { position: relative; display: grid; place-items: center; flex: 1; min-height: 320px; padding: var(--s-6) var(--margine) var(--s-9); }
+  .galleria-intera { position: absolute; right: 12px; bottom: 12px; display: inline-flex; align-items: center; gap: 6px; padding: 4px 8px; background: color-mix(in srgb, var(--bg) 80%, transparent); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); color: var(--ink); opacity: 0; transition: opacity .15s var(--ease); }
+  .galleria-intera svg { width: 12px; height: 12px; }
+  .galleria-media:focus-visible .galleria-intera { opacity: 1; }
+  @media (hover: hover) { .galleria-media:hover .galleria-intera { opacity: 1; } }
+  @media (hover: none) { .galleria-intera { opacity: 1; } }
+  .galleria-didascalia { display: flex; align-items: flex-start; gap: var(--s-4); padding: var(--s-3) var(--margine); border-top: 1px solid var(--line); }
+  .galleria-didascalia > :first-child { flex: none; }
+  .galleria-didascalia > :last-child { min-width: 0; }
+  .galleria-media > .immagine:not(.immagine-verticale) { width: 100%; margin-inline: auto; }
+  /* una scheda verticale lunga (per esempio un estratto di regole) non supera l'altezza di uno schermo */
+  .galleria-media > .immagine-verticale { max-height: 860px; }
+  .galleria-media .immagine-verticale { max-height: 640px; border-radius: 8px; overflow: hidden; box-shadow: var(--filo-schermata); }
+  .caroselli-cella { padding: var(--s-7) var(--margine); background-color: var(--bg-raised) !important; }
+  .storie { display: flex; gap: var(--s-5); overflow-x: auto; padding: var(--s-7) var(--margine); border-top: 1px solid var(--line); scroll-snap-type: x mandatory; scrollbar-width: thin; }
+  .storie li { flex: 0 0 min(60vw, 220px); scroll-snap-align: start; }
+  .storie .telefono { --larghezza-telefono: 220px; }
+</style>

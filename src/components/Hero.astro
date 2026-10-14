@@ -1,0 +1,143 @@
+---
+// Apertura della home: il nome in grande, il sottotitolo, due bottoni e le carte video in orbita.
+import Wordmark from './Wordmark.astro';
+import Video from './Video.astro';
+import Icona from './Icona.astro';
+import Bottone from './Bottone.astro';
+import Collegamento from './Collegamento.astro';
+import Immagine from './Immagine.astro';
+import { titolo } from '../lib/contenuti.js';
+import { ANELLI, posto, trasforma } from '../lib/orbita.js';
+const { apertura: a, nome } = Astro.props;
+// Video e icone si alternano sugli anelli: la prima voce di ogni lista sta sull'anello più vicino.
+const video = a.carte.map((v) => ({ tipo: 'video', v }));
+const immagini = (a.immagini ?? []).map((v) => ({ tipo: 'immagine', v }));
+const voci = [];
+for (let i = 0; i < Math.max(video.length, immagini.length); i++) {
+  if (video[i]) voci.push(video[i]);
+  if (immagini[i]) voci.push(immagini[i]);
+}
+// Ogni anello prende carte in proporzione alla sua quota; dentro l'anello le carte sono equidistanti.
+const pesi = ANELLI.map((r) => r.quota);
+const quante = pesi.map((q) => Math.floor((q / pesi.reduce((x, y) => x + y, 0)) * voci.length));
+for (let k = 0; quante.reduce((x, y) => x + y, 0) < voci.length; k++) quante[k % quante.length]++;
+const larghezze = [330, 300, 316, 290, 324, 296, 310];
+let indice = 0, nv = 0;
+const carte = [];
+quante.forEach((n, r) => {
+  for (let j = 0; j < n; j++) {
+    const fase = (j / n) * Math.PI * 2 + r * 1.1;
+    const raggio = j % 2 ? 0.8 : 1;
+    const p = posto(r, fase, 0, 1440, 852, raggio);
+    const voce = voci[indice];
+    // le immagini quadrate (icone dei progetti) diventano tessere come nella griglia delle app
+    const icona = voce.tipo === 'immagine' && voce.v.src.match(/\/icone\//);
+    carte.push({ ...voce, icona, anello: r, fase: fase.toFixed(4), raggio, w: voce.tipo === 'video' ? larghezze[nv++ % larghezze.length] : 112, p });
+    indice++;
+  }
+});
+const anelli = [
+  { r: 560, colore: '#2fd39c', durata: 150, giro: 0.32, inverso: false },
+  { r: 470, colore: '#ff6259', durata: 120, giro: 0.22, inverso: true },
+  { r: 390, colore: '#9d4cff', durata: 170, giro: 0.28, inverso: false },
+  { r: 315, colore: '#2d81ff', durata: 95, giro: 0.36, inverso: true },
+];
+---
+<section class="hero" id="hero" data-hero aria-labelledby="hero-titolo">
+  <div class="hero-scena">
+    <div class="archi" aria-hidden="true">
+      <svg viewBox="0 0 1200 1200" fill="none">
+        <defs>
+          {anelli.map((r, i) => (
+            <linearGradient id={`arco-${i}`} x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color={r.colore} stop-opacity="0" />
+              <stop offset=".5" stop-color={r.colore} stop-opacity=".9" />
+              <stop offset="1" stop-color={r.colore} stop-opacity="0" />
+            </linearGradient>
+          ))}
+        </defs>
+        <circle cx="600" cy="600" r="520" stroke="currentColor" stroke-opacity=".07" stroke-width="14" stroke-dasharray="1.2 22" />
+        <circle cx="600" cy="600" r="430" stroke="currentColor" stroke-opacity=".05" stroke-width="1" />
+        {anelli.map((r, i) => (
+          <g class:list={['anello', r.inverso && 'inverso']} style={`--durata:${r.durata}s`}>
+            <circle cx="600" cy="600" r={r.r} stroke={`url(#arco-${i})`} stroke-width="2.2" stroke-linecap="round" stroke-dasharray={`${(2 * Math.PI * r.r * r.giro).toFixed(1)} ${(2 * Math.PI * r.r).toFixed(1)}`} transform={`rotate(${i * 83} 600 600)`} />
+          </g>
+        ))}
+      </svg>
+    </div>
+    <div class="orbita" aria-hidden="true" data-orbita>
+      {carte.map((c) => (
+        <div class:list={['carta', c.tipo === 'immagine' && 'carta-immagine', c.icona && 'carta-icona']} data-carta data-anello={c.anello} data-fase={c.fase} data-raggio={c.raggio}
+          style={`--w:${c.w}px;--prof:${c.p.prof.toFixed(3)};z-index:${c.p.z};transform:${trasforma(c.p)}`}>
+          {c.tipo === 'video'
+            ? <Video video={c.v} attesa decorativo larghezzaCopertina={560} />
+            : <Immagine img={c.v} sizes={c.icona ? '120px' : '300px'} decorativa />}
+        </div>
+      ))}
+    </div>
+    <div class="hero-testo" data-hero-testo>
+      <Wordmark nome={nome} data-wordmark />
+      <h1 class="hero-titolo entra" id="hero-titolo" style="--e:1" set:html={titolo(a.titolo)} />
+      <p class="hero-sotto entra" style="--e:2">{a.testo}</p>
+      <div class="bottoni entra" style="--e:3">
+        <Bottone href={a.bottone_principale.link} tipo="pieno" icona="posta">{a.bottone_principale.etichetta}</Bottone>
+        <Bottone href={a.bottone_secondario.link} tipo="bordato">{a.bottone_secondario.etichetta}</Bottone>
+      </div>
+      <ul class="hero-riga hud entra" style="--e:4">
+        {a.riga.map((r) => <li><Collegamento href={r.link}>{r.link.includes('github.com') && <Icona nome="github" />}{r.etichetta}</Collegamento></li>)}
+      </ul>
+    </div>
+  </div>
+</section>
+<style is:global>
+  .hero { position: relative; overflow: clip; }
+  .hero-scena { position: relative; display: flex; flex-direction: column; justify-content: center; min-height: calc(100svh - var(--testata)); padding: var(--s-9) var(--s-5) var(--s-8); }
+  .archi { position: absolute; inset: 0; pointer-events: none; overflow: hidden; color: var(--ink); }
+  .archi svg { position: absolute; left: 50%; top: 50%; width: max(1500px, 125vw); height: auto; max-width: none; transform: translate(-50%, -50%); }
+  .archi .anello { transform-origin: 600px 600px; animation: ruota var(--durata, 120s) linear infinite; animation-play-state: paused; }
+  html.vivo .archi .anello { animation-play-state: running; }
+  .archi .anello.inverso { animation-direction: reverse; }
+  @keyframes ruota { to { transform: rotate(360deg); } }
+  .orbita { position: absolute; inset: 0; pointer-events: none; perspective: 1400px; }
+  .carta { position: absolute; left: 50%; top: 50%; width: var(--w, 220px); aspect-ratio: 16 / 9; margin: calc(var(--w, 220px) * -.28125) 0 0 calc(var(--w, 220px) * -.5); border-radius: var(--raggio-carta); overflow: hidden; background: var(--bg-sunken); will-change: transform; box-shadow: var(--aberrazione), 0 18px 40px -12px var(--ombra-carta); }
+  .carta::before { content: ''; position: absolute; inset: 1px; z-index: 1; border-radius: 9px; box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--line-strong) 22%, transparent); pointer-events: none; }
+  /* profondità: le carte lontane sono più buie (in chiaro più trasparenti) e appena sfocate */
+  /* --velo: 1 = libera, 0 = sopra il testo (la carta si spegne e si sfoca, come in ArtCraft) */
+  /* solo opacità (niente filtri ricalcolati a ogni fotogramma: l'apertura resta fluida anche su computer lenti) */
+  .carta { opacity: calc(var(--entrata, 1) * (.3 + .7 * var(--velo, 1)) * (.62 + .38 * var(--prof, 1))); }
+  /* le icone sopra il nome o il testo quasi spariscono: non coprono le lettere */
+  .carta-icona { opacity: calc(var(--entrata, 1) * (.75 + .25 * var(--prof, 1)) * (.2 + .8 * var(--velo, 1))); }
+  /* in chiaro la profondità la danno scala e ordine, non l'opacità; una carta o un'icona è piena oppure, sopra il testo,
+     sparisce del tutto (velata a metà su fondo crema diventerebbe grigia) */
+  :root[data-theme='light'] .carta { opacity: var(--entrata, 1); transition: opacity .3s linear; }
+  :root[data-theme='light'] .carta.coperta { opacity: 0; }
+  :root[data-theme='light'] .carta::before { inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 1px rgb(16 16 20 / .12); }
+  .carta::after { content: ''; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(115deg, rgba(255, 255, 255, .12), transparent 38%, transparent 70%, rgba(255, 120, 60, .06)); mix-blend-mode: screen; pointer-events: none; }
+  .carta-immagine .immagine { width: 100%; height: 100%; }
+  /* icone dei progetti: tessere quadrate con il raggio delle app */
+  .carta-icona { aspect-ratio: 1; margin: calc(var(--w) * -.5) 0 0 calc(var(--w) * -.5); border-radius: var(--raggio-icona); background: transparent; box-shadow: 0 18px 40px -12px var(--ombra-carta); }
+  .carta-icona::before, .carta-icona::after { display: none; }
+  /* sul telefono girano solo i video, più grandi e verso i bordi: il testo resta libero */
+  @media (max-width: 639px) { .carta-immagine { display: none; } }
+  /* entrata: le carte arrivano dal centro (la guida apertura.js; senza script restano ferme al loro posto) */
+  :root.js .orbita:not(.pronta) .carta { visibility: hidden; }
+  .carta .video { width: 100%; height: 100%; }
+  .hero-testo { position: relative; z-index: 40; display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 72rem; margin: 0 auto; width: 100%; pointer-events: none; }
+  .hero-testo a, .hero-testo button { pointer-events: auto; }
+  .hero-testo::before { content: ''; position: absolute; inset: -30% -6%; z-index: -1; background: radial-gradient(closest-side, color-mix(in srgb, var(--bg) 85%, transparent), transparent); pointer-events: none; }
+  .hero .wordmark { font-size: 13.4vw; will-change: transform; transform-origin: 50% 50%; text-shadow: 0 0 .6vw color-mix(in srgb, var(--bg) 92%, transparent), 0 .25vw 2.4vw color-mix(in srgb, var(--bg) 78%, transparent), 0 .4vw 5vw color-mix(in srgb, var(--bg) 55%, transparent); }
+  .hero .wordmark .glifo { filter: drop-shadow(0 0 .3vw color-mix(in srgb, var(--bg) 85%, transparent)) drop-shadow(0 .2vw 1.6vw color-mix(in srgb, var(--bg) 60%, transparent)); }
+  @media (min-width: 640px) { .hero .wordmark { font-size: 7.9vw; } }
+  @media (min-width: 1100px) { .hero .wordmark { font-size: min(6.6vw, 7.5rem); } }
+  /* entrata in tre tempi: il nome, poi titolo, testo e bottoni, poi (dal secondo 2) le carte */
+  .hero .entra { animation-delay: calc(var(--e, 0) * 120ms + 950ms); }
+  .hero-titolo { margin-top: var(--s-6); font-family: var(--font-display); font-weight: 620; font-stretch: 118%; font-size: 1.875rem; line-height: 1.05; letter-spacing: -.03em; color: var(--ink-strong); }
+  .hero-titolo .corsivo { color: var(--muted); }
+  .hero-sotto { margin-top: var(--s-4); max-width: 28rem; font-size: 1.125rem; line-height: 1.625; color: var(--muted); }
+  .hero .bottoni { justify-content: center; margin-top: 28px; }
+  .hero-riga { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: var(--s-2) var(--s-5); margin-top: 28px; color: var(--faint); }
+  .hero-riga a { display: inline-flex; align-items: center; gap: 6px; min-height: 24px; transition: color .15s; }
+  @media (hover: hover) { .hero-riga a:hover { color: var(--ink); } }
+  .hero-riga svg { width: 13px; height: 13px; }
+  @media (min-width: 640px) { .hero-titolo { font-size: 2.25rem; } }
+</style>

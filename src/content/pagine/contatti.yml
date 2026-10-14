@@ -1,0 +1,55 @@
+# Pagina Contatti. Nei titoli: *parola* = corsivo, **parola** = colore blu.
+seo:
+  titolo: Contatti
+  descrizione: Scrivi ad Andrea Sforna per parlare di agenti AI nella tua azienda.
+  immagine:
+    src: /media/condivisione.jpg
+    alt: Andrea Sforna, consulente informatico per gli agenti AI
+    punto_focale: centro
+    adatta: riempi
+apertura:
+  etichetta: Contatti
+  titolo: Scrivimi *due righe.*
+  testo: Dimmi cosa fa la tua azienda e cosa vorresti togliere dalla tua settimana. Non serve sapere niente di tecnico. Ti rispondo io, personalmente.
+  foto:
+    src: /media/foto/andrea-ritratto.jpg
+    alt: Ritratto in bianco e nero di Andrea Sforna
+    punto_focale: centro
+    adatta: riempi
+scrivimi:
+  etichetta: Scrivimi
+  didascalia: Per email
+  nota: Leggo ogni messaggio e rispondo dal mio indirizzo.
+altri_canali:
+  etichetta: Altri canali
+  didascalia: Dove trovarmi
+  voci:
+    - icona: github
+      titolo: GitHub
+      testo: Il codice dei progetti aperti e le modifiche che propongo ad altri progetti.
+      link:
+        etichetta: Apri GitHub
+        link: https://github.com/Navras98
+    - icona: instagram
+      titolo: Instagram
+      testo: Caroselli brevi sulle notizie dell'intelligenza artificiale.
+      link:
+        etichetta: Apri Instagram
+        link: https://www.instagram.com/andreasfornaai/
+    - icona: newsletter
+      titolo: Newsletter
+      testo: Un'email corta quando c'è una notizia che vale il tuo tempo.
+      link:
+        etichetta: Leggi i numeri
+        link: /newsletter/
+modulo:
+  titolo: Scrivimi da qui
+  oggetto: Messaggio dal sito
+  nome: Nome
+  email: Email
+  messaggio: Messaggio
+  invia: Invia il messaggio
+  inviato: Messaggio inviato. Ti rispondo appena lo leggo.
+  errore: Il messaggio non è partito. Scrivimi direttamente all'indirizzo email qui accanto.
+  senza_chiave: Il modo più semplice è un'email. Si apre la tua app di posta con il mio indirizzo già scritto.
+  bottone_email: Scrivimi un'email

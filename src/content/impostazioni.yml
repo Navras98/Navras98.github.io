@@ -1,0 +1,53 @@
+# Impostazioni generali del sito. Modificabili da Pages CMS (voce «Impostazioni»).
+nome: Andrea Sforna
+titolo_sito: Andrea Sforna · agenti AI per le aziende
+descrizione: Consulente informatico. Progetto, costruisco e metto in sicurezza agenti AI per le aziende, sui loro dati e sui loro computer.
+indirizzo_sito: https://navras98.github.io
+email: andrea.sforna@gmail.com
+partita_iva: "04057500540"
+lavoro: Consulente informatico
+immagine_condivisione:
+  src: /media/condivisione.jpg
+  alt: Andrea Sforna, consulente informatico per gli agenti AI
+  punto_focale: centro
+  adatta: riempi
+# Chiave pubblica del modulo contatti di Web3Forms. Se è vuota, il modulo diventa un pulsante email.
+chiave_modulo: ""
+# Indirizzo pubblico che riceve le iscrizioni alla newsletter. Se è vuoto, il modulo prepara un'email.
+indirizzo_iscrizione: "https://macbook-pro-di-apple.tailb93c0a.ts.net:10000/webhook/iscrizione"
+social:
+  - nome: GitHub
+    indirizzo: https://github.com/Navras98
+  - nome: Instagram
+    indirizzo: https://www.instagram.com/andreasfornaai/
+  - nome: X
+    indirizzo: https://x.com/sforna_andrea
+# Piccoli testi dell'interfaccia (pulsanti, etichette per chi usa lettori di schermo).
+interfaccia:
+  salta_al_contenuto: Vai al contenuto
+  menu_principale: Menu principale
+  apri_menu: Apri il menu
+  chiudi_menu: Chiudi il menu
+  cambia_tema: Cambia tema, chiaro o scuro
+  indice_sezioni: Sezioni della pagina
+  torna_alla_home: Andrea Sforna, torna alla home
+  tutti_i_progetti: Tutti i progetti
+  condividi: Condividi
+  copia_link: Copia link
+  link_copiato: Copiato
+  progetto: Progetto
+  cosa_ottieni: Cosa ottieni
+  dettagli: Dettagli
+  altri_progetti: Altri progetti
+  altri_progetti_didascalia: Stesse regole
+  partita_iva: P.IVA
+  email: Email
+  vedi_su_github: Vedi su GitHub
+  esplora: Esplora
+  video: Video
+  immagine_intera: Immagine intera
+  ritratto: Ritratto
+  scorri: Scorri per vedere le altre
+  precedente: Precedente
+  successiva: Successiva
+  apre_nuova_scheda: si apre in una nuova scheda

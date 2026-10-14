@@ -1,0 +1,24 @@
+---
+// Barra «condividi»: copia link, X, LinkedIn, WhatsApp.
+import Icona from './Icona.astro';
+const { titolo, percorso, ui, base } = Astro.props;
+const indirizzo = encodeURIComponent(base.replace(/\/$/, '') + percorso);
+const testo = encodeURIComponent(titolo);
+const reti = [
+  ['X', `https://x.com/intent/post?url=${indirizzo}&text=${testo}`],
+  ['LinkedIn', `https://www.linkedin.com/sharing/share-offsite/?url=${indirizzo}`],
+  ['WhatsApp', `https://wa.me/?text=${testo}%20${indirizzo}`],
+];
+---
+<div class="condividi entra" style="--e:7">
+  <span class="hud faint">{ui.condividi}</span>
+  <button type="button" data-copia data-copiato={ui.link_copiato}><Icona nome="copia" /><span>{ui.copia_link}</span></button>
+  {reti.map(([nome, link]) => <a href={link} target="_blank" rel="noopener">{nome}<span class="sr-only"> ({ui.apre_nuova_scheda})</span></a>)}
+</div>
+<style is:global>
+  .condividi { display: flex; flex-wrap: wrap; width: fit-content; max-width: 100%; gap: 1px; margin-top: var(--s-5); background: var(--line); border: 1px solid var(--line); }
+  .condividi > * { display: flex; flex: 1 0 auto; align-items: center; justify-content: center; gap: var(--s-2); height: 36px; padding: 0 var(--s-3); background: var(--bg); }
+  .condividi a, .condividi button { font-family: var(--font-mono); font-size: var(--hud-size); font-weight: 700; letter-spacing: var(--bottone-tracking); text-transform: uppercase; color: var(--muted); transition: color .15s, background-color .15s; }
+  @media (hover: hover) { .condividi a:hover, .condividi button:hover { color: var(--ink); background: var(--bg-raised); } }
+  .condividi svg { width: 13px; height: 13px; }
+</style>

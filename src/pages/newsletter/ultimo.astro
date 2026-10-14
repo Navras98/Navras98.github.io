@@ -1,0 +1,22 @@
+---
+// /newsletter/ultimo/ porta sempre all'ultimo numero uscito.
+import { pagina, numeri } from '../../lib/contenuti.js';
+const [n] = await numeri();
+const nl = await pagina('newsletterPagina');
+const imp = await pagina('impostazioni');
+const dove = `/newsletter/numeri/${n.slug}/`;
+---
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <title>{nl.ultimo.titolo} · {imp.nome}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <link rel="canonical" href={imp.indirizzo_sito.replace(/\/$/, '') + dove} />
+    <meta http-equiv="refresh" content={`0; url=${dove}`} />
+  </head>
+  <body>
+    <p>{nl.ultimo.testo} <a href={dove}>{n.titolo}</a></p>
+  </body>
+</html>
